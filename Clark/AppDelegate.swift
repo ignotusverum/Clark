@@ -28,6 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    /// 
+    /// Transition logic
+    func transitionSetup() {
+        
+        /// Config
+        let config = Config.shared
+        
+        /// Transition to main controller if tutor stored
+        if let tutorID = config.currentTutor?.id, tutorID.length > 0 {
+            
+            return
+        }
+        
+        /// Transition to initial controller
+        OnboardingRouteHandler.initialTransition()
+    }
 }
 

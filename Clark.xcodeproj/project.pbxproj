@@ -135,6 +135,10 @@
 		F5059B7B1F0D749A009DFF0B /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5059B781F0D7493009DFF0B /* iAd.framework */; };
 		F5059B7E1F0D7510009DFF0B /* RouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B7D1F0D7510009DFF0B /* RouteHandler.swift */; };
 		F5059B7F1F0D7510009DFF0B /* RouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B7D1F0D7510009DFF0B /* RouteHandler.swift */; };
+		F5059B831F0D7759009DFF0B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B821F0D7759009DFF0B /* InitialViewController.swift */; };
+		F5059B841F0D7759009DFF0B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B821F0D7759009DFF0B /* InitialViewController.swift */; };
+		F5059B881F0D77F5009DFF0B /* OnboardingRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B871F0D77F5009DFF0B /* OnboardingRouteHandler.swift */; };
+		F5059B891F0D77F5009DFF0B /* OnboardingRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B871F0D77F5009DFF0B /* OnboardingRouteHandler.swift */; };
 		F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F50C33411F0D541B00905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -211,6 +215,8 @@
 		F5059B761F0D7490009DFF0B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F5059B781F0D7493009DFF0B /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		F5059B7D1F0D7510009DFF0B /* RouteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteHandler.swift; sourceTree = "<group>"; };
+		F5059B821F0D7759009DFF0B /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		F5059B871F0D77F5009DFF0B /* OnboardingRouteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingRouteHandler.swift; sourceTree = "<group>"; };
 		F50C33331F0D541B00905F17 /* Clark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50C33361F0D541B00905F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -479,9 +485,42 @@
 		F5059B7C1F0D74F8009DFF0B /* Route Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				F5059B851F0D77C3009DFF0B /* Sections */,
 				F5059B7D1F0D7510009DFF0B /* RouteHandler.swift */,
 			);
 			path = "Route Handlers";
+			sourceTree = "<group>";
+		};
+		F5059B801F0D7662009DFF0B /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B811F0D773F009DFF0B /* Onboarding */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		F5059B811F0D773F009DFF0B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B821F0D7759009DFF0B /* InitialViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F5059B851F0D77C3009DFF0B /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B861F0D77D6009DFF0B /* Onboarding */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		F5059B861F0D77D6009DFF0B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B871F0D77F5009DFF0B /* OnboardingRouteHandler.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		F50C332A1F0D541B00905F17 = {
@@ -506,6 +545,7 @@
 		F50C33351F0D541B00905F17 /* Clark */ = {
 			isa = PBXGroup;
 			children = (
+				F5059B801F0D7662009DFF0B /* Sections */,
 				F5059B691F0D7456009DFF0B /* Vendor */,
 				F5059AE61F0D6562009DFF0B /* Utilities */,
 				F5059ABC1F0D5857009DFF0B /* Models */,
@@ -794,6 +834,7 @@
 				F5059AF61F0D6594009DFF0B /* Device.swift in Sources */,
 				F5059ADF1F0D6544009DFF0B /* _Model.swift in Sources */,
 				F5059AC01F0D5887009DFF0B /* Model.xcdatamodeld in Sources */,
+				F5059B891F0D77F5009DFF0B /* OnboardingRouteHandler.swift in Sources */,
 				F5059B1F1F0D6677009DFF0B /* KickoffManager.swift in Sources */,
 				F5059AFC1F0D6594009DFF0B /* String.swift in Sources */,
 				F5059B1D1F0D6677009DFF0B /* APIManager.swift in Sources */,
@@ -806,6 +847,7 @@
 				F5059AD51F0D6544009DFF0B /* Model.swift in Sources */,
 				F5059B0D1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
 				F5059B1B1F0D6677009DFF0B /* TutorAdapter.swift in Sources */,
+				F5059B841F0D7759009DFF0B /* InitialViewController.swift in Sources */,
 				F5059B371F0D6842009DFF0B /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -841,6 +883,7 @@
 				F5059AF51F0D6594009DFF0B /* Device.swift in Sources */,
 				F5059ADE1F0D6544009DFF0B /* _Model.swift in Sources */,
 				F5059ABF1F0D5887009DFF0B /* Model.xcdatamodeld in Sources */,
+				F5059B881F0D77F5009DFF0B /* OnboardingRouteHandler.swift in Sources */,
 				F5059B1E1F0D6677009DFF0B /* KickoffManager.swift in Sources */,
 				F5059AFB1F0D6594009DFF0B /* String.swift in Sources */,
 				F5059B1C1F0D6677009DFF0B /* APIManager.swift in Sources */,
@@ -853,6 +896,7 @@
 				F5059AD41F0D6544009DFF0B /* Model.swift in Sources */,
 				F5059B0C1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
 				F5059B1A1F0D6677009DFF0B /* TutorAdapter.swift in Sources */,
+				F5059B831F0D7759009DFF0B /* InitialViewController.swift in Sources */,
 				F5059B361F0D6842009DFF0B /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
