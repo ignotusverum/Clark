@@ -1,0 +1,30 @@
+//
+//  <$managedObjectClassName$>.swift
+//  GateKeeper
+//
+//  Created by Vladislav Zagorodnyuk on 10/02/16.
+//  Copyright © 2016 Vladislav Zagorodnyuk Co. All rights reserved.
+//
+
+import CoreStore
+import SwiftyJSON
+import PromiseKit
+
+/// Struct that represent <$managedObjectClassName$> JSON keys
+public struct <$managedObjectClassName$>JSON {
+	<$foreach Attribute noninheritedAttributes do$>
+	static let <$Attribute.name$> = "<$Attribute.name$>"<$endforeach do$>
+}
+
+@objc(<$managedObjectClassName$>)
+open class <$managedObjectClassName$>: _<$managedObjectClassName$> {
+
+	/// Model update logic
+    override func updateModel(with source: JSON, transaction: BaseDataTransaction) throws {
+        
+        try super.updateModel(source: source, transaction: transaction)
+        
+        <$foreach Attribute noninheritedAttributes do$><$Attribute.name$> = source[<$managedObjectClassName$>JSON.<$Attribute.name$>]
+        <$endforeach do$>
+    }
+}

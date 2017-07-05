@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		F5059AC11F0D64B7009DFF0B /* mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F5059AC21F0D64B7009DFF0B /* Build configuration list for PBXAggregateTarget "mogenerator" */;
+			buildPhases = (
+				F5059AC51F0D651C009DFF0B /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = mogenerator;
+			productName = mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		69E0828D33035D190E5EE293 /* Pods_Clark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14B3DDB1E6090E9C6246BBA /* Pods_Clark.framework */; };
 		874F1936D93F8BF8C99C51A4 /* Pods_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E1D3E9DF3862671C65AFCF /* Pods_Dev.framework */; };
@@ -15,6 +29,40 @@
 		F5059ABB1F0D558D009DFF0B /* Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5059AB71F0D558D009DFF0B /* Prod.plist */; };
 		F5059ABF1F0D5887009DFF0B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5059ABD1F0D5887009DFF0B /* Model.xcdatamodeld */; };
 		F5059AC01F0D5887009DFF0B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5059ABD1F0D5887009DFF0B /* Model.xcdatamodeld */; };
+		F5059AD21F0D6544009DFF0B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AC71F0D6544009DFF0B /* Message.swift */; };
+		F5059AD31F0D6544009DFF0B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AC71F0D6544009DFF0B /* Message.swift */; };
+		F5059AD41F0D6544009DFF0B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AC81F0D6544009DFF0B /* Model.swift */; };
+		F5059AD51F0D6544009DFF0B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AC81F0D6544009DFF0B /* Model.swift */; };
+		F5059AD61F0D6544009DFF0B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AC91F0D6544009DFF0B /* Session.swift */; };
+		F5059AD71F0D6544009DFF0B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AC91F0D6544009DFF0B /* Session.swift */; };
+		F5059AD81F0D6544009DFF0B /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059ACA1F0D6544009DFF0B /* Student.swift */; };
+		F5059AD91F0D6544009DFF0B /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059ACA1F0D6544009DFF0B /* Student.swift */; };
+		F5059ADA1F0D6544009DFF0B /* Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059ACB1F0D6544009DFF0B /* Tutor.swift */; };
+		F5059ADB1F0D6544009DFF0B /* Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059ACB1F0D6544009DFF0B /* Tutor.swift */; };
+		F5059ADC1F0D6544009DFF0B /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059ACD1F0D6544009DFF0B /* _Message.swift */; };
+		F5059ADD1F0D6544009DFF0B /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059ACD1F0D6544009DFF0B /* _Message.swift */; };
+		F5059ADE1F0D6544009DFF0B /* _Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059ACE1F0D6544009DFF0B /* _Model.swift */; };
+		F5059ADF1F0D6544009DFF0B /* _Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059ACE1F0D6544009DFF0B /* _Model.swift */; };
+		F5059AE01F0D6544009DFF0B /* _Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059ACF1F0D6544009DFF0B /* _Session.swift */; };
+		F5059AE11F0D6544009DFF0B /* _Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059ACF1F0D6544009DFF0B /* _Session.swift */; };
+		F5059AE21F0D6544009DFF0B /* _Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AD01F0D6544009DFF0B /* _Student.swift */; };
+		F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AD01F0D6544009DFF0B /* _Student.swift */; };
+		F5059AE41F0D6544009DFF0B /* _Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AD11F0D6544009DFF0B /* _Tutor.swift */; };
+		F5059AE51F0D6544009DFF0B /* _Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AD11F0D6544009DFF0B /* _Tutor.swift */; };
+		F5059AF11F0D6594009DFF0B /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AE81F0D6594009DFF0B /* Button.swift */; };
+		F5059AF21F0D6594009DFF0B /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AE81F0D6594009DFF0B /* Button.swift */; };
+		F5059AF31F0D6594009DFF0B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AEA1F0D6594009DFF0B /* Colors.swift */; };
+		F5059AF41F0D6594009DFF0B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AEA1F0D6594009DFF0B /* Colors.swift */; };
+		F5059AF51F0D6594009DFF0B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AEB1F0D6594009DFF0B /* Device.swift */; };
+		F5059AF61F0D6594009DFF0B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AEB1F0D6594009DFF0B /* Device.swift */; };
+		F5059AF71F0D6594009DFF0B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AED1F0D6594009DFF0B /* Font.swift */; };
+		F5059AF81F0D6594009DFF0B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AED1F0D6594009DFF0B /* Font.swift */; };
+		F5059AF91F0D6594009DFF0B /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AEE1F0D6594009DFF0B /* JSON.swift */; };
+		F5059AFA1F0D6594009DFF0B /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AEE1F0D6594009DFF0B /* JSON.swift */; };
+		F5059AFB1F0D6594009DFF0B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AEF1F0D6594009DFF0B /* String.swift */; };
+		F5059AFC1F0D6594009DFF0B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AEF1F0D6594009DFF0B /* String.swift */; };
+		F5059AFD1F0D6594009DFF0B /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AF01F0D6594009DFF0B /* View.swift */; };
+		F5059AFE1F0D6594009DFF0B /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AF01F0D6594009DFF0B /* View.swift */; };
 		F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F50C33411F0D541B00905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -33,6 +81,23 @@
 		F5059AB61F0D558D009DFF0B /* Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Dev.plist; sourceTree = "<group>"; };
 		F5059AB71F0D558D009DFF0B /* Prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Prod.plist; sourceTree = "<group>"; };
 		F5059ABE1F0D5887009DFF0B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F5059AC71F0D6544009DFF0B /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F5059AC81F0D6544009DFF0B /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F5059AC91F0D6544009DFF0B /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		F5059ACA1F0D6544009DFF0B /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		F5059ACB1F0D6544009DFF0B /* Tutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutor.swift; sourceTree = "<group>"; };
+		F5059ACD1F0D6544009DFF0B /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
+		F5059ACE1F0D6544009DFF0B /* _Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Model.swift; sourceTree = "<group>"; };
+		F5059ACF1F0D6544009DFF0B /* _Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Session.swift; sourceTree = "<group>"; };
+		F5059AD01F0D6544009DFF0B /* _Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Student.swift; sourceTree = "<group>"; };
+		F5059AD11F0D6544009DFF0B /* _Tutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Tutor.swift; sourceTree = "<group>"; };
+		F5059AE81F0D6594009DFF0B /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		F5059AEA1F0D6594009DFF0B /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F5059AEB1F0D6594009DFF0B /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		F5059AED1F0D6594009DFF0B /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		F5059AEE1F0D6594009DFF0B /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		F5059AEF1F0D6594009DFF0B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		F5059AF01F0D6594009DFF0B /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		F50C33331F0D541B00905F17 /* Clark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50C33361F0D541B00905F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,9 +157,75 @@
 		F5059ABC1F0D5857009DFF0B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F5059AC61F0D6544009DFF0B /* ModelHuman */,
+				F5059ACC1F0D6544009DFF0B /* ModelMachine */,
 				F5059ABD1F0D5887009DFF0B /* Model.xcdatamodeld */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F5059AC61F0D6544009DFF0B /* ModelHuman */ = {
+			isa = PBXGroup;
+			children = (
+				F5059AC71F0D6544009DFF0B /* Message.swift */,
+				F5059AC81F0D6544009DFF0B /* Model.swift */,
+				F5059AC91F0D6544009DFF0B /* Session.swift */,
+				F5059ACA1F0D6544009DFF0B /* Student.swift */,
+				F5059ACB1F0D6544009DFF0B /* Tutor.swift */,
+			);
+			name = ModelHuman;
+			path = Model/ModelHuman;
+			sourceTree = SOURCE_ROOT;
+		};
+		F5059ACC1F0D6544009DFF0B /* ModelMachine */ = {
+			isa = PBXGroup;
+			children = (
+				F5059ACD1F0D6544009DFF0B /* _Message.swift */,
+				F5059ACE1F0D6544009DFF0B /* _Model.swift */,
+				F5059ACF1F0D6544009DFF0B /* _Session.swift */,
+				F5059AD01F0D6544009DFF0B /* _Student.swift */,
+				F5059AD11F0D6544009DFF0B /* _Tutor.swift */,
+			);
+			name = ModelMachine;
+			path = Model/ModelMachine;
+			sourceTree = SOURCE_ROOT;
+		};
+		F5059AE61F0D6562009DFF0B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F5059AE71F0D6575009DFF0B /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F5059AE71F0D6575009DFF0B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F5059AE81F0D6594009DFF0B /* Button.swift */,
+				F5059AE91F0D6594009DFF0B /* Colors */,
+				F5059AEB1F0D6594009DFF0B /* Device.swift */,
+				F5059AEC1F0D6594009DFF0B /* Fonts */,
+				F5059AEE1F0D6594009DFF0B /* JSON.swift */,
+				F5059AEF1F0D6594009DFF0B /* String.swift */,
+				F5059AF01F0D6594009DFF0B /* View.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F5059AE91F0D6594009DFF0B /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				F5059AEA1F0D6594009DFF0B /* Colors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		F5059AEC1F0D6594009DFF0B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F5059AED1F0D6594009DFF0B /* Font.swift */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		F50C332A1F0D541B00905F17 = {
@@ -119,6 +250,7 @@
 		F50C33351F0D541B00905F17 /* Clark */ = {
 			isa = PBXGroup;
 			children = (
+				F5059AE61F0D6562009DFF0B /* Utilities */,
 				F5059ABC1F0D5857009DFF0B /* Models */,
 				F50C33361F0D541B00905F17 /* AppDelegate.swift */,
 				F50C333D1F0D541B00905F17 /* Assets.xcassets */,
@@ -181,6 +313,11 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Clark;
 				TargetAttributes = {
+					F5059AC11F0D64B7009DFF0B = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = M33Y5V5WM4;
+						ProvisioningStyle = Automatic;
+					};
 					F50C33321F0D541B00905F17 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = M33Y5V5WM4;
@@ -206,6 +343,7 @@
 			targets = (
 				F50C33481F0D544400905F17 /* Dev */,
 				F50C33321F0D541B00905F17 /* Clark */,
+				F5059AC11F0D64B7009DFF0B /* mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -326,6 +464,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		F5059AC51F0D651C009DFF0B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mogenerator --template-var arc=true -m Clark/Models/Model.xcdatamodeld / -M Model/ModelMachine -H Model/ModelHuman --base-class NSManagedObject --includem Model/ModelIncludes --swift --template-path ModelTemplates";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -333,8 +484,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5059AD71F0D6544009DFF0B /* Session.swift in Sources */,
+				F5059ADB1F0D6544009DFF0B /* Tutor.swift in Sources */,
+				F5059AD91F0D6544009DFF0B /* Student.swift in Sources */,
+				F5059AF41F0D6594009DFF0B /* Colors.swift in Sources */,
+				F5059AD31F0D6544009DFF0B /* Message.swift in Sources */,
+				F5059AE51F0D6544009DFF0B /* _Tutor.swift in Sources */,
+				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
+				F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */,
 				F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */,
+				F5059ADD1F0D6544009DFF0B /* _Message.swift in Sources */,
+				F5059AF61F0D6594009DFF0B /* Device.swift in Sources */,
+				F5059ADF1F0D6544009DFF0B /* _Model.swift in Sources */,
 				F5059AC01F0D5887009DFF0B /* Model.xcdatamodeld in Sources */,
+				F5059AFC1F0D6594009DFF0B /* String.swift in Sources */,
+				F5059AF81F0D6594009DFF0B /* Font.swift in Sources */,
+				F5059AE11F0D6544009DFF0B /* _Session.swift in Sources */,
+				F5059AFA1F0D6594009DFF0B /* JSON.swift in Sources */,
+				F5059AF21F0D6594009DFF0B /* Button.swift in Sources */,
+				F5059AD51F0D6544009DFF0B /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,8 +510,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5059AD61F0D6544009DFF0B /* Session.swift in Sources */,
+				F5059ADA1F0D6544009DFF0B /* Tutor.swift in Sources */,
+				F5059AD81F0D6544009DFF0B /* Student.swift in Sources */,
+				F5059AF31F0D6594009DFF0B /* Colors.swift in Sources */,
+				F5059AD21F0D6544009DFF0B /* Message.swift in Sources */,
+				F5059AE41F0D6544009DFF0B /* _Tutor.swift in Sources */,
+				F5059AFD1F0D6594009DFF0B /* View.swift in Sources */,
+				F5059AE21F0D6544009DFF0B /* _Student.swift in Sources */,
 				F50C334A1F0D544400905F17 /* AppDelegate.swift in Sources */,
+				F5059ADC1F0D6544009DFF0B /* _Message.swift in Sources */,
+				F5059AF51F0D6594009DFF0B /* Device.swift in Sources */,
+				F5059ADE1F0D6544009DFF0B /* _Model.swift in Sources */,
 				F5059ABF1F0D5887009DFF0B /* Model.xcdatamodeld in Sources */,
+				F5059AFB1F0D6594009DFF0B /* String.swift in Sources */,
+				F5059AF71F0D6594009DFF0B /* Font.swift in Sources */,
+				F5059AE01F0D6544009DFF0B /* _Session.swift in Sources */,
+				F5059AF91F0D6594009DFF0B /* JSON.swift in Sources */,
+				F5059AF11F0D6594009DFF0B /* Button.swift in Sources */,
+				F5059AD41F0D6544009DFF0B /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +546,22 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F5059AC31F0D64B7009DFF0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = M33Y5V5WM4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F5059AC41F0D64B7009DFF0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = M33Y5V5WM4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F50C33431F0D541B00905F17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -513,6 +714,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F5059AC21F0D64B7009DFF0B /* Build configuration list for PBXAggregateTarget "mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5059AC31F0D64B7009DFF0B /* Debug */,
+				F5059AC41F0D64B7009DFF0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F50C332E1F0D541B00905F17 /* Build configuration list for PBXProject "Clark" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
