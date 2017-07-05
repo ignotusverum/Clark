@@ -63,6 +63,40 @@
 		F5059AFC1F0D6594009DFF0B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AEF1F0D6594009DFF0B /* String.swift */; };
 		F5059AFD1F0D6594009DFF0B /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AF01F0D6594009DFF0B /* View.swift */; };
 		F5059AFE1F0D6594009DFF0B /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AF01F0D6594009DFF0B /* View.swift */; };
+		F5059B0C1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B011F0D6677009DFF0B /* AutocompleteAdapter.swift */; };
+		F5059B0D1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B011F0D6677009DFF0B /* AutocompleteAdapter.swift */; };
+		F5059B0E1F0D6677009DFF0B /* ConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B021F0D6677009DFF0B /* ConfigAdapter.swift */; };
+		F5059B0F1F0D6677009DFF0B /* ConfigAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B021F0D6677009DFF0B /* ConfigAdapter.swift */; };
+		F5059B101F0D6677009DFF0B /* PaymentAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B031F0D6677009DFF0B /* PaymentAdapter.swift */; };
+		F5059B111F0D6677009DFF0B /* PaymentAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B031F0D6677009DFF0B /* PaymentAdapter.swift */; };
+		F5059B121F0D6677009DFF0B /* SessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B041F0D6677009DFF0B /* SessionAdapter.swift */; };
+		F5059B131F0D6677009DFF0B /* SessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B041F0D6677009DFF0B /* SessionAdapter.swift */; };
+		F5059B141F0D6677009DFF0B /* StudentAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B051F0D6677009DFF0B /* StudentAdapter.swift */; };
+		F5059B151F0D6677009DFF0B /* StudentAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B051F0D6677009DFF0B /* StudentAdapter.swift */; };
+		F5059B161F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B061F0D6677009DFF0B /* SynchronizerAdapter.swift */; };
+		F5059B171F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B061F0D6677009DFF0B /* SynchronizerAdapter.swift */; };
+		F5059B181F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B071F0D6677009DFF0B /* SynchronizerHandler.swift */; };
+		F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B071F0D6677009DFF0B /* SynchronizerHandler.swift */; };
+		F5059B1A1F0D6677009DFF0B /* TutorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B081F0D6677009DFF0B /* TutorAdapter.swift */; };
+		F5059B1B1F0D6677009DFF0B /* TutorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B081F0D6677009DFF0B /* TutorAdapter.swift */; };
+		F5059B1C1F0D6677009DFF0B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B091F0D6677009DFF0B /* APIManager.swift */; };
+		F5059B1D1F0D6677009DFF0B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B091F0D6677009DFF0B /* APIManager.swift */; };
+		F5059B1E1F0D6677009DFF0B /* KickoffManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B0A1F0D6677009DFF0B /* KickoffManager.swift */; };
+		F5059B1F1F0D6677009DFF0B /* KickoffManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B0A1F0D6677009DFF0B /* KickoffManager.swift */; };
+		F5059B201F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B0B1F0D6677009DFF0B /* NetworkingProtocol.swift */; };
+		F5059B211F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B0B1F0D6677009DFF0B /* NetworkingProtocol.swift */; };
+		F5059B271F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B221F0D67A6009DFF0B /* AutoCompleteData.swift */; };
+		F5059B281F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B221F0D67A6009DFF0B /* AutoCompleteData.swift */; };
+		F5059B291F0D67A6009DFF0B /* HourData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B231F0D67A6009DFF0B /* HourData.swift */; };
+		F5059B2A1F0D67A6009DFF0B /* HourData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B231F0D67A6009DFF0B /* HourData.swift */; };
+		F5059B2D1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B251F0D67A6009DFF0B /* MessageAttributes.swift */; };
+		F5059B2E1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B251F0D67A6009DFF0B /* MessageAttributes.swift */; };
+		F5059B2F1F0D67A6009DFF0B /* OnboardingFlows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B261F0D67A6009DFF0B /* OnboardingFlows.swift */; };
+		F5059B301F0D67A6009DFF0B /* OnboardingFlows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B261F0D67A6009DFF0B /* OnboardingFlows.swift */; };
+		F5059B361F0D6842009DFF0B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F5059B351F0D6842009DFF0B /* Constants.m */; };
+		F5059B371F0D6842009DFF0B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F5059B351F0D6842009DFF0B /* Constants.m */; };
+		F5059B3A1F0D68BC009DFF0B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B391F0D68BC009DFF0B /* DatabaseManager.swift */; };
+		F5059B3B1F0D68BC009DFF0B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B391F0D68BC009DFF0B /* DatabaseManager.swift */; };
 		F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F50C33411F0D541B00905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -98,6 +132,25 @@
 		F5059AEE1F0D6594009DFF0B /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		F5059AEF1F0D6594009DFF0B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F5059AF01F0D6594009DFF0B /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		F5059B011F0D6677009DFF0B /* AutocompleteAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteAdapter.swift; sourceTree = "<group>"; };
+		F5059B021F0D6677009DFF0B /* ConfigAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigAdapter.swift; sourceTree = "<group>"; };
+		F5059B031F0D6677009DFF0B /* PaymentAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentAdapter.swift; sourceTree = "<group>"; };
+		F5059B041F0D6677009DFF0B /* SessionAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionAdapter.swift; sourceTree = "<group>"; };
+		F5059B051F0D6677009DFF0B /* StudentAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentAdapter.swift; sourceTree = "<group>"; };
+		F5059B061F0D6677009DFF0B /* SynchronizerAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizerAdapter.swift; sourceTree = "<group>"; };
+		F5059B071F0D6677009DFF0B /* SynchronizerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizerHandler.swift; sourceTree = "<group>"; };
+		F5059B081F0D6677009DFF0B /* TutorAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorAdapter.swift; sourceTree = "<group>"; };
+		F5059B091F0D6677009DFF0B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		F5059B0A1F0D6677009DFF0B /* KickoffManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KickoffManager.swift; sourceTree = "<group>"; };
+		F5059B0B1F0D6677009DFF0B /* NetworkingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
+		F5059B221F0D67A6009DFF0B /* AutoCompleteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteData.swift; sourceTree = "<group>"; };
+		F5059B231F0D67A6009DFF0B /* HourData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourData.swift; sourceTree = "<group>"; };
+		F5059B251F0D67A6009DFF0B /* MessageAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageAttributes.swift; sourceTree = "<group>"; };
+		F5059B261F0D67A6009DFF0B /* OnboardingFlows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFlows.swift; sourceTree = "<group>"; };
+		F5059B331F0D6841009DFF0B /* Clark-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clark-Bridging-Header.h"; sourceTree = "<group>"; };
+		F5059B341F0D6842009DFF0B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		F5059B351F0D6842009DFF0B /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		F5059B391F0D68BC009DFF0B /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		F50C33331F0D541B00905F17 /* Clark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50C33361F0D541B00905F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +201,7 @@
 		F5059AB51F0D556A009DFF0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F5059B311F0D6830009DFF0B /* Constants */,
 				F5059AB61F0D558D009DFF0B /* Dev.plist */,
 				F5059AB71F0D558D009DFF0B /* Prod.plist */,
 			);
@@ -157,6 +211,10 @@
 		F5059ABC1F0D5857009DFF0B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F5059B221F0D67A6009DFF0B /* AutoCompleteData.swift */,
+				F5059B231F0D67A6009DFF0B /* HourData.swift */,
+				F5059B251F0D67A6009DFF0B /* MessageAttributes.swift */,
+				F5059B261F0D67A6009DFF0B /* OnboardingFlows.swift */,
 				F5059AC61F0D6544009DFF0B /* ModelHuman */,
 				F5059ACC1F0D6544009DFF0B /* ModelMachine */,
 				F5059ABD1F0D5887009DFF0B /* Model.xcdatamodeld */,
@@ -193,6 +251,8 @@
 		F5059AE61F0D6562009DFF0B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F5059B381F0D6899009DFF0B /* Database */,
+				F5059AFF1F0D6648009DFF0B /* Networking */,
 				F5059AE71F0D6575009DFF0B /* Extensions */,
 			);
 			path = Utilities;
@@ -226,6 +286,51 @@
 				F5059AED1F0D6594009DFF0B /* Font.swift */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F5059AFF1F0D6648009DFF0B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B001F0D6677009DFF0B /* Adapters */,
+				F5059B091F0D6677009DFF0B /* APIManager.swift */,
+				F5059B0A1F0D6677009DFF0B /* KickoffManager.swift */,
+				F5059B0B1F0D6677009DFF0B /* NetworkingProtocol.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F5059B001F0D6677009DFF0B /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B061F0D6677009DFF0B /* SynchronizerAdapter.swift */,
+				F5059B071F0D6677009DFF0B /* SynchronizerHandler.swift */,
+				F5059B011F0D6677009DFF0B /* AutocompleteAdapter.swift */,
+				F5059B021F0D6677009DFF0B /* ConfigAdapter.swift */,
+				F5059B031F0D6677009DFF0B /* PaymentAdapter.swift */,
+				F5059B041F0D6677009DFF0B /* SessionAdapter.swift */,
+				F5059B051F0D6677009DFF0B /* StudentAdapter.swift */,
+				F5059B081F0D6677009DFF0B /* TutorAdapter.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		F5059B311F0D6830009DFF0B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B341F0D6842009DFF0B /* Constants.h */,
+				F5059B351F0D6842009DFF0B /* Constants.m */,
+				F5059B331F0D6841009DFF0B /* Clark-Bridging-Header.h */,
+			);
+			name = Constants;
+			path = Contstants;
+			sourceTree = "<group>";
+		};
+		F5059B381F0D6899009DFF0B /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B391F0D68BC009DFF0B /* DatabaseManager.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		F50C332A1F0D541B00905F17 = {
@@ -321,10 +426,12 @@
 					F50C33321F0D541B00905F17 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = M33Y5V5WM4;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					F50C33481F0D544400905F17 = {
 						DevelopmentTeam = M33Y5V5WM4;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -485,24 +592,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5059AD71F0D6544009DFF0B /* Session.swift in Sources */,
+				F5059B2A1F0D67A6009DFF0B /* HourData.swift in Sources */,
+				F5059B171F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */,
 				F5059ADB1F0D6544009DFF0B /* Tutor.swift in Sources */,
+				F5059B2E1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
+				F5059B211F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,
 				F5059AD91F0D6544009DFF0B /* Student.swift in Sources */,
 				F5059AF41F0D6594009DFF0B /* Colors.swift in Sources */,
 				F5059AD31F0D6544009DFF0B /* Message.swift in Sources */,
 				F5059AE51F0D6544009DFF0B /* _Tutor.swift in Sources */,
+				F5059B111F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
+				F5059B281F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
+				F5059B151F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
 				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
+				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */,
 				F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */,
 				F5059ADD1F0D6544009DFF0B /* _Message.swift in Sources */,
+				F5059B0F1F0D6677009DFF0B /* ConfigAdapter.swift in Sources */,
+				F5059B3B1F0D68BC009DFF0B /* DatabaseManager.swift in Sources */,
+				F5059B131F0D6677009DFF0B /* SessionAdapter.swift in Sources */,
+				F5059B301F0D67A6009DFF0B /* OnboardingFlows.swift in Sources */,
 				F5059AF61F0D6594009DFF0B /* Device.swift in Sources */,
 				F5059ADF1F0D6544009DFF0B /* _Model.swift in Sources */,
 				F5059AC01F0D5887009DFF0B /* Model.xcdatamodeld in Sources */,
+				F5059B1F1F0D6677009DFF0B /* KickoffManager.swift in Sources */,
 				F5059AFC1F0D6594009DFF0B /* String.swift in Sources */,
+				F5059B1D1F0D6677009DFF0B /* APIManager.swift in Sources */,
 				F5059AF81F0D6594009DFF0B /* Font.swift in Sources */,
 				F5059AE11F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AFA1F0D6594009DFF0B /* JSON.swift in Sources */,
 				F5059AF21F0D6594009DFF0B /* Button.swift in Sources */,
 				F5059AD51F0D6544009DFF0B /* Model.swift in Sources */,
+				F5059B0D1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
+				F5059B1B1F0D6677009DFF0B /* TutorAdapter.swift in Sources */,
+				F5059B371F0D6842009DFF0B /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,24 +635,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5059AD61F0D6544009DFF0B /* Session.swift in Sources */,
+				F5059B291F0D67A6009DFF0B /* HourData.swift in Sources */,
+				F5059B161F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */,
 				F5059ADA1F0D6544009DFF0B /* Tutor.swift in Sources */,
+				F5059B2D1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
+				F5059B201F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,
 				F5059AD81F0D6544009DFF0B /* Student.swift in Sources */,
 				F5059AF31F0D6594009DFF0B /* Colors.swift in Sources */,
 				F5059AD21F0D6544009DFF0B /* Message.swift in Sources */,
 				F5059AE41F0D6544009DFF0B /* _Tutor.swift in Sources */,
+				F5059B101F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
+				F5059B271F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
+				F5059B141F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
 				F5059AFD1F0D6594009DFF0B /* View.swift in Sources */,
+				F5059B181F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE21F0D6544009DFF0B /* _Student.swift in Sources */,
 				F50C334A1F0D544400905F17 /* AppDelegate.swift in Sources */,
 				F5059ADC1F0D6544009DFF0B /* _Message.swift in Sources */,
+				F5059B0E1F0D6677009DFF0B /* ConfigAdapter.swift in Sources */,
+				F5059B3A1F0D68BC009DFF0B /* DatabaseManager.swift in Sources */,
+				F5059B121F0D6677009DFF0B /* SessionAdapter.swift in Sources */,
+				F5059B2F1F0D67A6009DFF0B /* OnboardingFlows.swift in Sources */,
 				F5059AF51F0D6594009DFF0B /* Device.swift in Sources */,
 				F5059ADE1F0D6544009DFF0B /* _Model.swift in Sources */,
 				F5059ABF1F0D5887009DFF0B /* Model.xcdatamodeld in Sources */,
+				F5059B1E1F0D6677009DFF0B /* KickoffManager.swift in Sources */,
 				F5059AFB1F0D6594009DFF0B /* String.swift in Sources */,
+				F5059B1C1F0D6677009DFF0B /* APIManager.swift in Sources */,
 				F5059AF71F0D6594009DFF0B /* Font.swift in Sources */,
 				F5059AE01F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AF91F0D6594009DFF0B /* JSON.swift in Sources */,
 				F5059AF11F0D6594009DFF0B /* Button.swift in Sources */,
 				F5059AD41F0D6544009DFF0B /* Model.swift in Sources */,
+				F5059B0C1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
+				F5059B1A1F0D6677009DFF0B /* TutorAdapter.swift in Sources */,
+				F5059B361F0D6842009DFF0B /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,11 +801,25 @@
 			baseConfigurationReference = 150DA31D9068E4C95D746929 /* Pods-Clark.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = M33Y5V5WM4;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"ANIMATED_GIF_SUPPORT=1",
+					"C_MACRO_ENVIRONMENT=\\@\\\"Prod\\\"",
+					"C_MACRO_HOST_NAME=\\@\\\"manager.hiclark.com/api/mobile\\\"",
+					"C_MACRO_STRIPE_KEY=\\@\\\"pk_live_FEcgcmMLtj274I1tXnTKmktQ\\\"",
+					"C_MACRO_SEGMENT_KEY=\\@\\\"KiyBWhQClkp9kMNWDHoHD4zYQY4ZUX5U\\\"",
+					"C_KICKOFF_KEY=\\@\\\"CK8d8lloJ2auZo5JCNKFD4d3DUyO2NHa1MWrmBGW\\\"",
+					"C_KICKOFF_URL=\\@\\\"4zhfqqabvd.execute-api.us-east-2.amazonaws.com/live\\\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Clark/Supporting Files/Prod.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiclark.tutor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Clark/Supporting Files/Contstants/Clark-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -674,11 +829,24 @@
 			baseConfigurationReference = 8FC9A96ABD663AD187360BA2 /* Pods-Clark.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = M33Y5V5WM4;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"ANIMATED_GIF_SUPPORT=1",
+					"C_MACRO_ENVIRONMENT=\\@\\\"Prod\\\"",
+					"C_MACRO_HOST_NAME=\\@\\\"manager.hiclark.com/api/mobile\\\"",
+					"C_MACRO_STRIPE_KEY=\\@\\\"pk_live_FEcgcmMLtj274I1tXnTKmktQ\\\"",
+					"C_MACRO_SEGMENT_KEY=\\@\\\"KiyBWhQClkp9kMNWDHoHD4zYQY4ZUX5U\\\"",
+					"C_KICKOFF_KEY=\\@\\\"CK8d8lloJ2auZo5JCNKFD4d3DUyO2NHa1MWrmBGW\\\"",
+					"C_KICKOFF_URL=\\@\\\"4zhfqqabvd.execute-api.us-east-2.amazonaws.com/live\\\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Clark/Supporting Files/Prod.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiclark.tutor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Clark/Supporting Files/Contstants/Clark-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -688,11 +856,25 @@
 			baseConfigurationReference = 3336E7F8E70FD4693654AB7A /* Pods-Dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = M33Y5V5WM4;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"ANIMATED_GIF_SUPPORT=1",
+					"C_MACRO_ENVIRONMENT=\\@\\\"Dev\\\"",
+					"C_MACRO_HOST_NAME=\\@\\\"manager-qa.hiclark.com/api/mobile\\\"",
+					"C_MACRO_STRIPE_KEY=\\@\\\"pk_test_wy3kwqAnFOHJ8pJPrjMqhUo3\\\"",
+					"C_MACRO_SEGMENT_KEY=\\@\\\"KiyBWhQClkp9kMNWDHoHD4zYQY4ZUX5U\\\"",
+					"C_KICKOFF_KEY=\\@\\\"qEhr5dmn9L2f4CA0OLjkA1BTTo9cd3VYKq7GJre6\\\"",
+					"C_KICKOFF_URL=\\@\\\"rve16sno45.execute-api.us-east-2.amazonaws.com/live\\\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Clark/Supporting Files/Dev.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiclark.tutor.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Clark/Supporting Files/Contstants/Clark-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -702,11 +884,24 @@
 			baseConfigurationReference = ACA8600C9614DFE77EE65573 /* Pods-Dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = M33Y5V5WM4;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"ANIMATED_GIF_SUPPORT=1",
+					"C_MACRO_ENVIRONMENT=\\@\\\"Dev\\\"",
+					"C_MACRO_HOST_NAME=\\@\\\"manager-qa.hiclark.com/api/mobile\\\"",
+					"C_MACRO_STRIPE_KEY=\\@\\\"pk_test_wy3kwqAnFOHJ8pJPrjMqhUo3\\\"",
+					"C_MACRO_SEGMENT_KEY=\\@\\\"KiyBWhQClkp9kMNWDHoHD4zYQY4ZUX5U\\\"",
+					"C_KICKOFF_KEY=\\@\\\"qEhr5dmn9L2f4CA0OLjkA1BTTo9cd3VYKq7GJre6\\\"",
+					"C_KICKOFF_URL=\\@\\\"rve16sno45.execute-api.us-east-2.amazonaws.com/live\\\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Clark/Supporting Files/Dev.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiclark.tutor.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Clark/Supporting Files/Contstants/Clark-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
