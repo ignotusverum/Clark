@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Message" representedClassName="Message" parentEntity="Model" syncable="YES">
+        <attribute name="attributes_" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="author" attributeType="String" syncable="YES"/>
+        <attribute name="blocking" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="body" attributeType="String" syncable="YES"/>
+        <attribute name="channel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientInputDecorationString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientInputPlaceholderBody" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="formID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastSizeString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="privateAttributes_" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="sent" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="showTypingString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twilioMessageIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="typeString" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Model" representedClassName="Model" isAbstract="YES" syncable="YES">
+        <attribute name="id" attributeType="String" defaultValueString="1" syncable="YES"/>
+    </entity>
+    <entity name="Session" representedClassName="Session" parentEntity="Model" syncable="YES">
+        <attribute name="durationInMinutes" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endTime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="feedbackReportBody" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="feeInCents" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statusString" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Student" inverseName="sessions" inverseEntity="Student" syncable="YES"/>
+        <relationship name="tutor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tutor" inverseName="sessions" inverseEntity="Tutor" syncable="YES"/>
+    </entity>
+    <entity name="Student" representedClassName="Student" parentEntity="Model" syncable="YES">
+        <attribute name="age" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cancellationPercentageCharged" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cancellationWindowInHours" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="defaultHourlyRateInCents" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="defaultSessionLengthInMinutes" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nextUpcomingSessionDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="student" inverseEntity="Session" syncable="YES"/>
+        <relationship name="tutor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tutor" inverseName="students" inverseEntity="Tutor" syncable="YES"/>
+    </entity>
+    <entity name="Tutor" representedClassName="Tutor" parentEntity="Model" syncable="YES">
+        <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="defaultHourlyRateInCents" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="defaultSessionLengthInMinutes" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="preferredContactMethod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pushNotificationsEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="subjectsTaught" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twilioExpirationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="twilioPrimaryChannelID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="twilioToken" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="tutor" inverseEntity="Session" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="tutor" inverseEntity="Student" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Message" positionX="-306" positionY="-126" width="128" height="270"/>
+        <element name="Model" positionX="-306" positionY="-99" width="128" height="60"/>
+        <element name="Session" positionX="-11" positionY="-159" width="128" height="180"/>
+        <element name="Student" positionX="-182" positionY="-252" width="128" height="255"/>
+        <element name="Tutor" positionX="-513" positionY="-252" width="128" height="285"/>
+    </elements>
+</model>

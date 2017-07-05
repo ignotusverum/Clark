@@ -13,6 +13,8 @@
 		F5059AB91F0D558D009DFF0B /* Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5059AB61F0D558D009DFF0B /* Dev.plist */; };
 		F5059ABA1F0D558D009DFF0B /* Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5059AB71F0D558D009DFF0B /* Prod.plist */; };
 		F5059ABB1F0D558D009DFF0B /* Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5059AB71F0D558D009DFF0B /* Prod.plist */; };
+		F5059ABF1F0D5887009DFF0B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5059ABD1F0D5887009DFF0B /* Model.xcdatamodeld */; };
+		F5059AC01F0D5887009DFF0B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5059ABD1F0D5887009DFF0B /* Model.xcdatamodeld */; };
 		F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F50C33411F0D541B00905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -30,6 +32,7 @@
 		E14B3DDB1E6090E9C6246BBA /* Pods_Clark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5059AB61F0D558D009DFF0B /* Dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Dev.plist; sourceTree = "<group>"; };
 		F5059AB71F0D558D009DFF0B /* Prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Prod.plist; sourceTree = "<group>"; };
+		F5059ABE1F0D5887009DFF0B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F50C33331F0D541B00905F17 /* Clark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50C33361F0D541B00905F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +89,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F5059ABC1F0D5857009DFF0B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5059ABD1F0D5887009DFF0B /* Model.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F50C332A1F0D541B00905F17 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +119,7 @@
 		F50C33351F0D541B00905F17 /* Clark */ = {
 			isa = PBXGroup;
 			children = (
+				F5059ABC1F0D5857009DFF0B /* Models */,
 				F50C33361F0D541B00905F17 /* AppDelegate.swift */,
 				F50C333D1F0D541B00905F17 /* Assets.xcassets */,
 				F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */,
@@ -322,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */,
+				F5059AC01F0D5887009DFF0B /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50C334A1F0D544400905F17 /* AppDelegate.swift in Sources */,
+				F5059ABF1F0D5887009DFF0B /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +541,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F5059ABD1F0D5887009DFF0B /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F5059ABE1F0D5887009DFF0B /* Model.xcdatamodel */,
+			);
+			currentVersion = F5059ABE1F0D5887009DFF0B /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F50C332B1F0D541B00905F17 /* Project object */;
 }
