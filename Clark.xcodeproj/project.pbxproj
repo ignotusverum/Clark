@@ -123,6 +123,16 @@
 		F5059B601F0D6FAD009DFF0B /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F5059B4A1F0D6FAD009DFF0B /* SF-Pro-Text-Semibold.otf */; };
 		F5059B631F0D704C009DFF0B /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B621F0D704C009DFF0B /* ConversationManager.swift */; };
 		F5059B641F0D704C009DFF0B /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B621F0D704C009DFF0B /* ConversationManager.swift */; };
+		F5059B671F0D724A009DFF0B /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B661F0D724A009DFF0B /* Analytics.swift */; };
+		F5059B681F0D724A009DFF0B /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B661F0D724A009DFF0B /* Analytics.swift */; };
+		F5059B721F0D7464009DFF0B /* libGoogleConversionTracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5059B701F0D7464009DFF0B /* libGoogleConversionTracking.a */; };
+		F5059B731F0D7464009DFF0B /* libGoogleConversionTracking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5059B701F0D7464009DFF0B /* libGoogleConversionTracking.a */; };
+		F5059B741F0D7464009DFF0B /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F5059B711F0D7464009DFF0B /* README.txt */; };
+		F5059B751F0D7464009DFF0B /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F5059B711F0D7464009DFF0B /* README.txt */; };
+		F5059B771F0D7490009DFF0B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5059B761F0D7490009DFF0B /* AdSupport.framework */; };
+		F5059B791F0D7493009DFF0B /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5059B781F0D7493009DFF0B /* iAd.framework */; };
+		F5059B7A1F0D7497009DFF0B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5059B761F0D7490009DFF0B /* AdSupport.framework */; };
+		F5059B7B1F0D749A009DFF0B /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5059B781F0D7493009DFF0B /* iAd.framework */; };
 		F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F50C33411F0D541B00905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -190,6 +200,14 @@
 		F5059B491F0D6FAD009DFF0B /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
 		F5059B4A1F0D6FAD009DFF0B /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		F5059B621F0D704C009DFF0B /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		F5059B661F0D724A009DFF0B /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		F5059B6B1F0D7464009DFF0B /* ACTReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACTReporter.h; sourceTree = "<group>"; };
+		F5059B6D1F0D7464009DFF0B /* GoogleConversionPing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleConversionPing.h; sourceTree = "<group>"; };
+		F5059B6F1F0D7464009DFF0B /* DCTReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTReporter.h; sourceTree = "<group>"; };
+		F5059B701F0D7464009DFF0B /* libGoogleConversionTracking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleConversionTracking.a; sourceTree = "<group>"; };
+		F5059B711F0D7464009DFF0B /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		F5059B761F0D7490009DFF0B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		F5059B781F0D7493009DFF0B /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		F50C33331F0D541B00905F17 /* Clark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50C33361F0D541B00905F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -202,7 +220,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5059B7B1F0D749A009DFF0B /* iAd.framework in Frameworks */,
+				F5059B7A1F0D7497009DFF0B /* AdSupport.framework in Frameworks */,
 				69E0828D33035D190E5EE293 /* Pods_Clark.framework in Frameworks */,
+				F5059B731F0D7464009DFF0B /* libGoogleConversionTracking.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +231,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5059B791F0D7493009DFF0B /* iAd.framework in Frameworks */,
+				F5059B771F0D7490009DFF0B /* AdSupport.framework in Frameworks */,
 				874F1936D93F8BF8C99C51A4 /* Pods_Dev.framework in Frameworks */,
+				F5059B721F0D7464009DFF0B /* libGoogleConversionTracking.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +255,8 @@
 		EE84074C8920B9CE79F3564B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F5059B781F0D7493009DFF0B /* iAd.framework */,
+				F5059B761F0D7490009DFF0B /* AdSupport.framework */,
 				E14B3DDB1E6090E9C6246BBA /* Pods_Clark.framework */,
 				B9E1D3E9DF3862671C65AFCF /* Pods_Dev.framework */,
 			);
@@ -291,6 +317,7 @@
 		F5059AE61F0D6562009DFF0B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F5059B651F0D7236009DFF0B /* Analytics */,
 				F5059B381F0D6899009DFF0B /* Database */,
 				F5059AFF1F0D6648009DFF0B /* Networking */,
 				F5059AE71F0D6575009DFF0B /* Extensions */,
@@ -401,6 +428,50 @@
 			path = Conversation;
 			sourceTree = "<group>";
 		};
+		F5059B651F0D7236009DFF0B /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B661F0D724A009DFF0B /* Analytics.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		F5059B691F0D7456009DFF0B /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B6A1F0D7464009DFF0B /* GoogleConversionTrackingSDK-iOS-3.4.0 */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		F5059B6A1F0D7464009DFF0B /* GoogleConversionTrackingSDK-iOS-3.4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B6B1F0D7464009DFF0B /* ACTReporter.h */,
+				F5059B6C1F0D7464009DFF0B /* Deprecated */,
+				F5059B6E1F0D7464009DFF0B /* DoubleClick */,
+				F5059B701F0D7464009DFF0B /* libGoogleConversionTracking.a */,
+				F5059B711F0D7464009DFF0B /* README.txt */,
+			);
+			path = "GoogleConversionTrackingSDK-iOS-3.4.0";
+			sourceTree = "<group>";
+		};
+		F5059B6C1F0D7464009DFF0B /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B6D1F0D7464009DFF0B /* GoogleConversionPing.h */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
+		F5059B6E1F0D7464009DFF0B /* DoubleClick */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B6F1F0D7464009DFF0B /* DCTReporter.h */,
+			);
+			path = DoubleClick;
+			sourceTree = "<group>";
+		};
 		F50C332A1F0D541B00905F17 = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +494,7 @@
 		F50C33351F0D541B00905F17 /* Clark */ = {
 			isa = PBXGroup;
 			children = (
+				F5059B691F0D7456009DFF0B /* Vendor */,
 				F5059AE61F0D6562009DFF0B /* Utilities */,
 				F5059ABC1F0D5857009DFF0B /* Models */,
 				F50C33361F0D541B00905F17 /* AppDelegate.swift */,
@@ -534,6 +606,7 @@
 				F5059B4C1F0D6FAD009DFF0B /* SF-Pro-Text-Bold.otf in Resources */,
 				F5059B5E1F0D6FAD009DFF0B /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				F5059ABB1F0D558D009DFF0B /* Prod.plist in Resources */,
+				F5059B751F0D7464009DFF0B /* README.txt in Resources */,
 				F5059B521F0D6FAD009DFF0B /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				F5059B581F0D6FAD009DFF0B /* SF-Pro-Text-Medium.otf in Resources */,
 				F5059B501F0D6FAD009DFF0B /* SF-Pro-Text-Heavy.otf in Resources */,
@@ -556,6 +629,7 @@
 				F5059B4B1F0D6FAD009DFF0B /* SF-Pro-Text-Bold.otf in Resources */,
 				F5059B5D1F0D6FAD009DFF0B /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				F5059ABA1F0D558D009DFF0B /* Prod.plist in Resources */,
+				F5059B741F0D7464009DFF0B /* README.txt in Resources */,
 				F5059B511F0D6FAD009DFF0B /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				F5059B571F0D6FAD009DFF0B /* SF-Pro-Text-Medium.otf in Resources */,
 				F5059B4F1F0D6FAD009DFF0B /* SF-Pro-Text-Heavy.otf in Resources */,
@@ -695,6 +769,7 @@
 				F5059B281F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
 				F5059B641F0D704C009DFF0B /* ConversationManager.swift in Sources */,
 				F5059B151F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
+				F5059B681F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */,
@@ -740,6 +815,7 @@
 				F5059B271F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
 				F5059B631F0D704C009DFF0B /* ConversationManager.swift in Sources */,
 				F5059B141F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
+				F5059B671F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F5059AFD1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B181F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE21F0D6544009DFF0B /* _Student.swift in Sources */,
@@ -910,6 +986,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Clark/Supporting Files/Prod.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Clark/Vendor/GoogleConversionTrackingSDK-iOS-3.4.0",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiclark.tutor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Clark/Supporting Files/Contstants/Clark-Bridging-Header.h";
@@ -938,6 +1018,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Clark/Supporting Files/Prod.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Clark/Vendor/GoogleConversionTrackingSDK-iOS-3.4.0",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiclark.tutor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Clark/Supporting Files/Contstants/Clark-Bridging-Header.h";
@@ -965,6 +1049,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Clark/Supporting Files/Dev.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Clark/Vendor/GoogleConversionTrackingSDK-iOS-3.4.0",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiclark.tutor.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Clark/Supporting Files/Contstants/Clark-Bridging-Header.h";
@@ -993,6 +1081,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Clark/Supporting Files/Dev.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Clark/Vendor/GoogleConversionTrackingSDK-iOS-3.4.0",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiclark.tutor.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Clark/Supporting Files/Contstants/Clark-Bridging-Header.h";
@@ -1010,6 +1102,7 @@
 				F5059AC41F0D64B7009DFF0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F50C332E1F0D541B00905F17 /* Build configuration list for PBXProject "Clark" */ = {
 			isa = XCConfigurationList;
