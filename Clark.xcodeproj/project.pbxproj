@@ -121,6 +121,8 @@
 		F5059B5E1F0D6FAD009DFF0B /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F5059B491F0D6FAD009DFF0B /* SF-Pro-Text-RegularItalic.otf */; };
 		F5059B5F1F0D6FAD009DFF0B /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F5059B4A1F0D6FAD009DFF0B /* SF-Pro-Text-Semibold.otf */; };
 		F5059B601F0D6FAD009DFF0B /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F5059B4A1F0D6FAD009DFF0B /* SF-Pro-Text-Semibold.otf */; };
+		F5059B631F0D704C009DFF0B /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B621F0D704C009DFF0B /* ConversationManager.swift */; };
+		F5059B641F0D704C009DFF0B /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B621F0D704C009DFF0B /* ConversationManager.swift */; };
 		F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F50C33411F0D541B00905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -187,6 +189,7 @@
 		F5059B481F0D6FAD009DFF0B /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		F5059B491F0D6FAD009DFF0B /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
 		F5059B4A1F0D6FAD009DFF0B /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		F5059B621F0D704C009DFF0B /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		F50C33331F0D541B00905F17 /* Clark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50C33361F0D541B00905F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -291,6 +294,7 @@
 				F5059B381F0D6899009DFF0B /* Database */,
 				F5059AFF1F0D6648009DFF0B /* Networking */,
 				F5059AE71F0D6575009DFF0B /* Extensions */,
+				F5059B611F0D7028009DFF0B /* Conversation */,
 				F5059B3C1F0D6A63009DFF0B /* Config.swift */,
 			);
 			path = Utilities;
@@ -387,6 +391,14 @@
 				F5059B4A1F0D6FAD009DFF0B /* SF-Pro-Text-Semibold.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F5059B611F0D7028009DFF0B /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B621F0D704C009DFF0B /* ConversationManager.swift */,
+			);
+			path = Conversation;
 			sourceTree = "<group>";
 		};
 		F50C332A1F0D541B00905F17 = {
@@ -681,6 +693,7 @@
 				F5059AE51F0D6544009DFF0B /* _Tutor.swift in Sources */,
 				F5059B111F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
 				F5059B281F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
+				F5059B641F0D704C009DFF0B /* ConversationManager.swift in Sources */,
 				F5059B151F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
 				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
@@ -725,6 +738,7 @@
 				F5059AE41F0D6544009DFF0B /* _Tutor.swift in Sources */,
 				F5059B101F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
 				F5059B271F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
+				F5059B631F0D704C009DFF0B /* ConversationManager.swift in Sources */,
 				F5059B141F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
 				F5059AFD1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B181F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,

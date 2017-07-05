@@ -21,15 +21,10 @@ def shared_pods
     pod 'Segment-Branch'
     pod 'Segment-Mixpanel'
     pod 'Segment-Facebook-App-Events'
-        
-    pod 'SnapKit'
     
     # Chat
-    pod 'TwilioChatClient', '~> 0.16.0'
-    pod 'TwilioAccessManager', '~> 0.1.1'
-    
-    # Chat UI
-    pod 'JSQMessagesViewController', :git => 'https://github.com/jakt/JSQMessagesViewController.git', :commit => 'f013cc5781bc1fb2a3731eb5d0260db72476de60'
+    pod 'TwilioChatClient'
+    pod 'TwilioAccessManager'
     
     # Payments
     pod 'Stripe'
@@ -55,9 +50,8 @@ def shared_pods
     # Layout
     pod 'SnapKit'
     
-    # Image loaders
-    pod 'SDWebImage', '~>3.8'
-    pod 'NYTPhotoViewer', :git => 'https://github.com/NYTimes/NYTPhotoViewer.git', :branch => 'develop'
+    #Image fetching
+    pod 'Kingfisher'
     
     # Utilities
     pod 'PromiseKit'

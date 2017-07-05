@@ -9,7 +9,6 @@
 import CoreStore
 import SwiftyJSON
 import PromiseKit
-import JSQMessagesViewController
 
 public enum ShowTypingType: String {
     case afterUserInput = "after_user_input"
