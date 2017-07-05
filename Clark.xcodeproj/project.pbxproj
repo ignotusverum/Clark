@@ -139,6 +139,8 @@
 		F5059B841F0D7759009DFF0B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B821F0D7759009DFF0B /* InitialViewController.swift */; };
 		F5059B881F0D77F5009DFF0B /* OnboardingRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B871F0D77F5009DFF0B /* OnboardingRouteHandler.swift */; };
 		F5059B891F0D77F5009DFF0B /* OnboardingRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B871F0D77F5009DFF0B /* OnboardingRouteHandler.swift */; };
+		F5059B8C1F0D7940009DFF0B /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B8B1F0D7940009DFF0B /* S3Manager.swift */; };
+		F5059B8D1F0D7940009DFF0B /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B8B1F0D7940009DFF0B /* S3Manager.swift */; };
 		F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F50C33411F0D541B00905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -217,6 +219,7 @@
 		F5059B7D1F0D7510009DFF0B /* RouteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteHandler.swift; sourceTree = "<group>"; };
 		F5059B821F0D7759009DFF0B /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		F5059B871F0D77F5009DFF0B /* OnboardingRouteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingRouteHandler.swift; sourceTree = "<group>"; };
+		F5059B8B1F0D7940009DFF0B /* S3Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3Manager.swift; sourceTree = "<group>"; };
 		F50C33331F0D541B00905F17 /* Clark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50C33361F0D541B00905F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -326,6 +329,7 @@
 		F5059AE61F0D6562009DFF0B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F5059B8A1F0D7924009DFF0B /* S3 */,
 				F5059B7C1F0D74F8009DFF0B /* Route Handlers */,
 				F5059B651F0D7236009DFF0B /* Analytics */,
 				F5059B381F0D6899009DFF0B /* Database */,
@@ -521,6 +525,14 @@
 				F5059B871F0D77F5009DFF0B /* OnboardingRouteHandler.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F5059B8A1F0D7924009DFF0B /* S3 */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B8B1F0D7940009DFF0B /* S3Manager.swift */,
+			);
+			path = S3;
 			sourceTree = "<group>";
 		};
 		F50C332A1F0D541B00905F17 = {
@@ -817,6 +829,7 @@
 				F5059AF41F0D6594009DFF0B /* Colors.swift in Sources */,
 				F5059AD31F0D6544009DFF0B /* Message.swift in Sources */,
 				F5059AE51F0D6544009DFF0B /* _Tutor.swift in Sources */,
+				F5059B8D1F0D7940009DFF0B /* S3Manager.swift in Sources */,
 				F5059B111F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
 				F5059B281F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
 				F5059B641F0D704C009DFF0B /* ConversationManager.swift in Sources */,
@@ -866,6 +879,7 @@
 				F5059AF31F0D6594009DFF0B /* Colors.swift in Sources */,
 				F5059AD21F0D6544009DFF0B /* Message.swift in Sources */,
 				F5059AE41F0D6544009DFF0B /* _Tutor.swift in Sources */,
+				F5059B8C1F0D7940009DFF0B /* S3Manager.swift in Sources */,
 				F5059B101F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
 				F5059B271F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
 				F5059B631F0D704C009DFF0B /* ConversationManager.swift in Sources */,

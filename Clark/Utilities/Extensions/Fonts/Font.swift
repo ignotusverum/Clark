@@ -19,6 +19,10 @@ extension UIFont {
         return UIFont(name: "SFProText-Bold", size: fontScalingSize(size))!
     }
     
+    static func SFProTextSemiBold(_ size: CGFloat = 14)-> UIFont {
+        return UIFont(name: "SFProText-SemiBold", size: fontScalingSize(size))!
+    }
+    
     // MARK: - Scaling logic
     class func fontScalingSize(_ size: CGFloat)-> CGFloat {
         
