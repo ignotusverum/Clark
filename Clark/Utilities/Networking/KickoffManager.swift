@@ -26,15 +26,15 @@ public class KickoffManager: NetworkingProtocol {
     var apiKey: String? {
         get {
             
-            let keychain = AppDelegate.shared?.keychain
-            let apiKey = keychain?[NetworkingManagerKickoffTokenKey]
+            let keychain = AppDelegate.shared.keychain
+            let apiKey = keychain[NetworkingManagerKickoffTokenKey]
             
             return apiKey
         }
         set {
             
-            let keychain = AppDelegate.shared?.keychain
-            keychain?[NetworkingManagerKickoffTokenKey] = newValue
+            let keychain = AppDelegate.shared.keychain
+            keychain[NetworkingManagerKickoffTokenKey] = newValue
         }
     }
     

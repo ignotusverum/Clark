@@ -15,10 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     /// Shared
-    static let shared = UIApplication.shared.delegate as? AppDelegate
+    static let shared = UIApplication.shared.delegate as! AppDelegate
 
     /// Default keychain
     let keychain = Keychain(service: Bundle.main.bundleIdentifier!)
 
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        /// Analytics tracking
+        Analytics.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        return true
+    }
+    
+    /// 
 }
 

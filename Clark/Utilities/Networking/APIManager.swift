@@ -26,15 +26,15 @@ public class APIManager: NetworkingProtocol {
     var apiKey: String? {
         get {
 
-            let keychain = AppDelegate.shared?.keychain
-            let accessTokenOld = keychain?[NetworkingManagerAccessTokenKey]
+            let keychain = AppDelegate.shared.keychain
+            let accessTokenOld = keychain[NetworkingManagerAccessTokenKey]
 
             return accessTokenOld
         }
         set {
 
-            let keychain = AppDelegate.shared?.keychain
-            keychain?[NetworkingManagerAccessTokenKey] = newValue
+            let keychain = AppDelegate.shared.keychain
+            keychain[NetworkingManagerAccessTokenKey] = newValue
         }
     }
     

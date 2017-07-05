@@ -133,6 +133,8 @@
 		F5059B791F0D7493009DFF0B /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5059B781F0D7493009DFF0B /* iAd.framework */; };
 		F5059B7A1F0D7497009DFF0B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5059B761F0D7490009DFF0B /* AdSupport.framework */; };
 		F5059B7B1F0D749A009DFF0B /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5059B781F0D7493009DFF0B /* iAd.framework */; };
+		F5059B7E1F0D7510009DFF0B /* RouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B7D1F0D7510009DFF0B /* RouteHandler.swift */; };
+		F5059B7F1F0D7510009DFF0B /* RouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B7D1F0D7510009DFF0B /* RouteHandler.swift */; };
 		F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F50C33411F0D541B00905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -208,6 +210,7 @@
 		F5059B711F0D7464009DFF0B /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		F5059B761F0D7490009DFF0B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F5059B781F0D7493009DFF0B /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		F5059B7D1F0D7510009DFF0B /* RouteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteHandler.swift; sourceTree = "<group>"; };
 		F50C33331F0D541B00905F17 /* Clark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50C33361F0D541B00905F17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -317,6 +320,7 @@
 		F5059AE61F0D6562009DFF0B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F5059B7C1F0D74F8009DFF0B /* Route Handlers */,
 				F5059B651F0D7236009DFF0B /* Analytics */,
 				F5059B381F0D6899009DFF0B /* Database */,
 				F5059AFF1F0D6648009DFF0B /* Networking */,
@@ -470,6 +474,14 @@
 				F5059B6F1F0D7464009DFF0B /* DCTReporter.h */,
 			);
 			path = DoubleClick;
+			sourceTree = "<group>";
+		};
+		F5059B7C1F0D74F8009DFF0B /* Route Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				F5059B7D1F0D7510009DFF0B /* RouteHandler.swift */,
+			);
+			path = "Route Handlers";
 			sourceTree = "<group>";
 		};
 		F50C332A1F0D541B00905F17 = {
@@ -789,6 +801,7 @@
 				F5059AE11F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AFA1F0D6594009DFF0B /* JSON.swift in Sources */,
 				F5059AF21F0D6594009DFF0B /* Button.swift in Sources */,
+				F5059B7F1F0D7510009DFF0B /* RouteHandler.swift in Sources */,
 				F5059B3E1F0D6A63009DFF0B /* Config.swift in Sources */,
 				F5059AD51F0D6544009DFF0B /* Model.swift in Sources */,
 				F5059B0D1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
@@ -835,6 +848,7 @@
 				F5059AE01F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AF91F0D6594009DFF0B /* JSON.swift in Sources */,
 				F5059AF11F0D6594009DFF0B /* Button.swift in Sources */,
+				F5059B7E1F0D7510009DFF0B /* RouteHandler.swift in Sources */,
 				F5059B3D1F0D6A63009DFF0B /* Config.swift in Sources */,
 				F5059AD41F0D6544009DFF0B /* Model.swift in Sources */,
 				F5059B0C1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
