@@ -119,7 +119,15 @@ class InitialViewController: UIViewController {
             maker.top.equalTo(titleLabel.bottom).offset(30)
             maker.width.equalTo(145)
             maker.height.equalTo(35)
-            
+            maker.centerX.equalTo(self.view)
+        }
+        
+        /// Onboarding button layout
+        onboardingButton.snp.updateConstraints { maker in
+            maker.bottom.equalTo(-40)
+            maker.left.equalTo(40)
+            maker.right.equalTo(-40)
+            maker.height.equalTo(44)
         }
     }
     

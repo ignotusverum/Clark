@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// Analytics tracking
         Analytics.application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        /// Setup initial transition
+        transitionSetup()
+        
         return true
     }
     
