@@ -44,12 +44,15 @@ class InitialViewController: UIViewController {
     /// Play video button
     lazy var videoButton: UIButton = {
         
-        let button = UIButton(frame: .zero)
+        let button = UIButton(type: .custom)
+        button.adjustsImageWhenHighlighted = false
         
         /// UI Setup
         button.setTitle("Meet Clark", for: .normal)
-        button.setBackgroundColor(UIColor.carara, forState: .normal)
-        button.titleLabel?.font = UIFont.SFProTextSemiBold(18)
+        button.setBackgroundColor(UIColor.trinidad, forState: .normal)
+        button.titleLabel?.font = UIFont.SFProTextSemiBold(15)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 24)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 123, bottom: 0, right: 0)
         
         return button
     }()
@@ -58,6 +61,7 @@ class InitialViewController: UIViewController {
     lazy var onboardingButton: UIButton = {
        
         let button = UIButton(frame: .zero)
+        button.adjustsImageWhenHighlighted = false
         
         /// UI Setup
         button.setTitle("Get Started", for: .normal)
@@ -91,6 +95,10 @@ class InitialViewController: UIViewController {
     
     func downloadVideo() {
         
+        /// Button setup
+        videoButton.isEnabled = false
+        videoButton.loadingIndicator(show: true)
+        
         let s3Man = S3Manager.shared
         s3Man.download(key: "Hi_Clark_rf32.mp4").then { response-> Void in
             
@@ -112,9 +120,12 @@ class InitialViewController: UIViewController {
         onboardingButton.layer.cornerRadius = 8
         
         // Video Button
-        videoButton.layer.cornerRadius = videoButton.bounds.height / 2.0
         videoButton.layer.borderWidth = 2.0
-        videoButton.layer.borderColor = UIColor(hexString: "ECE9E1")!.cgColor
+        videoButton.layer.borderColor = UIColor.carara.cgColor
+        videoButton.layer.cornerRadius = videoButton.bounds.height / 2.0
+        
+        /// Download
+        downloadVideo()
     }
     
     // MARK: - UI Setup
@@ -201,10 +212,11 @@ class InitialViewController: UIViewController {
     
     // MARK: - Actions
     func onPlayVideo(_ sender: UIButton) {
-        
+        /// Play Video
+        playVideo()
     }
     
     func onOnboarding(_ sender: UIButton) {
-        
+        /// Chat transition
     }
 }
