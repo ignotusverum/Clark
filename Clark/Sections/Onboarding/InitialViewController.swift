@@ -216,8 +216,12 @@ class InitialViewController: UIViewController {
         /// Create initial channel
         LaunchChannelManager.createNewChannelOrUpdate().then { _-> Void in
             
+            /// Transition
             SVProgressHUD.dismiss()
             ChatRouteHandler.initialTransition()
+            
+            /// Set flag for onboarding
+            Config.isInitialFinished = true
             
             }.catch { error in
                 print(error)

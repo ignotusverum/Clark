@@ -12,16 +12,26 @@ import Foundation
 let ClarkUserIDKey = "ClarkUserIDKey"
 let ClarkUserDataKey = "ClarkUserDataKey"
 let ClarkTempChannelID = "ClarkTempChannelID"
-
 let ClarkShowVideoOnLaunch = "ClarkShowVideoOnLaunch"
+let ClarkInitialFinishedKey = "ClarkInitialFinishedKey"
 
 class Config {
     
     /// Shared
     static let shared = Config()
     
+    /// Initial finished
+    static var isInitialFinished: Bool? {
+        get {
+            return UserDefaults.standard.bool(forKey: ClarkInitialFinishedKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: ClarkInitialFinishedKey)
+        }
+    }
+    
     /// Current user ID
-    static var userID:String? {
+    static var userID: String? {
         get {
             return UserDefaults.standard.object(forKey: ClarkUserIDKey) as? String
         }
@@ -31,7 +41,7 @@ class Config {
     }
     
     /// Channel ID Associated with user
-    static var channelID:String? {
+    static var channelID: String? {
         get {
             return UserDefaults.standard.object(forKey: ClarkTempChannelID) as? String
         }
@@ -41,7 +51,7 @@ class Config {
     }
     
     /// Show video Bool
-    static var showVideo:Bool? {
+    static var showVideo: Bool? {
         get {
             return UserDefaults.standard.bool(forKey: ClarkShowVideoOnLaunch)
         }

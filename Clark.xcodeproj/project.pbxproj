@@ -157,6 +157,7 @@
 		F5582BE41F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BE21F0EAA5C00A180A0 /* LaunchChannelManager.swift */; };
 		F5582BE81F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */; };
 		F5582BE91F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */; };
+		F5582BEC1F0EBD2E00A180A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -240,6 +241,7 @@
 		F5582BDF1F0EA9DE00A180A0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F5582BE21F0EAA5C00A180A0 /* LaunchChannelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchChannelManager.swift; sourceTree = "<group>"; };
 		F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRouteHandler.swift; sourceTree = "<group>"; };
+		F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +363,7 @@
 		F5059AE71F0D6575009DFF0B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F5582BEA1F0EBD1E00A180A0 /* Contollers */,
 				F5059AE81F0D6594009DFF0B /* Button.swift */,
 				F5059AE91F0D6594009DFF0B /* Colors */,
 				F5059AEB1F0D6594009DFF0B /* Device.swift */,
@@ -603,6 +606,15 @@
 				F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		F5582BEA1F0EBD1E00A180A0 /* Contollers */ = {
+			isa = PBXGroup;
+			children = (
+				F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */,
+			);
+			name = Contollers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -859,6 +871,7 @@
 				F5059B2A1F0D67A6009DFF0B /* HourData.swift in Sources */,
 				F5059B171F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */,
 				F5059ADB1F0D6544009DFF0B /* Tutor.swift in Sources */,
+				F5582BEC1F0EBD2E00A180A0 /* ViewController.swift in Sources */,
 				F5059B2E1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
 				F5059B211F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,
 				F5582BDA1F0EA4D100A180A0 /* VideoViewController.swift in Sources */,

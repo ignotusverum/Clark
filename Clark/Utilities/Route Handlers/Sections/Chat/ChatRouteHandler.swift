@@ -21,7 +21,9 @@ class ChatRouteHandler {
         let navigationVC = UINavigationController(rootViewController: loginVC)
         
         /// Hide navigation bar
-        navigationVC.setNavigationBarHidden(true, animated: false)
+        navigationVC.setNavigationBarHidden(false, animated: false)
+        navigationVC.navigationBar.isTranslucent = false
+        navigationVC.navigationBar.barTintColor = UIColor.trinidad
         
         /// Handle transition
         RouteHandler.transitionToController(navigationVC) {

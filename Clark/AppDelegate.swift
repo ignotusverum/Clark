@@ -37,11 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Transition logic
     func transitionSetup() {
         
-        /// Config
-        let config = Config.shared
-        
         /// Transition to main controller if tutor stored
-        if let tutorID = config.currentTutor?.id, tutorID.length > 0 {
+        if let isInitialFinished = Config.isInitialFinished, isInitialFinished {
             
             /// Chat flow
             ChatRouteHandler.initialTransition()
@@ -53,4 +50,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         OnboardingRouteHandler.initialTransition()
     }
 }
-
