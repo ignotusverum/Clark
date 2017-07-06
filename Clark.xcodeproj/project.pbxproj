@@ -158,6 +158,10 @@
 		F5582BE81F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */; };
 		F5582BE91F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */; };
 		F5582BEC1F0EBD2E00A180A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */; };
+		F5582BEF1F0EC3DF00A180A0 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BEE1F0EC3DF00A180A0 /* AccountViewController.swift */; };
+		F5582BF01F0EC3DF00A180A0 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BEE1F0EC3DF00A180A0 /* AccountViewController.swift */; };
+		F5582BF91F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BF81F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift */; };
+		F5582BFA1F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BF81F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -242,6 +246,8 @@
 		F5582BE21F0EAA5C00A180A0 /* LaunchChannelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchChannelManager.swift; sourceTree = "<group>"; };
 		F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRouteHandler.swift; sourceTree = "<group>"; };
 		F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F5582BEE1F0EC3DF00A180A0 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		F5582BF81F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +524,7 @@
 		F5059B801F0D7662009DFF0B /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				F5582BED1F0EC3CC00A180A0 /* Account */,
 				F5582BDE1F0EA9CA00A180A0 /* Chat */,
 				F5059B811F0D773F009DFF0B /* Onboarding */,
 			);
@@ -580,6 +587,7 @@
 		F50C33351F0D541B00905F17 /* Clark */ = {
 			isa = PBXGroup;
 			children = (
+				F5582BF11F0EC57800A180A0 /* UI Components */,
 				F5059B801F0D7662009DFF0B /* Sections */,
 				F5059B691F0D7456009DFF0B /* Vendor */,
 				F5059AE61F0D6562009DFF0B /* Utilities */,
@@ -615,6 +623,48 @@
 			);
 			name = Contollers;
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F5582BED1F0EC3CC00A180A0 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				F5582BEE1F0EC3DF00A180A0 /* AccountViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		F5582BF11F0EC57800A180A0 /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				F5582BF41F0EC5B000A180A0 /* Collection Cells */,
+			);
+			path = "UI Components";
+			sourceTree = "<group>";
+		};
+		F5582BF41F0EC5B000A180A0 /* Collection Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F5582BF51F0EC5BF00A180A0 /* Secions */,
+			);
+			name = "Collection Cells";
+			path = "Collection cells";
+			sourceTree = "<group>";
+		};
+		F5582BF51F0EC5BF00A180A0 /* Secions */ = {
+			isa = PBXGroup;
+			children = (
+				F5582BF71F0EC5D200A180A0 /* Account */,
+			);
+			name = Secions;
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		F5582BF71F0EC5D200A180A0 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				F5582BF81F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -893,6 +943,7 @@
 				F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */,
 				F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */,
 				F5059ADD1F0D6544009DFF0B /* _Message.swift in Sources */,
+				F5582BF01F0EC3DF00A180A0 /* AccountViewController.swift in Sources */,
 				F5059B0F1F0D6677009DFF0B /* ConfigAdapter.swift in Sources */,
 				F5059B3B1F0D68BC009DFF0B /* DatabaseManager.swift in Sources */,
 				F5059B131F0D6677009DFF0B /* SessionAdapter.swift in Sources */,
@@ -903,6 +954,7 @@
 				F5059B891F0D77F5009DFF0B /* OnboardingRouteHandler.swift in Sources */,
 				F5059B1F1F0D6677009DFF0B /* KickoffManager.swift in Sources */,
 				F5059AFC1F0D6594009DFF0B /* String.swift in Sources */,
+				F5582BFA1F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift in Sources */,
 				F5059B1D1F0D6677009DFF0B /* APIManager.swift in Sources */,
 				F5059AF81F0D6594009DFF0B /* Font.swift in Sources */,
 				F5059AE11F0D6544009DFF0B /* _Session.swift in Sources */,
@@ -946,6 +998,7 @@
 				F5059AFD1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B181F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE21F0D6544009DFF0B /* _Student.swift in Sources */,
+				F5582BF91F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift in Sources */,
 				F50C334A1F0D544400905F17 /* AppDelegate.swift in Sources */,
 				F5059ADC1F0D6544009DFF0B /* _Message.swift in Sources */,
 				F5059B0E1F0D6677009DFF0B /* ConfigAdapter.swift in Sources */,
@@ -953,6 +1006,7 @@
 				F5059B121F0D6677009DFF0B /* SessionAdapter.swift in Sources */,
 				F5059B2F1F0D67A6009DFF0B /* OnboardingFlows.swift in Sources */,
 				F5059AF51F0D6594009DFF0B /* Device.swift in Sources */,
+				F5582BEF1F0EC3DF00A180A0 /* AccountViewController.swift in Sources */,
 				F5059ADE1F0D6544009DFF0B /* _Model.swift in Sources */,
 				F5059ABF1F0D5887009DFF0B /* Model.xcdatamodeld in Sources */,
 				F5059B881F0D77F5009DFF0B /* OnboardingRouteHandler.swift in Sources */,

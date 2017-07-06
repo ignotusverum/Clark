@@ -18,7 +18,7 @@ class ChatViewController: UIViewController {
     /// Left navigation button
     lazy var leftNavigationButton: UIBarButtonItem = {
         
-        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "user_profile"), style: .plain, target: self, action: #selector(onLeftNavigationButton))
+        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "cal"), style: .plain, target: self, action: #selector(onLeftNavigationButton))
         button.tintColor = UIColor.white
         
         return button
@@ -27,7 +27,7 @@ class ChatViewController: UIViewController {
     /// Right navigation button
     lazy var rightNavigationButton: UIBarButtonItem = {
         
-        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "cal"), style: .plain, target: self, action: #selector(onRightNavigationButton))
+        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "user_profile"), style: .plain, target: self, action: #selector(onRightNavigationButton))
         button.tintColor = UIColor.white
         
         return button
@@ -64,5 +64,14 @@ class ChatViewController: UIViewController {
     
     func onRightNavigationButton() {
         
+        /// Safety check
+        let config = Config.shared
+        guard let tutor = config.currentTutor else {
+            return
+        }
+        
+        /// Account flow
+        let accountVC = AccountViewController(tutor: tutor)
+        pushVC(accountVC)
     }
 }
