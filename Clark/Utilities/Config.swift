@@ -21,7 +21,7 @@ class Config {
     static let shared = Config()
     
     /// Current user ID
-    static var userId:String? {
+    static var userID:String? {
         get {
             return UserDefaults.standard.object(forKey: ClarkUserIDKey) as? String
         }
@@ -31,7 +31,7 @@ class Config {
     }
     
     /// Channel ID Associated with user
-    static var channelId:String? {
+    static var channelID:String? {
         get {
             return UserDefaults.standard.object(forKey: ClarkTempChannelID) as? String
         }

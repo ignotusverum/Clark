@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// Transition to main controller if tutor stored
         if let tutorID = config.currentTutor?.id, tutorID.length > 0 {
             
+            /// Chat flow
+            ChatRouteHandler.initialTransition()
+            
             return
         }
         

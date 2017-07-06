@@ -151,6 +151,12 @@
 		F5582BDA1F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
 		F5582BDC1F0EA52800A180A0 /* AlrertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */; };
 		F5582BDD1F0EA52800A180A0 /* AlrertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */; };
+		F5582BE01F0EA9DE00A180A0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BDF1F0EA9DE00A180A0 /* ChatViewController.swift */; };
+		F5582BE11F0EA9DE00A180A0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BDF1F0EA9DE00A180A0 /* ChatViewController.swift */; };
+		F5582BE31F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BE21F0EAA5C00A180A0 /* LaunchChannelManager.swift */; };
+		F5582BE41F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BE21F0EAA5C00A180A0 /* LaunchChannelManager.swift */; };
+		F5582BE81F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */; };
+		F5582BE91F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -231,6 +237,9 @@
 		F50C33521F0D544400905F17 /* Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlrertHelper.swift; sourceTree = "<group>"; };
+		F5582BDF1F0EA9DE00A180A0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F5582BE21F0EAA5C00A180A0 /* LaunchChannelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchChannelManager.swift; sourceTree = "<group>"; };
+		F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRouteHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +353,7 @@
 				F5059B611F0D7028009DFF0B /* Conversation */,
 				F5059B3C1F0D6A63009DFF0B /* Config.swift */,
 				F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */,
+				F5582BE21F0EAA5C00A180A0 /* LaunchChannelManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -505,6 +515,7 @@
 		F5059B801F0D7662009DFF0B /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				F5582BDE1F0EA9CA00A180A0 /* Chat */,
 				F5059B811F0D773F009DFF0B /* Onboarding */,
 			);
 			path = Sections;
@@ -521,6 +532,7 @@
 		F5059B851F0D77C3009DFF0B /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				F5582BE61F0EAB6300A180A0 /* Chat */,
 				F5059B861F0D77D6009DFF0B /* Onboarding */,
 			);
 			path = Sections;
@@ -575,6 +587,22 @@
 				F5059AB51F0D556A009DFF0B /* Supporting Files */,
 			);
 			path = Clark;
+			sourceTree = "<group>";
+		};
+		F5582BDE1F0EA9CA00A180A0 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F5582BDF1F0EA9DE00A180A0 /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F5582BE61F0EAB6300A180A0 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F5582BE71F0EAB7400A180A0 /* ChatRouteHandler.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -841,8 +869,11 @@
 				F5059B8D1F0D7940009DFF0B /* S3Manager.swift in Sources */,
 				F5059B111F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
 				F5059B281F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
+				F5582BE91F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */,
 				F5059B641F0D704C009DFF0B /* ConversationManager.swift in Sources */,
 				F5059B151F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
+				F5582BE11F0EA9DE00A180A0 /* ChatViewController.swift in Sources */,
+				F5582BE41F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */,
 				F5059B681F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
@@ -893,8 +924,11 @@
 				F5059B8C1F0D7940009DFF0B /* S3Manager.swift in Sources */,
 				F5059B101F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
 				F5059B271F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
+				F5582BE81F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */,
 				F5059B631F0D704C009DFF0B /* ConversationManager.swift in Sources */,
 				F5059B141F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
+				F5582BE01F0EA9DE00A180A0 /* ChatViewController.swift in Sources */,
+				F5582BE31F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */,
 				F5059B671F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F5059AFD1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B181F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,

@@ -39,6 +39,9 @@ def shared_pods
     # Storage
     pod 'AWSS3'
     
+    # Progress
+    pod 'SVProgressHUD'
+    
     # Keychain
     pod 'Locksmith'
     pod 'KeychainAccess'

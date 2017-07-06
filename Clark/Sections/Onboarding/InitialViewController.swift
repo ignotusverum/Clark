@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import AVFoundation
+import SVProgressHUD
 
 class InitialViewController: UIViewController {
 
@@ -45,11 +46,11 @@ class InitialViewController: UIViewController {
     lazy var videoButton: UIButton = {
         
         let button = UIButton(type: .custom)
-        button.adjustsImageWhenHighlighted = false
+        button.adjustsImageWhenDisabled = true
         
         /// UI Setup
         button.setTitle("Meet Clark", for: .normal)
-        button.setBackgroundColor(UIColor.trinidad, forState: .normal)
+        button.setBackgroundColor(UIColor.clear, forState: .normal)
         button.titleLabel?.font = UIFont.SFProTextSemiBold(15)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 24)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 123, bottom: 0, right: 0)
@@ -61,12 +62,13 @@ class InitialViewController: UIViewController {
     lazy var onboardingButton: UIButton = {
        
         let button = UIButton(frame: .zero)
-        button.adjustsImageWhenHighlighted = false
+        button.adjustsImageWhenDisabled = true
         
         /// UI Setup
         button.setTitle("Get Started", for: .normal)
         button.setTitleColor(UIColor.trinidad, for: .normal)
         button.setBackgroundColor(UIColor.white, forState: .normal)
+        button.setBackgroundColor(UIColor.carara, forState: .highlighted)
         button.titleLabel?.font = UIFont.SFProTextSemiBold(17)
         
         return button
@@ -74,15 +76,6 @@ class InitialViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    }
-    
-    // MARK: - Initialization
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Controller lifecycle
@@ -218,5 +211,17 @@ class InitialViewController: UIViewController {
     
     func onOnboarding(_ sender: UIButton) {
         /// Chat transition
+        SVProgressHUD.show()
+        
+        /// Create initial channel
+        LaunchChannelManager.createNewChannelOrUpdate().then { _-> Void in
+            
+            SVProgressHUD.dismiss()
+            ChatRouteHandler.initialTransition()
+            
+            }.catch { error in
+                print(error)
+                SVProgressHUD.dismiss()
+        }
     }
 }
