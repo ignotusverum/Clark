@@ -147,6 +147,10 @@
 		F50C334A1F0D544400905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C334D1F0D544400905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
 		F50C334E1F0D544400905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
+		F5582BD91F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
+		F5582BDA1F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
+		F5582BDC1F0EA52800A180A0 /* AlrertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */; };
+		F5582BDD1F0EA52800A180A0 /* AlrertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -225,6 +229,8 @@
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F50C33401F0D541B00905F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F50C33521F0D544400905F17 /* Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlrertHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +343,7 @@
 				F5059AE71F0D6575009DFF0B /* Extensions */,
 				F5059B611F0D7028009DFF0B /* Conversation */,
 				F5059B3C1F0D6A63009DFF0B /* Config.swift */,
+				F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -523,6 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				F5059B871F0D77F5009DFF0B /* OnboardingRouteHandler.swift */,
+				F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -825,6 +833,7 @@
 				F5059ADB1F0D6544009DFF0B /* Tutor.swift in Sources */,
 				F5059B2E1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
 				F5059B211F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,
+				F5582BDA1F0EA4D100A180A0 /* VideoViewController.swift in Sources */,
 				F5059AD91F0D6544009DFF0B /* Student.swift in Sources */,
 				F5059AF41F0D6594009DFF0B /* Colors.swift in Sources */,
 				F5059AD31F0D6544009DFF0B /* Message.swift in Sources */,
@@ -860,6 +869,7 @@
 				F5059AD51F0D6544009DFF0B /* Model.swift in Sources */,
 				F5059B0D1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
 				F5059B1B1F0D6677009DFF0B /* TutorAdapter.swift in Sources */,
+				F5582BDD1F0EA52800A180A0 /* AlrertHelper.swift in Sources */,
 				F5059B841F0D7759009DFF0B /* InitialViewController.swift in Sources */,
 				F5059B371F0D6842009DFF0B /* Constants.m in Sources */,
 			);
@@ -875,6 +885,7 @@
 				F5059ADA1F0D6544009DFF0B /* Tutor.swift in Sources */,
 				F5059B2D1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
 				F5059B201F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,
+				F5582BD91F0EA4D100A180A0 /* VideoViewController.swift in Sources */,
 				F5059AD81F0D6544009DFF0B /* Student.swift in Sources */,
 				F5059AF31F0D6594009DFF0B /* Colors.swift in Sources */,
 				F5059AD21F0D6544009DFF0B /* Message.swift in Sources */,
@@ -910,6 +921,7 @@
 				F5059AD41F0D6544009DFF0B /* Model.swift in Sources */,
 				F5059B0C1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
 				F5059B1A1F0D6677009DFF0B /* TutorAdapter.swift in Sources */,
+				F5582BDC1F0EA52800A180A0 /* AlrertHelper.swift in Sources */,
 				F5059B831F0D7759009DFF0B /* InitialViewController.swift in Sources */,
 				F5059B361F0D6842009DFF0B /* Constants.m in Sources */,
 			);

@@ -8,9 +8,13 @@
 
 import UIKit
 import SnapKit
+import AVFoundation
 
 class InitialViewController: UIViewController {
 
+    /// Video path
+    private var videoPath: String?
+    
     /// Logo image view
     lazy var logoImageView: UIImageView = {
        
@@ -28,8 +32,11 @@ class InitialViewController: UIViewController {
         
         /// UI Setup
         label.numberOfLines = 0
+        label.textAlignment = .center
         label.textColor = UIColor.carara
-        label.font = UIFont.SFProTextSemiBold(17)
+        label.font = UIFont.SFProTextSemiBold(15)
+        
+        label.text = "Take your tutoring business\nto new heights"
         
         return label
     }()
@@ -61,6 +68,10 @@ class InitialViewController: UIViewController {
         return button
     }()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - Initialization
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -76,6 +87,34 @@ class InitialViewController: UIViewController {
         
         /// Setup UI
         initialSetup()
+    }
+    
+    func downloadVideo() {
+        
+        let s3Man = S3Manager.shared
+        s3Man.download(key: "Hi_Clark_rf32.mp4").then { response-> Void in
+            
+            self.videoButton.loadingIndicator(show: false)
+            self.videoPath = response
+            self.videoButton.isEnabled = true
+            self.videoButton.setImage(#imageLiteral(resourceName: "button-arrow"), for: .normal)
+            
+            }.catch { error in
+                print(error)
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        /// Onboarding Layer
+        onboardingButton.clipsToBounds = true
+        onboardingButton.layer.cornerRadius = 8
+        
+        // Video Button
+        videoButton.layer.cornerRadius = videoButton.bounds.height / 2.0
+        videoButton.layer.borderWidth = 2.0
+        videoButton.layer.borderColor = UIColor(hexString: "ECE9E1")!.cgColor
     }
     
     // MARK: - UI Setup
@@ -108,15 +147,15 @@ class InitialViewController: UIViewController {
         
         /// Title label layout
         titleLabel.snp.updateConstraints { maker in
-            maker.centerY.equalTo(self.videoButton).offset(-15)
+            maker.centerY.equalTo(self.view).offset(-15)
             maker.centerX.equalTo(self.view)
-            maker.width.equalTo(255)
-            maker.height.equalTo(40)
+            maker.width.equalTo(300)
+            maker.height.equalTo(60)
         }
         
         /// Video button layout
         videoButton.snp.updateConstraints { maker in
-            maker.top.equalTo(titleLabel.bottom).offset(30)
+            maker.top.equalTo(titleLabel).offset(titleLabel.frame.height + 90)
             maker.width.equalTo(145)
             maker.height.equalTo(35)
             maker.centerX.equalTo(self.view)
@@ -128,6 +167,35 @@ class InitialViewController: UIViewController {
             maker.left.equalTo(40)
             maker.right.equalTo(-40)
             maker.height.equalTo(44)
+        }
+    }
+    
+    // MARK: - Video Player
+    func playVideo () {
+        
+        /// Safety check to see if vides is saved
+        guard let videoPath = videoPath else {
+            AlertHelper.showAlert(title: "Whoops, please wait untill we get our video in place.", controller: self)
+            return
+        }
+        
+        /// Play video
+        let movieUrl = URL(fileURLWithPath: videoPath)
+        let player = AVPlayer(url: movieUrl)
+        let playerController = VideoViewController()
+        playerController.player = player
+        
+        // Set to allow audio to play through speakers
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
+        }
+        catch {
+            print("Can't default to speaker ")
+        }
+        
+        // Present the video
+        present(playerController, animated: true) {
+            player.play()
         }
     }
     
