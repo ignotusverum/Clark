@@ -120,6 +120,7 @@ extension ChatViewController: ConversationManagerDelegate {
         // Text node params
         let textContentNode = TextContentNode(textMessageString: message.body!, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
         
+        /// Create mesasge node
         let messageNode = MessageNode(content: textContentNode)
         messageNode.cellPadding = messagePadding
         messageNode.currentViewController = self
@@ -131,17 +132,20 @@ extension ChatViewController: ConversationManagerDelegate {
         
         var messageTimestamp = MessageSentIndicator()
         
-        ///  Create timestamp
+        /// Create timestamp
         messageTimestamp = TCHMessage.createTimestamp(message, previousMessage: lastMessage)
         if let text = messageTimestamp.messageSentText, text.length > 0 {
             
             messengerView.addMessage(messageTimestamp, scrollsToMessage: false)
         }
         
+        /// Update insets
         automaticallyAdjustsScrollViewInsets = false
         
+        /// Update datasource
         messages.append(message)
         
+        /// Update UI
         postText(messageNode)
     }
 }
