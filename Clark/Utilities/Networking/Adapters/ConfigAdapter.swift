@@ -51,20 +51,20 @@ class ConfigAdapter: SynchronizerAdapter {
     /// Fetch channel config
     ///
     /// - Returns: JSON on success
-    class func config()-> Promise<String?> {
+    class func config()-> Promise<(token: String, identity: String)> {
         
         /// Networking
         let apiMan = APIManager.shared
-        return apiMan.request(.get, path: "launch_configs").then { response-> String? in
+        return apiMan.request(.get, path: "launch_configs").then { response-> (token: String, identity: String) in
             
             guard let data = response["data"].json else {
-                return nil
+                return ("", "")
             }
 
             let config = Config.shared
             config.settings = data
             
-            return Config.twillioToken
+            return (Config.twillioToken ?? "" , Config.userID ?? "" )
         }
     }
     
@@ -74,20 +74,20 @@ class ConfigAdapter: SynchronizerAdapter {
     ///   - channelID: Channel ID
     ///   - userID: Current user ID
     /// - Returns: JSON on success
-    class func updateToken(channelID: String, userID: String)-> Promise<String?> {
+    class func updateToken(channelID: String, userID: String)-> Promise<(token: String, identity: String)> {
         
         /// Networking
         let apiMan = APIManager.shared
-        return apiMan.request(.get, path: "launch_configs?channel_id=\(channelID)&user_identity=\(userID)").then { response-> String? in
+        return apiMan.request(.get, path: "launch_configs?channel_id=\(channelID)&user_identity=\(userID)").then { response-> (token: String, identity: String) in
             
             guard let data = response["data"].json else {
-                return nil
+                return ("", "")
             }
             
             let config = Config.shared
             config.settings = data
             
-            return Config.twillioToken
+            return (Config.twillioToken ?? "" , Config.userID ?? "" )
         }
     }
 }

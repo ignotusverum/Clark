@@ -8,8 +8,10 @@
 
 import UIKit
 import SnapKit
+import PromiseKit
 import AVFoundation
 import SVProgressHUD
+import TwilioChatClient
 
 class InitialViewController: UIViewController {
 
@@ -214,15 +216,14 @@ class InitialViewController: UIViewController {
         SVProgressHUD.show()
         
         /// Create initial channel
-        LaunchChannelManager.createNewChannelOrUpdate().then { _-> Void in
-            
-            /// Transition
-            SVProgressHUD.dismiss()
-            ChatRouteHandler.initialTransition()
-            
-            /// Set flag for onboarding
-            Config.isInitialFinished = true
-            
+        ConversationManager.conversationStart().then { _-> Void in
+                
+                /// Transition
+                SVProgressHUD.dismiss()
+                ChatRouteHandler.initialTransition()
+                
+                /// Set flag for onboarding
+                Config.isInitialFinished = true
             }.catch { error in
                 print(error)
                 SVProgressHUD.dismiss()

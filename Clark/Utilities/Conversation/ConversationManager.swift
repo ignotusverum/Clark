@@ -31,14 +31,29 @@ class ConversationManager: NSObject {
     // Credentials
     var accessToken = ""
     
-    func promiseClient(token: String)-> Promise<TwilioChatClient?> {
+    /// Start inital conversation
+    ///
+    /// - Returns: Twilio chat client
+    class func conversationStart()-> Promise<TwilioChatClient?> {
+        return LaunchChannelManager.createNewChannelOrUpdate().then { token, identity-> Promise<TwilioChatClient?> in
+            
+            /// Initialize conversation manager
+            let convMan = ConversationManager(accessToken: token, identity: identity)
+            return convMan.promiseClient()
+        }
+    }
+    
+    /// Initialize client with current token/identituy
+    ///
+    /// - Returns: Twilio chat client
+    private func promiseClient()-> Promise<TwilioChatClient?> {
         
         client = nil
         
         return Promise { fulfill, reject in
             
             print(accessToken)
-            TwilioChatClient.chatClient(withToken: token, properties: nil, delegate: self, completion: { (result, client) in
+            TwilioChatClient.chatClient(withToken: accessToken, properties: nil, delegate: self, completion: { (result, client) in
                 
                 self.client = client
                 fulfill(client)

@@ -7,33 +7,22 @@
 //
 
 import Alamofire
-import Foundation
 import PromiseKit
 
 class LaunchChannelManager {
     
     // MARK: - Public methods
     // Returns true if the channel is new, false if not
-    class func createNewChannelOrUpdate()-> Promise<Bool> {
-        return Promise { fulfill, reject in
+    class func createNewChannelOrUpdate()-> Promise<(token: String, identity: String)> {
+        
+        /// Check if needed to update
+        if let userId = Config
+            .userID, let channelId = Config.channelID {
             
-            if let userId = Config
-                .userID, let channelId = Config.channelID {
-                
-                ConfigAdapter.updateToken(channelID: channelId, userID: userId).then { _ in
-                    fulfill(false)
-                    }.catch { error in
-                        print(error)
-                }
-            }
-            else {
-                
-                ConfigAdapter.config().then { _ in
-                    fulfill(true)
-                    }.catch { error in
-                        print(error)
-                }
-            }
+            return ConfigAdapter.updateToken(channelID: channelId, userID: userId)
         }
+        
+        /// Initial connect
+        return ConfigAdapter.config()
     }
 }

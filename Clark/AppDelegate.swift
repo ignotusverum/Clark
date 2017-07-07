@@ -40,10 +40,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// Transition to main controller if tutor stored
         if let isInitialFinished = Config.isInitialFinished, isInitialFinished {
             
-            
-            
-            /// Chat flow
-            ChatRouteHandler.initialTransition()
+            /// Connect to channel
+            ConversationManager.conversationStart().then { _-> Void in
+                /// Chat flow
+                ChatRouteHandler.initialTransition()
+                }.catch { error in
+                    
+                    /// Failed to connect - go to initial flow
+                    OnboardingRouteHandler.initialTransition()
+            }
             
             return
         }
