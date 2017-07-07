@@ -8,6 +8,7 @@
 
 import UIKit
 import NMessenger
+import SVProgressHUD
 import TwilioChatClient
 
 class ChatViewController: NMessengerViewController {
@@ -52,11 +53,35 @@ class ChatViewController: NMessengerViewController {
         initialSetup()
         
         /// Converastion setup
-        conversationSetup()
+        conversationUISetup()
+        
+        /// Fetch messages
+        fetchMessages()
+    }
+    
+    // MARK: - Datasource fetch
+    /// Messages from clark
+    func fetchMessages() {
+        
+        guard let channelID = Config.channelID else {
+            print("WARNING: NO CHANNEL")
+            /// Show error
+            return
+        }
+        
+        SVProgressHUD.show()
+        /// Fetch messages + create cells for current controller
+        ConversationManager.fetchMessageCells(for: channelID, start: pageSize * currentPage, offset: pageSize, controller: self, configuration: sharedBubbleConfiguration).then { cells, messages-> Void in
+            
+            SVProgressHUD.dismiss()
+            }.catch { error in
+                print(error.localizedDescription)
+                SVProgressHUD.dismiss()
+        }
     }
     
     // MARK: - Conversation UI setup
-    private func conversationSetup() {
+    private func conversationUISetup() {
         
         /// Bubble UI
         sharedBubbleConfiguration = SimpleBubbleConfiguration()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NMessenger
 import PromiseKit
 import TwilioChatClient
 
@@ -39,6 +40,8 @@ class ConversationManager: NSObject {
             
             /// Initialize conversation manager
             let convMan = ConversationManager(accessToken: token, identity: identity)
+            self.shared = convMan
+            
             return convMan.promiseClient()
         }
     }
@@ -96,7 +99,80 @@ class ConversationManager: NSObject {
         }
     }
     
-    func fetchMessages(_ channelID: String?, beginningIndex: Int, desiredNumberOfMessagesToLoad: Int)-> Promise<[TCHMessage]> {
+    
+    /// Fetch messages for NMMessager
+    ///
+    /// - Parameter channelID: Channel ID
+    /// - Returns: Array of cells
+    class func fetchMessageCells(for channelID: String, start: Int, offset: Int, controller: UIViewController, configuration: BubbleConfigurationProtocol)-> Promise<([GeneralMessengerCell], [TCHMessage])> {
+        
+        /// Synchronize channel
+        let convMan = ConversationManager.shared
+        return convMan!.synchronizeChannel(channelID).then { response-> Promise<[TCHMessage]> in
+            
+            /// Fetch messager
+            return convMan!.fetchMessages(response, beginningIndex: start, desiredNumberOfMessagesToLoad: offset)
+            }.then { responseMessages-> ([GeneralMessengerCell], [TCHMessage]) in
+             
+                /// Result array
+                var result: [GeneralMessengerCell] = []
+                
+                for (index, message) in responseMessages.enumerated() {
+                    if message.body.length > 0 {
+                        
+                        // Generate text ode
+                        let textContentNode = TextContentNode(textMessageString: message.body!, currentViewController: controller, bubbleConfiguration: configuration)
+                        
+                        // Create empty timestamp
+                        var messageTimestamp = MessageSentIndicator()
+                        
+                        // If first message - always show timestamp
+                        if index == 0 {
+                            
+                            messageTimestamp = TCHMessage.createTimestamp(message, previousMessage: nil)
+                        }
+                        else if responseMessages.count > index {
+                            
+                            // Safety check
+                            // Create timestamp with time difference
+                            let previous = responseMessages[index-1]
+                            messageTimestamp = TCHMessage.createTimestamp(message, previousMessage: previous)
+                        }
+                        
+                        // Check if node is not empty
+                        if let text = messageTimestamp.messageSentAttributedText, text.length > 0 {
+                            result.append(messageTimestamp)
+                        }
+                        
+                        // Cell padding update
+                        let messageNode = MessageNode(content: textContentNode)
+                        
+                        messageNode.currentViewController = controller
+                        
+                        // Author check
+                        messageNode.isIncomingMessage = message.isReceiver
+                        
+                        result.append(messageNode)
+                    }
+                }
+                
+                return (result, responseMessages)
+        }
+    }
+    
+    /// Fetch messages for channel
+    ///
+    /// - Parameters:
+    ///   - channelID: Channel ID
+    ///   - beginningIndex: Start index
+    ///   - desiredNumberOfMessagesToLoad: offset
+    /// - Returns: array of messages
+    private func fetchMessages(_ channel: TCHChannel?, beginningIndex: Int, desiredNumberOfMessagesToLoad: Int)-> Promise<[TCHMessage]> {
+        
+        /// Safety check
+        guard let channel = channel else {
+            return Promise(value: [])
+        }
         
         let messageResult = [TCHMessage]()
         
@@ -104,56 +180,46 @@ class ConversationManager: NSObject {
         
         return Promise { fulfill, reject in
             
-            self.synchronizeChannel(channelID).then { channel-> Void in
+            channel.getMessagesCount(completion: { (result: TCHResult?, count: UInt) in
+                // Setting messages to consumed
+                channel.messages.setAllMessagesConsumed()
                 
-                if let channel = channel {
-                    
-                    channel.getMessagesCount(completion: { (result: TCHResult?, count: UInt) in
-                        // Setting messages to consumed
-                        channel.messages.setAllMessagesConsumed()
-                        
-                        var inverseBeginningIndex = Int(count) - beginningIndex //Since we load backwards, we must inverse the beginning index based on the count.
-                        
-                        if inverseBeginningIndex < 0 { //If the inverse beginning index becomes a negative number then we must lower the amount of messages to be loaded because the remaining amount is less than the desiredAmountOfMessagesToLoad.
-                            numberOfMessageToBeLoaded = inverseBeginningIndex + numberOfMessageToBeLoaded //Computes the remaining number of messages to load.
-                            inverseBeginningIndex = 0 //We know we are at the end so this can just be 0.
-                        }
-                        
-                        guard
-                            numberOfMessageToBeLoaded > 0,
-                            beginningIndex > 0
-                            else { //These cannot be a negative.
-                                fulfill([])
-                                return
-                        }
-                        
-                        // Getting list of messages
-                        channel.messages.getAfter(UInt(inverseBeginningIndex), withCount: UInt(numberOfMessageToBeLoaded), completion: { (result, messages) in
-                            
-                            var resultMessages = [TCHMessage]()
-                            
-                            if let result = result, let messages = messages {
-                                
-                                resultMessages = messages
-                                
-                                // Successfull messages fetching
-                                if result.isSuccessful() {
-                                    
-                                    fulfill(resultMessages)
-                                }
-                            }
-                                // Error while fetching messages
-                            else {
-                                fulfill(messageResult)
-                            }
-                        })
-                    })
+                var inverseBeginningIndex = Int(count) - beginningIndex //Since we load backwards, we must inverse the beginning index based on the count.
+                
+                if inverseBeginningIndex < 0 { //If the inverse beginning index becomes a negative number then we must lower the amount of messages to be loaded because the remaining amount is less than the desiredAmountOfMessagesToLoad.
+                    numberOfMessageToBeLoaded = inverseBeginningIndex + numberOfMessageToBeLoaded //Computes the remaining number of messages to load.
+                    inverseBeginningIndex = 0 //We know we are at the end so this can just be 0.
                 }
                 
-                }.catch { error-> Void in
+                guard
+                    numberOfMessageToBeLoaded > 0,
+                    beginningIndex > 0
+                    else { //These cannot be a negative.
+                        fulfill([])
+                        return
+                }
+                
+                // Getting list of messages
+                channel.messages.getAfter(UInt(inverseBeginningIndex), withCount: UInt(numberOfMessageToBeLoaded), completion: { (result, messages) in
                     
-                    reject(error)
-            }
+                    var resultMessages = [TCHMessage]()
+                    
+                    if let result = result, let messages = messages {
+                        
+                        resultMessages = messages
+                        
+                        // Successfull messages fetching
+                        if result.isSuccessful() {
+                            
+                            fulfill(resultMessages)
+                        }
+                    }
+                        // Error while fetching messages
+                    else {
+                        fulfill(messageResult)
+                    }
+                })
+            })
         }
     }
 }
