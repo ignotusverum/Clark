@@ -81,6 +81,7 @@ open class Message: _Message, ImportableUniqueObject {
         return attributes_ as? [String: Any] ?? [:]
     }
     
+    /// Attributes converted to JSON
     private var attributesJSON: JSON {
         return JSON(attributes)
     }
