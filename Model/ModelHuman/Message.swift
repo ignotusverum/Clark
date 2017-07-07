@@ -43,7 +43,7 @@ public struct MessageJSON {
     
     static let sent = "sent"
     
-    static let typeString = "typeString"
+    static let typeString = "type"
     
     static let twilioMessageIndex = "twilioMessageIndex"
     
