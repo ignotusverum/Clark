@@ -169,6 +169,8 @@
 		F5C7B7261F0F421C005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
 		F5C7B72A1F0FDE59005EFC3F /* Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7291F0FDE59005EFC3F /* Twilio.swift */; };
 		F5C7B72B1F0FDFA6005EFC3F /* Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7291F0FDE59005EFC3F /* Twilio.swift */; };
+		F5C7B72D1F0FF92A005EFC3F /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */; };
+		F5C7B72E1F0FFA8A005EFC3F /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -258,6 +260,7 @@
 		F56A45251F0F3232000D19DB /* TCHMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHMessage.swift; sourceTree = "<group>"; };
 		F56A45291F0F3310000D19DB /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F5C7B7291F0FDE59005EFC3F /* Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twilio.swift; sourceTree = "<group>"; };
+		F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -700,6 +703,7 @@
 		F5C7B7271F0FD836005EFC3F /* Message Parsing */ = {
 			isa = PBXGroup;
 			children = (
+				F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */,
 			);
 			name = "Message Parsing";
 			path = "Message parsing";
@@ -985,6 +989,7 @@
 				F5582BE41F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */,
 				F56A452A1F0F3310000D19DB /* Date.swift in Sources */,
 				F5059B681F0D724A009DFF0B /* Analytics.swift in Sources */,
+				F5C7B72D1F0FF92A005EFC3F /* QuickAction.swift in Sources */,
 				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */,
@@ -1046,6 +1051,7 @@
 				F5059B141F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
 				F5582BE01F0EA9DE00A180A0 /* ChatViewController.swift in Sources */,
 				F5582BE31F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */,
+				F5C7B72E1F0FFA8A005EFC3F /* QuickAction.swift in Sources */,
 				F5059B671F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F5059AFD1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B181F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,

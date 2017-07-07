@@ -40,63 +40,6 @@ public struct QuickReply {
     }
 }
 
-// MARK: - QuickAction
-
-public enum QuickActionKey:String {
-    case timerEnd = "timer_end"
-    case timerPause = "timer_pause"
-    case externalLink = "go_to_external_web_page"
-    case message = "send_message"
-}
-
-public struct QuickAction {
-    var action:QuickActionKey
-    private var bodyString:String
-    var toggleString:String?
-    var link:URL?  // When type is a link of any kind, this will be set
-    
-    // MARK: AutocompleteCategory properties
-    public static var autocompleteKey: String = "actions"
-    public var body: String {
-        return bodyString
-    }
-    public var imageURL: URL? {
-        return nil
-    }
-    
-    // These properties will be set if we should send a response message when the quick action is selected
-    var returnMessageBody:String?
-    var returnMessageAttributes:[String:Any]?
-    
-    init?(attributes:[String:Any]) {
-        guard let actionString = attributes["type"] as? String, let body = attributes["text"] as? String, let action = QuickActionKey(rawValue: actionString) else {return nil}
-        self.action = action
-        self.bodyString = body
-        if let urlString = attributes["external_url"] as? String {
-            self.link = URL(string: urlString)
-        }
-        self.returnMessageBody = attributes["send_message_body"] as? String
-        self.returnMessageAttributes = attributes["send_message_attributes"] as? [String:Any]
-        
-        if action == .timerPause {
-            toggleString = "Resume"
-        } else if let toggle = attributes["toggle_text"] as? String {
-            toggleString = toggle
-        }
-    }
-}
-
-extension QuickAction: AutocompleteCategory {
-    // TODO: implement if we ever need quick actions to be used in autocomplete mode
-    public static func valuesContainedIn(searchString: String, moc: NSManagedObjectContext) -> [AutocompleteCategory] {
-        return []
-    }
-    
-    public static func valuesContaining(searchString: String, moc: NSManagedObjectContext) -> [AutocompleteCategory] {
-        return []
-    }
-}
-
 // MARK: - Forms
 
 // MARK: Form Enums
