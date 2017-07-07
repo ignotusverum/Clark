@@ -143,9 +143,7 @@
 		F5059B8D1F0D7940009DFF0B /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059B8B1F0D7940009DFF0B /* S3Manager.swift */; };
 		F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
-		F50C33411F0D541B00905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
 		F50C334A1F0D544400905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
-		F50C334D1F0D544400905F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
 		F50C334E1F0D544400905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F5582BD91F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
 		F5582BDA1F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
@@ -165,6 +163,10 @@
 		F56A45261F0F3232000D19DB /* TCHMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45251F0F3232000D19DB /* TCHMessage.swift */; };
 		F56A45271F0F3234000D19DB /* TCHMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45251F0F3232000D19DB /* TCHMessage.swift */; };
 		F56A452A1F0F3310000D19DB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45291F0F3310000D19DB /* Date.swift */; };
+		F56A452B1F0F4185000D19DB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45291F0F3310000D19DB /* Date.swift */; };
+		F5C7B7241F0F41A5005EFC3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */; };
+		F5C7B7251F0F4213005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
+		F5C7B7261F0F421C005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -785,9 +787,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5C7B7251F0F4213005EFC3F /* LaunchScreen.storyboard in Resources */,
 				F5059B5A1F0D6FAD009DFF0B /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				F5059B561F0D6FAD009DFF0B /* SF-Pro-Text-LightItalic.otf in Resources */,
-				F50C33411F0D541B00905F17 /* LaunchScreen.storyboard in Resources */,
 				F5059B4C1F0D6FAD009DFF0B /* SF-Pro-Text-Bold.otf in Resources */,
 				F5059B5E1F0D6FAD009DFF0B /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				F5059ABB1F0D558D009DFF0B /* Prod.plist in Resources */,
@@ -808,9 +810,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5C7B7261F0F421C005EFC3F /* LaunchScreen.storyboard in Resources */,
 				F5059B591F0D6FAD009DFF0B /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				F5059B551F0D6FAD009DFF0B /* SF-Pro-Text-LightItalic.otf in Resources */,
-				F50C334D1F0D544400905F17 /* LaunchScreen.storyboard in Resources */,
 				F5059B4B1F0D6FAD009DFF0B /* SF-Pro-Text-Bold.otf in Resources */,
 				F5059B5D1F0D6FAD009DFF0B /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				F5059ABA1F0D558D009DFF0B /* Prod.plist in Resources */,
@@ -1008,9 +1010,11 @@
 				F5059B2D1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
 				F5059B201F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,
 				F5582BD91F0EA4D100A180A0 /* VideoViewController.swift in Sources */,
+				F5C7B7241F0F41A5005EFC3F /* ViewController.swift in Sources */,
 				F5059AD81F0D6544009DFF0B /* Student.swift in Sources */,
 				F5059AF31F0D6594009DFF0B /* Colors.swift in Sources */,
 				F5059AD21F0D6544009DFF0B /* Message.swift in Sources */,
+				F56A452B1F0F4185000D19DB /* Date.swift in Sources */,
 				F5059AE41F0D6544009DFF0B /* _Tutor.swift in Sources */,
 				F5059B8C1F0D7940009DFF0B /* S3Manager.swift in Sources */,
 				F5059B101F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
