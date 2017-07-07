@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import NMessenger
+import TwilioChatClient
 
-class ChatViewController: UIViewController {
+class ChatViewController: NMessengerViewController {
 
+    /// Paging size.
+    private let pageSize = 20
+    
+    /// Current page.
+    private var currentPage = 1
+    
     /// Status bar color
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -39,10 +47,28 @@ class ChatViewController: UIViewController {
         
         /// Initial controller setup
         initialSetup()
+        
+        /// Converastion setup
+        conversationSetup()
+    }
+    
+    // MARK: - Conversation UI setup
+    private func conversationSetup() {
+        
+        /// Bubble UI
+        sharedBubbleConfiguration = SimpleBubbleConfiguration()
+        
+        /// Messenger view
+        messengerView.delegate = self
+        messengerView.doesBatchFetch = true
+        
+        /// Convesation delegate
+        let conversationMan = ConversationManager.shared
+        conversationMan?.delegate = self
     }
     
     // MARK: - Initial setup
-    func initialSetup() {
+    private func initialSetup() {
      
         /// Background setup
         view.backgroundColor = UIColor.white
@@ -73,5 +99,12 @@ class ChatViewController: UIViewController {
         /// Account flow
         let accountVC = AccountViewController(tutor: tutor)
         pushVC(accountVC)
+    }
+}
+
+// MARK: - Conversation manager delegate
+extension ChatViewController: ConversationManagerDelegate {
+    func messageAddedForChannel(_ channel: TCHChannel, message: TCHMessage) {
+        
     }
 }

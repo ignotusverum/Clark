@@ -40,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// Transition to main controller if tutor stored
         if let isInitialFinished = Config.isInitialFinished, isInitialFinished {
             
+            
+            
             /// Chat flow
             ChatRouteHandler.initialTransition()
             

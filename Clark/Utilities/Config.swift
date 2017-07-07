@@ -8,10 +8,12 @@
 
 import CoreStore
 import Foundation
+import SwiftyJSON
 
 let ClarkUserIDKey = "ClarkUserIDKey"
 let ClarkUserDataKey = "ClarkUserDataKey"
 let ClarkTempChannelID = "ClarkTempChannelID"
+let ClarkTwillioTokenKey = "ClarkTwillioTokenKey"
 let ClarkShowVideoOnLaunch = "ClarkShowVideoOnLaunch"
 let ClarkInitialFinishedKey = "ClarkInitialFinishedKey"
 
@@ -19,6 +21,32 @@ class Config {
     
     /// Shared
     static let shared = Config()
+    
+    /// Initial settings
+    var settings: JSON? {
+        didSet {
+            /// Safety check
+            guard let settings = settings else {
+                return
+            }
+            
+            /// Twillio setup
+            if let twillio = settings["unauthenticated_twilio"].json {
+                
+                /// Twillio token
+                Config.twillioToken = twillio["token"].string
+                
+                /// User ID
+                Config.userID = twillio["user_identity"].string
+                
+                /// Channel id
+                Config.channelID = twillio["primary_channel_id"].string
+            }
+            
+            /// Show video
+            Config.showVideo = settings["show_video"].bool
+        }
+    }
     
     /// Initial finished
     static var isInitialFinished: Bool? {
@@ -47,6 +75,16 @@ class Config {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: ClarkTempChannelID)
+        }
+    }
+    
+    /// Twillio token
+    static var twillioToken: String? {
+        get {
+            return UserDefaults.standard.object(forKey: "TOKEN") as? String
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "TOKEN")
         }
     }
     

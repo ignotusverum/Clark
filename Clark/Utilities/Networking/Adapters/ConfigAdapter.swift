@@ -51,25 +51,20 @@ class ConfigAdapter: SynchronizerAdapter {
     /// Fetch channel config
     ///
     /// - Returns: JSON on success
-    class func config()-> Promise<JSON> {
+    class func config()-> Promise<String?> {
         
         /// Networking
         let apiMan = APIManager.shared
-        return apiMan.request(.get, path: "launch_configs").then { response-> JSON in
+        return apiMan.request(.get, path: "launch_configs").then { response-> String? in
             
-            guard let data = response["data"].dictionaryObject else {
-                return response
+            guard let data = response["data"].json else {
+                return nil
             }
+
+            let config = Config.shared
+            config.settings = data
             
-//            LaunchChannelManager.showVideo = data["show_video"] as? Bool
-//            
-//            if let tokenData = data["unauthenticated_twilio"] as? [String:Any] {
-//                LaunchChannelManager.token = tokenData["token"] as? String
-//                LaunchChannelManager.channelId = tokenData["primary_channel_id"] as? String
-//                LaunchChannelManager.userId = tokenData["user_identity"] as? String
-//            }
-            
-            return response
+            return Config.twillioToken
         }
     }
     
@@ -79,13 +74,20 @@ class ConfigAdapter: SynchronizerAdapter {
     ///   - channelID: Channel ID
     ///   - userID: Current user ID
     /// - Returns: JSON on success
-    class func updateToken(channelID: String, userID: String)-> Promise<JSON> {
+    class func updateToken(channelID: String, userID: String)-> Promise<String?> {
         
         /// Networking
         let apiMan = APIManager.shared
-        return apiMan.request(.get, path: "launch_configs?channel_id=\(channelID)&user_identity=\(userID)").then { response-> JSON in
+        return apiMan.request(.get, path: "launch_configs?channel_id=\(channelID)&user_identity=\(userID)").then { response-> String? in
             
-            return response
+            guard let data = response["data"].json else {
+                return nil
+            }
+            
+            let config = Config.shared
+            config.settings = data
+            
+            return Config.twillioToken
         }
     }
 }

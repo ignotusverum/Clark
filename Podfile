@@ -29,6 +29,9 @@ def shared_pods
     # Payments
     pod 'Stripe'
     
+    # Chat
+    pod 'NMessenger'
+    
     # Core Data
     pod 'CoreStore'
     
