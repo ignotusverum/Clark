@@ -12,7 +12,7 @@ import TwilioChatClient
 
 protocol ConversationManagerDelegate {
     
-    func messageAddedForChannel(_ channel: TCHChannel, message: TCHMessage)
+    func messageAdded(for channel: TCHChannel, message: TCHMessage)
 }
 
 class ConversationManager: NSObject {
@@ -168,7 +168,7 @@ extension ConversationManager: TwilioChatClientDelegate {
     
     func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, messageAdded message: TCHMessage!) {
         
-        delegate?.messageAddedForChannel(channel, message: message)
+        delegate?.messageAdded(for: channel, message: message)
     }
 }
 
