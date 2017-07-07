@@ -204,6 +204,8 @@ class ConversationManager: NSObject {
                 /// Updated import source
                 let importSource = messages.map { (message: $0, channelID: "\(channel.sid)") }
                 return DatabaseManager.insertASync(Into<Message>(), source: importSource)
+            }.then { response-> Promise<[Message]> in
+                return DatabaseManager.fetchExisting(response)
         }
     }
 }
@@ -215,9 +217,27 @@ extension ConversationManager: TwilioChatClientDelegate {
         // Pass only fully synchronized channel
     }
     
-    func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, messageAdded message: Message!) {
+    func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, messageAdded message: TCHMessage!) {
         
-        delegate?.messageAdded(for: channel, message: message)
+        /// Import source
+        let messageUpdated: TCHMessage = message
+        let importSource = (message: messageUpdated, channelID: "\(channel.sid)")
+        
+        /// Save new message
+        DatabaseManager.insertSync(Into<Message>(), source: importSource).then { response-> Promise<Message?> in
+            return DatabaseManager.fetchExisting(response)
+            }.then { response-> Void in
+                
+                /// Safety check
+                guard let response = response else {
+                    return
+                }
+                
+                /// Send delegate
+                self.delegate?.messageAdded(for: channel, message: response)
+            }.catch { error in
+                print(error)
+        }
     }
 }
 
