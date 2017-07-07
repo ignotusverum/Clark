@@ -10,13 +10,45 @@ import SwiftyJSON
 import Foundation
 import UserNotifications
 
+struct HourDataJSON {
+    
+    static let sunday = "sunday"
+    static let monday = "monday"
+    static let tuesday = "tuesday"
+    static let wednesday = "wednesday"
+    static let thursday = "thursday"
+    static let friday = "friday"
+    static let saturday = "saturday"
+    
+    static let week: [String] = [sunday, monday, tuesday, wednesday, thursday, friday, saturday]
+}
+
 struct HourData {
     
     // MARK: - Properties
-    private var hours: [JSON]
-    private var day:String   // i.e "Sunday"
-    private var dayInt:Int16  // 1 = Sunday, 2 = Monday, ..., 7 = Saturday
-    private var timeZone:String
+    var hours: [JSON]
+    var day: String    // i.e "Sunday"
+    var dayInt: Int  // 1 = Sunday, 2 = Monday, ..., 7 = Saturday
+    var timeZone: String
+
+    init?(day: String?, timeZone: String?, hours: [JSON]?) {
+        
+        guard let day = day, let timeZone = timeZone, let hours = hours else {
+            return nil
+        }
+        
+        /// String day
+        self.day = day.replacingOccurrences(of: "_open", with: "")
+        
+        /// Int day
+        self.dayInt = HourDataJSON.week.lastIndex(of: self.day) ?? 0
+        
+        /// Timezone
+        self.timeZone = timeZone
+        
+        /// Hours
+        self.hours = hours
+    }
     
     // Main public property used to determine if clarkbot is asleep on this day
     public var isCurrentlyOpen: Bool {
@@ -42,7 +74,7 @@ struct HourData {
     // Function returns the closest "boundary date" to right now. A boundary date is any time when clark flips from offline to online or vice versa.
     // daysOffsetFromCurrent = number of days ahead of right now to analyze. i.e. daysOffsetFromCurrent = 3 would push forward all dates analyzed by 3 days. This is usually only used when all hours from the current day are too early so the algorithm moves on to look at tomorrows times. In this situtation, the first start time of the day should always be returned.
     public func nextBoundaryTime(daysOffsetFromCurrent:Int = 0) -> Date? {
-        var nextDate:Date?
+        var nextDate: Date?
         
         // Loop through times and find the closest one to now BUT is still in the future. If none exist, return nil and the algorithm will move on to analyze the next day.
         for timesDict in hours {

@@ -8,6 +8,7 @@
 
 import PromiseKit
 import SwiftyJSON
+import EZSwiftExtensions
 
 class ConfigAdapter: SynchronizerAdapter {
     
@@ -20,10 +21,22 @@ class ConfigAdapter: SynchronizerAdapter {
         let apiMan = APIManager.shared
         return apiMan.request(.get, path: "clark_hours").then { response-> JSON in
             
-            guard let data = response["data"].dictionaryObject, let hoursDictionary = data["attributes"] as? [String: Any] else {
+            guard let data = response["data"].json, let hoursJSON = data["attributes"].json else {
                 
                 return response
             }
+            
+            /// Getting JSON daya
+            var hoursData: [HourData?] = []
+            for key in hoursJSON.dictionaryValue.keys {
+                
+                hoursData.append(HourData(day: key, timeZone: hoursJSON["user_timezone"].string, hours: hoursJSON["\(key)"].array))
+            }
+            
+            /// Set current hours config
+            let config = Config.shared
+            config.openHours = hoursData.flatMap { $0 }
+            config.currentDay = config.openHours.filter { $0.day.lowercased() == Date().weekday.lowercased() }.first
             
             return response
         }

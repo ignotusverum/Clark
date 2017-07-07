@@ -47,6 +47,8 @@ struct QuickAction {
         
         /// Trigger
         self.trigger = trigger
+        
+        /// Body
         self.body = body
         
         /// Link

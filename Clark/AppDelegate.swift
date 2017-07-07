@@ -28,14 +28,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// Analytics tracking
         Analytics.application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        /// Fetch Hours data
+        fetchHours()
+        
         /// Setup initial transition
         transitionSetup()
         
         return true
     }
     
+    /// Hour setup
+    private func fetchHours() {
+        
+        ConfigAdapter.hours().catch { error in
+            print(error)
+        }
+    }
+    
     /// Transition logic
-    func transitionSetup() {
+    private func transitionSetup() {
         
         /// Status bar
         UIApplication.shared.statusBarStyle = .lightContent

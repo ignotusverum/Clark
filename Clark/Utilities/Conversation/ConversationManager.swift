@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreStore
-import NMessenger
 import PromiseKit
 import TwilioChatClient
 
@@ -100,67 +99,6 @@ class ConversationManager: NSObject {
         }
     }
     
-    
-    /// Fetch messages for NMMessager
-    ///
-    /// - Parameter channelID: Channel ID
-    /// - Returns: Array of cells
-    class func fetchMessageCells(for channelID: String, start: Int, offset: Int, controller: UIViewController, configuration: BubbleConfigurationProtocol)-> Promise<([GeneralMessengerCell], [Message])> {
-        
-        /// Synchronize channel
-        let convMan = ConversationManager.shared
-        return convMan!.synchronizeChannel(channelID).then { response-> Promise<[Message]> in
-            
-            /// Fetch messager
-            return convMan!.fetchMessages(response, beginningIndex: start, desiredNumberOfMessagesToLoad: offset)
-            }.then { responseMessages-> ([GeneralMessengerCell], [Message]) in
-             
-                /// Result array
-                var result: [GeneralMessengerCell] = []
-                
-                for (index, message) in responseMessages.enumerated() {
-                    if message.body.length > 0 {
-                        
-                        // Generate text ode
-                        let textContentNode = TextContentNode(textMessageString: message.body!, currentViewController: controller, bubbleConfiguration: configuration)
-                        
-                        // Create empty timestamp
-                        var messageTimestamp = MessageSentIndicator()
-                        
-                        // If first message - always show timestamp
-                        if index == 0 {
-                            
-                            messageTimestamp = Message.createTimestamp(message, previousMessage: nil)
-                        }
-                        else if responseMessages.count > index {
-                            
-                            // Safety check
-                            // Create timestamp with time difference
-                            let previous = responseMessages[index-1]
-                            messageTimestamp = Message.createTimestamp(message, previousMessage: previous)
-                        }
-                        
-                        // Check if node is not empty
-                        if let text = messageTimestamp.messageSentAttributedText, text.length > 0 {
-                            result.append(messageTimestamp)
-                        }
-                        
-                        // Cell padding update
-                        let messageNode = MessageNode(content: textContentNode)
-                        
-                        messageNode.currentViewController = controller
-                        
-                        // Author check
-                        messageNode.isIncomingMessage = message.isReceiver
-                        
-                        result.append(messageNode)
-                    }
-                }
-                
-                return (result, responseMessages)
-        }
-    }
-    
     /// Fetch messages for channel
     ///
     /// - Parameters:
@@ -168,7 +106,7 @@ class ConversationManager: NSObject {
     ///   - beginningIndex: Start index
     ///   - desiredNumberOfMessagesToLoad: offset
     /// - Returns: array of messages
-    private func fetchMessages(_ channel: TCHChannel?, beginningIndex: Int, desiredNumberOfMessagesToLoad: Int)-> Promise<[Message]> {
+    func fetchMessages(_ channel: TCHChannel?, beginningIndex: Int, desiredNumberOfMessagesToLoad: Int)-> Promise<[Message]> {
         
         /// Safety check
         guard let channel = channel else {
@@ -240,4 +178,3 @@ extension ConversationManager: TwilioChatClientDelegate {
         }
     }
 }
-

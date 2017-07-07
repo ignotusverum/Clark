@@ -171,6 +171,8 @@
 		F5C7B72B1F0FDFA6005EFC3F /* Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7291F0FDE59005EFC3F /* Twilio.swift */; };
 		F5C7B72D1F0FF92A005EFC3F /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */; };
 		F5C7B72E1F0FFA8A005EFC3F /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */; };
+		F5C7B7301F100434005EFC3F /* ChatViewController+Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */; };
+		F5C7B7311F100440005EFC3F /* ChatViewController+Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -261,6 +263,7 @@
 		F56A45291F0F3310000D19DB /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F5C7B7291F0FDE59005EFC3F /* Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twilio.swift; sourceTree = "<group>"; };
 		F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
+		F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatViewController+Twilio.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -621,6 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				F5582BDF1F0EA9DE00A180A0 /* ChatViewController.swift */,
+				F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -979,6 +983,7 @@
 				F5059AF41F0D6594009DFF0B /* Colors.swift in Sources */,
 				F5059AD31F0D6544009DFF0B /* Message.swift in Sources */,
 				F5059AE51F0D6544009DFF0B /* _Tutor.swift in Sources */,
+				F5C7B7301F100434005EFC3F /* ChatViewController+Twilio.swift in Sources */,
 				F5059B8D1F0D7940009DFF0B /* S3Manager.swift in Sources */,
 				F5059B111F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
 				F5059B281F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
@@ -1041,6 +1046,7 @@
 				F5059AD81F0D6544009DFF0B /* Student.swift in Sources */,
 				F5059AF31F0D6594009DFF0B /* Colors.swift in Sources */,
 				F5059AD21F0D6544009DFF0B /* Message.swift in Sources */,
+				F5C7B7311F100440005EFC3F /* ChatViewController+Twilio.swift in Sources */,
 				F56A452B1F0F4185000D19DB /* Date.swift in Sources */,
 				F5059AE41F0D6544009DFF0B /* _Tutor.swift in Sources */,
 				F5059B8C1F0D7940009DFF0B /* S3Manager.swift in Sources */,

@@ -19,6 +19,9 @@ class ChatViewController: NMessengerViewController {
     /// Current page.
     private var currentPage = 1
     
+    /// Last added group
+    var lastGroup: MessageGroup?
+    
     /// Datasource
     var messages: [Message] = []
     
@@ -71,19 +74,20 @@ class ChatViewController: NMessengerViewController {
         
         SVProgressHUD.show()
         /// Fetch messages + create cells for current controller
-        ConversationManager.fetchMessageCells(for: channelID, start: pageSize * currentPage, offset: pageSize, controller: self, configuration: sharedBubbleConfiguration).then { cells, messages-> Void in
+        fetchMessageCells(for: channelID, start: pageSize * currentPage, offset: pageSize).then { groups, messages-> Void in
             
             /// Update controller with messages
             DispatchQueue.main.async {
                 if self.messengerView.allMessages().isEmpty { //If there are no messages we have to use the add messages function, otherwise to add new chats to the top, we use endBatchFetch
-                    self.messengerView.addMessages(cells, scrollsToMessage: false)
+                    self.messengerView.addMessages(groups, scrollsToMessage: false)
                     
                     self.messengerView.scrollToLastMessage(animated: false)
                     
+                    self.lastGroup = groups.last
                 }
                 else {
                     /// Finish updates
-                    self.messengerView.endBatchFetchWithMessages(cells)
+                    self.messengerView.endBatchFetchWithMessages(groups)
                 }
             }
             
@@ -99,7 +103,7 @@ class ChatViewController: NMessengerViewController {
     private func conversationUISetup() {
         
         /// Bubble UI
-        sharedBubbleConfiguration = SimpleBubbleConfiguration()
+        sharedBubbleConfiguration = StandardBubbleConfiguration()
         
         /// Messenger view
         messengerView.delegate = self

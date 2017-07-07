@@ -19,6 +19,9 @@ let ClarkInitialFinishedKey = "ClarkInitialFinishedKey"
 
 class Config {
     
+    /// Hour Data
+    var currentDay: HourData?
+    
     /// Shared
     static let shared = Config()
     
