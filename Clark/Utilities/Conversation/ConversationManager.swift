@@ -182,6 +182,10 @@ class ConversationManager: NSObject {
             
             channel.getMessagesCount(completion: { (result: TCHResult?, count: UInt) in
                 
+                if channel.messages == nil {
+                    fulfill([])
+                }
+                
                 // Setting messages to consumed
                 channel.messages.setAllMessagesConsumed()
                 

@@ -37,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Transition logic
     func transitionSetup() {
         
+        /// Status bar
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         /// Set main screen - launch
         let launchSB = UIStoryboard(name: "LaunchScreen", bundle: nil)
         let launchVC = launchSB.instantiateViewController(withIdentifier: "LaunchScreen")
