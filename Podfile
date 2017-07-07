@@ -23,7 +23,7 @@ def shared_pods
     pod 'Segment-Facebook-App-Events'
     
     # Chat
-    pod 'TwilioChatClient'
+    pod 'TwilioChatClient', '1.0.0'
     pod 'TwilioAccessManager'
     
     # Payments

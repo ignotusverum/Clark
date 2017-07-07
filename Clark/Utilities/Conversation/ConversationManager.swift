@@ -181,6 +181,7 @@ class ConversationManager: NSObject {
         return Promise { fulfill, reject in
             
             channel.getMessagesCount(completion: { (result: TCHResult?, count: UInt) in
+                
                 // Setting messages to consumed
                 channel.messages.setAllMessagesConsumed()
                 

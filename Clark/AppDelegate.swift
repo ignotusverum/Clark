@@ -37,6 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Transition logic
     func transitionSetup() {
         
+        /// Set main screen - launch
+        let launchSB = UIStoryboard(name: "LaunchScreen", bundle: nil)
+        let launchVC = launchSB.instantiateViewController(withIdentifier: "LaunchScreen")
+        
+        window?.rootViewController = launchVC
+        window?.makeKeyAndVisible()
+        
         /// Transition to main controller if tutor stored
         if let isInitialFinished = Config.isInitialFinished, isInitialFinished {
             
