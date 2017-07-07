@@ -53,11 +53,6 @@ extension ChatViewController {
                             messageTimestamp = Message.createTimestamp(message, previousMessage: previous)
                         }
                         
-//                        // Check if node is not empty
-//                        if let text = messageTimestamp.messageSentAttributedText, text.length > 0 {
-//                            result.append(messageTimestamp)
-//                        }
-                        
                         // Cell padding update
                         let messageNode = MessageNode(content: textContentNode)
                         
@@ -70,6 +65,15 @@ extension ChatViewController {
                         if result.last == nil || result.last?.isIncomingMessage == !message.isReceiver {
                   
                             let newMessageGroup = self.createMessageGroup()
+                            
+                            // Check if node is not empty
+                            if let text = messageTimestamp.messageSentAttributedText, text.length > 0 {
+                            
+                                let newTimestampGroup = self.createMessageGroup()
+                                newTimestampGroup.addMessageToGroup(messageTimestamp, completion: nil)
+                                
+                                result.append(newTimestampGroup)
+                            }
                             
                             if message.isReceiver {
                                 newMessageGroup.avatarNode = self.createAvatar()
