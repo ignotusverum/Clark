@@ -85,7 +85,7 @@ open class _Message: NSManagedObject {
     var privateAttributes_: Any?
 
     @NSManaged open
-    var sent: Date?
+    var sent: Date
 
     @NSManaged open
     var showTypingString: String?

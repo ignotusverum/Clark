@@ -23,10 +23,16 @@ extension TCHChannel {
      
      @param completion Completion block that will speciy the requested count.  If no completion block is specified, no operation will be executed.
      */
-    open func getMessageCount()-> Promise<(TCHResult?, UInt)> {
+    open func getMessageCount()-> Promise<UInt> {
         return Promise { fulfill, reject in
             self.getMessagesCount(completion: { (result, number) in
-                fulfill((result, number))
+                
+                guard let result = result, result.isSuccessful() else {
+                    fulfill(0)
+                    return
+                }
+                
+                fulfill(number)
             })
         }
     }
@@ -41,11 +47,17 @@ extension TCHMessages {
      @param count The number of succeeding messages to return.
      @param completion Completion block that will specify the result of the operation as well as the requested messages if successful.  If no completion block is specified, no operation will be executed.
      */
-    open func getAfter(_ index: UInt, withCount count: UInt)-> Promise<(TCHResult?, [TCHMessage]?)> {
+    open func getAfter(_ index: Int, withCount count: Int)-> Promise<([TCHMessage])> {
         return Promise { fulfill, reject in
             
-            self.getAfter(index, withCount: count, completion: { (result, messages) in
-                fulfill((result, messages))
+            self.getAfter(UInt(index), withCount: UInt(count), completion: { (result, messages) in
+    
+                guard let messages = messages, let result = result, result.isSuccessful() else {
+                    fulfill([])
+                    return
+                }
+    
+                fulfill(messages)
             })
         }
     }

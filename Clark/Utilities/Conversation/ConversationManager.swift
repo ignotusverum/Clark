@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreStore
 import NMessenger
 import PromiseKit
 import TwilioChatClient
@@ -104,15 +105,15 @@ class ConversationManager: NSObject {
     ///
     /// - Parameter channelID: Channel ID
     /// - Returns: Array of cells
-    class func fetchMessageCells(for channelID: String, start: Int, offset: Int, controller: UIViewController, configuration: BubbleConfigurationProtocol)-> Promise<([GeneralMessengerCell], [TCHMessage])> {
+    class func fetchMessageCells(for channelID: String, start: Int, offset: Int, controller: UIViewController, configuration: BubbleConfigurationProtocol)-> Promise<([GeneralMessengerCell], [Message])> {
         
         /// Synchronize channel
         let convMan = ConversationManager.shared
-        return convMan!.synchronizeChannel(channelID).then { response-> Promise<[TCHMessage]> in
+        return convMan!.synchronizeChannel(channelID).then { response-> Promise<[Message]> in
             
             /// Fetch messager
             return convMan!.fetchMessages(response, beginningIndex: start, desiredNumberOfMessagesToLoad: offset)
-            }.then { responseMessages-> ([GeneralMessengerCell], [TCHMessage]) in
+            }.then { responseMessages-> ([GeneralMessengerCell], [Message]) in
              
                 /// Result array
                 var result: [GeneralMessengerCell] = []
@@ -174,57 +175,35 @@ class ConversationManager: NSObject {
             return Promise(value: [])
         }
         
-        let messageResult = [TCHMessage]()
-        
         var numberOfMessageToBeLoaded = desiredNumberOfMessagesToLoad //Number of messages that are to be loaded.
         
-        return Promise { fulfill, reject in
+        return channel.getMessageCount().then { count-> Promise<[TCHMessage]> in
             
-            channel.getMessagesCount(completion: { (result: TCHResult?, count: UInt) in
+            if channel.messages == nil {
+                return Promise(value: [])
+            }
+            
+            // Setting messages to consumed
+            channel.messages.setAllMessagesConsumed()
+            
+            var inverseBeginningIndex = Int(count) - beginningIndex //Since we load backwards, we must inverse the beginning index based on the count.
+            
+            if inverseBeginningIndex < 0 { //If the inverse beginning index becomes a negative number then we must lower the amount of messages to be loaded because the remaining amount is less than the desiredAmountOfMessagesToLoad.
+                numberOfMessageToBeLoaded = inverseBeginningIndex + numberOfMessageToBeLoaded //Computes the remaining number of messages to load.
+                inverseBeginningIndex = 0 //We know we are at the end so this can just be 0.
+            }
+            
+            guard numberOfMessageToBeLoaded > 0, beginningIndex > 0 else {
+                //These cannot be a negative.
+                return Promise(value: [])
+            }
+            
+            return channel.messages.getAfter(inverseBeginningIndex, withCount: desiredNumberOfMessagesToLoad)
+            }.then { messages-> Promise<[Message]> in
                 
-                if channel.messages == nil {
-                    fulfill([])
-                }
-                
-                // Setting messages to consumed
-                channel.messages.setAllMessagesConsumed()
-                
-                var inverseBeginningIndex = Int(count) - beginningIndex //Since we load backwards, we must inverse the beginning index based on the count.
-                
-                if inverseBeginningIndex < 0 { //If the inverse beginning index becomes a negative number then we must lower the amount of messages to be loaded because the remaining amount is less than the desiredAmountOfMessagesToLoad.
-                    numberOfMessageToBeLoaded = inverseBeginningIndex + numberOfMessageToBeLoaded //Computes the remaining number of messages to load.
-                    inverseBeginningIndex = 0 //We know we are at the end so this can just be 0.
-                }
-                
-                guard
-                    numberOfMessageToBeLoaded > 0,
-                    beginningIndex > 0
-                    else { //These cannot be a negative.
-                        fulfill([])
-                        return
-                }
-                
-                // Getting list of messages
-                channel.messages.getAfter(UInt(inverseBeginningIndex), withCount: UInt(numberOfMessageToBeLoaded), completion: { (result, messages) in
-                    
-                    var resultMessages = [TCHMessage]()
-                    
-                    if let result = result, let messages = messages {
-                        
-                        resultMessages = messages
-                        
-                        // Successfull messages fetching
-                        if result.isSuccessful() {
-                            
-                            fulfill(resultMessages)
-                        }
-                    }
-                        // Error while fetching messages
-                    else {
-                        fulfill(messageResult)
-                    }
-                })
-            })
+                /// Updated import source
+                let importSource = messages.map { (message: $0, channelID: "\(channel.sid)") }
+                return DatabaseManager.insertASync(Into<Message>(), source: importSource)
         }
     }
 }

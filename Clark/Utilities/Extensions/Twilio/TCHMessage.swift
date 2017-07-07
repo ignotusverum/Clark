@@ -25,7 +25,7 @@ extension Message {
         return currentUserID != author
     }
     
-    class func createTimestamp(_ message: TCHMessage, previousMessage: TCHMessage?)-> MessageSentIndicator {
+    class func createTimestamp(_ message: Message, previousMessage: Message?)-> MessageSentIndicator {
         
         // Check for timestamp & add new cell
         // Format date + attributed text
@@ -33,17 +33,17 @@ extension Message {
         
         if let previousMessage = previousMessage {
             
-            let difference = message.timestampAsDate.minutesFrom(previousMessage.timestampAsDate)
+            let difference = message.sent.minutesFrom(previousMessage.sent)
             
             // Difference should be > 15 min
             if difference > 15 {
                 
-                messageTimestamp.messageSentAttributedText = Date.convTimestamp(message.timestampAsDate)
+                messageTimestamp.messageSentAttributedText = Date.convTimestamp(message.sent)
             }
         }
         else {
             
-            messageTimestamp.messageSentAttributedText = Date.convTimestamp(message.timestampAsDate)
+            messageTimestamp.messageSentAttributedText = Date.convTimestamp(message.sent)
         }
         
         return messageTimestamp

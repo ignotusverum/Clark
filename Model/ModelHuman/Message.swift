@@ -66,7 +66,7 @@ enum AttributeType: String {
 }
 
 @objc(Message)
-open class Message: _Message {
+open class Message: _Message, ImportableUniqueObject {
 
     /// Message type
     var type: AttributeType {
@@ -80,7 +80,7 @@ open class Message: _Message {
     }
     
     // MARK: - Importable Source Protocol
-    public typealias ImportSource = TCHMessage
+    public typealias ImportSource = (message: TCHMessage, channelID: String)
     
     // Unique ID key
     public static var uniqueIDKeyPath: String {
@@ -96,18 +96,18 @@ open class Message: _Message {
     }
     
     // Update object with importable source
-    public static func shouldUpdate(from source: TCHMessage, in transaction: BaseDataTransaction) -> Bool {
+    public static func shouldUpdate(from source: (message: TCHMessage, channelID: String), in transaction: BaseDataTransaction) -> Bool {
         return true
     }
     
-    public static func uniqueID(from source: TCHMessage, in transaction: BaseDataTransaction) throws -> String? {
-        return source.sid
+    public static func uniqueID(from source: (message: TCHMessage, channelID: String), in transaction: BaseDataTransaction) throws -> String? {
+        return source.message.sid
     }
     
     // Unique ID value
-    public static func shouldInsert(from source: TCHMessage, in transaction: BaseDataTransaction) -> Bool {
+    public static func shouldInsert(from source: (message: TCHMessage, channelID: String), in transaction: BaseDataTransaction) -> Bool {
         
-        guard let id = source.sid else {
+        guard let id = source.message.sid else {
             return false
         }
         
@@ -117,44 +117,41 @@ open class Message: _Message {
         return object == nil
     }
     
-    public func update(from source: TCHMessage, channelID: String, in transaction: BaseDataTransaction) throws {
-        
-        try updateModel(with: source, channelID: channelID, transaction: transaction)
+    public func update(from source: (message: TCHMessage, channelID: String), in transaction: BaseDataTransaction) throws {
+        try updateModel(with: source, transaction: transaction)
     }
     
     // New object created
-    public func didInsert(from source: TCHMessage, channelID: String, in transaction: BaseDataTransaction) throws {
-        
-        try updateModel(with: source, channelID: channelID, transaction: transaction)
+    public func didInsert(from source: (message: TCHMessage, channelID: String), channelID: String, in transaction: BaseDataTransaction) throws {
+        try updateModel(with: source, transaction: transaction)
     }
     
-    public func updateFromImportSource(_ source: TCHMessage, channelID: String, inTransaction transaction: BaseDataTransaction) throws {
-        
-        try updateModel(with: source, channelID: channelID, transaction: transaction)
+    public func updateFromImportSource(_ source: (message: TCHMessage, channelID: String), inTransaction transaction: BaseDataTransaction) throws {
+        try updateModel(with: source, transaction: transaction)
     }
     
-    func updateModel(with source: TCHMessage, channelID: String, transaction: BaseDataTransaction) throws {
+    func updateModel(with source: (message: TCHMessage, channelID: String), transaction: BaseDataTransaction) throws {
+        
+        /// ChannelID
+        channel = source.channelID
         
         // ID
-        id = source.sid
+        id = source.message.sid
 
-        /// Channel
-        channel = channelID
-        
         /// Attribtes
-        attributes_ = source.attributes()
+        attributes_ = source.message.attributes()
         
         /// Author
-        author = source.author
+        author = source.message.author
         
         /// Body
-        body = source.body
+        body = source.message.body
         
         /// Sent Date
-        sent = source.timestampAsDate
+        sent = source.message.timestampAsDate
         
         /// Twillio index
-        twilioMessageIndex = source.index
+        twilioMessageIndex = source.message.index
         
         /// Attributes parsing
         let attributesJSON = JSON(attributes)

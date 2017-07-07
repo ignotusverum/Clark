@@ -20,7 +20,7 @@ class ChatViewController: NMessengerViewController {
     private var currentPage = 1
     
     /// Datasource
-    var messages: [TCHMessage] = []
+    var messages: [Message] = []
     
     /// Status bar color
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -173,7 +173,7 @@ extension ChatViewController: ConversationManagerDelegate {
         var messageTimestamp = MessageSentIndicator()
         
         /// Create timestamp
-        messageTimestamp = TCHMessage.createTimestamp(message, previousMessage: lastMessage)
+        messageTimestamp = Message.createTimestamp(message, previousMessage: lastMessage)
         if let text = messageTimestamp.messageSentText, text.length > 0 {
             
             messengerView.addMessage(messageTimestamp, scrollsToMessage: false)
