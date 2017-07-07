@@ -162,6 +162,9 @@
 		F5582BF01F0EC3DF00A180A0 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BEE1F0EC3DF00A180A0 /* AccountViewController.swift */; };
 		F5582BF91F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BF81F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift */; };
 		F5582BFA1F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BF81F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift */; };
+		F56A45261F0F3232000D19DB /* TCHMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45251F0F3232000D19DB /* TCHMessage.swift */; };
+		F56A45271F0F3234000D19DB /* TCHMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45251F0F3232000D19DB /* TCHMessage.swift */; };
+		F56A452A1F0F3310000D19DB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45291F0F3310000D19DB /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -248,6 +251,8 @@
 		F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F5582BEE1F0EC3DF00A180A0 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F5582BF81F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		F56A45251F0F3232000D19DB /* TCHMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHMessage.swift; sourceTree = "<group>"; };
+		F56A45291F0F3310000D19DB /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,6 +374,8 @@
 		F5059AE71F0D6575009DFF0B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F56A45281F0F3304000D19DB /* Date */,
+				F56A45241F0F321F000D19DB /* Twilio */,
 				F5582BEA1F0EBD1E00A180A0 /* Contollers */,
 				F5059AE81F0D6594009DFF0B /* Button.swift */,
 				F5059AE91F0D6594009DFF0B /* Colors */,
@@ -667,6 +674,22 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		F56A45241F0F321F000D19DB /* Twilio */ = {
+			isa = PBXGroup;
+			children = (
+				F56A45251F0F3232000D19DB /* TCHMessage.swift */,
+			);
+			path = Twilio;
+			sourceTree = "<group>";
+		};
+		F56A45281F0F3304000D19DB /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				F56A45291F0F3310000D19DB /* Date.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -937,6 +960,7 @@
 				F5059B151F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
 				F5582BE11F0EA9DE00A180A0 /* ChatViewController.swift in Sources */,
 				F5582BE41F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */,
+				F56A452A1F0F3310000D19DB /* Date.swift in Sources */,
 				F5059B681F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
@@ -948,6 +972,7 @@
 				F5059B3B1F0D68BC009DFF0B /* DatabaseManager.swift in Sources */,
 				F5059B131F0D6677009DFF0B /* SessionAdapter.swift in Sources */,
 				F5059B301F0D67A6009DFF0B /* OnboardingFlows.swift in Sources */,
+				F56A45261F0F3232000D19DB /* TCHMessage.swift in Sources */,
 				F5059AF61F0D6594009DFF0B /* Device.swift in Sources */,
 				F5059ADF1F0D6544009DFF0B /* _Model.swift in Sources */,
 				F5059AC01F0D5887009DFF0B /* Model.xcdatamodeld in Sources */,
@@ -979,6 +1004,7 @@
 				F5059B291F0D67A6009DFF0B /* HourData.swift in Sources */,
 				F5059B161F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */,
 				F5059ADA1F0D6544009DFF0B /* Tutor.swift in Sources */,
+				F56A45271F0F3234000D19DB /* TCHMessage.swift in Sources */,
 				F5059B2D1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
 				F5059B201F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,
 				F5582BD91F0EA4D100A180A0 /* VideoViewController.swift in Sources */,

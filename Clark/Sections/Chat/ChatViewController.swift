@@ -18,6 +18,9 @@ class ChatViewController: NMessengerViewController {
     /// Current page.
     private var currentPage = 1
     
+    /// Datasource
+    var messages: [TCHMessage] = []
+    
     /// Status bar color
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -100,11 +103,45 @@ class ChatViewController: NMessengerViewController {
         let accountVC = AccountViewController(tutor: tutor)
         pushVC(accountVC)
     }
+    
+    // MARK: - NMessenger overrides
+    fileprivate func postText(_ message: MessageNode) {
+        messengerView.addMessage(message, scrollsToMessage: true)
+    }
 }
 
 // MARK: - Conversation manager delegate
 extension ChatViewController: ConversationManagerDelegate {
-    func messageAddedForChannel(_ channel: TCHChannel, message: TCHMessage) {
+    internal func messageAddedForChannel(_ channel: TCHChannel, message: TCHMessage) {
         
+        // Set all messages as consumed
+        channel.messages.setAllMessagesConsumed()
+        
+        // Text node params
+        let textContentNode = TextContentNode(textMessageString: message.body!, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
+        
+        let messageNode = MessageNode(content: textContentNode)
+        messageNode.cellPadding = messagePadding
+        messageNode.currentViewController = self
+        
+        // Checking is author
+        messageNode.isIncomingMessage = message.isReceiver
+        
+        let lastMessage = messages.last
+        
+        var messageTimestamp = MessageSentIndicator()
+        
+        ///  Create timestamp
+        messageTimestamp = TCHMessage.createTimestamp(message, previousMessage: lastMessage)
+        if let text = messageTimestamp.messageSentText, text.length > 0 {
+            
+            messengerView.addMessage(messageTimestamp, scrollsToMessage: false)
+        }
+        
+        automaticallyAdjustsScrollViewInsets = false
+        
+        messages.append(message)
+        
+        postText(messageNode)
     }
 }
