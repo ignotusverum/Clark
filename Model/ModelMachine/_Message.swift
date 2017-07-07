@@ -13,6 +13,7 @@ public enum MessageAttributes: String {
     case clientInputDecorationString = "clientInputDecorationString"
     case clientInputPlaceholderBody = "clientInputPlaceholderBody"
     case formID = "formID"
+    case id = "id"
     case imageURL = "imageURL"
     case lastSizeString = "lastSizeString"
     case privateAttributes_ = "privateAttributes_"
@@ -22,15 +23,15 @@ public enum MessageAttributes: String {
     case typeString = "typeString"
 }
 
-open class _Message: Model {
+open class _Message: NSManagedObject {
 
     // MARK: - Class methods
 
-    override open class func entityName () -> String {
+    open class func entityName () -> String {
         return "Message"
     }
 
-    override open class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
+    open class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
         return NSEntityDescription.entity(forEntityName: self.entityName(), in: managedObjectContext)
     }
 
@@ -51,13 +52,13 @@ open class _Message: Model {
     var attributes_: Any?
 
     @NSManaged open
-    var author: String
+    var author: String!
 
     @NSManaged public
-    var blocking: NSNumber
+    var blocking: NSNumber?
 
     @NSManaged open
-    var body: String
+    var body: String!
 
     @NSManaged open
     var channel: String?
@@ -70,6 +71,9 @@ open class _Message: Model {
 
     @NSManaged open
     var formID: String?
+
+    @NSManaged open
+    var id: String?
 
     @NSManaged open
     var imageURL: String?

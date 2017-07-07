@@ -9,6 +9,7 @@
 import CoreStore
 import SwiftyJSON
 import PromiseKit
+import TwilioChatClient
 
 public enum ShowTypingType: String {
     case afterUserInput = "after_user_input"
@@ -28,7 +29,6 @@ public enum QuickReplyLayout:String {
 public struct MessageJSON {
 
 	static let attributes = "attributes"
-    static let privateAttributes = "privateAttributes"
     
     static let formID = "formId"
     
@@ -51,58 +51,134 @@ public struct MessageJSON {
 	static let showTypingString = "showTypingString"
 }
 
+/// Message type
+enum AttributeType: String {
+    case text = "text"
+    case html = "html"
+    case image = "image"
+    case timer = "timer"
+    case emoji = "emoji"
+    case carousel = "carousel"
+    case errorText = "text_error"
+    case formInput = "form_input"
+    
+    case undefined
+}
+
 @objc(Message)
 open class Message: _Message {
 
+    /// Message type
+    var type: AttributeType {
+        /// Returns undefined if new type
+        return AttributeType(rawValue: typeString ?? "") ?? .undefined
+    }
+    
     /// Attributes
     var attributes: [String: Any] {
         return attributes_ as? [String: Any] ?? [:]
     }
     
-	/// Model update logic
-    override func updateModel(with source: JSON, transaction: BaseDataTransaction) throws {
+    // MARK: - Importable Source Protocol
+    public typealias ImportSource = TCHMessage
+    
+    // Unique ID key
+    public static var uniqueIDKeyPath: String {
+        return "id"
+    }
+    
+    // Unique ID Type
+    public typealias UniqueIDType = String
+    
+    public var uniqueIDValue: String {
+        get { return id! }
+        set { id = newValue }
+    }
+    
+    // Update object with importable source
+    public static func shouldUpdate(from source: TCHMessage, in transaction: BaseDataTransaction) -> Bool {
+        return true
+    }
+    
+    public static func uniqueID(from source: TCHMessage, in transaction: BaseDataTransaction) throws -> String? {
+        return source.sid
+    }
+    
+    // Unique ID value
+    public static func shouldInsert(from source: TCHMessage, in transaction: BaseDataTransaction) -> Bool {
+        
+        guard let id = source.sid else {
+            return false
+        }
+        
+        let object = transaction.fetchOne(From<Message>(),
+                                          Where("\(ModelJSON.id) == %@", id))
+        
+        return object == nil
+    }
+    
+    public func update(from source: TCHMessage, channelID: String, in transaction: BaseDataTransaction) throws {
+        
+        try updateModel(with: source, channelID: channelID, transaction: transaction)
+    }
+    
+    // New object created
+    public func didInsert(from source: TCHMessage, channelID: String, in transaction: BaseDataTransaction) throws {
+        
+        try updateModel(with: source, channelID: channelID, transaction: transaction)
+    }
+    
+    public func updateFromImportSource(_ source: TCHMessage, channelID: String, inTransaction transaction: BaseDataTransaction) throws {
+        
+        try updateModel(with: source, channelID: channelID, transaction: transaction)
+    }
+    
+    func updateModel(with source: TCHMessage, channelID: String, transaction: BaseDataTransaction) throws {
+        
+        // ID
+        id = source.sid
 
-        try super.updateModel(with: source, transaction: transaction)
+        /// Channel
+        channel = channelID
         
         /// Attribtes
-        attributes_ = source[MessageJSON.attributes].dictionaryObject
-        privateAttributes_ = source[MessageJSON.privateAttributes].dictionaryObject
+        attributes_ = source.attributes()
         
         /// Author
-        author = source[MessageJSON.author].string ?? ""
-        
-        /// Blocking
-        blocking = source[MessageJSON.blocking].number ?? NSNumber(value: false)
+        author = source.author
         
         /// Body
-        body = source[MessageJSON.body].string ?? ""
-        
-        /// Channel
-        channel = source[MessageJSON.channel].string
-        
-        /// Client decorations
-        clientInputPlaceholderBody = source[MessageJSON.clientInputPlaceholderBody].string
-        clientInputDecorationString = source[MessageJSON.clientInputDecorationString].string
-        
-        /// Form Id
-        formID = source[MessageJSON.formID].string
-        
-        /// Image URL
-        imageURL = source[MessageJSON.imageURL].string
-        
-        /// Last size
-        lastSizeString = source[MessageJSON.lastSizeString].string
+        body = source.body
         
         /// Sent Date
-        sent = source[MessageJSON.sent].dateTime
-        
-        /// Show Typing
-        showTypingString = source[MessageJSON.showTypingString].string
+        sent = source.timestampAsDate
         
         /// Twillio index
-        twilioMessageIndex = source[MessageJSON.twilioMessageIndex].number
+        twilioMessageIndex = source.index
+        
+        /// Attributes parsing
+        let attributesJSON = JSON(attributes)
+         
+        /// Blocking
+        blocking = attributesJSON[MessageJSON.blocking].number ?? NSNumber(value: false)
+        
+        /// Client decorations
+        clientInputPlaceholderBody = attributesJSON[MessageJSON.clientInputPlaceholderBody].string
+        clientInputDecorationString = attributesJSON[MessageJSON.clientInputDecorationString].string
+        
+        /// Form Id
+        formID = attributesJSON[MessageJSON.formID].string
+        
+        /// Image URL
+        imageURL = attributesJSON[MessageJSON.imageURL].string
+        
+        /// Last size
+        lastSizeString = attributesJSON[MessageJSON.lastSizeString].string
+        
+        /// Show Typing
+        showTypingString = attributesJSON[MessageJSON.showTypingString].string
         
         /// Type
-        typeString = source[MessageJSON.typeString].string
+        typeString = attributesJSON[MessageJSON.typeString].string
     }
 }

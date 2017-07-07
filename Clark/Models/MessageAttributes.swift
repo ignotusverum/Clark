@@ -10,29 +10,6 @@ import Stripe
 import CoreData
 import Foundation
 
-// MARK: - Main Typing Enum
-
-public enum AttributeType {
-    case text
-    case html
-    case formInput
-    case image
-    case timer
-    case emoji(unicode:String?)
-    case errorText
-    case carousel
-    // Be sure to update the == function below if any new types are added or existing types are modified
-}
-extension AttributeType: Equatable {}
-public func ==(lhs: AttributeType, rhs: AttributeType) -> Bool {
-    switch (lhs, rhs) {
-    case (.text, .text), (.html, .html), (.formInput, .formInput), (.image, .image), (.timer, .timer), (.emoji, .emoji), (.errorText, .errorText), (.carousel, .carousel):
-        return true
-    default:
-        return false
-    }
-}
-
 // MARK: - AutoComplete
 
 public protocol AutocompleteCategory {

@@ -167,6 +167,8 @@
 		F5C7B7241F0F41A5005EFC3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */; };
 		F5C7B7251F0F4213005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
 		F5C7B7261F0F421C005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
+		F5C7B72A1F0FDE59005EFC3F /* Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7291F0FDE59005EFC3F /* Twilio.swift */; };
+		F5C7B72B1F0FDFA6005EFC3F /* Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7291F0FDE59005EFC3F /* Twilio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -255,6 +257,7 @@
 		F5582BF81F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		F56A45251F0F3232000D19DB /* TCHMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHMessage.swift; sourceTree = "<group>"; };
 		F56A45291F0F3310000D19DB /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		F5C7B7291F0FDE59005EFC3F /* Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twilio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +322,7 @@
 		F5059ABC1F0D5857009DFF0B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F5C7B7271F0FD836005EFC3F /* Message Parsing */,
 				F5059B231F0D67A6009DFF0B /* HourData.swift */,
 				F5059B261F0D67A6009DFF0B /* OnboardingFlows.swift */,
 				F5059B221F0D67A6009DFF0B /* AutoCompleteData.swift */,
@@ -359,6 +363,7 @@
 		F5059AE61F0D6562009DFF0B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F5C7B7281F0FDE49005EFC3F /* Twilio */,
 				F5059B8A1F0D7924009DFF0B /* S3 */,
 				F5059B7C1F0D74F8009DFF0B /* Route Handlers */,
 				F5059B651F0D7236009DFF0B /* Analytics */,
@@ -692,6 +697,22 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		F5C7B7271F0FD836005EFC3F /* Message Parsing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Message Parsing";
+			path = "Message parsing";
+			sourceTree = "<group>";
+		};
+		F5C7B7281F0FDE49005EFC3F /* Twilio */ = {
+			isa = PBXGroup;
+			children = (
+				F5C7B7291F0FDE59005EFC3F /* Twilio.swift */,
+			);
+			path = Twilio;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -983,6 +1004,7 @@
 				F5059AFC1F0D6594009DFF0B /* String.swift in Sources */,
 				F5582BFA1F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift in Sources */,
 				F5059B1D1F0D6677009DFF0B /* APIManager.swift in Sources */,
+				F5C7B72A1F0FDE59005EFC3F /* Twilio.swift in Sources */,
 				F5059AF81F0D6594009DFF0B /* Font.swift in Sources */,
 				F5059AE11F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AFA1F0D6594009DFF0B /* JSON.swift in Sources */,
@@ -1043,6 +1065,7 @@
 				F5059B1E1F0D6677009DFF0B /* KickoffManager.swift in Sources */,
 				F5059AFB1F0D6594009DFF0B /* String.swift in Sources */,
 				F5059B1C1F0D6677009DFF0B /* APIManager.swift in Sources */,
+				F5C7B72B1F0FDFA6005EFC3F /* Twilio.swift in Sources */,
 				F5059AF71F0D6594009DFF0B /* Font.swift in Sources */,
 				F5059AE01F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AF91F0D6594009DFF0B /* JSON.swift in Sources */,

@@ -13,7 +13,7 @@ import TwilioChatClient
 
 protocol ConversationManagerDelegate {
     
-    func messageAdded(for channel: TCHChannel, message: TCHMessage)
+    func messageAdded(for channel: TCHChannel, message: Message)
 }
 
 class ConversationManager: NSObject {
@@ -129,14 +129,14 @@ class ConversationManager: NSObject {
                         // If first message - always show timestamp
                         if index == 0 {
                             
-                            messageTimestamp = TCHMessage.createTimestamp(message, previousMessage: nil)
+                            messageTimestamp = Message.createTimestamp(message, previousMessage: nil)
                         }
                         else if responseMessages.count > index {
                             
                             // Safety check
                             // Create timestamp with time difference
                             let previous = responseMessages[index-1]
-                            messageTimestamp = TCHMessage.createTimestamp(message, previousMessage: previous)
+                            messageTimestamp = Message.createTimestamp(message, previousMessage: previous)
                         }
                         
                         // Check if node is not empty
@@ -167,7 +167,7 @@ class ConversationManager: NSObject {
     ///   - beginningIndex: Start index
     ///   - desiredNumberOfMessagesToLoad: offset
     /// - Returns: array of messages
-    private func fetchMessages(_ channel: TCHChannel?, beginningIndex: Int, desiredNumberOfMessagesToLoad: Int)-> Promise<[TCHMessage]> {
+    private func fetchMessages(_ channel: TCHChannel?, beginningIndex: Int, desiredNumberOfMessagesToLoad: Int)-> Promise<[Message]> {
         
         /// Safety check
         guard let channel = channel else {
@@ -233,11 +233,10 @@ class ConversationManager: NSObject {
 extension ConversationManager: TwilioChatClientDelegate {
     
     @objc(chatClient:channel:synchronizationStatusUpdated:) func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, synchronizationStatusUpdated status: TCHChannelSynchronizationStatus) {
-        
         // Pass only fully synchronized channel
     }
     
-    func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, messageAdded message: TCHMessage!) {
+    func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, messageAdded message: Message!) {
         
         delegate?.messageAdded(for: channel, message: message)
     }

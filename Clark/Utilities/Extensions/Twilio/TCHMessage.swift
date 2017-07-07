@@ -9,7 +9,7 @@
 import NMessenger
 import TwilioChatClient
 
-extension TCHMessage {
+extension Message {
     
     /// Check if author is current tutor
     var isReceiver: Bool {

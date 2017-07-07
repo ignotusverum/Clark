@@ -152,7 +152,7 @@ class ChatViewController: NMessengerViewController {
 
 // MARK: - Conversation manager delegate
 extension ChatViewController: ConversationManagerDelegate {
-    internal func messageAdded(for channel: TCHChannel, message: TCHMessage) {
+    internal func messageAdded(for channel: TCHChannel, message: Message) {
         
         // Set all messages as consumed
         channel.messages.setAllMessagesConsumed()
