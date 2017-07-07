@@ -13,9 +13,9 @@ import Foundation
 /// Types of quick action
 public enum QuickActionTrigger: String {
     case timerEnd = "timer_end"
+    case message = "send_message"
     case timerPause = "timer_pause"
     case externalLink = "go_to_external_web_page"
-    case message = "send_message"
 }
 
 /// Quick action struct
@@ -37,6 +37,7 @@ struct QuickAction {
     var returnMessageBody: String?
     var returnMessageAttributes: [String: Any]?
     
+    // MARK: - Initialization
     init?(attributes: JSON) {
         
         /// Safety type check

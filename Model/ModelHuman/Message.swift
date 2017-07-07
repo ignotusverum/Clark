@@ -49,6 +49,8 @@ public struct MessageJSON {
     
 	static let lastSizeString = "lastSizeString"
 	static let showTypingString = "showTypingString"
+    
+    static let quickActions = "quick_actions"
 }
 
 /// Message type
@@ -78,6 +80,23 @@ open class Message: _Message, ImportableUniqueObject {
     var attributes: [String: Any] {
         return attributes_ as? [String: Any] ?? [:]
     }
+    
+    private var attributesJSON: JSON {
+        return JSON(attributes)
+    }
+    
+    // MARK: - Quick actions
+    var quickActions: [QuickAction] {
+        
+        /// Safety check
+        guard let quickActionsArray = attributesJSON[MessageJSON.quickActions].array else {
+            return []
+        }
+     
+        /// Map & create actions
+        return quickActionsArray.flatMap { QuickAction(attributes: $0) }
+    }
+    
     
     // MARK: - Importable Source Protocol
     public typealias ImportSource = (message: TCHMessage, channelID: String)
