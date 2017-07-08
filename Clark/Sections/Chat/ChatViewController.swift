@@ -280,7 +280,7 @@ extension ChatViewController: ChatActionContainerViewDelegate {
     func updateChatActionViewPosition(_ yPos: CGFloat = 0) {
         
         /// Update table view inset
-        messengerView.messengerNode.view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: chatActionContainerView.contentHeight + 30, right: 0)
+        messengerView.messengerNode.view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: chatActionContainerView.contentHeight + inputBarView.frame.height, right: 0)
         
         /// Animate layout
         UIView.animate(withDuration: 0.2) {
