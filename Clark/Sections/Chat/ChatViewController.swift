@@ -259,9 +259,6 @@ extension ChatViewController: ChatInputBarDelegate {
         /// Send to channel
         let msg = channel?.messages.createMessage(withBody: sendText)
         channel?.messages.send(msg) { result in }
-
-        /// Update UI
-        postText(sendText, isIncoming: false)
     }
 }
 

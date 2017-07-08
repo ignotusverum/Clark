@@ -13,11 +13,11 @@ extension Message {
     
     /// Check if author is current tutor
     var isReceiver: Bool {
-        let config = Config.shared
-        let currentUser = config.currentTutor
+
+        let currentUser = Config.userID
         
         // Safety check
-        guard let currentUserID = currentUser?.id else {
+        guard let currentUserID = currentUser else {
             return true
         }
         

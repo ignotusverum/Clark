@@ -179,7 +179,7 @@ extension ChatViewController {
         
         let avatar = ASImageNode()
         avatar.backgroundColor = UIColor.clear
-        avatar.style.preferredSize = CGSize(width: 10, height: 10)
+        avatar.style.preferredSize = CGSize(width: 1, height: 1)
         
         return avatar
     }
