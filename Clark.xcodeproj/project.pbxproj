@@ -164,6 +164,12 @@
 		F56A45271F0F3234000D19DB /* TCHMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45251F0F3232000D19DB /* TCHMessage.swift */; };
 		F56A452A1F0F3310000D19DB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45291F0F3310000D19DB /* Date.swift */; };
 		F56A452B1F0F4185000D19DB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45291F0F3310000D19DB /* Date.swift */; };
+		F5A524EE1F1067F800292C1E /* QuickActionCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */; };
+		F5A524F01F10688A00292C1E /* QuickResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524EF1F10688A00292C1E /* QuickResponseCollectionViewCell.swift */; };
+		F5A524F11F10688A00292C1E /* QuickResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524EF1F10688A00292C1E /* QuickResponseCollectionViewCell.swift */; };
+		F5A524F21F10689800292C1E /* QuickActionCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */; };
+		F5A524F41F1068E000292C1E /* QuickResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F31F1068E000292C1E /* QuickResponse.swift */; };
+		F5A524F51F1068E000292C1E /* QuickResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F31F1068E000292C1E /* QuickResponse.swift */; };
 		F5C7B7241F0F41A5005EFC3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */; };
 		F5C7B7251F0F4213005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
 		F5C7B7261F0F421C005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -175,6 +181,8 @@
 		F5C7B7311F100440005EFC3F /* ChatViewController+Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */; };
 		F5C7B7341F101902005EFC3F /* QuickActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7331F101902005EFC3F /* QuickActionView.swift */; };
 		F5C7B7351F101937005EFC3F /* QuickActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7331F101902005EFC3F /* QuickActionView.swift */; };
+		F5C7B7391F101C79005EFC3F /* QuickActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */; };
+		F5C7B73A1F101C7B005EFC3F /* QuickActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -263,10 +271,14 @@
 		F5582BF81F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		F56A45251F0F3232000D19DB /* TCHMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHMessage.swift; sourceTree = "<group>"; };
 		F56A45291F0F3310000D19DB /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionCellProtocol.swift; sourceTree = "<group>"; };
+		F5A524EF1F10688A00292C1E /* QuickResponseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickResponseCollectionViewCell.swift; sourceTree = "<group>"; };
+		F5A524F31F1068E000292C1E /* QuickResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickResponse.swift; sourceTree = "<group>"; };
 		F5C7B7291F0FDE59005EFC3F /* Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twilio.swift; sourceTree = "<group>"; };
 		F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 		F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatViewController+Twilio.swift"; sourceTree = "<group>"; };
 		F5C7B7331F101902005EFC3F /* QuickActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionView.swift; sourceTree = "<group>"; };
+		F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -679,6 +691,7 @@
 			isa = PBXGroup;
 			children = (
 				F5582BF71F0EC5D200A180A0 /* Account */,
+				F5C7B7361F101C46005EFC3F /* Conversation */,
 			);
 			name = Secions;
 			path = Sections;
@@ -708,10 +721,19 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		F5A524EC1F1067D400292C1E /* Quick Response */ = {
+			isa = PBXGroup;
+			children = (
+				F5A524EF1F10688A00292C1E /* QuickResponseCollectionViewCell.swift */,
+			);
+			path = "Quick Response";
+			sourceTree = "<group>";
+		};
 		F5C7B7271F0FD836005EFC3F /* Message Parsing */ = {
 			isa = PBXGroup;
 			children = (
 				F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */,
+				F5A524F31F1068E000292C1E /* QuickResponse.swift */,
 			);
 			name = "Message Parsing";
 			path = "Message parsing";
@@ -729,6 +751,24 @@
 			isa = PBXGroup;
 			children = (
 				F5C7B7331F101902005EFC3F /* QuickActionView.swift */,
+			);
+			path = "Quick Action";
+			sourceTree = "<group>";
+		};
+		F5C7B7361F101C46005EFC3F /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				F5A524EC1F1067D400292C1E /* Quick Response */,
+				F5C7B7371F101C60005EFC3F /* Quick Action */,
+				F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		F5C7B7371F101C60005EFC3F /* Quick Action */ = {
+			isa = PBXGroup;
+			children = (
+				F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */,
 			);
 			path = "Quick Action";
 			sourceTree = "<group>";
@@ -983,7 +1023,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5C7B7391F101C79005EFC3F /* QuickActionCollectionViewCell.swift in Sources */,
 				F5059AD71F0D6544009DFF0B /* Session.swift in Sources */,
+				F5A524F51F1068E000292C1E /* QuickResponse.swift in Sources */,
 				F5059B2A1F0D67A6009DFF0B /* HourData.swift in Sources */,
 				F5059B171F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */,
 				F5059ADB1F0D6544009DFF0B /* Tutor.swift in Sources */,
@@ -1010,12 +1052,14 @@
 				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */,
+				F5A524EE1F1067F800292C1E /* QuickActionCellProtocol.swift in Sources */,
 				F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */,
 				F5059ADD1F0D6544009DFF0B /* _Message.swift in Sources */,
 				F5582BF01F0EC3DF00A180A0 /* AccountViewController.swift in Sources */,
 				F5059B0F1F0D6677009DFF0B /* ConfigAdapter.swift in Sources */,
 				F5059B3B1F0D68BC009DFF0B /* DatabaseManager.swift in Sources */,
 				F5059B131F0D6677009DFF0B /* SessionAdapter.swift in Sources */,
+				F5A524F11F10688A00292C1E /* QuickResponseCollectionViewCell.swift in Sources */,
 				F5059B301F0D67A6009DFF0B /* OnboardingFlows.swift in Sources */,
 				F56A45261F0F3232000D19DB /* TCHMessage.swift in Sources */,
 				F5059AF61F0D6594009DFF0B /* Device.swift in Sources */,
@@ -1047,17 +1091,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5C7B73A1F101C7B005EFC3F /* QuickActionCollectionViewCell.swift in Sources */,
 				F5059AD61F0D6544009DFF0B /* Session.swift in Sources */,
+				F5A524F41F1068E000292C1E /* QuickResponse.swift in Sources */,
 				F5059B291F0D67A6009DFF0B /* HourData.swift in Sources */,
 				F5059B161F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */,
 				F5059ADA1F0D6544009DFF0B /* Tutor.swift in Sources */,
 				F56A45271F0F3234000D19DB /* TCHMessage.swift in Sources */,
 				F5059B2D1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
 				F5059B201F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,
+				F5A524F01F10688A00292C1E /* QuickResponseCollectionViewCell.swift in Sources */,
 				F5582BD91F0EA4D100A180A0 /* VideoViewController.swift in Sources */,
 				F5C7B7241F0F41A5005EFC3F /* ViewController.swift in Sources */,
 				F5059AD81F0D6544009DFF0B /* Student.swift in Sources */,
 				F5059AF31F0D6594009DFF0B /* Colors.swift in Sources */,
+				F5A524F21F10689800292C1E /* QuickActionCellProtocol.swift in Sources */,
 				F5059AD21F0D6544009DFF0B /* Message.swift in Sources */,
 				F5C7B7311F100440005EFC3F /* ChatViewController+Twilio.swift in Sources */,
 				F56A452B1F0F4185000D19DB /* Date.swift in Sources */,

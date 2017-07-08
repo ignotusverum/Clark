@@ -22,26 +22,6 @@ public protocol AutocompleteCategory {
 }
 
 
-// MARK: - QuickReply
-
-public enum QuickReplyType:String {
-    case text = "text"
-    case emoji = "emoji"
-}
-
-public struct QuickReply {
-    var type:QuickReplyType?
-    var body:String
-    
-    init?(attributes:[String:Any]) {
-        guard let typeString = attributes["type"] as? String, let body = attributes["body"] as? String else {return nil}
-        self.type = QuickReplyType(rawValue: typeString)
-        self.body = body
-    }
-}
-
-// MARK: - Forms
-
 // MARK: Form Enums
 
 enum FormType:String {

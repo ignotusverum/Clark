@@ -51,6 +51,7 @@ public struct MessageJSON {
 	static let showTypingString = "showTypingString"
     
     static let quickActions = "quick_actions"
+    static let quickReplies = "quick_replies"
 }
 
 /// Message type
@@ -98,6 +99,17 @@ open class Message: _Message, ImportableUniqueObject {
         return quickActionsArray.flatMap { QuickAction(attributes: $0) }
     }
     
+    // MARK: - Quick replies
+    var quickReplies: [QuickReply] {
+        
+        /// Safety check
+        guard let quickReplyArray = attributesJSON[MessageJSON.quickReplies].array else {
+            return []
+        }
+        
+        /// Map & Create replies
+        return quickReplyArray.flatMap { QuickReply(source: $0) }
+    }
     
     // MARK: - Importable Source Protocol
     public typealias ImportSource = (message: TCHMessage, channelID: String)
