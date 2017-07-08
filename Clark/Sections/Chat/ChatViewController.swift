@@ -22,6 +22,9 @@ class ChatViewController: NMessengerViewController {
     /// Last added group
     var lastGroup: MessageGroup?
     
+    /// Chat Action contaner
+    var chatActionContainerView = ChatActionContainerView()
+    
     /// Datasource
     var messages: [Message] = []
     
@@ -62,6 +65,11 @@ class ChatViewController: NMessengerViewController {
         fetchMessages()
     }
     
+    // MARK: - Layout
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
     // MARK: - Datasource fetch
     /// Messages from clark
     func fetchMessages() {
@@ -91,6 +99,11 @@ class ChatViewController: NMessengerViewController {
                 }
             }
             
+            /// Update action view
+            if let lastMessage = messages.last {
+                self.chatActionContainerView.message = lastMessage
+            }
+            
             /// Dismiss
             SVProgressHUD.dismiss()
             }.catch { error in
@@ -112,6 +125,10 @@ class ChatViewController: NMessengerViewController {
         /// Convesation delegate
         let conversationMan = ConversationManager.shared
         conversationMan?.delegate = self
+        
+        /// Chat Action Container Layout
+        view.addSubview(chatActionContainerView)
+        chatActionContainerView.delegate = self
     }
     
     // MARK: - Initial setup
@@ -195,5 +212,37 @@ extension ChatViewController: ConversationManagerDelegate {
         
         /// Update UI
         postText(messageNode)
+    }
+}
+
+// MARK: - ChatActionContainerViewDelegate
+extension ChatViewController: ChatActionContainerViewDelegate {
+    
+    /// Called when action selected
+    func containerView(_ containerView: ChatActionContainerView, selectedAction: QuickAction) {
+        
+    }
+    
+    /// Called when reply selected
+    func containerView(_ containerView: ChatActionContainerView, selectedReply: QuickReply) {
+        
+    }
+    
+    /// Called when type changed to visible
+    func containerView(_ containerView: ChatActionContainerView, changedTo type: ChatActionContainerViewType) {
+        
+        UIView.animate(withDuration: 0.2) {
+        
+            /// Chat Action container layout
+            self.chatActionContainerView.snp.updateConstraints { maker in
+                maker.bottom.equalTo(-self.inputBarView.frame.height)
+                maker.left.equalTo(self.view)
+                maker.right.equalTo(self.view)
+                maker.height.equalTo(self.chatActionContainerView.contentHeight)
+            }
+        }
+        
+        print("CHANGED TO")
+        print(type)
     }
 }

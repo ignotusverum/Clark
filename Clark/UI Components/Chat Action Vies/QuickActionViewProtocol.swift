@@ -27,7 +27,7 @@ extension QuickActionViewProtocol {
     func generateCollection()-> UICollectionView {
         
         /// Layout
-        let layout = UICollectionViewFlowLayout()
+        let layout = CenterAlignedCollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
         layout.minimumLineSpacing = 8
@@ -38,7 +38,7 @@ extension QuickActionViewProtocol {
         /// Collection view
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.clear
         
         return collectionView
     }

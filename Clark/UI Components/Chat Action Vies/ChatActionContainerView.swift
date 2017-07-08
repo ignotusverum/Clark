@@ -21,6 +21,9 @@ protocol ChatActionContainerViewDelegate {
     
     /// Called when reply selected
     func containerView(_ containerView: ChatActionContainerView, selectedReply: QuickReply)
+    
+    /// Called when type changed to visible
+    func containerView(_ containerView: ChatActionContainerView, changedTo type: ChatActionContainerViewType)
 }
 
 class ChatActionContainerView: UIView, QuickActionViewProtocol {
@@ -34,11 +37,21 @@ class ChatActionContainerView: UIView, QuickActionViewProtocol {
             
             /// Reload data
             collectionView.reloadData()
+            
+            if type != .none {
+                /// Delegate callback
+                delegate?.containerView(self, changedTo: type)
+            }
         }
     }
     
+    /// Content height
+    var contentHeight: CGFloat {
+        return type == .none ? 0 : 80
+    }
+    
     /// View type
-    var type: ChatActionContainerViewType!
+    var type: ChatActionContainerViewType! = .none
     
     /// Delegate
     var delegate: ChatActionContainerViewDelegate?
@@ -75,6 +88,18 @@ class ChatActionContainerView: UIView, QuickActionViewProtocol {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        /// Collection layout
+        collectionView.snp.updateConstraints { maker in
+            maker.top.equalTo(self)
+            maker.bottom.equalTo(self)
+            maker.left.equalTo(self)
+            maker.right.equalTo(self)
+        }
+    }
 }
 
 // MARK: - CollectionView Datasource
@@ -84,7 +109,7 @@ extension ChatActionContainerView: UICollectionViewDelegateFlowLayout {
         let action = message.quickReplies[indexPath.row]
         let body = NSAttributedString(string: action.body, attributes: [NSFontAttributeName: UIFont.AvenirNextRegular(size: 17)])
         
-        return CGSize(width: body.widthWithConstrainedHeight(35) + 12, height: 35)
+        return CGSize(width: body.widthWithConstrainedHeight(35) + 24, height: 35)
     }
 }
 
@@ -117,7 +142,7 @@ extension ChatActionContainerView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)-> Int {
-        return type == .action ? message.quickActions.count : type == .reply ? message.quickReplies.count : 0
+        return type == .none ? 0 : type == .action ? message.quickActions.count : type == .reply ? message.quickReplies.count : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)-> UICollectionViewCell {

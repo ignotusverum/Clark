@@ -147,6 +147,8 @@
 		F50C334E1F0D544400905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
+		F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */; };
+		F51727771F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */; };
 		F5582BD91F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
 		F5582BDA1F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
 		F5582BDC1F0EA52800A180A0 /* AlrertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */; };
@@ -264,6 +266,7 @@
 		F50C33401F0D541B00905F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F50C33521F0D544400905F17 /* Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51727711F1078D0002573E0 /* ChatActionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatActionContainerView.swift; sourceTree = "<group>"; };
+		F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlrertHelper.swift; sourceTree = "<group>"; };
 		F5582BDF1F0EA9DE00A180A0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -638,6 +641,14 @@
 			path = Clark;
 			sourceTree = "<group>";
 		};
+		F51727741F109349002573E0 /* Collection Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */,
+			);
+			path = "Collection Layouts";
+			sourceTree = "<group>";
+		};
 		F5582BDE1F0EA9CA00A180A0 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -675,6 +686,7 @@
 		F5582BF11F0EC57800A180A0 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				F51727741F109349002573E0 /* Collection Layouts */,
 				F5A524FD1F10777B00292C1E /* Chat Action Views */,
 				F5582BF41F0EC5B000A180A0 /* Collection Cells */,
 			);
@@ -1059,6 +1071,7 @@
 				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */,
+				F51727771F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
 				F5A524EE1F1067F800292C1E /* QuickActionCellProtocol.swift in Sources */,
 				F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */,
 				F5059ADD1F0D6544009DFF0B /* _Message.swift in Sources */,
@@ -1128,6 +1141,7 @@
 				F5582BE31F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */,
 				F5C7B72E1F0FFA8A005EFC3F /* QuickAction.swift in Sources */,
 				F5059B671F0D724A009DFF0B /* Analytics.swift in Sources */,
+				F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
 				F5059AFD1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B181F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE21F0D6544009DFF0B /* _Student.swift in Sources */,

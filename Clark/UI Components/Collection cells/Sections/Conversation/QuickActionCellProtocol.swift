@@ -23,6 +23,7 @@ extension QuickActionCellProtocol {
         let label = UILabel()
         
         label.numberOfLines = 1
+        label.textAlignment = .center
         label.textColor = UIColor.white
         label.font = UIFont.AvenirNextRegular(size: 17)
         
