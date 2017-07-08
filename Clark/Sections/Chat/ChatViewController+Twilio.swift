@@ -11,8 +11,30 @@ import Foundation
 import NMessenger
 import PromiseKit
 import AsyncDisplayKit
+import EZSwiftExtensions
 
 extension ChatViewController {
+    
+    /// Attributes for Clark debugging
+    var globalAttributes: [String:Any]  {
+        
+        let serverString = HostName == "Dev" ? "qa" : "production"
+        
+        let build = ez.appBuild!
+        let version = ez.appVersion!
+        
+        let newAttributes: [String:Any] = ["data_environment":serverString,
+                                          "build":build,
+                                          "version":version,
+                                          "os":UIDevice.current.systemVersion,
+                                          "screen_size":"\(UIScreen.main.bounds.size)",
+            "time_zone":TimeZone.current.identifier,
+            "region":Locale.current.regionCode ?? "unknown",
+            "language":Locale.current.languageCode ?? "unknown",
+            "tempId": UUID().uuidString]
+        
+        return ["device_data": newAttributes]
+    }
     
     /// Fetch messages for NMMessager
     ///
@@ -102,6 +124,22 @@ extension ChatViewController {
     }
     
     // MARK: - Utilities
+    /// Send message
+    func sendMessage(_ body: String) {
+        
+        /// Check if length > 0
+        guard body.length > 0 else {
+            return
+        }
+        
+        /// Send to channel
+        let msg = channel?.messages.createMessage(withBody: body)
+        
+        /// Set attributes + send message
+        msg?.setAttributes(globalAttributes, completion: { result in
+            self.channel?.messages.send(msg) { result in }
+        })
+    }
     
     /// Post text
     func postText(_ text: String, isIncoming: Bool) {

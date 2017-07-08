@@ -276,8 +276,7 @@ extension ChatViewController: ChatInputBarDelegate {
         }
         
         /// Send to channel
-        let msg = channel?.messages.createMessage(withBody: sendText)
-        channel?.messages.send(msg) { result in }
+        sendMessage(sendText)
     }
 }
 
@@ -294,8 +293,7 @@ extension ChatViewController: ChatActionContainerViewDelegate {
     func containerView(_ containerView: ChatActionContainerView, selectedReply: QuickReply, message: Message) {
         
         /// Send to channel
-        let msg = channel?.messages.createMessage(withBody: selectedReply.body)
-        channel?.messages.send(msg) { result in }
+        sendMessage(selectedReply.body)
     }
     
     /// Called when type changed to visible
