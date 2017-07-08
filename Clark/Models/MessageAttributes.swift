@@ -543,27 +543,3 @@ public struct StripeInfo {
         self.stripeError = attributes["stripe_api_error"] as? String
     }
 }
-
-// MARK: - Carousel
-
-enum CarouselType:String {
-    case image = "image"
-    case progressReport = "progress_report"
-    case paymentRecord = "payment_record"
-}
-
-public struct CarouselItem {
-    let type:CarouselType
-    var imageURL:URL?
-    
-    init?(attributes:[String:Any]) {
-        guard let typeString = attributes["type"] as? String,
-            let type = CarouselType(rawValue: typeString) else { return nil}
-        
-        self.type = type
-        if let urlString = attributes["image_url"] as? String {
-            self.imageURL = URL(string: urlString)
-        }
-        
-    }
-}

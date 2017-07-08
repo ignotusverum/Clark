@@ -149,6 +149,8 @@
 		F516D28B1F113B5C0045903F /* TextContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2891F113B5C0045903F /* TextContentNode.swift */; };
 		F516D28D1F115FA70045903F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D28C1F115FA70045903F /* Dictionary.swift */; };
 		F516D28E1F115FA70045903F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D28C1F115FA70045903F /* Dictionary.swift */; };
+		F516D2901F1193BC0045903F /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D28F1F1193BC0045903F /* Carousel.swift */; };
+		F516D2911F1193BC0045903F /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D28F1F1193BC0045903F /* Carousel.swift */; };
 		F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */; };
@@ -276,6 +278,7 @@
 		F516D2851F1132C60045903F /* ClarkBubblesConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClarkBubblesConfiguration.swift; sourceTree = "<group>"; };
 		F516D2891F113B5C0045903F /* TextContentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextContentNode.swift; sourceTree = "<group>"; };
 		F516D28C1F115FA70045903F /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		F516D28F1F1193BC0045903F /* Carousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
 		F51727711F1078D0002573E0 /* ChatActionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatActionContainerView.swift; sourceTree = "<group>"; };
 		F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		F51727791F1096A7002573E0 /* ChatInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
@@ -802,6 +805,7 @@
 			children = (
 				F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */,
 				F5A524F31F1068E000292C1E /* QuickReply.swift */,
+				F516D28F1F1193BC0045903F /* Carousel.swift */,
 			);
 			name = "Message Parsing";
 			path = "Message parsing";
@@ -1118,6 +1122,7 @@
 				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */,
 				F51727771F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
+				F516D2911F1193BC0045903F /* Carousel.swift in Sources */,
 				F5A524EE1F1067F800292C1E /* QuickActionCellProtocol.swift in Sources */,
 				F50C33371F0D541B00905F17 /* AppDelegate.swift in Sources */,
 				F5059ADD1F0D6544009DFF0B /* _Message.swift in Sources */,
@@ -1192,6 +1197,7 @@
 				F5C7B72E1F0FFA8A005EFC3F /* QuickAction.swift in Sources */,
 				F5059B671F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
+				F516D2901F1193BC0045903F /* Carousel.swift in Sources */,
 				F5059AFD1F0D6594009DFF0B /* View.swift in Sources */,
 				F5059B181F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE21F0D6544009DFF0B /* _Student.swift in Sources */,

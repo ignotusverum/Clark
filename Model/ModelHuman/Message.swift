@@ -50,6 +50,7 @@ public struct MessageJSON {
 	static let lastSizeString = "lastSizeString"
 	static let showTypingString = "showTypingString"
     
+    static let carousel = "carousel_items"
     static let quickActions = "quick_actions"
     static let quickReplies = "quick_replies"
 }
@@ -85,6 +86,18 @@ open class Message: _Message, ImportableUniqueObject {
     /// Attributes converted to JSON
     private var attributesJSON: JSON {
         return JSON(attributes)
+    }
+    
+    // MARK: - Carousel
+    var carousel: [CarouselItem] {
+        
+        /// Safety check
+        guard let carouselItemsArray = attributesJSON[MessageJSON.carousel].array else {
+            return []
+        }
+        
+        /// Map & create carousels
+        return carouselItemsArray.flatMap { CarouselItem(attributes: $0) }
     }
     
     // MARK: - Quick actions
@@ -187,7 +200,11 @@ open class Message: _Message, ImportableUniqueObject {
         
         /// Attributes parsing
         let attributesJSON = JSON(attributes)
-         
+        
+        print("-----")
+        print(attributesJSON)
+        print("-----")
+        
         /// Blocking
         blocking = attributesJSON[MessageJSON.blocking].number ?? NSNumber(value: false)
         

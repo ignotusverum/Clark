@@ -9,6 +9,7 @@
 import UIKit
 import CoreStore
 import PromiseKit
+import SwiftyJSON
 import TwilioChatClient
 import EZSwiftExtensions
 
@@ -161,6 +162,8 @@ extension ConversationManager: TwilioChatClientDelegate {
     }
     
     func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, messageAdded message: TCHMessage!) {
+        
+        print(JSON(message.attributes()))
         
         /// Import source
         let messageUpdated: TCHMessage = message
