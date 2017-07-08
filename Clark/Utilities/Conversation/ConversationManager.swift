@@ -14,6 +14,10 @@ import EZSwiftExtensions
 
 protocol ConversationManagerDelegate {
     
+    /// Called when channel synchronized
+    func channelSynchronized(_ channel: TCHChannel)
+    
+    /// Called when message added
     func messageAdded(for channel: TCHChannel, message: Message)
 }
 
@@ -153,7 +157,7 @@ extension ConversationManager: TwilioChatClientDelegate {
     
     @objc(chatClient:channel:synchronizationStatusUpdated:) func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, synchronizationStatusUpdated status: TCHChannelSynchronizationStatus) {
         // Pass only fully synchronized channel
-        
+        delegate?.channelSynchronized(channel)
     }
     
     func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, messageAdded message: TCHMessage!) {

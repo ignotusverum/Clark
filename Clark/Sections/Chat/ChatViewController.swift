@@ -25,6 +25,9 @@ class ChatViewController: NMessengerViewController {
     /// Last added group
     var lastGroup: MessageGroup?
     
+    /// Current channel
+    var channel: TCHChannel?
+    
     /// Chat Action contaner
     var chatActionContainerView = ChatActionContainerView()
     
@@ -205,6 +208,15 @@ class ChatViewController: NMessengerViewController {
 
 // MARK: - Conversation manager delegate
 extension ChatViewController: ConversationManagerDelegate {
+    
+    /// Called when channel synchronized
+    func channelSynchronized(_ channel: TCHChannel) {
+        
+        //// Current channel
+        self.channel = channel
+    }
+    
+    /// Called when message added to channel
     internal func messageAdded(for channel: TCHChannel, message: Message) {
         
         // Set all messages as consumed
@@ -212,6 +224,9 @@ extension ChatViewController: ConversationManagerDelegate {
         
         // Text node params
         let textContentNode = TextContentNode(textMessageString: message.body!, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
+        
+        /// Configur fonts
+        textContentNode.configure()
         
         /// Create mesasge node
         let messageNode = MessageNode(content: textContentNode)
@@ -229,7 +244,10 @@ extension ChatViewController: ConversationManagerDelegate {
         messageTimestamp = Message.createTimestamp(message, previousMessage: lastMessage)
         if let text = messageTimestamp.messageSentText, text.length > 0 {
             
-            messengerView.addMessage(messageTimestamp, scrollsToMessage: false)
+            let newTimestampGroup = self.createMessageGroup()
+            newTimestampGroup.addMessageToGroup(messageTimestamp, completion: nil)
+            
+            messengerView.addMessage(newTimestampGroup, scrollsToMessage: true)
         }
         
         /// Update insets
@@ -240,6 +258,26 @@ extension ChatViewController: ConversationManagerDelegate {
         
         /// Update UI
         postText(messageNode)
+        
+        if lastGroup == nil || lastGroup?.isIncomingMessage == !message.isReceiver {
+            
+            /// New Group
+            lastGroup = createMessageGroup()
+            
+            //add avatar if incoming message
+            if message.isReceiver {
+                lastGroup?.avatarNode = self.createAvatar()
+            }
+            
+            lastGroup?.isIncomingMessage = message.isReceiver
+            messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: false)
+            messengerView.addMessage(lastGroup!, scrollsToMessage: true, withAnimation: message.isReceiver ? .left : .right)
+            
+        }
+        else {
+            
+            messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: true)
+        }
     }
 }
 
@@ -267,6 +305,7 @@ extension ChatViewController: ChatActionContainerViewDelegate {
     func containerView(_ containerView: ChatActionContainerView, selectedReply: QuickReply, message: Message) {
         
         print(selectedReply)
+        let _ = channel?.messages.createMessage(withBody: selectedReply.body)
     }
     
     /// Called when type changed to visible

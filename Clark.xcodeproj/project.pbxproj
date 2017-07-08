@@ -147,6 +147,8 @@
 		F50C334E1F0D544400905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F516D2861F1132C60045903F /* ClarkBubblesConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2851F1132C60045903F /* ClarkBubblesConfiguration.swift */; };
 		F516D2871F1133100045903F /* ClarkBubblesConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2851F1132C60045903F /* ClarkBubblesConfiguration.swift */; };
+		F516D28A1F113B5C0045903F /* TextContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2891F113B5C0045903F /* TextContentNode.swift */; };
+		F516D28B1F113B5C0045903F /* TextContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2891F113B5C0045903F /* TextContentNode.swift */; };
 		F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */; };
@@ -272,6 +274,7 @@
 		F50C33401F0D541B00905F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F50C33521F0D544400905F17 /* Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F516D2851F1132C60045903F /* ClarkBubblesConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClarkBubblesConfiguration.swift; sourceTree = "<group>"; };
+		F516D2891F113B5C0045903F /* TextContentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextContentNode.swift; sourceTree = "<group>"; };
 		F51727711F1078D0002573E0 /* ChatActionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatActionContainerView.swift; sourceTree = "<group>"; };
 		F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		F51727791F1096A7002573E0 /* ChatInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
@@ -399,6 +402,7 @@
 		F5059AE61F0D6562009DFF0B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F516D2881F113B450045903F /* Bubbles */,
 				F5C7B7281F0FDE49005EFC3F /* Twilio */,
 				F5059B8A1F0D7924009DFF0B /* S3 */,
 				F5059B7C1F0D74F8009DFF0B /* Route Handlers */,
@@ -656,6 +660,15 @@
 				F516D2851F1132C60045903F /* ClarkBubblesConfiguration.swift */,
 			);
 			path = Bubbles;
+			sourceTree = "<group>";
+		};
+		F516D2881F113B450045903F /* Bubbles */ = {
+			isa = PBXGroup;
+			children = (
+				F516D2891F113B5C0045903F /* TextContentNode.swift */,
+			);
+			name = Bubbles;
+			path = Bubble;
 			sourceTree = "<group>";
 		};
 		F51727741F109349002573E0 /* Collection Layouts */ = {
@@ -1128,6 +1141,7 @@
 				F5059AFA1F0D6594009DFF0B /* JSON.swift in Sources */,
 				F5059AF21F0D6594009DFF0B /* Button.swift in Sources */,
 				F5059B7F1F0D7510009DFF0B /* RouteHandler.swift in Sources */,
+				F516D28B1F113B5C0045903F /* TextContentNode.swift in Sources */,
 				F5059B3E1F0D6A63009DFF0B /* Config.swift in Sources */,
 				F5059AD51F0D6544009DFF0B /* Model.swift in Sources */,
 				F5059B0D1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
@@ -1200,6 +1214,7 @@
 				F5059AF91F0D6594009DFF0B /* JSON.swift in Sources */,
 				F5059AF11F0D6594009DFF0B /* Button.swift in Sources */,
 				F5059B7E1F0D7510009DFF0B /* RouteHandler.swift in Sources */,
+				F516D28A1F113B5C0045903F /* TextContentNode.swift in Sources */,
 				F5059B3D1F0D6A63009DFF0B /* Config.swift in Sources */,
 				F5059AD41F0D6544009DFF0B /* Model.swift in Sources */,
 				F5059B0C1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
