@@ -67,8 +67,11 @@ class ChatViewController: NMessengerViewController {
         /// Initial controller setup
         initialSetup()
         
-        /// Converastion setup
+        /// Conversation UI setup
         conversationUISetup()
+        
+        /// Fetch messages
+        fetchMessages()
         
         /// Keyobard notifications
         addKeyboardWillShowNotification()
@@ -223,6 +226,12 @@ extension ChatViewController: ConversationManagerDelegate {
     
     /// Called when message added to channel
     internal func messageAdded(for channel: TCHChannel, message: Message) {
+        
+        /// Hide action
+        if !message.isReceiver {
+            
+            chatActionContainerView.type = .none
+        }
         
         /// Update datasource
         messages.append(message)
