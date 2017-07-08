@@ -16,6 +16,9 @@ class ChatViewController: NMessengerViewController {
     /// Paging size.
     private let pageSize = 20
     
+    /// Chat input
+    var chatInputBar: ChatInputBar!
+    
     /// Keyboard height
     fileprivate var keyboardHeight: CGFloat = 0
     
@@ -82,6 +85,7 @@ class ChatViewController: NMessengerViewController {
         
         /// Input delegate
         inputBar.delegate = self
+        self.chatInputBar = inputBar
         
         return inputBar
     }
@@ -115,9 +119,16 @@ class ChatViewController: NMessengerViewController {
                 }
             }
             
+            let userID = Config.userID ?? ""
             /// Update action view
-            if let lastMessage = messages.last {
+            let lastMessage = messages.filter { $0.author != userID }.last
+            if let lastMessage = lastMessage {
+                
+                /// Update Action controller with message
                 self.chatActionContainerView.message = lastMessage
+                
+                /// Update imput with message
+                self.chatInputBar.isEnabled = lastMessage.blocking?.boolValue ?? false
             }
             
             /// Dismiss

@@ -38,6 +38,19 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
     //CGFloat to the fine the number of rows a user can type
     open var numberOfRows: CGFloat = 5
     
+    var isEnabled: Bool = true {
+        didSet {
+            
+            /// Enable actions
+            isUserInteractionEnabled = isEnabled
+            
+            /// Change UI
+            UIView.animate(withDuration: 0.2) { 
+                self.alpha = self.isEnabled ? 1 : 0.5
+            }
+        }
+    }
+    
     //String as placeholder text in input view
     open var inputTextViewPlaceholder: String = "Type a message..." {
         willSet(newVal) {
