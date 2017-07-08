@@ -70,9 +70,6 @@ class ChatViewController: NMessengerViewController {
         /// Converastion setup
         conversationUISetup()
         
-        /// Fetch messages
-        fetchMessages()
-        
         /// Keyobard notifications
         addKeyboardWillShowNotification()
         addKeyboardWillHideNotification()
@@ -219,6 +216,9 @@ extension ChatViewController: ConversationManagerDelegate {
         
         //// Current channel
         self.channel = channel
+        
+        /// Fetch messages
+        fetchMessages()
     }
     
     /// Called when message added to channel
