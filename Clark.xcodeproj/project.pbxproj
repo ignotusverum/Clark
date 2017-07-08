@@ -145,6 +145,8 @@
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F50C334A1F0D544400905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C334E1F0D544400905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
+		F516D2861F1132C60045903F /* ClarkBubblesConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2851F1132C60045903F /* ClarkBubblesConfiguration.swift */; };
+		F516D2871F1133100045903F /* ClarkBubblesConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2851F1132C60045903F /* ClarkBubblesConfiguration.swift */; };
 		F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */; };
@@ -269,6 +271,7 @@
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F50C33401F0D541B00905F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F50C33521F0D544400905F17 /* Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F516D2851F1132C60045903F /* ClarkBubblesConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClarkBubblesConfiguration.swift; sourceTree = "<group>"; };
 		F51727711F1078D0002573E0 /* ChatActionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatActionContainerView.swift; sourceTree = "<group>"; };
 		F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		F51727791F1096A7002573E0 /* ChatInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
@@ -647,6 +650,14 @@
 			path = Clark;
 			sourceTree = "<group>";
 		};
+		F516D2841F1132B30045903F /* Bubbles */ = {
+			isa = PBXGroup;
+			children = (
+				F516D2851F1132C60045903F /* ClarkBubblesConfiguration.swift */,
+			);
+			path = Bubbles;
+			sourceTree = "<group>";
+		};
 		F51727741F109349002573E0 /* Collection Layouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -701,6 +712,7 @@
 		F5582BF11F0EC57800A180A0 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				F516D2841F1132B30045903F /* Bubbles */,
 				F51727781F109693002573E0 /* Input Bar */,
 				F51727741F109349002573E0 /* Collection Layouts */,
 				F5A524FD1F10777B00292C1E /* Chat Action Views */,
@@ -1065,6 +1077,7 @@
 				F5A524F91F106B8400292C1E /* QuickActionViewProtocol.swift in Sources */,
 				F5059B171F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */,
 				F5059ADB1F0D6544009DFF0B /* Tutor.swift in Sources */,
+				F516D2861F1132C60045903F /* ClarkBubblesConfiguration.swift in Sources */,
 				F5582BEC1F0EBD2E00A180A0 /* ViewController.swift in Sources */,
 				F5059B2E1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
 				F5059B211F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,
@@ -1136,6 +1149,7 @@
 				F5A524F81F106B8400292C1E /* QuickActionViewProtocol.swift in Sources */,
 				F5059B161F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */,
 				F5059ADA1F0D6544009DFF0B /* Tutor.swift in Sources */,
+				F516D2871F1133100045903F /* ClarkBubblesConfiguration.swift in Sources */,
 				F56A45271F0F3234000D19DB /* TCHMessage.swift in Sources */,
 				F5059B2D1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
 				F5059B201F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,

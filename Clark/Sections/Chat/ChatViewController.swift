@@ -126,7 +126,7 @@ class ChatViewController: NMessengerViewController {
     private func conversationUISetup() {
         
         /// Bubble UI
-        sharedBubbleConfiguration = StandardBubbleConfiguration()
+        sharedBubbleConfiguration = ClarkBubblesConfiguration()
         
         /// Messenger view
         messengerView.delegate = self

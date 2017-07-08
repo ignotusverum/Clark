@@ -35,7 +35,13 @@ extension ChatViewController {
                     if message.body.length > 0 {
                         
                         // Generate text ode
-                        let textContentNode = TextContentNode(textMessageString: message.body!, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
+                        let textContentNode = TextContentNode(textMessageString: message.body!, currentViewController: self, bubbleConfiguration: ClarkBubblesConfiguration())
+                        
+                        textContentNode.incomingTextFont = UIFont.AvenirNextRegular(size: 17)
+                        textContentNode.outgoingTextFont = UIFont.AvenirNextRegular(size: 17)
+                        
+                        textContentNode.incomingTextColor = UIColor.white
+                        textContentNode.outgoingTextColor = UIColor.white
                         
                         // Create empty timestamp
                         var messageTimestamp = MessageSentIndicator()
