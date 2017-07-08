@@ -62,4 +62,8 @@ extension UIColor {
     open class var carara: UIColor {
         return ColorWith(red: 235, green: 233, blue: 225, alpha: 1)
     }
+    
+    open class var messageIncomingColor: UIColor {
+        return ColorWith(red: 68, green: 68, blue: 68, alpha: 1)
+    }
 }

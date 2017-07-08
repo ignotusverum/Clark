@@ -36,11 +36,11 @@ extension ChatViewController {
                         
                         // Generate text ode
                         let textContentNode = TextContentNode(textMessageString: message.body!, currentViewController: self, bubbleConfiguration: ClarkBubblesConfiguration())
+                                                
+                        textContentNode.incomingTextFont = UIFont.AvenirNextRegular(size: 15)
+                        textContentNode.outgoingTextFont = UIFont.AvenirNextRegular(size: 15)
                         
-                        textContentNode.incomingTextFont = UIFont.AvenirNextRegular(size: 17)
-                        textContentNode.outgoingTextFont = UIFont.AvenirNextRegular(size: 17)
-                        
-                        textContentNode.incomingTextColor = UIColor.white
+                        textContentNode.incomingTextColor = UIColor.messageIncomingColor
                         textContentNode.outgoingTextColor = UIColor.white
                         
                         // Create empty timestamp
