@@ -10,6 +10,7 @@ import UIKit
 import CoreStore
 import PromiseKit
 import TwilioChatClient
+import EZSwiftExtensions
 
 protocol ConversationManagerDelegate {
     
@@ -93,8 +94,11 @@ class ConversationManager: NSObject {
                     return
                 }
                 
-                /// Synchronize channel
-                fulfill(channel)
+                ez.runThisAfterDelay(seconds: 0.5, after: { 
+                  
+                    /// Synchronize channel
+                    fulfill(channel)
+                })
             })
         }
     }
@@ -116,10 +120,6 @@ class ConversationManager: NSObject {
         var numberOfMessageToBeLoaded = desiredNumberOfMessagesToLoad //Number of messages that are to be loaded.
         
         return channel.getMessageCount().then { count-> Promise<[TCHMessage]> in
-            
-            if channel.messages == nil {
-                return Promise(value: [])
-            }
             
             // Setting messages to consumed
             channel.messages.setAllMessagesConsumed()
@@ -153,6 +153,7 @@ extension ConversationManager: TwilioChatClientDelegate {
     
     @objc(chatClient:channel:synchronizationStatusUpdated:) func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, synchronizationStatusUpdated status: TCHChannelSynchronizationStatus) {
         // Pass only fully synchronized channel
+        
     }
     
     func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, messageAdded message: TCHMessage!) {

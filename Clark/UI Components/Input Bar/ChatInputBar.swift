@@ -9,28 +9,35 @@
 import Foundation
 import NMessenger
 
+protocol ChatInputBarDelegate {
+    
+    /// Called when bar text changed
+    func inputBar(_ inputBar:ChatInputBar, textChanged: String)
+}
+
 class ChatInputBar: InputBarView, UITextViewDelegate {
     
-    //@IBOutlet for InputBarView
+    /// Delegate
+    var delegate: ChatInputBarDelegate?
+    
+    /// InputBarView
     @IBOutlet open weak var inputBarView: UIView!
     
-    //@IBOutlet for send button
+    /// Send button
     @IBOutlet open weak var sendButton: UIButton!
     
     //@IBOutlets NSLayoutConstraint input area view height
     @IBOutlet open weak var textInputAreaViewHeight: NSLayoutConstraint!
     
-    //@IBOutlets NSLayoutConstraint input view height
+    // NSLayoutConstraint input view height
     @IBOutlet open weak var textInputViewHeight: NSLayoutConstraint!
     
     //CGFloat to the fine the number of rows a user can type
     open var numberOfRows: CGFloat = 5
     
     //String as placeholder text in input view
-    open var inputTextViewPlaceholder: String = "Type a message..."
-        {
-        willSet(newVal)
-        {
+    open var inputTextViewPlaceholder: String = "Type a message..." {
+        willSet(newVal) {
             self.textInputView.text = newVal
         }
     }
@@ -151,6 +158,9 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
         textInputViewHeight.constant = newFrame.size.height
         
         textInputAreaViewHeight.constant = newFrame.size.height+10
+        
+        /// Pass text changed event
+        delegate?.inputBar(self, textChanged: textView.text)
     }
     
     //MARK: TextView helper methods
@@ -159,7 +169,7 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
      */
     fileprivate func addInputSelectorPlaceholder() {
         self.textInputView.text = self.inputTextViewPlaceholder
-        self.textInputView.textColor = UIColor.lightGray
+        self.textInputView.textColor = UIColor.trinidad.withAlphaComponent(0.4)
     }
     
     //MARK: @IBAction selectors

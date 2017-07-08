@@ -63,11 +63,21 @@ class ChatViewController: NMessengerViewController {
         
         /// Fetch messages
         fetchMessages()
+        
+        /// Keyobard notifications
+        addKeyboardWillShowNotification()
+        addKeyboardWillHideNotification()
     }
     
     // MARK: - Chat input bar
     override func getInputBar()-> InputBarView {
-        return ChatInputBar(controller: self)
+        
+        let inputBar = ChatInputBar(controller: self)
+        
+        /// Input delegate
+        inputBar.delegate = self
+        
+        return inputBar
     }
     
     // MARK: - Datasource fetch
@@ -173,6 +183,19 @@ class ChatViewController: NMessengerViewController {
     fileprivate func postText(_ message: MessageNode) {
         messengerView.addMessage(message, scrollsToMessage: true)
     }
+    
+    // MARK: - Keyboard notifications
+    override func keyboardWillShowWithFrame(_ frame: CGRect) {
+        
+        /// Update chat action position
+        updateChatActionViewPosition(frame.height)
+    }
+    
+    override func keyboardWillHideWithFrame(_ frame: CGRect) {
+        
+        /// Update chat action position
+        updateChatActionViewPosition()
+    }
 }
 
 // MARK: - Conversation manager delegate
@@ -215,6 +238,17 @@ extension ChatViewController: ConversationManagerDelegate {
     }
 }
 
+// MARK: - ChatInputBarDelegate
+extension ChatViewController: ChatInputBarDelegate {
+    
+    /// Called when bar text changed
+    func inputBar(_ inputBar:ChatInputBar, textChanged: String) {
+        
+        /// Update position
+        updateChatActionViewPosition()
+    }
+}
+
 // MARK: - ChatActionContainerViewDelegate
 extension ChatViewController: ChatActionContainerViewDelegate {
     
@@ -233,15 +267,29 @@ extension ChatViewController: ChatActionContainerViewDelegate {
     /// Called when type changed to visible
     func containerView(_ containerView: ChatActionContainerView, changedTo type: ChatActionContainerViewType) {
         
+        /// Update position
+        updateChatActionViewPosition()
+    }
+    
+    /// Update actionContainer based on input bar position
+    func updateChatActionViewPosition(_ yPos: CGFloat = 0) {
+        
+        /// Update table view inset
+        messengerView.messengerNode.view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: chatActionContainerView.contentHeight, right: 0)
+        
+        /// Animate layout
         UIView.animate(withDuration: 0.2) {
         
             /// Chat Action container layout
             self.chatActionContainerView.snp.updateConstraints { maker in
-                maker.bottom.equalTo(-self.inputBarView.frame.height)
+                maker.bottom.equalTo(-self.inputBarView.frame.height - yPos)
                 maker.left.equalTo(self.view)
                 maker.right.equalTo(self.view)
                 maker.height.equalTo(self.chatActionContainerView.contentHeight)
             }
+            
+            /// Layout update
+            self.view.layoutIfNeeded()
         }
     }
 }
