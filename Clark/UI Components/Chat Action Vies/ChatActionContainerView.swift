@@ -17,10 +17,10 @@ enum ChatActionContainerViewType {
 
 protocol ChatActionContainerViewDelegate {
     /// Called when action selected
-    func containerView(_ containerView: ChatActionContainerView, selectedAction: QuickAction)
+    func containerView(_ containerView: ChatActionContainerView, selectedAction: QuickAction, message: Message)
     
     /// Called when reply selected
-    func containerView(_ containerView: ChatActionContainerView, selectedReply: QuickReply)
+    func containerView(_ containerView: ChatActionContainerView, selectedReply: QuickReply, message: Message)
     
     /// Called when type changed to visible
     func containerView(_ containerView: ChatActionContainerView, changedTo type: ChatActionContainerViewType)
@@ -122,13 +122,13 @@ extension ChatActionContainerView: UICollectionViewDelegate {
             
             /// Pass selected reply through delegate
             let reply = message.quickReplies[indexPath.row]
-            delegate?.containerView(self, selectedReply: reply)
+            delegate?.containerView(self, selectedReply: reply, message: message)
         }
         else if type == .action {
             
             /// Pass selected action through delegate
             let action = message.quickActions[indexPath.row]
-            delegate?.containerView(self, selectedAction: action)
+            delegate?.containerView(self, selectedAction: action, message: message)
         }
     }
 }

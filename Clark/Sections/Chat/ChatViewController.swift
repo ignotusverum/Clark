@@ -219,13 +219,15 @@ extension ChatViewController: ConversationManagerDelegate {
 extension ChatViewController: ChatActionContainerViewDelegate {
     
     /// Called when action selected
-    func containerView(_ containerView: ChatActionContainerView, selectedAction: QuickAction) {
+    func containerView(_ containerView: ChatActionContainerView, selectedAction: QuickAction, message: Message) {
         
+        print(selectedAction)
     }
     
     /// Called when reply selected
-    func containerView(_ containerView: ChatActionContainerView, selectedReply: QuickReply) {
+    func containerView(_ containerView: ChatActionContainerView, selectedReply: QuickReply, message: Message) {
         
+        print(selectedReply)
     }
     
     /// Called when type changed to visible
