@@ -1,5 +1,5 @@
 //
-//  QuickActionView.swift
+//  ChatActionContainerView.swift
 //  Clark
 //
 //  Created by Vladislav Zagorodnyuk on 7/7/17.
@@ -7,26 +7,41 @@
 //
 
 import UIKit
-import Foundation
 
-protocol QuickActionViewDelegate {
-    /// Called when action selected
-    func actionView(_ actionView: QuickActionView, selectedAction: QuickAction)
+enum ChatActionContainerViewType {
+    case action
+    case reply
+    
+    case none
 }
 
-class QuickActionView: UIView, QuickActionViewProtocol {
+protocol ChatActionContainerViewDelegate {
+    /// Called when action selected
+    func containerView(_ containerView: ChatActionContainerView, selectedAction: QuickAction)
     
+    /// Called when reply selected
+    func containerView(_ containerView: ChatActionContainerView, selectedReply: QuickReply)
+}
+
+class ChatActionContainerView: UIView, QuickActionViewProtocol {
+
     /// Message
-    var message: Message {
+    var message: Message! {
         didSet {
             
-            /// Hide view if no quick actions
-            isHidden = message.quickActions.count == 0
+            /// Type check
+            type = message.quickActions.count > 0 ? .action : (message.quickReplies.count > 0 ? .reply : .none)
+            
+            /// Reload data
+            collectionView.reloadData()
         }
     }
     
+    /// View type
+    var type: ChatActionContainerViewType!
+    
     /// Delegate
-    var delegate: QuickActionViewDelegate?
+    var delegate: ChatActionContainerViewDelegate?
     
     /// Is open
     var isOpen: Bool = false
@@ -35,10 +50,11 @@ class QuickActionView: UIView, QuickActionViewProtocol {
     lazy var collectionView: UICollectionView = self.generateCollection()
     
     // MARK: - Initialization
-    init(message: Message) {
-        self.message = message
-        
+    init() {
         super.init(frame: .zero)
+        
+        /// custom init
+        customSetup()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,6 +65,7 @@ class QuickActionView: UIView, QuickActionViewProtocol {
     private func customSetup() {
         
         /// Register cells
+        collectionView.register(QuickReplyCollectionViewCell.self, forCellWithReuseIdentifier: "\(QuickReplyCollectionViewCell.self)")
         collectionView.register(QuickActionViewCollectionViewCell.self, forCellWithReuseIdentifier: "\(QuickActionViewCollectionViewCell.self)")
         
         /// Collection view
@@ -61,10 +78,10 @@ class QuickActionView: UIView, QuickActionViewProtocol {
 }
 
 // MARK: - CollectionView Datasource
-extension QuickActionView: UICollectionViewDelegateFlowLayout {
+extension ChatActionContainerView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath)-> CGSize {
         
-        let action = message.quickActions[indexPath.row]
+        let action = message.quickReplies[indexPath.row]
         let body = NSAttributedString(string: action.body, attributes: [NSFontAttributeName: UIFont.AvenirNextRegular(size: 17)])
         
         return CGSize(width: body.widthWithConstrainedHeight(35) + 12, height: 35)
@@ -72,18 +89,27 @@ extension QuickActionView: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - CollectionView Delegate
-extension QuickActionView: UICollectionViewDelegate {
+extension ChatActionContainerView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        /// Pass selected action through delegate
-        let action = message.quickActions[indexPath.row]
-        delegate?.actionView(self, selectedAction: action)
+        if type == .reply {
+            
+            /// Pass selected reply through delegate
+            let reply = message.quickReplies[indexPath.row]
+            delegate?.containerView(self, selectedReply: reply)
+        }
+        else if type == .action {
+            
+            /// Pass selected action through delegate
+            let action = message.quickActions[indexPath.row]
+            delegate?.containerView(self, selectedAction: action)
+        }
     }
 }
 
 // MARK: - CollectionView Datasource
-extension QuickActionView: UICollectionViewDataSource {
+extension ChatActionContainerView: UICollectionViewDataSource {
     
     /// Number of sections
     func numberOfSections(in collectionView: UICollectionView)-> Int {
@@ -91,10 +117,22 @@ extension QuickActionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)-> Int {
-        return message.quickActions.count
+        return type == .action ? message.quickActions.count : type == .reply ? message.quickReplies.count : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)-> UICollectionViewCell {
+        
+        if type == .reply {
+        
+            /// Cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(QuickReplyCollectionViewCell.self)", for: indexPath) as! QuickReplyCollectionViewCell
+            
+            /// Get reply
+            let reply = message.quickReplies[indexPath.row]
+            cell.reply = reply
+            
+            return cell
+        }
         
         /// Cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(QuickActionViewCollectionViewCell.self)", for: indexPath) as! QuickActionViewCollectionViewCell

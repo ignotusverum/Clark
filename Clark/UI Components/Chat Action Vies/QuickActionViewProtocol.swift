@@ -15,7 +15,7 @@ protocol QuickActionViewProtocol {
     var collectionView: UICollectionView { get set }
     
     /// Message
-    var message: Message { get set }
+    var message: Message! { get set }
     
     /// Check if presented
     var isOpen: Bool { get set }

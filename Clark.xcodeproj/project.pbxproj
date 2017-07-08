@@ -145,6 +145,8 @@
 		F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
 		F50C334A1F0D544400905F17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50C33361F0D541B00905F17 /* AppDelegate.swift */; };
 		F50C334E1F0D544400905F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F50C333D1F0D541B00905F17 /* Assets.xcassets */; };
+		F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
+		F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F5582BD91F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
 		F5582BDA1F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
 		F5582BDC1F0EA52800A180A0 /* AlrertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */; };
@@ -172,8 +174,6 @@
 		F5A524F51F1068E000292C1E /* QuickReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F31F1068E000292C1E /* QuickReply.swift */; };
 		F5A524F81F106B8400292C1E /* QuickActionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F71F106B8400292C1E /* QuickActionViewProtocol.swift */; };
 		F5A524F91F106B8400292C1E /* QuickActionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F71F106B8400292C1E /* QuickActionViewProtocol.swift */; };
-		F5A524FB1F106B9800292C1E /* QuickReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524FA1F106B9800292C1E /* QuickReplyView.swift */; };
-		F5A524FC1F106B9800292C1E /* QuickReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524FA1F106B9800292C1E /* QuickReplyView.swift */; };
 		F5C7B7241F0F41A5005EFC3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */; };
 		F5C7B7251F0F4213005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
 		F5C7B7261F0F421C005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -183,8 +183,6 @@
 		F5C7B72E1F0FFA8A005EFC3F /* QuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */; };
 		F5C7B7301F100434005EFC3F /* ChatViewController+Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */; };
 		F5C7B7311F100440005EFC3F /* ChatViewController+Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */; };
-		F5C7B7341F101902005EFC3F /* QuickActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7331F101902005EFC3F /* QuickActionView.swift */; };
-		F5C7B7351F101937005EFC3F /* QuickActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7331F101902005EFC3F /* QuickActionView.swift */; };
 		F5C7B7391F101C79005EFC3F /* QuickActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */; };
 		F5C7B73A1F101C7B005EFC3F /* QuickActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -265,6 +263,7 @@
 		F50C333D1F0D541B00905F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F50C33401F0D541B00905F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F50C33521F0D544400905F17 /* Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F51727711F1078D0002573E0 /* ChatActionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatActionContainerView.swift; sourceTree = "<group>"; };
 		F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlrertHelper.swift; sourceTree = "<group>"; };
 		F5582BDF1F0EA9DE00A180A0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -279,11 +278,9 @@
 		F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReplyCollectionViewCell.swift; sourceTree = "<group>"; };
 		F5A524F31F1068E000292C1E /* QuickReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReply.swift; sourceTree = "<group>"; };
 		F5A524F71F106B8400292C1E /* QuickActionViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionViewProtocol.swift; sourceTree = "<group>"; };
-		F5A524FA1F106B9800292C1E /* QuickReplyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReplyView.swift; sourceTree = "<group>"; };
 		F5C7B7291F0FDE59005EFC3F /* Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twilio.swift; sourceTree = "<group>"; };
 		F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 		F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatViewController+Twilio.swift"; sourceTree = "<group>"; };
-		F5C7B7331F101902005EFC3F /* QuickActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionView.swift; sourceTree = "<group>"; };
 		F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -678,9 +675,7 @@
 		F5582BF11F0EC57800A180A0 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
-				F5A524F71F106B8400292C1E /* QuickActionViewProtocol.swift */,
-				F5A524F61F106B6700292C1E /* Quick Reply */,
-				F5C7B7321F1018E9005EFC3F /* Quick Action */,
+				F5A524FD1F10777B00292C1E /* Chat Action Views */,
 				F5582BF41F0EC5B000A180A0 /* Collection Cells */,
 			);
 			path = "UI Components";
@@ -737,12 +732,14 @@
 			path = "Quick Response";
 			sourceTree = "<group>";
 		};
-		F5A524F61F106B6700292C1E /* Quick Reply */ = {
+		F5A524FD1F10777B00292C1E /* Chat Action Views */ = {
 			isa = PBXGroup;
 			children = (
-				F5A524FA1F106B9800292C1E /* QuickReplyView.swift */,
+				F51727711F1078D0002573E0 /* ChatActionContainerView.swift */,
+				F5A524F71F106B8400292C1E /* QuickActionViewProtocol.swift */,
 			);
-			path = "Quick Reply";
+			name = "Chat Action Views";
+			path = "Chat Action Vies";
 			sourceTree = "<group>";
 		};
 		F5C7B7271F0FD836005EFC3F /* Message Parsing */ = {
@@ -761,14 +758,6 @@
 				F5C7B7291F0FDE59005EFC3F /* Twilio.swift */,
 			);
 			path = Twilio;
-			sourceTree = "<group>";
-		};
-		F5C7B7321F1018E9005EFC3F /* Quick Action */ = {
-			isa = PBXGroup;
-			children = (
-				F5C7B7331F101902005EFC3F /* QuickActionView.swift */,
-			);
-			path = "Quick Action";
 			sourceTree = "<group>";
 		};
 		F5C7B7361F101C46005EFC3F /* Conversation */ = {
@@ -1059,6 +1048,7 @@
 				F5059B111F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
 				F5059B281F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
 				F5582BE91F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */,
+				F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */,
 				F5059B641F0D704C009DFF0B /* ConversationManager.swift in Sources */,
 				F5059B151F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
 				F5582BE11F0EA9DE00A180A0 /* ChatViewController.swift in Sources */,
@@ -1091,9 +1081,7 @@
 				F5059AF81F0D6594009DFF0B /* Font.swift in Sources */,
 				F5059AE11F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AFA1F0D6594009DFF0B /* JSON.swift in Sources */,
-				F5C7B7341F101902005EFC3F /* QuickActionView.swift in Sources */,
 				F5059AF21F0D6594009DFF0B /* Button.swift in Sources */,
-				F5A524FC1F106B9800292C1E /* QuickReplyView.swift in Sources */,
 				F5059B7F1F0D7510009DFF0B /* RouteHandler.swift in Sources */,
 				F5059B3E1F0D6A63009DFF0B /* Config.swift in Sources */,
 				F5059AD51F0D6544009DFF0B /* Model.swift in Sources */,
@@ -1129,6 +1117,7 @@
 				F5C7B7311F100440005EFC3F /* ChatViewController+Twilio.swift in Sources */,
 				F56A452B1F0F4185000D19DB /* Date.swift in Sources */,
 				F5059AE41F0D6544009DFF0B /* _Tutor.swift in Sources */,
+				F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */,
 				F5059B8C1F0D7940009DFF0B /* S3Manager.swift in Sources */,
 				F5059B101F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
 				F5059B271F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
@@ -1161,9 +1150,7 @@
 				F5059AF71F0D6594009DFF0B /* Font.swift in Sources */,
 				F5059AE01F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AF91F0D6594009DFF0B /* JSON.swift in Sources */,
-				F5C7B7351F101937005EFC3F /* QuickActionView.swift in Sources */,
 				F5059AF11F0D6594009DFF0B /* Button.swift in Sources */,
-				F5A524FB1F106B9800292C1E /* QuickReplyView.swift in Sources */,
 				F5059B7E1F0D7510009DFF0B /* RouteHandler.swift in Sources */,
 				F5059B3D1F0D6A63009DFF0B /* Config.swift in Sources */,
 				F5059AD41F0D6544009DFF0B /* Model.swift in Sources */,

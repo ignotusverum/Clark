@@ -123,11 +123,15 @@ class ChatViewController: NMessengerViewController {
         /// Logo
         setNavigationImage(#imageLiteral(resourceName: "nav_logo"))
         
+        let config = Config.shared
+        
         /// Left item
         navigationItem.leftBarButtonItem = leftNavigationButton
+        navigationItem.leftBarButtonItem?.isEnabled = config.currentTutor != nil
         
         /// Right item
         navigationItem.rightBarButtonItem = rightNavigationButton
+        navigationItem.rightBarButtonItem?.isEnabled = config.currentTutor != nil
     }
     
     // MARK: - Actions
