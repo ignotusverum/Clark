@@ -196,6 +196,7 @@ extension ChatViewController {
     func createAvatar()-> ASImageNode {
         
         let avatar = ASImageNode()
+        avatar.image = #imageLiteral(resourceName: "empty")
         avatar.backgroundColor = UIColor.trinidad
         avatar.style.preferredSize = CGSize(width: 36, height: 36)
         avatar.layer.cornerRadius = 18
