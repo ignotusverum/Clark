@@ -1,5 +1,5 @@
 //
-//  QuickResponse.swift
+//  QuickReply.swift
 //  Clark
 //
 //  Created by Vladislav Zagorodnyuk on 7/7/17.
@@ -17,8 +17,11 @@ public enum QuickReplyType: String {
 
 struct QuickReply {
     
-    var type: QuickReplyType?
+    /// Body text
     var body: String
+    
+    /// Type
+    var type: QuickReplyType?
     
     init?(source: JSON) {
         

@@ -1,5 +1,5 @@
 //
-//  QuickActionCollectionViewCell.swift
+//  QuickReplyCollectionViewCell.swift
 //  Clark
 //
 //  Created by Vladislav Zagorodnyuk on 7/7/17.
@@ -7,15 +7,14 @@
 //
 
 import UIKit
-import Foundation
 
-class QuickActionViewCollectionViewCell: UICollectionViewCell, QuickActionCellProtocol {
-
+class QuickReplyCollectionViewCell: UICollectionViewCell, QuickActionCellProtocol {
+    
     /// Action
-    var action: QuickAction! {
+    var reply: QuickReply! {
         didSet {
             /// Set body text
-            bodyLabel.text = action.body
+            bodyLabel.text = reply.body
         }
     }
     
@@ -26,7 +25,7 @@ class QuickActionViewCollectionViewCell: UICollectionViewCell, QuickActionCellPr
         super.layoutSubviews()
         
         layer.cornerRadius = 8.0
-        backgroundColor = UIColor.dodgerBlue
+        backgroundColor = UIColor.trinidad
         
         /// Body label
         addSubview(bodyLabel)
@@ -40,3 +39,4 @@ class QuickActionViewCollectionViewCell: UICollectionViewCell, QuickActionCellPr
         }
     }
 }
+

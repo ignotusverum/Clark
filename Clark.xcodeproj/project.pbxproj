@@ -165,11 +165,15 @@
 		F56A452A1F0F3310000D19DB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45291F0F3310000D19DB /* Date.swift */; };
 		F56A452B1F0F4185000D19DB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45291F0F3310000D19DB /* Date.swift */; };
 		F5A524EE1F1067F800292C1E /* QuickActionCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */; };
-		F5A524F01F10688A00292C1E /* QuickResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524EF1F10688A00292C1E /* QuickResponseCollectionViewCell.swift */; };
-		F5A524F11F10688A00292C1E /* QuickResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524EF1F10688A00292C1E /* QuickResponseCollectionViewCell.swift */; };
+		F5A524F01F10688A00292C1E /* QuickReplyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */; };
+		F5A524F11F10688A00292C1E /* QuickReplyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */; };
 		F5A524F21F10689800292C1E /* QuickActionCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */; };
-		F5A524F41F1068E000292C1E /* QuickResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F31F1068E000292C1E /* QuickResponse.swift */; };
-		F5A524F51F1068E000292C1E /* QuickResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F31F1068E000292C1E /* QuickResponse.swift */; };
+		F5A524F41F1068E000292C1E /* QuickReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F31F1068E000292C1E /* QuickReply.swift */; };
+		F5A524F51F1068E000292C1E /* QuickReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F31F1068E000292C1E /* QuickReply.swift */; };
+		F5A524F81F106B8400292C1E /* QuickActionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F71F106B8400292C1E /* QuickActionViewProtocol.swift */; };
+		F5A524F91F106B8400292C1E /* QuickActionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524F71F106B8400292C1E /* QuickActionViewProtocol.swift */; };
+		F5A524FB1F106B9800292C1E /* QuickReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524FA1F106B9800292C1E /* QuickReplyView.swift */; };
+		F5A524FC1F106B9800292C1E /* QuickReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524FA1F106B9800292C1E /* QuickReplyView.swift */; };
 		F5C7B7241F0F41A5005EFC3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BEB1F0EBD2E00A180A0 /* ViewController.swift */; };
 		F5C7B7251F0F4213005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
 		F5C7B7261F0F421C005EFC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50C333F1F0D541B00905F17 /* LaunchScreen.storyboard */; };
@@ -272,8 +276,10 @@
 		F56A45251F0F3232000D19DB /* TCHMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHMessage.swift; sourceTree = "<group>"; };
 		F56A45291F0F3310000D19DB /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionCellProtocol.swift; sourceTree = "<group>"; };
-		F5A524EF1F10688A00292C1E /* QuickResponseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickResponseCollectionViewCell.swift; sourceTree = "<group>"; };
-		F5A524F31F1068E000292C1E /* QuickResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickResponse.swift; sourceTree = "<group>"; };
+		F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReplyCollectionViewCell.swift; sourceTree = "<group>"; };
+		F5A524F31F1068E000292C1E /* QuickReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReply.swift; sourceTree = "<group>"; };
+		F5A524F71F106B8400292C1E /* QuickActionViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionViewProtocol.swift; sourceTree = "<group>"; };
+		F5A524FA1F106B9800292C1E /* QuickReplyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReplyView.swift; sourceTree = "<group>"; };
 		F5C7B7291F0FDE59005EFC3F /* Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twilio.swift; sourceTree = "<group>"; };
 		F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 		F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatViewController+Twilio.swift"; sourceTree = "<group>"; };
@@ -672,6 +678,8 @@
 		F5582BF11F0EC57800A180A0 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				F5A524F71F106B8400292C1E /* QuickActionViewProtocol.swift */,
+				F5A524F61F106B6700292C1E /* Quick Reply */,
 				F5C7B7321F1018E9005EFC3F /* Quick Action */,
 				F5582BF41F0EC5B000A180A0 /* Collection Cells */,
 			);
@@ -724,16 +732,24 @@
 		F5A524EC1F1067D400292C1E /* Quick Response */ = {
 			isa = PBXGroup;
 			children = (
-				F5A524EF1F10688A00292C1E /* QuickResponseCollectionViewCell.swift */,
+				F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */,
 			);
 			path = "Quick Response";
+			sourceTree = "<group>";
+		};
+		F5A524F61F106B6700292C1E /* Quick Reply */ = {
+			isa = PBXGroup;
+			children = (
+				F5A524FA1F106B9800292C1E /* QuickReplyView.swift */,
+			);
+			path = "Quick Reply";
 			sourceTree = "<group>";
 		};
 		F5C7B7271F0FD836005EFC3F /* Message Parsing */ = {
 			isa = PBXGroup;
 			children = (
 				F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */,
-				F5A524F31F1068E000292C1E /* QuickResponse.swift */,
+				F5A524F31F1068E000292C1E /* QuickReply.swift */,
 			);
 			name = "Message Parsing";
 			path = "Message parsing";
@@ -758,9 +774,9 @@
 		F5C7B7361F101C46005EFC3F /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
+				F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */,
 				F5A524EC1F1067D400292C1E /* Quick Response */,
 				F5C7B7371F101C60005EFC3F /* Quick Action */,
-				F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -1025,8 +1041,9 @@
 			files = (
 				F5C7B7391F101C79005EFC3F /* QuickActionCollectionViewCell.swift in Sources */,
 				F5059AD71F0D6544009DFF0B /* Session.swift in Sources */,
-				F5A524F51F1068E000292C1E /* QuickResponse.swift in Sources */,
+				F5A524F51F1068E000292C1E /* QuickReply.swift in Sources */,
 				F5059B2A1F0D67A6009DFF0B /* HourData.swift in Sources */,
+				F5A524F91F106B8400292C1E /* QuickActionViewProtocol.swift in Sources */,
 				F5059B171F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */,
 				F5059ADB1F0D6544009DFF0B /* Tutor.swift in Sources */,
 				F5582BEC1F0EBD2E00A180A0 /* ViewController.swift in Sources */,
@@ -1059,7 +1076,7 @@
 				F5059B0F1F0D6677009DFF0B /* ConfigAdapter.swift in Sources */,
 				F5059B3B1F0D68BC009DFF0B /* DatabaseManager.swift in Sources */,
 				F5059B131F0D6677009DFF0B /* SessionAdapter.swift in Sources */,
-				F5A524F11F10688A00292C1E /* QuickResponseCollectionViewCell.swift in Sources */,
+				F5A524F11F10688A00292C1E /* QuickReplyCollectionViewCell.swift in Sources */,
 				F5059B301F0D67A6009DFF0B /* OnboardingFlows.swift in Sources */,
 				F56A45261F0F3232000D19DB /* TCHMessage.swift in Sources */,
 				F5059AF61F0D6594009DFF0B /* Device.swift in Sources */,
@@ -1076,6 +1093,7 @@
 				F5059AFA1F0D6594009DFF0B /* JSON.swift in Sources */,
 				F5C7B7341F101902005EFC3F /* QuickActionView.swift in Sources */,
 				F5059AF21F0D6594009DFF0B /* Button.swift in Sources */,
+				F5A524FC1F106B9800292C1E /* QuickReplyView.swift in Sources */,
 				F5059B7F1F0D7510009DFF0B /* RouteHandler.swift in Sources */,
 				F5059B3E1F0D6A63009DFF0B /* Config.swift in Sources */,
 				F5059AD51F0D6544009DFF0B /* Model.swift in Sources */,
@@ -1093,14 +1111,15 @@
 			files = (
 				F5C7B73A1F101C7B005EFC3F /* QuickActionCollectionViewCell.swift in Sources */,
 				F5059AD61F0D6544009DFF0B /* Session.swift in Sources */,
-				F5A524F41F1068E000292C1E /* QuickResponse.swift in Sources */,
+				F5A524F41F1068E000292C1E /* QuickReply.swift in Sources */,
 				F5059B291F0D67A6009DFF0B /* HourData.swift in Sources */,
+				F5A524F81F106B8400292C1E /* QuickActionViewProtocol.swift in Sources */,
 				F5059B161F0D6677009DFF0B /* SynchronizerAdapter.swift in Sources */,
 				F5059ADA1F0D6544009DFF0B /* Tutor.swift in Sources */,
 				F56A45271F0F3234000D19DB /* TCHMessage.swift in Sources */,
 				F5059B2D1F0D67A6009DFF0B /* MessageAttributes.swift in Sources */,
 				F5059B201F0D6677009DFF0B /* NetworkingProtocol.swift in Sources */,
-				F5A524F01F10688A00292C1E /* QuickResponseCollectionViewCell.swift in Sources */,
+				F5A524F01F10688A00292C1E /* QuickReplyCollectionViewCell.swift in Sources */,
 				F5582BD91F0EA4D100A180A0 /* VideoViewController.swift in Sources */,
 				F5C7B7241F0F41A5005EFC3F /* ViewController.swift in Sources */,
 				F5059AD81F0D6544009DFF0B /* Student.swift in Sources */,
@@ -1144,6 +1163,7 @@
 				F5059AF91F0D6594009DFF0B /* JSON.swift in Sources */,
 				F5C7B7351F101937005EFC3F /* QuickActionView.swift in Sources */,
 				F5059AF11F0D6594009DFF0B /* Button.swift in Sources */,
+				F5A524FB1F106B9800292C1E /* QuickReplyView.swift in Sources */,
 				F5059B7E1F0D7510009DFF0B /* RouteHandler.swift in Sources */,
 				F5059B3D1F0D6A63009DFF0B /* Config.swift in Sources */,
 				F5059AD41F0D6544009DFF0B /* Model.swift in Sources */,
