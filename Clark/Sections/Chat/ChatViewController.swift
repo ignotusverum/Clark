@@ -208,6 +208,9 @@ class ChatViewController: NMessengerViewController {
         
         keyboardHeight = frame.height
         
+        /// Scroll
+        messengerView.scrollToLastMessage(animated: true)
+        
         /// Update chat action position
         updateChatActionViewPosition(frame.height)
     }
