@@ -42,13 +42,23 @@ class CenterAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
                 }
             }
             
+            if leftMargin < 0 {
+               leftMargin = 0
+            }
+            
             layoutAttribute.frame.origin.x = leftMargin
             
             leftMargin += layoutAttribute.frame.width + interItemSpacing
             maxY = max(layoutAttribute.frame.maxY, maxY)
             
             // Add right-most x value for last item in the row
-            rowSizes[currentRow][1] = leftMargin - interItemSpacing
+            
+            var result = leftMargin - interItemSpacing
+            if result < 0 {
+                result = 0
+            }
+            
+            rowSizes[currentRow][1] = result
         }
         
         // At this point, all cells are left aligned
@@ -66,7 +76,12 @@ class CenterAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
                 
                 // Need to bump it up by an appended margin
                 let rowWidth = rowSizes[currentRow][1] - rowSizes[currentRow][0] // last.x - first.x
-                let appendedMargin = (collectionView!.frame.width - leftPadding  - rowWidth - leftPadding) / 2
+                var appendedMargin = (collectionView!.frame.width - leftPadding  - rowWidth - leftPadding) / 2
+                
+                if appendedMargin < 0 {
+                   appendedMargin = 0
+                }
+                
                 leftMargin += appendedMargin
                 
                 currentRow += 1

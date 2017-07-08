@@ -39,6 +39,7 @@ extension QuickActionViewProtocol {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.backgroundColor = UIColor.clear
+        collectionView.showsHorizontalScrollIndicator = false
         
         return collectionView
     }
