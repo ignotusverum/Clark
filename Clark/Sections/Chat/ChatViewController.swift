@@ -10,6 +10,7 @@ import UIKit
 import NMessenger
 import SVProgressHUD
 import TwilioChatClient
+import EZSwiftExtensions
 
 class ChatViewController: NMessengerViewController {
 
@@ -112,7 +113,11 @@ class ChatViewController: NMessengerViewController {
                 if self.messengerView.allMessages().isEmpty { //If there are no messages we have to use the add messages function, otherwise to add new chats to the top, we use endBatchFetch
                     self.messengerView.addMessages(groups, scrollsToMessage: false)
                     
-                    self.messengerView.scrollToLastMessage(animated: true)
+                    /// Scroll after delay
+                    ez.runThisAfterDelay(seconds: 0.1, after: { 
+                      
+                        self.messengerView.scrollToLastMessage(animated: false)
+                    })
                     
                     self.lastGroup = groups.last
                 }
@@ -230,9 +235,13 @@ extension ChatViewController: ConversationManagerDelegate {
     /// Called when message added to channel
     internal func messageAdded(for channel: TCHChannel, message: Message) {
         
-        /// Hide typing indicator, if presented
-        if let indicator = typingIndicator {
-             removeTypingIndicator(indicator)
+        /// Hide if message from clark
+        if message.isReceiver {
+            if let indicator = typingIndicator {
+                
+                /// Remove
+                removeTypingIndicator(indicator)
+            }
         }
         
         /// Update Action controller with message

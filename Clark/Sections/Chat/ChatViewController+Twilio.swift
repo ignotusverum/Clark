@@ -240,7 +240,7 @@ extension ChatViewController {
         return newMessageGroup
     }
     
-    /// Shows typing indicator for 30 secs
+    /// Shows typing indicator for 45 secs
     ///
     /// - Returns: Typing indicator reference
     func showTypingIndicator()-> GeneralMessengerCell {
@@ -248,8 +248,13 @@ extension ChatViewController {
         let clarkAvatar = createAvatar()
         let indicator = showTypingIndicator(clarkAvatar)
         
-        ez.runThisAfterDelay(seconds: 60) {
-            self.removeTypingIndicator(indicator)
+        indicator.cellPadding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        
+        /// Hide after delay
+        ez.runThisAfterDelay(seconds: 45) {
+            DispatchQueue.main.async {
+                self.removeTypingIndicator(indicator)
+            }
         }
         
         return indicator
