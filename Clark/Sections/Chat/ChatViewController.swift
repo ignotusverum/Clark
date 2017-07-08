@@ -19,6 +19,9 @@ class ChatViewController: NMessengerViewController {
     /// Chat input
     var chatInputBar: ChatInputBar!
     
+    /// Typing indicator
+    var typingIndicator: GeneralMessengerCell?
+    
     /// Keyboard height
     fileprivate var keyboardHeight: CGFloat = 0
     
@@ -109,7 +112,7 @@ class ChatViewController: NMessengerViewController {
                 if self.messengerView.allMessages().isEmpty { //If there are no messages we have to use the add messages function, otherwise to add new chats to the top, we use endBatchFetch
                     self.messengerView.addMessages(groups, scrollsToMessage: false)
                     
-                    self.messengerView.scrollToLastMessage(animated: false)
+                    self.messengerView.scrollToLastMessage(animated: true)
                     
                     self.lastGroup = groups.last
                 }
@@ -227,11 +230,16 @@ extension ChatViewController: ConversationManagerDelegate {
     /// Called when message added to channel
     internal func messageAdded(for channel: TCHChannel, message: Message) {
         
-        /// Hide action
-        if !message.isReceiver {
-            
-            chatActionContainerView.type = .none
+        /// Hide typing indicator, if presented
+        if let indicator = typingIndicator {
+             removeTypingIndicator(indicator)
         }
+        
+        /// Update Action controller with message
+        chatActionContainerView.message = message
+        
+        /// Update imput with message
+        chatInputBar.isEnabled = !(message.blocking?.boolValue ?? false)
         
         /// Update datasource
         messages.append(message)
@@ -254,6 +262,9 @@ extension ChatViewController: ConversationManagerDelegate {
         }
         
         postText(message.body, isIncoming: message.isReceiver)
+        
+        /// Update layout
+        updateChatActionViewPosition()
     }
 }
 
@@ -287,6 +298,9 @@ extension ChatViewController: ChatActionContainerViewDelegate {
     func containerView(_ containerView: ChatActionContainerView, selectedAction: QuickAction, message: Message) {
         
         print(selectedAction)
+        
+        /// Show typing indicator
+        typingIndicator = showTypingIndicator()
     }
     
     /// Called when reply selected
@@ -294,6 +308,9 @@ extension ChatViewController: ChatActionContainerViewDelegate {
         
         /// Send to channel
         sendMessage(selectedReply.body)
+        
+        /// Show typing indicator
+        typingIndicator = showTypingIndicator()
     }
     
     /// Called when type changed to visible

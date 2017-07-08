@@ -18,7 +18,7 @@ extension Message {
         
         // Safety check
         guard let currentUserID = currentUser else {
-            return true
+            return false
         }
         
         // ID Check

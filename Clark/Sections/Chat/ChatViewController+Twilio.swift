@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import NMessenger
 import PromiseKit
+import SwiftyJSON
 import AsyncDisplayKit
 import EZSwiftExtensions
 
@@ -30,8 +31,7 @@ extension ChatViewController {
                                           "screen_size":"\(UIScreen.main.bounds.size)",
             "time_zone":TimeZone.current.identifier,
             "region":Locale.current.regionCode ?? "unknown",
-            "language":Locale.current.languageCode ?? "unknown",
-            "tempId": UUID().uuidString]
+            "language":Locale.current.languageCode ?? "unknown"]
         
         return ["device_data": newAttributes]
     }
@@ -135,8 +135,13 @@ extension ChatViewController {
         /// Send to channel
         let msg = channel?.messages.createMessage(withBody: body)
         
+        /// Text attributes
+        var textAttributes: [String: Any] = ["blocking": false, "type": "text", "tempId": UUID().uuidString]
+        textAttributes.combine(globalAttributes)
+        
         /// Set attributes + send message
-        msg?.setAttributes(globalAttributes, completion: { result in
+        msg?.setAttributes(textAttributes, completion: { result in
+            
             self.channel?.messages.send(msg) { result in }
         })
     }
@@ -175,7 +180,7 @@ extension ChatViewController {
             }
             
             lastGroup?.isIncomingMessage = isIncoming
-            messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: false)
+            messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: true)
             messengerView.addMessage(lastGroup!, scrollsToMessage: true, withAnimation: isIncoming ? .left : .right)
         }
         else {
@@ -185,7 +190,7 @@ extension ChatViewController {
     }
     
     /**
-     Creates mock avatar with an AsyncDisplaykit *ASImageNode*.
+     Creates clark avatar with an AsyncDisplaykit *ASImageNode*.
      - returns: ASImageNode
      */
     func createAvatar()-> ASImageNode {
@@ -213,6 +218,9 @@ extension ChatViewController {
         return avatar
     }
     
+    /// Creates empty avatar
+    ///
+    /// - Returns: avatar node
     func createEmptyAvatar()-> ASImageNode {
         
         let avatar = ASImageNode()
@@ -222,10 +230,28 @@ extension ChatViewController {
         return avatar
     }
     
+    /// Creates new message group with default params
+    ///
+    /// - Returns: message group
     func createMessageGroup()-> MessageGroup {
         let newMessageGroup = MessageGroup()
         newMessageGroup.currentViewController = self
         newMessageGroup.cellPadding = messagePadding
         return newMessageGroup
+    }
+    
+    /// Shows typing indicator for 30 secs
+    ///
+    /// - Returns: Typing indicator reference
+    func showTypingIndicator()-> GeneralMessengerCell {
+        
+        let clarkAvatar = createAvatar()
+        let indicator = showTypingIndicator(clarkAvatar)
+        
+        ez.runThisAfterDelay(seconds: 60) {
+            self.removeTypingIndicator(indicator)
+        }
+        
+        return indicator
     }
 }
