@@ -13,6 +13,9 @@ protocol ChatInputBarDelegate {
     
     /// Called when bar text changed
     func inputBar(_ inputBar:ChatInputBar, textChanged: String)
+    
+    /// Called when send button pressed
+    func inputBar(_ inputBar:ChatInputBar, sendText: String)
 }
 
 class ChatInputBar: InputBarView, UITextViewDelegate {
@@ -123,7 +126,10 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
             if textView == self.textInputView {
                 textInputViewHeight.constant = textInputViewHeightConst
                 textInputAreaViewHeight.constant = textInputViewHeightConst+10
-                _ = self.controller.sendText(self.textInputView.text,isIncomingMessage: false)
+                
+                /// Delegate call
+                delegate?.inputBar(self, sendText: textInputView.text)
+                
                 self.textInputView.text = ""
                 return false
             }
@@ -180,9 +186,11 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
     @IBAction open func sendButtonClicked(_ sender: AnyObject) {
         textInputViewHeight.constant = textInputViewHeightConst
         textInputAreaViewHeight.constant = textInputViewHeightConst + 10
-        if self.textInputView.text != "" {
-            _ = self.controller.sendText(self.textInputView.text,isIncomingMessage: false)
-            self.textInputView.text = ""
+        if textInputView.text != "" {
+            
+            delegate?.inputBar(self, sendText: textInputView.text)
+            
+            textInputView.text = ""
         }
     }
     /**

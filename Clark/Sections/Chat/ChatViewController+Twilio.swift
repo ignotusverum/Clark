@@ -81,6 +81,9 @@ extension ChatViewController {
                             if message.isReceiver {
                                 newMessageGroup.avatarNode = self.createAvatar()
                             }
+                            else {
+                                newMessageGroup.avatarNode = self.createEmptyAvatar()
+                            }
                             
                             newMessageGroup.isIncomingMessage = message.isReceiver
                             newMessageGroup.addMessageToGroup(messageNode, completion: nil)
@@ -99,6 +102,50 @@ extension ChatViewController {
     }
     
     // MARK: - Utilities
+    
+    /// Post text
+    func postText(_ text: String, isIncoming: Bool) {
+     
+        // Text node params
+        let textContentNode = TextContentNode(textMessageString: text, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
+        
+        /// Configur fonts
+        textContentNode.configure()
+        
+        /// Create mesasge node
+        let messageNode = MessageNode(content: textContentNode)
+        messageNode.cellPadding = messagePadding
+        messageNode.currentViewController = self
+        
+        // Checking is author
+        messageNode.isIncomingMessage = isIncoming
+        
+        /// Update insets
+        automaticallyAdjustsScrollViewInsets = false
+        
+        if lastGroup == nil || lastGroup?.isIncomingMessage == !isIncoming {
+            
+            /// New Group
+            lastGroup = createMessageGroup()
+            
+            //add avatar if incoming message
+            if isIncoming {
+                lastGroup?.avatarNode = createAvatar()
+            }
+            else {
+                lastGroup?.avatarNode = createEmptyAvatar()
+            }
+            
+            lastGroup?.isIncomingMessage = isIncoming
+            messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: false)
+            messengerView.addMessage(lastGroup!, scrollsToMessage: true, withAnimation: isIncoming ? .left : .right)
+        }
+        else {
+            
+            messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: true)
+        }
+    }
+    
     /**
      Creates mock avatar with an AsyncDisplaykit *ASImageNode*.
      - returns: ASImageNode
@@ -128,10 +175,19 @@ extension ChatViewController {
         return avatar
     }
     
+    func createEmptyAvatar()-> ASImageNode {
+        
+        let avatar = ASImageNode()
+        avatar.backgroundColor = UIColor.clear
+        avatar.style.preferredSize = CGSize(width: 10, height: 10)
+        
+        return avatar
+    }
+    
     func createMessageGroup()-> MessageGroup {
         let newMessageGroup = MessageGroup()
         newMessageGroup.currentViewController = self
-        newMessageGroup.cellPadding = self.messagePadding
+        newMessageGroup.cellPadding = messagePadding
         return newMessageGroup
     }
 }

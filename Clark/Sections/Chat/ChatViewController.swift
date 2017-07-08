@@ -185,11 +185,6 @@ class ChatViewController: NMessengerViewController {
         pushVC(accountVC)
     }
     
-    // MARK: - NMessenger overrides
-    fileprivate func postText(_ message: MessageNode) {
-        messengerView.addMessage(message, scrollsToMessage: true)
-    }
-    
     // MARK: - Keyboard notifications
     override func keyboardWillShowWithFrame(_ frame: CGRect) {
         
@@ -219,24 +214,13 @@ extension ChatViewController: ConversationManagerDelegate {
     /// Called when message added to channel
     internal func messageAdded(for channel: TCHChannel, message: Message) {
         
-        // Set all messages as consumed
-        channel.messages.setAllMessagesConsumed()
-        
-        // Text node params
-        let textContentNode = TextContentNode(textMessageString: message.body!, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
-        
-        /// Configur fonts
-        textContentNode.configure()
-        
-        /// Create mesasge node
-        let messageNode = MessageNode(content: textContentNode)
-        messageNode.cellPadding = messagePadding
-        messageNode.currentViewController = self
-        
-        // Checking is author
-        messageNode.isIncomingMessage = message.isReceiver
+        /// Update datasource
+        messages.append(message)
         
         let lastMessage = messages.last
+        
+        // Set all messages as consumed
+        channel.messages.setAllMessagesConsumed()
         
         var messageTimestamp = MessageSentIndicator()
         
@@ -250,34 +234,7 @@ extension ChatViewController: ConversationManagerDelegate {
             messengerView.addMessage(newTimestampGroup, scrollsToMessage: true)
         }
         
-        /// Update insets
-        automaticallyAdjustsScrollViewInsets = false
-        
-        /// Update datasource
-        messages.append(message)
-        
-        /// Update UI
-        postText(messageNode)
-        
-        if lastGroup == nil || lastGroup?.isIncomingMessage == !message.isReceiver {
-            
-            /// New Group
-            lastGroup = createMessageGroup()
-            
-            //add avatar if incoming message
-            if message.isReceiver {
-                lastGroup?.avatarNode = self.createAvatar()
-            }
-            
-            lastGroup?.isIncomingMessage = message.isReceiver
-            messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: false)
-            messengerView.addMessage(lastGroup!, scrollsToMessage: true, withAnimation: message.isReceiver ? .left : .right)
-            
-        }
-        else {
-            
-            messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: true)
-        }
+        postText(message.body, isIncoming: message.isReceiver)
     }
 }
 
@@ -289,6 +246,22 @@ extension ChatViewController: ChatInputBarDelegate {
         
         /// Update position
         updateChatActionViewPosition(keyboardHeight)
+    }
+    
+    /// Called when send button pressed
+    func inputBar(_ inputBar:ChatInputBar, sendText: String) {
+        
+        /// Check if length > 0
+        guard sendText.length > 0 else {
+            return
+        }
+        
+        /// Send to channel
+        let msg = channel?.messages.createMessage(withBody: sendText)
+        channel?.messages.send(msg) { result in }
+
+        /// Update UI
+        postText(sendText, isIncoming: false)
     }
 }
 
