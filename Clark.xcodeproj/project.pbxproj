@@ -149,6 +149,10 @@
 		F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */; };
 		F51727771F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */; };
+		F517277A1F1096A7002573E0 /* ChatInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727791F1096A7002573E0 /* ChatInputBar.swift */; };
+		F517277B1F1096A7002573E0 /* ChatInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727791F1096A7002573E0 /* ChatInputBar.swift */; };
+		F517277D1F1098F3002573E0 /* ChatInputBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F517277C1F1098F3002573E0 /* ChatInputBar.xib */; };
+		F517277E1F1098F3002573E0 /* ChatInputBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F517277C1F1098F3002573E0 /* ChatInputBar.xib */; };
 		F5582BD91F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
 		F5582BDA1F0EA4D100A180A0 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */; };
 		F5582BDC1F0EA52800A180A0 /* AlrertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */; };
@@ -267,6 +271,8 @@
 		F50C33521F0D544400905F17 /* Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51727711F1078D0002573E0 /* ChatActionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatActionContainerView.swift; sourceTree = "<group>"; };
 		F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		F51727791F1096A7002573E0 /* ChatInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
+		F517277C1F1098F3002573E0 /* ChatInputBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatInputBar.xib; sourceTree = "<group>"; };
 		F5582BD81F0EA4D100A180A0 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		F5582BDB1F0EA52800A180A0 /* AlrertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlrertHelper.swift; sourceTree = "<group>"; };
 		F5582BDF1F0EA9DE00A180A0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -649,6 +655,15 @@
 			path = "Collection Layouts";
 			sourceTree = "<group>";
 		};
+		F51727781F109693002573E0 /* Input Bar */ = {
+			isa = PBXGroup;
+			children = (
+				F51727791F1096A7002573E0 /* ChatInputBar.swift */,
+				F517277C1F1098F3002573E0 /* ChatInputBar.xib */,
+			);
+			path = "Input Bar";
+			sourceTree = "<group>";
+		};
 		F5582BDE1F0EA9CA00A180A0 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -686,6 +701,7 @@
 		F5582BF11F0EC57800A180A0 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				F51727781F109693002573E0 /* Input Bar */,
 				F51727741F109349002573E0 /* Collection Layouts */,
 				F5A524FD1F10777B00292C1E /* Chat Action Views */,
 				F5582BF41F0EC5B000A180A0 /* Collection Cells */,
@@ -895,6 +911,7 @@
 				F5059B521F0D6FAD009DFF0B /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				F5059B581F0D6FAD009DFF0B /* SF-Pro-Text-Medium.otf in Resources */,
 				F5059B501F0D6FAD009DFF0B /* SF-Pro-Text-Heavy.otf in Resources */,
+				F517277E1F1098F3002573E0 /* ChatInputBar.xib in Resources */,
 				F5059B541F0D6FAD009DFF0B /* SF-Pro-Text-Light.otf in Resources */,
 				F5059B5C1F0D6FAD009DFF0B /* SF-Pro-Text-Regular.otf in Resources */,
 				F50C333E1F0D541B00905F17 /* Assets.xcassets in Resources */,
@@ -918,6 +935,7 @@
 				F5059B511F0D6FAD009DFF0B /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				F5059B571F0D6FAD009DFF0B /* SF-Pro-Text-Medium.otf in Resources */,
 				F5059B4F1F0D6FAD009DFF0B /* SF-Pro-Text-Heavy.otf in Resources */,
+				F517277D1F1098F3002573E0 /* ChatInputBar.xib in Resources */,
 				F5059B531F0D6FAD009DFF0B /* SF-Pro-Text-Light.otf in Resources */,
 				F5059B5B1F0D6FAD009DFF0B /* SF-Pro-Text-Regular.otf in Resources */,
 				F50C334E1F0D544400905F17 /* Assets.xcassets in Resources */,
@@ -1058,6 +1076,7 @@
 				F5C7B7301F100434005EFC3F /* ChatViewController+Twilio.swift in Sources */,
 				F5059B8D1F0D7940009DFF0B /* S3Manager.swift in Sources */,
 				F5059B111F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
+				F517277B1F1096A7002573E0 /* ChatInputBar.swift in Sources */,
 				F5059B281F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
 				F5582BE91F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */,
 				F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */,
@@ -1128,6 +1147,7 @@
 				F5A524F21F10689800292C1E /* QuickActionCellProtocol.swift in Sources */,
 				F5059AD21F0D6544009DFF0B /* Message.swift in Sources */,
 				F5C7B7311F100440005EFC3F /* ChatViewController+Twilio.swift in Sources */,
+				F517277A1F1096A7002573E0 /* ChatInputBar.swift in Sources */,
 				F56A452B1F0F4185000D19DB /* Date.swift in Sources */,
 				F5059AE41F0D6544009DFF0B /* _Tutor.swift in Sources */,
 				F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */,

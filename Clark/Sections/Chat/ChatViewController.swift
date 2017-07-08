@@ -65,9 +65,9 @@ class ChatViewController: NMessengerViewController {
         fetchMessages()
     }
     
-    // MARK: - Layout
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    // MARK: - Chat input bar
+    override func getInputBar()-> InputBarView {
+        return ChatInputBar(controller: self)
     }
     
     // MARK: - Datasource fetch
@@ -243,8 +243,5 @@ extension ChatViewController: ChatActionContainerViewDelegate {
                 maker.height.equalTo(self.chatActionContainerView.contentHeight)
             }
         }
-        
-        print("CHANGED TO")
-        print(type)
     }
 }
