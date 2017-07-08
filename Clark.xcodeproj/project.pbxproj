@@ -23,10 +23,8 @@
 /* Begin PBXBuildFile section */
 		69E0828D33035D190E5EE293 /* Pods_Clark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14B3DDB1E6090E9C6246BBA /* Pods_Clark.framework */; };
 		874F1936D93F8BF8C99C51A4 /* Pods_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E1D3E9DF3862671C65AFCF /* Pods_Dev.framework */; };
-		F5059AB81F0D558D009DFF0B /* Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5059AB61F0D558D009DFF0B /* Dev.plist */; };
 		F5059AB91F0D558D009DFF0B /* Dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5059AB61F0D558D009DFF0B /* Dev.plist */; };
 		F5059ABA1F0D558D009DFF0B /* Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5059AB71F0D558D009DFF0B /* Prod.plist */; };
-		F5059ABB1F0D558D009DFF0B /* Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5059AB71F0D558D009DFF0B /* Prod.plist */; };
 		F5059ABF1F0D5887009DFF0B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5059ABD1F0D5887009DFF0B /* Model.xcdatamodeld */; };
 		F5059AC01F0D5887009DFF0B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5059ABD1F0D5887009DFF0B /* Model.xcdatamodeld */; };
 		F5059AD21F0D6544009DFF0B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5059AC71F0D6544009DFF0B /* Message.swift */; };
@@ -931,7 +929,6 @@
 				F5059B561F0D6FAD009DFF0B /* SF-Pro-Text-LightItalic.otf in Resources */,
 				F5059B4C1F0D6FAD009DFF0B /* SF-Pro-Text-Bold.otf in Resources */,
 				F5059B5E1F0D6FAD009DFF0B /* SF-Pro-Text-RegularItalic.otf in Resources */,
-				F5059ABB1F0D558D009DFF0B /* Prod.plist in Resources */,
 				F5059B751F0D7464009DFF0B /* README.txt in Resources */,
 				F5059B521F0D6FAD009DFF0B /* SF-Pro-Text-HeavyItalic.otf in Resources */,
 				F5059B581F0D6FAD009DFF0B /* SF-Pro-Text-Medium.otf in Resources */,
@@ -966,7 +963,6 @@
 				F50C334E1F0D544400905F17 /* Assets.xcassets in Resources */,
 				F5059B5F1F0D6FAD009DFF0B /* SF-Pro-Text-Semibold.otf in Resources */,
 				F5059B4D1F0D6FAD009DFF0B /* SF-Pro-Text-BoldItalic.otf in Resources */,
-				F5059AB81F0D558D009DFF0B /* Dev.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

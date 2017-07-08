@@ -119,16 +119,15 @@ class ChatViewController: NMessengerViewController {
                 }
             }
             
-            let userID = Config.userID ?? ""
             /// Update action view
-            let lastMessage = messages.filter { $0.author != userID }.last
+            let lastMessage = messages.last
             if let lastMessage = lastMessage {
                 
                 /// Update Action controller with message
                 self.chatActionContainerView.message = lastMessage
                 
                 /// Update imput with message
-                self.chatInputBar.isEnabled = lastMessage.blocking?.boolValue ?? false
+                self.chatInputBar.isEnabled = !(lastMessage.blocking?.boolValue ?? false)
             }
             
             /// Dismiss
@@ -285,8 +284,9 @@ extension ChatViewController: ChatActionContainerViewDelegate {
     /// Called when reply selected
     func containerView(_ containerView: ChatActionContainerView, selectedReply: QuickReply, message: Message) {
         
-        print(selectedReply)
-        let _ = channel?.messages.createMessage(withBody: selectedReply.body)
+        /// Send to channel
+        let msg = channel?.messages.createMessage(withBody: selectedReply.body)
+        channel?.messages.send(msg) { result in }
     }
     
     /// Called when type changed to visible
