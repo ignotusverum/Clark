@@ -120,6 +120,7 @@ class ChatViewController: NMessengerViewController {
                     })
                     
                     self.lastGroup = groups.last
+                    print(groups.last)
                 }
                 else {
                     /// Finish updates
@@ -267,7 +268,7 @@ extension ChatViewController: ConversationManagerDelegate {
         messageTimestamp = Message.createTimestamp(message, previousMessage: lastMessage)
         if let text = messageTimestamp.messageSentText, text.length > 0 {
             
-            let newTimestampGroup = self.createMessageGroup()
+            let newTimestampGroup = MessageParser.createMessageGroup(padding: messagePadding, controller: self)
             newTimestampGroup.addMessageToGroup(messageTimestamp, completion: nil)
             
             messengerView.addMessage(newTimestampGroup, scrollsToMessage: true)

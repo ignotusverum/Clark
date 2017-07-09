@@ -76,7 +76,9 @@ open class CarouselContentNode: ContentNode {
     /// - Parameter carouselItem: carousel model
     fileprivate func setupCarouselNode() {
         /// Clear background bubble
-        self.backgroundBubble = nil
+        backgroundBubble = nil
+        
+        backgroundColor = UIColor.red
         
         /// Collection node setup
         collectionViewNode.delegate = self

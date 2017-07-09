@@ -155,6 +155,10 @@
 		F516D2951F11C64E0045903F /* CarouselContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2931F11C64E0045903F /* CarouselContentNode.swift */; };
 		F516D29A1F11CF290045903F /* CarouselNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2991F11CF290045903F /* CarouselNode.swift */; };
 		F516D29B1F11CF290045903F /* CarouselNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2991F11CF290045903F /* CarouselNode.swift */; };
+		F516D29E1F11D9500045903F /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D29D1F11D9500045903F /* MessageParser.swift */; };
+		F516D29F1F11D9500045903F /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D29D1F11D9500045903F /* MessageParser.swift */; };
+		F516D2A21F11DD190045903F /* Avatars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2A11F11DD190045903F /* Avatars.swift */; };
+		F516D2A31F11DD190045903F /* Avatars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2A11F11DD190045903F /* Avatars.swift */; };
 		F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */; };
@@ -285,6 +289,8 @@
 		F516D28F1F1193BC0045903F /* Carousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
 		F516D2931F11C64E0045903F /* CarouselContentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselContentNode.swift; sourceTree = "<group>"; };
 		F516D2991F11CF290045903F /* CarouselNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselNode.swift; sourceTree = "<group>"; };
+		F516D29D1F11D9500045903F /* MessageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
+		F516D2A11F11DD190045903F /* Avatars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatars.swift; sourceTree = "<group>"; };
 		F51727711F1078D0002573E0 /* ChatActionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatActionContainerView.swift; sourceTree = "<group>"; };
 		F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		F51727791F1096A7002573E0 /* ChatInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
@@ -412,6 +418,7 @@
 		F5059AE61F0D6562009DFF0B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F516D29C1F11D9290045903F /* Message Parser */,
 				F516D2881F113B450045903F /* Bubbles */,
 				F5C7B7281F0FDE49005EFC3F /* Twilio */,
 				F5059B8A1F0D7924009DFF0B /* S3 */,
@@ -715,6 +722,22 @@
 			path = Carousel;
 			sourceTree = "<group>";
 		};
+		F516D29C1F11D9290045903F /* Message Parser */ = {
+			isa = PBXGroup;
+			children = (
+				F516D29D1F11D9500045903F /* MessageParser.swift */,
+			);
+			path = "Message Parser";
+			sourceTree = "<group>";
+		};
+		F516D2A01F11DD080045903F /* Avatars */ = {
+			isa = PBXGroup;
+			children = (
+				F516D2A11F11DD190045903F /* Avatars.swift */,
+			);
+			path = Avatars;
+			sourceTree = "<group>";
+		};
 		F51727741F109349002573E0 /* Collection Layouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -769,6 +792,7 @@
 		F5582BF11F0EC57800A180A0 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				F516D2A01F11DD080045903F /* Avatars */,
 				F516D2961F11CEDC0045903F /* Nodes */,
 				F516D2841F1132B30045903F /* Bubbles */,
 				F51727781F109693002573E0 /* Input Bar */,
@@ -1161,6 +1185,7 @@
 				F5059B681F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F5C7B72D1F0FF92A005EFC3F /* QuickAction.swift in Sources */,
 				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
+				F516D2A31F11DD190045903F /* Avatars.swift in Sources */,
 				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */,
 				F51727771F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
@@ -1195,6 +1220,7 @@
 				F5059B0D1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
 				F5059B1B1F0D6677009DFF0B /* TutorAdapter.swift in Sources */,
 				F5582BDD1F0EA52800A180A0 /* AlrertHelper.swift in Sources */,
+				F516D29F1F11D9500045903F /* MessageParser.swift in Sources */,
 				F5059B841F0D7759009DFF0B /* InitialViewController.swift in Sources */,
 				F5059B371F0D6842009DFF0B /* Constants.m in Sources */,
 			);
@@ -1238,6 +1264,7 @@
 				F5059B141F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
 				F5582BE01F0EA9DE00A180A0 /* ChatViewController.swift in Sources */,
 				F5582BE31F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */,
+				F516D2A21F11DD190045903F /* Avatars.swift in Sources */,
 				F5C7B72E1F0FFA8A005EFC3F /* QuickAction.swift in Sources */,
 				F5059B671F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
@@ -1272,6 +1299,7 @@
 				F5059B0C1F0D6677009DFF0B /* AutocompleteAdapter.swift in Sources */,
 				F5059B1A1F0D6677009DFF0B /* TutorAdapter.swift in Sources */,
 				F5582BDC1F0EA52800A180A0 /* AlrertHelper.swift in Sources */,
+				F516D29E1F11D9500045903F /* MessageParser.swift in Sources */,
 				F5059B831F0D7759009DFF0B /* InitialViewController.swift in Sources */,
 				F5059B361F0D6842009DFF0B /* Constants.m in Sources */,
 			);

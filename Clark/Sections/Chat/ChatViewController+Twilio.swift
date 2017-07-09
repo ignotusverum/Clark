@@ -51,75 +51,9 @@ extension ChatViewController {
             }.then { responseMessages-> ([MessageGroup], [Message]) in
                 
                 /// Result message groups
-                var result: [MessageGroup] = []
+                let resultGroups = MessageParser.createGroups(oldGroup: self.lastGroup, padding: self.messagePadding, controller: self, responseMessages: responseMessages)
                 
-                for (index, message) in responseMessages.enumerated() {
-                    if message.body.length > 0 {
-                        
-                        // Generate text ode
-                        let textContentNode = TextContentNode(textMessageString: message.body!, currentViewController: self, bubbleConfiguration: ClarkBubblesConfiguration())
-                        
-                        /// Fonts
-                        textContentNode.configure()
-                        
-                        // Create empty timestamp
-                        var messageTimestamp = MessageSentIndicator()
-                        
-                        // If first message - always show timestamp
-                        if index == 0 {
-                            
-                            messageTimestamp = Message.createTimestamp(message, previousMessage: nil)
-                        }
-                        else if responseMessages.count > index {
-                            
-                            // Safety check
-                            // Create timestamp with time difference
-                            let previous = responseMessages[index-1]
-                            messageTimestamp = Message.createTimestamp(message, previousMessage: previous)
-                        }
-                        
-                        // Cell padding update
-                        let messageNode = MessageNode(content: textContentNode)
-                        
-                        messageNode.currentViewController = self
-                        
-                        // Author check
-                        messageNode.isIncomingMessage = message.isReceiver
-                        
-                        /// New group
-                        if result.last == nil || result.last?.isIncomingMessage == !message.isReceiver {
-                  
-                            let newMessageGroup = self.createMessageGroup()
-                            
-                            // Check if node is not empty
-                            if let text = messageTimestamp.messageSentAttributedText, text.length > 0 {
-                            
-                                let newTimestampGroup = self.createMessageGroup()
-                                newTimestampGroup.addMessageToGroup(messageTimestamp, completion: nil)
-                                
-                                result.append(newTimestampGroup)
-                            }
-                            
-                            if message.isReceiver {
-                                newMessageGroup.avatarNode = self.createAvatar()
-                            }
-                            else {
-                                newMessageGroup.avatarNode = self.createEmptyAvatar()
-                            }
-                            
-                            newMessageGroup.isIncomingMessage = message.isReceiver
-                            newMessageGroup.addMessageToGroup(messageNode, completion: nil)
-                            
-                            result.append(newMessageGroup)
-                        }
-                        else {
-                            
-                            result.last?.addMessageToGroup(messageNode, completion: nil)
-                        }
-                    }
-                }
-                
-                return (result, responseMessages)
+                return (resultGroups, responseMessages)
         }
     }
     
@@ -169,14 +103,14 @@ extension ChatViewController {
         if lastGroup == nil || lastGroup?.isIncomingMessage == !isIncoming {
             
             /// New Group
-            lastGroup = createMessageGroup()
+            lastGroup = MessageParser.createMessageGroup(padding: messagePadding, controller: self)
             
             //add avatar if incoming message
             if isIncoming {
-                lastGroup?.avatarNode = createAvatar()
+                lastGroup?.avatarNode = Avatars.createAvatar()
             }
             else {
-                lastGroup?.avatarNode = createEmptyAvatar()
+                lastGroup?.avatarNode = Avatars.createEmptyAvatar()
             }
             
             lastGroup?.isIncomingMessage = isIncoming
@@ -189,64 +123,12 @@ extension ChatViewController {
         }
     }
     
-    /**
-     Creates clark avatar with an AsyncDisplaykit *ASImageNode*.
-     - returns: ASImageNode
-     */
-    func createAvatar()-> ASImageNode {
-        
-        let avatar = ASImageNode()
-        avatar.image = #imageLiteral(resourceName: "empty")
-        avatar.backgroundColor = UIColor.trinidad
-        avatar.style.preferredSize = CGSize(width: 36, height: 36)
-        avatar.layer.cornerRadius = 18
-        
-        let config = Config.shared
-        let isOpen = config.currentDay?.isCurrentlyOpen ?? false
-        
-        let isOpenCircle = ASImageNode()
-        isOpenCircle.backgroundColor = isOpen ? UIColor.green : UIColor.red
-        isOpenCircle.style.preferredSize = CGSize(width: 14, height: 14)
-        isOpenCircle.layer.cornerRadius = 7
-        
-        isOpenCircle.borderWidth = 2
-        isOpenCircle.borderColor = UIColor.white.cgColor
-        
-        isOpenCircle.frame = CGRect(x: 36 - 14, y: 36 - 14, w: 15, h: 15)
-        
-        avatar.addSubnode(isOpenCircle)
-        
-        return avatar
-    }
-    
-    /// Creates empty avatar
-    ///
-    /// - Returns: avatar node
-    func createEmptyAvatar()-> ASImageNode {
-        
-        let avatar = ASImageNode()
-        avatar.backgroundColor = UIColor.clear
-        avatar.style.preferredSize = CGSize(width: 1, height: 1)
-        
-        return avatar
-    }
-    
-    /// Creates new message group with default params
-    ///
-    /// - Returns: message group
-    func createMessageGroup()-> MessageGroup {
-        let newMessageGroup = MessageGroup()
-        newMessageGroup.currentViewController = self
-        newMessageGroup.cellPadding = messagePadding
-        return newMessageGroup
-    }
-    
     /// Shows typing indicator for 45 secs
     ///
     /// - Returns: Typing indicator reference
     func showTypingIndicator()-> GeneralMessengerCell {
         
-        let clarkAvatar = createAvatar()
+        let clarkAvatar = Avatars.createAvatar()
         let indicator = showTypingIndicator(clarkAvatar)
         
         indicator.cellPadding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)

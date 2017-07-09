@@ -201,9 +201,9 @@ open class Message: _Message, ImportableUniqueObject {
         /// Attributes parsing
         let attributesJSON = JSON(attributes)
         
-        print("-----")
-        print(attributesJSON)
-        print("-----")
+//        print("-----")
+//        print(attributesJSON)
+//        print("-----")
         
         /// Blocking
         blocking = attributesJSON[MessageJSON.blocking].number ?? NSNumber(value: false)

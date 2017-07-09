@@ -163,8 +163,6 @@ extension ConversationManager: TwilioChatClientDelegate {
     
     func chatClient(_ client: TwilioChatClient!, channel: TCHChannel!, messageAdded message: TCHMessage!) {
         
-        print(JSON(message.attributes()))
-        
         /// Import source
         let messageUpdated: TCHMessage = message
         let importSource = (message: messageUpdated, channelID: "\(channel.sid)")
