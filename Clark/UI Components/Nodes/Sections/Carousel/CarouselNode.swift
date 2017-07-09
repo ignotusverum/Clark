@@ -10,14 +10,14 @@ import UIKit
 import Kingfisher
 import AsyncDisplayKit
 
-class ImageCellNode: ASCellNode {
+class CarouselNode: ASCellNode {
     
     let imageNode = ASNetworkImageNode()
     
-    required init(with imageURL: URL?) {
+    init(with item: CarouselItem) {
         super.init()
         
-        guard let imageURL = imageURL else {
+        guard let imageURL = item.imageURL else {
             
             imageNode.image = #imageLiteral(resourceName: "Fail")
             
@@ -47,6 +47,6 @@ class ImageCellNode: ASCellNode {
         stackLayout.style.flexShrink = 1.0
         stackLayout.children = [imagePlace]
         
-        return  ASInsetLayoutSpec(insets: UIEdgeInsets.zero, child: stackLayout)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets.zero, child: stackLayout)
     }
 }

@@ -12,6 +12,9 @@ import AsyncDisplayKit
 
 open class CarouselContentNode: ContentNode {
 
+    /// Carousel Items
+    var carouselItems: [CarouselItem] = []
+    
     /// Collection View node
     lazy var collectionViewNode: ASCollectionNode = {
        
@@ -46,10 +49,12 @@ open class CarouselContentNode: ContentNode {
     /// - Parameters:
     ///   - carouselItem: carouselItem model
     ///   - bubbleConfiguration: bubble setup
-    init(carouselItem: CarouselItem, bubbleConfiguration: BubbleConfigurationProtocol? = nil) {
+    init(carouselItems: [CarouselItem], bubbleConfiguration: BubbleConfigurationProtocol? = nil) {
+        
+        self.carouselItems = carouselItems
         
         super.init(bubbleConfiguration: bubbleConfiguration)
-        self.setupCarouselNode(carouselItem)
+        self.setupCarouselNode()
     }
     
     /// Initializer for the cell
@@ -58,18 +63,18 @@ open class CarouselContentNode: ContentNode {
     ///   - carouselItem: carouselItem model
     ///   - currentViewController: controller for presentation
     ///   - bubbleConfiguration: bubble setup
-    init(carouselItem: CarouselItem, currentViewController: UIViewController, bubbleConfiguration: BubbleConfigurationProtocol? = nil)
+    init(carouselItems: [CarouselItem], currentViewController: UIViewController, bubbleConfiguration: BubbleConfigurationProtocol? = nil)
     {
         super.init(bubbleConfiguration: bubbleConfiguration)
         self.currentViewController = currentViewController
-        self.setupCarouselNode(carouselItem)
+        self.setupCarouselNode()
     }
     
     // MARK: Initializer helper
     /// Create carousel
     ///
     /// - Parameter carouselItem: carousel model
-    fileprivate func setupCarouselNode(_ carouselItem: CarouselItem) {
+    fileprivate func setupCarouselNode() {
         /// Clear background bubble
         self.backgroundBubble = nil
         
@@ -77,15 +82,39 @@ open class CarouselContentNode: ContentNode {
         collectionViewNode.delegate = self
         collectionViewNode.dataSource = self
     }
+    
+    // MARK: - Collection layout
+    open override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+        
+        let textMessageSize = ASAbsoluteLayoutSpec()
+        textMessageSize.sizing = .sizeToFit
+        textMessageSize.children = [collectionViewNode]
+        
+        return  ASInsetLayoutSpec(insets: insets, child: textMessageSize)
+    }
 }
 
 // MARK: - ASCollectionDataSource
 extension CarouselContentNode: ASCollectionDataSource {
     
+    public func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
+        
+        let carouselItem = carouselItems[indexPath.row]
+        return CarouselNode(with: carouselItem)
+    }
     
+    public func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
+        return 1
+    }
+    
+    public func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
+        return carouselItems.count
+    }
 }
 
 // MARK: - ASCollectionDelegate
 extension CarouselContentNode: ASCollectionDelegate {
-    
+    public func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
+    }
 }
