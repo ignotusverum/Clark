@@ -120,7 +120,6 @@ class ChatViewController: NMessengerViewController {
                     })
                     
                     self.lastGroup = groups.last
-                    print(groups.last)
                 }
                 else {
                     /// Finish updates
