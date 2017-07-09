@@ -136,7 +136,10 @@ extension ChatViewController {
         /// Hide after delay
         ez.runThisAfterDelay(seconds: 45) {
             DispatchQueue.main.async {
-                self.removeTypingIndicator(indicator)
+                if let _ = self.typingIndicator {
+                    self.removeTypingIndicator(self.typingIndicator)
+                    self.typingIndicator = nil
+                }
             }
         }
         
