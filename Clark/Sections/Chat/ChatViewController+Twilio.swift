@@ -97,20 +97,11 @@ extension ChatViewController {
             /// Update insets
             automaticallyAdjustsScrollViewInsets = false
             
-            if lastGroup == nil || lastGroup?.isIncomingMessage == !isIncoming {
+            if lastGroup == nil || lastGroup?.isIncomingMessage == !isIncoming || message.type != .text {
                 
                 /// New Group
-                lastGroup = MessageParser.createMessageGroup(padding: messagePadding, controller: self)
+                lastGroup = MessageParser.createMessageGroup(message: message, padding: messagePadding, controller: self)
                 
-                //add avatar if incoming message
-                if isIncoming {
-                    lastGroup?.avatarNode = Avatars.createAvatar()
-                }
-                else {
-                    lastGroup?.avatarNode = Avatars.createEmptyAvatar()
-                }
-                
-                lastGroup?.isIncomingMessage = isIncoming
                 messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: true)
                 messengerView.addMessage(lastGroup!, scrollsToMessage: true, withAnimation: isIncoming ? .left : .right)
             }
