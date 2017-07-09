@@ -73,6 +73,19 @@ open class CarouselContentNode: ContentNode {
         /// Clear background bubble
         self.backgroundBubble = nil
         
-        
+        /// Collection node setup
+        collectionViewNode.delegate = self
+        collectionViewNode.dataSource = self
     }
+}
+
+// MARK: - ASCollectionDataSource
+extension CarouselContentNode: ASCollectionDataSource {
+    
+    
+}
+
+// MARK: - ASCollectionDelegate
+extension CarouselContentNode: ASCollectionDelegate {
+    
 }

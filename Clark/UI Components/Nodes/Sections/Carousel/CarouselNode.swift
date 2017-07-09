@@ -7,15 +7,30 @@
 //
 
 import UIKit
+import Kingfisher
 import AsyncDisplayKit
 
 class ImageCellNode: ASCellNode {
     
-    let imageNode = ASImageNode()
-    required init(with image : UIImage) {
+    let imageNode = ASNetworkImageNode()
+    
+    required init(with imageURL: URL?) {
         super.init()
-        imageNode.image = image
-        self.addSubnode(self.imageNode)
+        
+        guard let imageURL = imageURL else {
+            
+            imageNode.image = #imageLiteral(resourceName: "Fail")
+            
+            return
+        }
+        
+        /// Image setup
+        imageNode.url = imageURL
+        imageNode.placeholderFadeDuration = 0.15
+        imageNode.contentMode = .scaleAspectFill
+        
+        /// Add subnode
+        addSubnode(imageNode)
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
