@@ -245,6 +245,7 @@ extension ChatViewController: ConversationManagerDelegate {
                 
                 /// Remove
                 removeTypingIndicator(indicator)
+                self.typingIndicator = nil
             }
         }
         
@@ -310,8 +311,10 @@ extension ChatViewController: ChatActionContainerViewDelegate {
     /// Called when action selected
     func containerView(_ containerView: ChatActionContainerView, selectedAction: QuickAction, message: Message) {
         
-        /// Show typing indicator
-        typingIndicator = showTypingIndicator()
+        ez.runThisAfterDelay(seconds: 0.5) {
+            /// Show typing indicator
+            self.typingIndicator = self.showTypingIndicator()
+        }
     }
     
     /// Called when reply selected
@@ -320,8 +323,10 @@ extension ChatViewController: ChatActionContainerViewDelegate {
         /// Send to channel
         sendMessage(selectedReply.body)
         
-        /// Show typing indicator
-        typingIndicator = showTypingIndicator()
+        ez.runThisAfterDelay(seconds: 0.5) {
+            /// Show typing indicator
+            self.typingIndicator = self.showTypingIndicator()
+        }
     }
     
     /// Called when type changed to visible
