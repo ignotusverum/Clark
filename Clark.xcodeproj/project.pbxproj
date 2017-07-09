@@ -151,6 +151,10 @@
 		F516D28E1F115FA70045903F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D28C1F115FA70045903F /* Dictionary.swift */; };
 		F516D2901F1193BC0045903F /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D28F1F1193BC0045903F /* Carousel.swift */; };
 		F516D2911F1193BC0045903F /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D28F1F1193BC0045903F /* Carousel.swift */; };
+		F516D2941F11C64E0045903F /* CarouselContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2931F11C64E0045903F /* CarouselContentNode.swift */; };
+		F516D2951F11C64E0045903F /* CarouselContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2931F11C64E0045903F /* CarouselContentNode.swift */; };
+		F516D29A1F11CF290045903F /* CarouselNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2991F11CF290045903F /* CarouselNode.swift */; };
+		F516D29B1F11CF290045903F /* CarouselNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2991F11CF290045903F /* CarouselNode.swift */; };
 		F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */; };
@@ -279,6 +283,8 @@
 		F516D2891F113B5C0045903F /* TextContentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextContentNode.swift; sourceTree = "<group>"; };
 		F516D28C1F115FA70045903F /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		F516D28F1F1193BC0045903F /* Carousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
+		F516D2931F11C64E0045903F /* CarouselContentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselContentNode.swift; sourceTree = "<group>"; };
+		F516D2991F11CF290045903F /* CarouselNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselNode.swift; sourceTree = "<group>"; };
 		F51727711F1078D0002573E0 /* ChatActionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatActionContainerView.swift; sourceTree = "<group>"; };
 		F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		F51727791F1096A7002573E0 /* ChatInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
@@ -662,6 +668,7 @@
 		F516D2841F1132B30045903F /* Bubbles */ = {
 			isa = PBXGroup;
 			children = (
+				F516D2921F11C6340045903F /* Carousel */,
 				F516D2851F1132C60045903F /* ClarkBubblesConfiguration.swift */,
 			);
 			path = Bubbles;
@@ -674,6 +681,38 @@
 			);
 			name = Bubbles;
 			path = Bubble;
+			sourceTree = "<group>";
+		};
+		F516D2921F11C6340045903F /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				F516D2931F11C64E0045903F /* CarouselContentNode.swift */,
+			);
+			path = Carousel;
+			sourceTree = "<group>";
+		};
+		F516D2961F11CEDC0045903F /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				F516D2971F11CEE90045903F /* Sections */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		F516D2971F11CEE90045903F /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				F516D2981F11CEF60045903F /* Carousel */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		F516D2981F11CEF60045903F /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				F516D2991F11CF290045903F /* CarouselNode.swift */,
+			);
+			path = Carousel;
 			sourceTree = "<group>";
 		};
 		F51727741F109349002573E0 /* Collection Layouts */ = {
@@ -730,6 +769,7 @@
 		F5582BF11F0EC57800A180A0 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				F516D2961F11CEDC0045903F /* Nodes */,
 				F516D2841F1132B30045903F /* Bubbles */,
 				F51727781F109693002573E0 /* Input Bar */,
 				F51727741F109349002573E0 /* Collection Layouts */,
@@ -1110,11 +1150,13 @@
 				F517277B1F1096A7002573E0 /* ChatInputBar.swift in Sources */,
 				F5059B281F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
 				F5582BE91F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */,
+				F516D2951F11C64E0045903F /* CarouselContentNode.swift in Sources */,
 				F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */,
 				F5059B641F0D704C009DFF0B /* ConversationManager.swift in Sources */,
 				F5059B151F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
 				F5582BE11F0EA9DE00A180A0 /* ChatViewController.swift in Sources */,
 				F5582BE41F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */,
+				F516D29B1F11CF290045903F /* CarouselNode.swift in Sources */,
 				F56A452A1F0F3310000D19DB /* Date.swift in Sources */,
 				F5059B681F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F5C7B72D1F0FF92A005EFC3F /* QuickAction.swift in Sources */,
@@ -1185,11 +1227,13 @@
 				F517277A1F1096A7002573E0 /* ChatInputBar.swift in Sources */,
 				F56A452B1F0F4185000D19DB /* Date.swift in Sources */,
 				F5059AE41F0D6544009DFF0B /* _Tutor.swift in Sources */,
+				F516D2941F11C64E0045903F /* CarouselContentNode.swift in Sources */,
 				F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */,
 				F5059B8C1F0D7940009DFF0B /* S3Manager.swift in Sources */,
 				F5059B101F0D6677009DFF0B /* PaymentAdapter.swift in Sources */,
 				F5059B271F0D67A6009DFF0B /* AutoCompleteData.swift in Sources */,
 				F5582BE81F0EAB7400A180A0 /* ChatRouteHandler.swift in Sources */,
+				F516D29A1F11CF290045903F /* CarouselNode.swift in Sources */,
 				F5059B631F0D704C009DFF0B /* ConversationManager.swift in Sources */,
 				F5059B141F0D6677009DFF0B /* StudentAdapter.swift in Sources */,
 				F5582BE01F0EA9DE00A180A0 /* ChatViewController.swift in Sources */,

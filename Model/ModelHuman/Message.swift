@@ -97,7 +97,7 @@ open class Message: _Message, ImportableUniqueObject {
         }
         
         /// Map & create carousels
-        return carouselItemsArray.flatMap { CarouselItem(attributes: $0) }
+        return carouselItemsArray.map { CarouselItem(source: $0) }
     }
     
     // MARK: - Quick actions

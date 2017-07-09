@@ -309,8 +309,6 @@ extension ChatViewController: ChatActionContainerViewDelegate {
     /// Called when action selected
     func containerView(_ containerView: ChatActionContainerView, selectedAction: QuickAction, message: Message) {
         
-        print(selectedAction)
-        
         /// Show typing indicator
         typingIndicator = showTypingIndicator()
     }
