@@ -137,12 +137,12 @@ extension ChatViewController {
         ez.runThisAfterDelay(seconds: 45) {
             DispatchQueue.main.async {
                 if let _ = self.typingIndicator {
-                    self.removeTypingIndicator(self.typingIndicator)
+                    self.removeTypingIndicator(self.typingIndicator!)
                     self.typingIndicator = nil
                 }
             }
         }
-        
+
         return indicator
     }
 }
