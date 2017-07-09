@@ -275,7 +275,7 @@ extension ChatViewController: ConversationManagerDelegate {
             messengerView.addMessage(newTimestampGroup, scrollsToMessage: true)
         }
         
-        postText(message.body, isIncoming: message.isReceiver)
+        postMessage(message, isIncoming: message.isReceiver)
         
         /// Update layout
         updateChatActionViewPosition()

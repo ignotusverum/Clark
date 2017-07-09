@@ -81,45 +81,43 @@ extension ChatViewController {
     }
     
     /// Post text
-    func postText(_ text: String, isIncoming: Bool) {
+    func postMessage(_ message: Message, isIncoming: Bool) {
      
         // Text node params
-        let textContentNode = TextContentNode(textMessageString: text, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
+        if let contentNode = MessageParser.createContentNode(for: message, controller: self) {
         
-        /// Configur fonts
-        textContentNode.configure()
-        
-        /// Create mesasge node
-        let messageNode = MessageNode(content: textContentNode)
-        messageNode.cellPadding = messagePadding
-        messageNode.currentViewController = self
-        
-        // Checking is author
-        messageNode.isIncomingMessage = isIncoming
-        
-        /// Update insets
-        automaticallyAdjustsScrollViewInsets = false
-        
-        if lastGroup == nil || lastGroup?.isIncomingMessage == !isIncoming {
+            /// Create mesasge node
+            let messageNode = ClarkMessageNode(content: contentNode, message: message)
+            messageNode.cellPadding = messagePadding
+            messageNode.currentViewController = self
             
-            /// New Group
-            lastGroup = MessageParser.createMessageGroup(padding: messagePadding, controller: self)
+            // Checking is author
+            messageNode.isIncomingMessage = isIncoming
             
-            //add avatar if incoming message
-            if isIncoming {
-                lastGroup?.avatarNode = Avatars.createAvatar()
+            /// Update insets
+            automaticallyAdjustsScrollViewInsets = false
+            
+            if lastGroup == nil || lastGroup?.isIncomingMessage == !isIncoming {
+                
+                /// New Group
+                lastGroup = MessageParser.createMessageGroup(padding: messagePadding, controller: self)
+                
+                //add avatar if incoming message
+                if isIncoming {
+                    lastGroup?.avatarNode = Avatars.createAvatar()
+                }
+                else {
+                    lastGroup?.avatarNode = Avatars.createEmptyAvatar()
+                }
+                
+                lastGroup?.isIncomingMessage = isIncoming
+                messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: true)
+                messengerView.addMessage(lastGroup!, scrollsToMessage: true, withAnimation: isIncoming ? .left : .right)
             }
             else {
-                lastGroup?.avatarNode = Avatars.createEmptyAvatar()
+                
+                messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: true)
             }
-            
-            lastGroup?.isIncomingMessage = isIncoming
-            messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: true)
-            messengerView.addMessage(lastGroup!, scrollsToMessage: true, withAnimation: isIncoming ? .left : .right)
-        }
-        else {
-            
-            messengerView.addMessageToMessageGroup(messageNode, messageGroup: lastGroup!, scrollsToLastMessage: true)
         }
     }
     
