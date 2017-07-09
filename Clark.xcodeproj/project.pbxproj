@@ -159,6 +159,8 @@
 		F516D29F1F11D9500045903F /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D29D1F11D9500045903F /* MessageParser.swift */; };
 		F516D2A21F11DD190045903F /* Avatars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2A11F11DD190045903F /* Avatars.swift */; };
 		F516D2A31F11DD190045903F /* Avatars.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2A11F11DD190045903F /* Avatars.swift */; };
+		F516D2A51F11F4B50045903F /* ClarkMessageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2A41F11F4B50045903F /* ClarkMessageNode.swift */; };
+		F516D2A61F11F4B50045903F /* ClarkMessageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516D2A41F11F4B50045903F /* ClarkMessageNode.swift */; };
 		F51727721F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727731F1078D0002573E0 /* ChatActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727711F1078D0002573E0 /* ChatActionContainerView.swift */; };
 		F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */; };
@@ -291,6 +293,7 @@
 		F516D2991F11CF290045903F /* CarouselNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselNode.swift; sourceTree = "<group>"; };
 		F516D29D1F11D9500045903F /* MessageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
 		F516D2A11F11DD190045903F /* Avatars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatars.swift; sourceTree = "<group>"; };
+		F516D2A41F11F4B50045903F /* ClarkMessageNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClarkMessageNode.swift; sourceTree = "<group>"; };
 		F51727711F1078D0002573E0 /* ChatActionContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatActionContainerView.swift; sourceTree = "<group>"; };
 		F51727751F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		F51727791F1096A7002573E0 /* ChatInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
@@ -710,6 +713,7 @@
 			isa = PBXGroup;
 			children = (
 				F516D2981F11CEF60045903F /* Carousel */,
+				F516D2A41F11F4B50045903F /* ClarkMessageNode.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -1223,6 +1227,7 @@
 				F516D29F1F11D9500045903F /* MessageParser.swift in Sources */,
 				F5059B841F0D7759009DFF0B /* InitialViewController.swift in Sources */,
 				F5059B371F0D6842009DFF0B /* Constants.m in Sources */,
+				F516D2A61F11F4B50045903F /* ClarkMessageNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1302,6 +1307,7 @@
 				F516D29E1F11D9500045903F /* MessageParser.swift in Sources */,
 				F5059B831F0D7759009DFF0B /* InitialViewController.swift in Sources */,
 				F5059B361F0D6842009DFF0B /* Constants.m in Sources */,
+				F516D2A51F11F4B50045903F /* ClarkMessageNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

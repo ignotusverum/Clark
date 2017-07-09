@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import NMessenger
+import AsyncDisplayKit
 
 class MessageParser {
     
@@ -18,7 +19,7 @@ class MessageParser {
     ///   - message: message object
     ///   - controller: chat controller
     /// - Returns: content node for cell
-    class func createConentNode(for message: Message, controller: UIViewController)-> ContentNode? {
+    class func createContentNode(for message: Message, controller: UIViewController)-> ContentNode? {
      
         switch message.type {
         case .text:
@@ -61,7 +62,7 @@ class MessageParser {
         for (index, message) in responseMessages.enumerated() {
         
             // Generate content node
-            if let contentNode = MessageParser.createConentNode(for: message, controller: controller) {
+            if let contentNode = MessageParser.createContentNode(for: message, controller: controller) {
                 
                 // Create empty timestamp
                 var messageTimestamp = MessageSentIndicator()
@@ -80,16 +81,19 @@ class MessageParser {
                 }
                 
                 // Cell padding update
-                let messageNode = MessageNode(content: contentNode)
+                let messageNode = ClarkMessageNode(content: contentNode, message: message)
                 messageNode.currentViewController = controller
                 
                 // Author check
                 messageNode.isIncomingMessage = message.isReceiver
                 
                 /// New group
-                if result.last == nil || result.last?.isIncomingMessage == !message.isReceiver {
+                /// Create new group if there's no group
+                /// If new message incoming type is not equal to last message incoming type
+                /// If Message type is carousel
+                if result.last == nil || result.last?.isIncomingMessage == !message.isReceiver || message.type == .carousel {
                     
-                    let newMessageGroup = self.createMessageGroup(padding: padding, controller: controller)
+                    let newMessageGroup = createMessageGroup(message: message, padding: padding, controller: controller)
                     
                     // Check if node is not empty
                     if let text = messageTimestamp.messageSentAttributedText, text.length > 0 {
@@ -100,14 +104,6 @@ class MessageParser {
                         result.append(newTimestampGroup)
                     }
                     
-                    if message.isReceiver {
-                        newMessageGroup.avatarNode = Avatars.createAvatar()
-                    }
-                    else {
-                        newMessageGroup.avatarNode = Avatars.createEmptyAvatar()
-                    }
-                    
-                    newMessageGroup.isIncomingMessage = message.isReceiver
                     newMessageGroup.addMessageToGroup(messageNode, completion: nil)
                     
                     result.append(newMessageGroup)
@@ -129,6 +125,35 @@ class MessageParser {
         let newMessageGroup = MessageGroup()
         newMessageGroup.currentViewController = controller
         newMessageGroup.cellPadding = padding
+        return newMessageGroup
+    }
+    
+    class func createMessageGroup(message: Message, padding: UIEdgeInsets, controller: UIViewController)-> MessageGroup {
+        
+        let newMessageGroup = MessageGroup()
+        newMessageGroup.currentViewController = controller
+        
+        /// Type setup
+        switch message.type {
+        case .text:
+            
+            newMessageGroup.cellPadding = padding
+        default:
+            
+            newMessageGroup.cellPadding = .zero
+        }
+        
+        /// Show avatar only for clark
+        /// Show avatar only for messageType text
+        if message.isReceiver, message.type == .text {
+            newMessageGroup.avatarNode = Avatars.createAvatar()
+        }
+        else if message.type == .text {
+            newMessageGroup.avatarNode = Avatars.createEmptyAvatar()
+        }
+        
+        newMessageGroup.isIncomingMessage = message.isReceiver
+        
         return newMessageGroup
     }
 }

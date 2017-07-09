@@ -31,7 +31,7 @@ open class CarouselContentNode: ContentNode {
         let collectionNode = ASCollectionNode(frame: .zero, collectionViewLayout: layout)
     
         /// Node setup
-        collectionNode.backgroundColor = UIColor.clear
+        collectionNode.backgroundColor = UIColor.green
         collectionNode.view.showsHorizontalScrollIndicator = false
         
         return collectionNode
@@ -76,9 +76,8 @@ open class CarouselContentNode: ContentNode {
     /// - Parameter carouselItem: carousel model
     fileprivate func setupCarouselNode() {
         /// Clear background bubble
-        backgroundBubble = nil
-        
-        backgroundColor = UIColor.red
+//        layer.backgroundColor = UIColor.clear.cgColor
+//        collectionViewNode.backgroundColor = UIColor.green
         
         /// Collection node setup
         collectionViewNode.delegate = self
@@ -89,10 +88,12 @@ open class CarouselContentNode: ContentNode {
     open override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
         let textMessageSize = ASAbsoluteLayoutSpec()
+        
+        textMessageSize.style.preferredSize = CGSize(width: 5000, height: 100)
         textMessageSize.sizing = .sizeToFit
         textMessageSize.children = [collectionViewNode]
         
-        return  ASInsetLayoutSpec(insets: insets, child: textMessageSize)
+        return ASInsetLayoutSpec(insets: insets, child: textMessageSize)
     }
 }
 
