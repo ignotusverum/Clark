@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 import NMessenger
 import SVProgressHUD
 import TwilioChatClient
@@ -108,6 +109,8 @@ class ChatViewController: NMessengerViewController {
         /// Fetch messages + create cells for current controller
         fetchMessageCells(for: channelID, start: pageSize * currentPage, offset: pageSize).then { groups, messages-> Void in
 
+            print(messages)
+            
             /// Update controller with messages
             DispatchQueue.main.async {
                 if self.messengerView.allMessages().isEmpty { //If there are no messages we have to use the add messages function, otherwise to add new chats to the top, we use endBatchFetch

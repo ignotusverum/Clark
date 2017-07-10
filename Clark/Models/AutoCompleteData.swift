@@ -25,13 +25,13 @@ public struct AutoCompleteModel {
     var childSwitches: [AutoCompleteModel]?
     
     init?(attributes: JSON) {
-        guard let body = attributes["body"].string, let type = attributes["autocomplete_switch_type"].string else {
+        guard let attiribute = attributes["attributes"].json, let body = attiribute["body"].string, let type = attiribute["autocomplete_switch_type"].string else {
                 return nil
         }
         self.body = body
-        let validEnd = attributes["valid_end_of_command"].bool
+        let validEnd = attiribute["valid_end_of_command"].bool
         self.validEnd = validEnd != nil ? validEnd!:false
-        self.intent = attributes["autocomplete_intent"].string
+        self.intent = attiribute["autocomplete_intent"].string
         
         // Determine type and create any variables to send back in enum
         if type == "text" {
@@ -40,7 +40,7 @@ public struct AutoCompleteModel {
         }
         else if type == "entity_placeholder" {
             // Here we need to do autocomplete on a certain stored entity like students or sessions
-            let entityString = attributes["autocomplete_entity_type"].string
+            let entityString = attiribute["autocomplete_entity_type"].string
             var entity: Any?
             if entityString == "Student" || entityString == "students" {
                 entity = Student.self
@@ -56,7 +56,7 @@ public struct AutoCompleteModel {
         }
         else if type == "given_values_placeholder" {
             // Here we display only the given values returned in the "values" array
-            if let values = attributes["values"].arrayObject as? [String] {
+            if let values = attiribute["values"].arrayObject as? [String] {
                 self.type = AutoCompleteType.values(values)
             } else {
                 print("GIVEN VALUES ERROR: unrecognized format, fix here")
@@ -69,7 +69,7 @@ public struct AutoCompleteModel {
         }
         
         // If still valid, set up all children
-        if let childArray = attributes["child_switches"].arrayObject as? [[String:Any]], childArray.count > 0 {
+        if let childArray = attiribute["child_switches"].arrayObject as? [[String:Any]], childArray.count > 0 {
             var childSwitches:[AutoCompleteModel] = []
             for childDictionary in childArray {
                 if let child = AutoCompleteModel(attributes: JSON(childDictionary)) {
