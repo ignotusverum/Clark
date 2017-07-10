@@ -55,7 +55,7 @@ class CarouselNode: ASCellNode {
         /// Update ratio
         var imageRatio: CGFloat = item.type == .image ? 0.65 : 1
         if count == 1 {
-            imageRatio == 1
+            imageRatio = 1
         }
         
         if imageNode.image != nil {
