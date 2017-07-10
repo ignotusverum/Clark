@@ -165,6 +165,12 @@ class ChatViewController: NMessengerViewController {
         chatActionContainerView.delegate = self
     }
     
+    /// Fetch more messages
+    func batchFetchContent() {
+        currentPage += 1
+        fetchMessages()
+    }
+    
     // MARK: - Initial setup
     private func initialSetup() {
      
