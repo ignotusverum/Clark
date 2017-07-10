@@ -120,12 +120,28 @@ class MessageParser {
                         result.append(newTimestampGroup)
                     }
                     
+                    /// Temp solution for carousel - adding title message
+                    if message.type == .carousel {
+                        
+                        /// Title
+                        let titleContentNode = TextContentNode(textMessageString: message.body, bubbleConfiguration: ClarkBubblesConfiguration())
+                        
+                        /// Configure
+                        titleContentNode.configure()
+                        
+                        /// Message
+                        let titleMessage = MessageNode(content: titleContentNode)
+                        
+                        /// Title
+                        result.last?.addMessageToGroup(titleMessage, completion: nil)
+                    }
+                    
                     newMessageGroup.addMessageToGroup(messageNode, completion: nil)
                     
                     result.append(newMessageGroup)
                 }
                 else {
-                    
+
                     result.last?.addMessageToGroup(messageNode, completion: nil)
                 }
             }
@@ -144,6 +160,13 @@ class MessageParser {
         return newMessageGroup
     }
     
+    /// Create message group for message
+    ///
+    /// - Parameters:
+    ///   - message: message object
+    ///   - padding: padding
+    ///   - controller: controller
+    /// - Returns: message group
     class func createMessageGroup(message: Message, padding: UIEdgeInsets, controller: UIViewController)-> MessageGroup {
         
         let newMessageGroup = MessageGroup()
