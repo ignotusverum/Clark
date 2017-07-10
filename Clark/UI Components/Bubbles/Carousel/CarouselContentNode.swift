@@ -110,7 +110,7 @@ extension CarouselContentNode: ASCollectionDataSource {
     public func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
         
         let carouselItem = carouselItems[indexPath.row]
-        return CarouselNode(with: carouselItem)
+        return CarouselNode(with: carouselItem, count: carouselItems.count)
     }
     
     public func numberOfSections(in collectionNode: ASCollectionNode) -> Int {

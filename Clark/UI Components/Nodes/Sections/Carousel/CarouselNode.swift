@@ -14,7 +14,20 @@ class CarouselNode: ASCellNode {
     
     let imageNode = ASNetworkImageNode()
     
-    init(with item: CarouselItem) {
+    /// Model
+    var item: CarouselItem
+    
+    /// Total count
+    var count: Int
+    
+    init(with item: CarouselItem, count: Int) {
+        
+        /// Assign model
+        self.item = item
+        
+        /// Number of object, for scale
+        self.count = count
+        
         super.init()
         
         guard let imageURL = item.imageURL else {
@@ -38,7 +51,13 @@ class CarouselNode: ASCellNode {
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        var imageRatio: CGFloat = 0.65
+        
+        /// Update ratio
+        var imageRatio: CGFloat = item.type == .image ? 0.65 : 1
+        if count == 1 {
+            imageRatio == 1
+        }
+        
         if imageNode.image != nil {
             imageRatio = (imageNode.image?.size.height)! / (imageNode.image?.size.width)!
         }
