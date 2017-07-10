@@ -215,6 +215,8 @@
 		F5C7B7311F100440005EFC3F /* ChatViewController+Twilio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */; };
 		F5C7B7391F101C79005EFC3F /* QuickActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */; };
 		F5C7B73A1F101C7B005EFC3F /* QuickActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */; };
+		F5CADA7E1F142EFD00BD1228 /* TextFormInputNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CADA7D1F142EFD00BD1228 /* TextFormInputNode.swift */; };
+		F5CADA7F1F142EFD00BD1228 /* TextFormInputNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CADA7D1F142EFD00BD1228 /* TextFormInputNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -328,6 +330,7 @@
 		F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickAction.swift; sourceTree = "<group>"; };
 		F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatViewController+Twilio.swift"; sourceTree = "<group>"; };
 		F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionCollectionViewCell.swift; sourceTree = "<group>"; };
+		F5CADA7D1F142EFD00BD1228 /* TextFormInputNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormInputNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -725,6 +728,7 @@
 		F516D2971F11CEE90045903F /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				F5CADA7B1F142EE000BD1228 /* Form Inputs */,
 				F516D2981F11CEF60045903F /* Carousel */,
 				F516D2A41F11F4B50045903F /* ClarkMessageNode.swift */,
 				F57939B91F13D6C200875BA3 /* ClarkHTMLNode.swift */,
@@ -944,6 +948,22 @@
 				F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */,
 			);
 			path = "Quick Action";
+			sourceTree = "<group>";
+		};
+		F5CADA7B1F142EE000BD1228 /* Form Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				F5CADA7C1F142EEF00BD1228 /* Text */,
+			);
+			path = "Form Inputs";
+			sourceTree = "<group>";
+		};
+		F5CADA7C1F142EEF00BD1228 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				F5CADA7D1F142EFD00BD1228 /* TextFormInputNode.swift */,
+			);
+			path = Text;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1245,6 +1265,7 @@
 				F5059B3B1F0D68BC009DFF0B /* DatabaseManager.swift in Sources */,
 				F5059B131F0D6677009DFF0B /* SessionAdapter.swift in Sources */,
 				F5A524F11F10688A00292C1E /* QuickReplyCollectionViewCell.swift in Sources */,
+				F5CADA7F1F142EFD00BD1228 /* TextFormInputNode.swift in Sources */,
 				F5059B301F0D67A6009DFF0B /* OnboardingFlows.swift in Sources */,
 				F56A45261F0F3232000D19DB /* TCHMessage.swift in Sources */,
 				F5059AF61F0D6594009DFF0B /* Device.swift in Sources */,
@@ -1329,6 +1350,7 @@
 				F5059ADC1F0D6544009DFF0B /* _Message.swift in Sources */,
 				F5059B0E1F0D6677009DFF0B /* ConfigAdapter.swift in Sources */,
 				F5059B3A1F0D68BC009DFF0B /* DatabaseManager.swift in Sources */,
+				F5CADA7E1F142EFD00BD1228 /* TextFormInputNode.swift in Sources */,
 				F5059B121F0D6677009DFF0B /* SessionAdapter.swift in Sources */,
 				F5059B2F1F0D67A6009DFF0B /* OnboardingFlows.swift in Sources */,
 				F5059AF51F0D6594009DFF0B /* Device.swift in Sources */,
