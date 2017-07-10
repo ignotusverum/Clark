@@ -29,12 +29,16 @@ class CarouselNode: ASCellNode {
         imageNode.placeholderFadeDuration = 0.15
         imageNode.contentMode = .scaleAspectFill
         
+        /// Corner radius
+        imageNode.cornerRadius = 8
+        imageNode.clipsToBounds = true
+        
         /// Add subnode
         addSubnode(imageNode)
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        var imageRatio: CGFloat = 0.5
+        var imageRatio: CGFloat = 0.65
         if imageNode.image != nil {
             imageRatio = (imageNode.image?.size.height)! / (imageNode.image?.size.width)!
         }
@@ -47,6 +51,6 @@ class CarouselNode: ASCellNode {
         stackLayout.style.flexShrink = 1.0
         stackLayout.children = [imagePlace]
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets.zero, child: stackLayout)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0), child: stackLayout)
     }
 }

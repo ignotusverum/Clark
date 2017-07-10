@@ -75,6 +75,7 @@ class ChatViewController: NMessengerViewController {
         conversationUISetup()
         
         /// Fetch messages
+        SVProgressHUD.show()
         fetchMessages()
         
         /// Keyobard notifications
@@ -104,7 +105,6 @@ class ChatViewController: NMessengerViewController {
             return
         }
         
-        SVProgressHUD.show()
         /// Fetch messages + create cells for current controller
         fetchMessageCells(for: channelID, start: pageSize * currentPage, offset: pageSize).then { groups, messages-> Void in
 
@@ -167,6 +167,7 @@ class ChatViewController: NMessengerViewController {
     
     /// Fetch more messages
     func batchFetchContent() {
+        
         currentPage += 1
         fetchMessages()
     }
@@ -238,6 +239,7 @@ extension ChatViewController: ConversationManagerDelegate {
         self.channel = channel
         
         /// Fetch messages
+        SVProgressHUD.show()
         fetchMessages()
     }
     

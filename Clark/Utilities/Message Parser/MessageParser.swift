@@ -156,12 +156,12 @@ class MessageParser {
             newMessageGroup.cellPadding = padding
         default:
             
-            newMessageGroup.cellPadding = .zero
+            newMessageGroup.cellPadding = UIEdgeInsets(top: 0, left: -30, bottom: 0, right: -30)
         }
         
         /// Show avatar only for clark
         /// Show avatar only for messageType text
-        if message.isReceiver, message.type == .text {
+        if message.isReceiver, (message.type == .text || message.type == .html) {
             newMessageGroup.avatarNode = Avatars.createAvatar()
         }
         else if message.type == .text {

@@ -13,7 +13,13 @@ import AsyncDisplayKit
 open class CarouselContentNode: ContentNode {
 
     /// Carousel Items
-    var carouselItems: [CarouselItem] = []
+    var carouselItems: [CarouselItem] {
+        didSet {
+            
+            /// Reload
+            collectionViewNode.reloadData()
+        }
+    }
     
     /// Collection View node
     lazy var collectionViewNode: ASCollectionNode = {
@@ -31,7 +37,6 @@ open class CarouselContentNode: ContentNode {
         let collectionNode = ASCollectionNode(frame: .zero, collectionViewLayout: layout)
     
         /// Node setup
-        collectionNode.backgroundColor = UIColor.green
         collectionNode.view.showsHorizontalScrollIndicator = false
         
         return collectionNode
@@ -65,6 +70,7 @@ open class CarouselContentNode: ContentNode {
     ///   - bubbleConfiguration: bubble setup
     init(carouselItems: [CarouselItem], currentViewController: UIViewController, bubbleConfiguration: BubbleConfigurationProtocol? = nil)
     {
+        self.carouselItems = carouselItems
         super.init(bubbleConfiguration: bubbleConfiguration)
         self.currentViewController = currentViewController
         self.setupCarouselNode()
@@ -76,8 +82,9 @@ open class CarouselContentNode: ContentNode {
     /// - Parameter carouselItem: carousel model
     fileprivate func setupCarouselNode() {
         /// Clear background bubble
-//        layer.backgroundColor = UIColor.clear.cgColor
-//        collectionViewNode.backgroundColor = UIColor.green
+        layer.backgroundColor = UIColor.clear.cgColor
+        
+        addSubnode(collectionViewNode)
         
         /// Collection node setup
         collectionViewNode.delegate = self
@@ -87,13 +94,13 @@ open class CarouselContentNode: ContentNode {
     // MARK: - Collection layout
     open override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
-        let textMessageSize = ASAbsoluteLayoutSpec()
+        let carouselMessageSize = ASAbsoluteLayoutSpec()
         
-        textMessageSize.style.preferredSize = CGSize(width: 5000, height: 100)
-        textMessageSize.sizing = .sizeToFit
-        textMessageSize.children = [collectionViewNode]
+        carouselMessageSize.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 160)
+        carouselMessageSize.sizing = .sizeToFit
+        carouselMessageSize.children = [collectionViewNode]
         
-        return ASInsetLayoutSpec(insets: insets, child: textMessageSize)
+        return ASInsetLayoutSpec(insets: insets, child: carouselMessageSize)
     }
 }
 
