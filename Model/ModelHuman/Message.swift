@@ -6,6 +6,7 @@
 //  Copyright © 2016 Vladislav Zagorodnyuk Co. All rights reserved.
 //
 
+import Kanna
 import CoreStore
 import SwiftyJSON
 import PromiseKit
@@ -53,6 +54,8 @@ public struct MessageJSON {
     static let carousel = "carousel_items"
     static let quickActions = "quick_actions"
     static let quickReplies = "quick_replies"
+    
+    static let htmlBody = "html_body"
 }
 
 /// Message type
@@ -122,6 +125,29 @@ open class Message: _Message, ImportableUniqueObject {
         
         /// Map & Create replies
         return quickReplyArray.flatMap { QuickReply(source: $0) }
+    }
+    
+    // MARK: - HTML body
+    var htmlBody: NSAttributedString? {
+        return attributesJSON[MessageJSON.htmlBody].string?.utf8Data?.attributedString
+    }
+    
+    var htmlLink: URL? {
+        
+        /// Get html object
+        guard let htmlString = attributesJSON[MessageJSON.htmlBody].string, let html = HTML(html: htmlString, encoding: .utf8) else {
+            return nil
+        }
+        
+        /// Find first link
+        for link in html.xpath("//a | //link") {
+            if let href = link["href"], let urlLink = URL(string: href) {
+                
+                return urlLink
+            }
+        }
+        
+        return nil
     }
     
     // MARK: - Importable Source Protocol

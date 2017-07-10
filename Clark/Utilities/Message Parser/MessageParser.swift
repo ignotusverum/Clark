@@ -36,6 +36,22 @@ class MessageParser {
             textContentNode.configure()
             
             return textContentNode
+        case .html:
+            
+            /// Check for empty message
+            guard message.body.length > 0 else {
+                return nil
+            }
+            
+            /// Generate text node with html
+            let htmlContentNode = ClarkHTMLNode(textMessageString: message.body!, currentViewController: controller, bubbleConfiguration: ClarkBubblesConfiguration())
+            htmlContentNode.message = message
+            htmlContentNode.textMessageString = message.htmlBody
+            
+            /// Fonts
+            htmlContentNode.configure()
+            
+            return htmlContentNode
         case .carousel:
             /// Generate carousel node
             let carouselContentNode = CarouselContentNode(carouselItems: message.carousel, currentViewController: controller)

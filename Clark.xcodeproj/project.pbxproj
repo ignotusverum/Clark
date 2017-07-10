@@ -188,6 +188,8 @@
 		F56A45271F0F3234000D19DB /* TCHMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45251F0F3232000D19DB /* TCHMessage.swift */; };
 		F56A452A1F0F3310000D19DB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45291F0F3310000D19DB /* Date.swift */; };
 		F56A452B1F0F4185000D19DB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45291F0F3310000D19DB /* Date.swift */; };
+		F57939BA1F13D6C200875BA3 /* ClarkHTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57939B91F13D6C200875BA3 /* ClarkHTMLNode.swift */; };
+		F57939BB1F13D6C700875BA3 /* ClarkHTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57939B91F13D6C200875BA3 /* ClarkHTMLNode.swift */; };
 		F5A524EE1F1067F800292C1E /* QuickActionCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */; };
 		F5A524F01F10688A00292C1E /* QuickReplyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */; };
 		F5A524F11F10688A00292C1E /* QuickReplyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */; };
@@ -308,6 +310,7 @@
 		F5582BF81F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		F56A45251F0F3232000D19DB /* TCHMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHMessage.swift; sourceTree = "<group>"; };
 		F56A45291F0F3310000D19DB /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		F57939B91F13D6C200875BA3 /* ClarkHTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClarkHTMLNode.swift; sourceTree = "<group>"; };
 		F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionCellProtocol.swift; sourceTree = "<group>"; };
 		F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReplyCollectionViewCell.swift; sourceTree = "<group>"; };
 		F5A524F31F1068E000292C1E /* QuickReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReply.swift; sourceTree = "<group>"; };
@@ -714,6 +717,7 @@
 			children = (
 				F516D2981F11CEF60045903F /* Carousel */,
 				F516D2A41F11F4B50045903F /* ClarkMessageNode.swift */,
+				F57939B91F13D6C200875BA3 /* ClarkHTMLNode.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -1227,6 +1231,7 @@
 				F516D29F1F11D9500045903F /* MessageParser.swift in Sources */,
 				F5059B841F0D7759009DFF0B /* InitialViewController.swift in Sources */,
 				F5059B371F0D6842009DFF0B /* Constants.m in Sources */,
+				F57939BA1F13D6C200875BA3 /* ClarkHTMLNode.swift in Sources */,
 				F516D2A61F11F4B50045903F /* ClarkMessageNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1307,6 +1312,7 @@
 				F516D29E1F11D9500045903F /* MessageParser.swift in Sources */,
 				F5059B831F0D7759009DFF0B /* InitialViewController.swift in Sources */,
 				F5059B361F0D6842009DFF0B /* Constants.m in Sources */,
+				F57939BB1F13D6C700875BA3 /* ClarkHTMLNode.swift in Sources */,
 				F516D2A51F11F4B50045903F /* ClarkMessageNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
