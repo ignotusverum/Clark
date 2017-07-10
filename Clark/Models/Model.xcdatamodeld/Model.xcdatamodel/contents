@@ -13,6 +13,7 @@
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastSizeString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="privateAttributes_" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="responseAttributes_" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="sent" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="showTypingString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="twilioMessageIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -67,7 +68,7 @@
         <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="tutor" inverseEntity="Student" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Message" positionX="-306" positionY="-126" width="128" height="285"/>
+        <element name="Message" positionX="-306" positionY="-126" width="128" height="300"/>
         <element name="Model" positionX="-306" positionY="-99" width="128" height="60"/>
         <element name="Session" positionX="-11" positionY="-159" width="128" height="180"/>
         <element name="Student" positionX="-182" positionY="-252" width="128" height="255"/>

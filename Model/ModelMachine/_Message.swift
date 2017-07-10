@@ -17,6 +17,7 @@ public enum MessageAttributes: String {
     case imageURL = "imageURL"
     case lastSizeString = "lastSizeString"
     case privateAttributes_ = "privateAttributes_"
+    case responseAttributes_ = "responseAttributes_"
     case sent = "sent"
     case showTypingString = "showTypingString"
     case twilioMessageIndex = "twilioMessageIndex"
@@ -84,8 +85,11 @@ open class _Message: NSManagedObject {
     @NSManaged public
     var privateAttributes_: Any?
 
+    @NSManaged public
+    var responseAttributes_: Any?
+
     @NSManaged open
-    var sent: Date
+    var sent: Date?
 
     @NSManaged open
     var showTypingString: String?

@@ -56,6 +56,7 @@ public struct MessageJSON {
     static let quickReplies = "quick_replies"
     
     static let htmlBody = "html_body"
+    static let responseAttributes = "response_attributes"
 }
 
 /// Message type
@@ -86,8 +87,16 @@ open class Message: _Message, ImportableUniqueObject {
         return attributes_ as? [String: Any] ?? [:]
     }
     
+    var responseAttributes: [String: Any] {
+        return responseAttributes_ as? [String: Any] ?? [:]
+    }
+    
+    var responseAttributesJSON: JSON {
+        return JSON(responseAttributes)
+    }
+    
     /// Attributes converted to JSON
-    private var attributesJSON: JSON {
+    var attributesJSON: JSON {
         return JSON(attributes)
     }
     
@@ -227,10 +236,6 @@ open class Message: _Message, ImportableUniqueObject {
         /// Attributes parsing
         let attributesJSON = JSON(attributes)
         
-//        print("-----")
-//        print(attributesJSON)
-//        print("-----")
-        
         /// Blocking
         blocking = attributesJSON[MessageJSON.blocking].number ?? NSNumber(value: false)
         
@@ -252,5 +257,8 @@ open class Message: _Message, ImportableUniqueObject {
         
         /// Type
         typeString = attributesJSON[MessageJSON.typeString].string
+        
+        /// Response attributes
+        responseAttributes_ = attributesJSON[MessageJSON.responseAttributes].dictionaryObject
     }
 }

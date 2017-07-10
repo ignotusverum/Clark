@@ -7,7 +7,16 @@
 //
 
 import UIKit
+import SwiftyJSON
 import Foundation
+
+struct FormInputJSON {
+    
+    static let name = "name"
+    static let type = "type"
+    static let value = "value"
+}
+
 
 /// Form states
 enum FormState: String {
@@ -47,4 +56,7 @@ protocol FormInputProtocol {
     
     /// Placeholder
     var displayName: String { get set }
+    
+    /// Initialization
+    init(source: JSON)
 }

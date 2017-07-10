@@ -12,9 +12,6 @@ import SwiftyJSON
 
 struct FormTextInputJSON {
     
-    static let name = "name"
-    static let type = "type"
-    static let value = "value"
     static let keyboardType = "default"
     static let displayName = "display_name"
     static let autocomplete = "autocomplete"
@@ -58,10 +55,10 @@ class FormTextInput: FormInputProtocol {
     var capitalizationType: UITextAutocapitalizationType = .none
     
     // MARK: - Initialization
-    init(source: JSON) {
+    required init(source: JSON) {
         
         /// Value
-        self.value = source[FormTextInputJSON.value].string ?? ""
+        self.value = source[FormInputJSON.value].string ?? ""
         
         /// Display name
         self.displayName = source[FormTextInputJSON.displayName].string ?? ""

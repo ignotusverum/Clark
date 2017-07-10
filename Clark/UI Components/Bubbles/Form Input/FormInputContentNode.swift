@@ -109,7 +109,14 @@ extension FormInputContentNode: ASCollectionDataSource {
     
     public func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
         
-        return ASCellNode()
+        let formData = formInputs[indexPath.row] as! FormTextInput
+        let formInput = TextFormInputNode(with: formData)
+        
+        if indexPath.row == formInputs.count {
+            formInput.textField.returnKeyType = .done
+        }
+        
+        return formInput
     }
     
     public func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
