@@ -190,6 +190,10 @@
 		F56A452B1F0F4185000D19DB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56A45291F0F3310000D19DB /* Date.swift */; };
 		F57939BA1F13D6C200875BA3 /* ClarkHTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57939B91F13D6C200875BA3 /* ClarkHTMLNode.swift */; };
 		F57939BB1F13D6C700875BA3 /* ClarkHTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57939B91F13D6C200875BA3 /* ClarkHTMLNode.swift */; };
+		F57939BE1F141F5400875BA3 /* FormInputProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57939BD1F141F5400875BA3 /* FormInputProtocol.swift */; };
+		F57939BF1F141F5400875BA3 /* FormInputProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57939BD1F141F5400875BA3 /* FormInputProtocol.swift */; };
+		F57939C21F14258700875BA3 /* FormTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57939C11F14258700875BA3 /* FormTextInput.swift */; };
+		F57939C31F14258700875BA3 /* FormTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57939C11F14258700875BA3 /* FormTextInput.swift */; };
 		F5A524EE1F1067F800292C1E /* QuickActionCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */; };
 		F5A524F01F10688A00292C1E /* QuickReplyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */; };
 		F5A524F11F10688A00292C1E /* QuickReplyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */; };
@@ -311,6 +315,8 @@
 		F56A45251F0F3232000D19DB /* TCHMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHMessage.swift; sourceTree = "<group>"; };
 		F56A45291F0F3310000D19DB /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F57939B91F13D6C200875BA3 /* ClarkHTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClarkHTMLNode.swift; sourceTree = "<group>"; };
+		F57939BD1F141F5400875BA3 /* FormInputProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormInputProtocol.swift; sourceTree = "<group>"; };
+		F57939C11F14258700875BA3 /* FormTextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextInput.swift; sourceTree = "<group>"; };
 		F5A524ED1F1067F800292C1E /* QuickActionCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionCellProtocol.swift; sourceTree = "<group>"; };
 		F5A524EF1F10688A00292C1E /* QuickReplyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReplyCollectionViewCell.swift; sourceTree = "<group>"; };
 		F5A524F31F1068E000292C1E /* QuickReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReply.swift; sourceTree = "<group>"; };
@@ -854,6 +860,24 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		F57939BC1F141F3C00875BA3 /* Message Input */ = {
+			isa = PBXGroup;
+			children = (
+				F57939C01F14253200875BA3 /* Text input */,
+				F57939BD1F141F5400875BA3 /* FormInputProtocol.swift */,
+			);
+			name = "Message Input";
+			path = "Message input";
+			sourceTree = "<group>";
+		};
+		F57939C01F14253200875BA3 /* Text input */ = {
+			isa = PBXGroup;
+			children = (
+				F57939C11F14258700875BA3 /* FormTextInput.swift */,
+			);
+			path = "Text input";
+			sourceTree = "<group>";
+		};
 		F5A524EC1F1067D400292C1E /* Quick Response */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,6 +899,7 @@
 		F5C7B7271F0FD836005EFC3F /* Message Parsing */ = {
 			isa = PBXGroup;
 			children = (
+				F57939BC1F141F3C00875BA3 /* Message Input */,
 				F5C7B72C1F0FF92A005EFC3F /* QuickAction.swift */,
 				F5A524F31F1068E000292C1E /* QuickReply.swift */,
 				F516D28F1F1193BC0045903F /* Carousel.swift */,
@@ -1194,6 +1219,7 @@
 				F5C7B72D1F0FF92A005EFC3F /* QuickAction.swift in Sources */,
 				F5059AFE1F0D6594009DFF0B /* View.swift in Sources */,
 				F516D2A31F11DD190045903F /* Avatars.swift in Sources */,
+				F57939BF1F141F5400875BA3 /* FormInputProtocol.swift in Sources */,
 				F5059B191F0D6677009DFF0B /* SynchronizerHandler.swift in Sources */,
 				F5059AE31F0D6544009DFF0B /* _Student.swift in Sources */,
 				F51727771F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
@@ -1217,6 +1243,7 @@
 				F5582BFA1F0EC5EF00A180A0 /* AccountHeaderCollectionViewCell.swift in Sources */,
 				F5059B1D1F0D6677009DFF0B /* APIManager.swift in Sources */,
 				F5C7B72A1F0FDE59005EFC3F /* Twilio.swift in Sources */,
+				F57939C31F14258700875BA3 /* FormTextInput.swift in Sources */,
 				F5059AF81F0D6594009DFF0B /* Font.swift in Sources */,
 				F5059AE11F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AFA1F0D6594009DFF0B /* JSON.swift in Sources */,
@@ -1275,6 +1302,7 @@
 				F5582BE01F0EA9DE00A180A0 /* ChatViewController.swift in Sources */,
 				F5582BE31F0EAA5C00A180A0 /* LaunchChannelManager.swift in Sources */,
 				F516D2A21F11DD190045903F /* Avatars.swift in Sources */,
+				F57939BE1F141F5400875BA3 /* FormInputProtocol.swift in Sources */,
 				F5C7B72E1F0FFA8A005EFC3F /* QuickAction.swift in Sources */,
 				F5059B671F0D724A009DFF0B /* Analytics.swift in Sources */,
 				F51727761F109362002573E0 /* CenterAlignedCollectionViewFlowLayout.swift in Sources */,
@@ -1298,6 +1326,7 @@
 				F5059AFB1F0D6594009DFF0B /* String.swift in Sources */,
 				F5059B1C1F0D6677009DFF0B /* APIManager.swift in Sources */,
 				F5C7B72B1F0FDFA6005EFC3F /* Twilio.swift in Sources */,
+				F57939C21F14258700875BA3 /* FormTextInput.swift in Sources */,
 				F5059AF71F0D6594009DFF0B /* Font.swift in Sources */,
 				F5059AE01F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AF91F0D6594009DFF0B /* JSON.swift in Sources */,
