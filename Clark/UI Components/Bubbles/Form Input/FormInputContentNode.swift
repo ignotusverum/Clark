@@ -102,7 +102,7 @@ open class FormInputContentNode: ContentNode {
         formInputSize.sizing = .sizeToFit
         formInputSize.children = [collectionViewNode]
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 30, bottom: 3, right: 30), child: formInputSize)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30), child: formInputSize)
     }
 }
 

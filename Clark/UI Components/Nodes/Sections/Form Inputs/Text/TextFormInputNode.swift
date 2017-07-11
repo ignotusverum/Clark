@@ -37,6 +37,8 @@ class TextFormInputNode: ASCellNode {
         
         super.init()
         
+        separatorInset = .zero
+        
         let width = UIScreen.main.bounds.width - 60
         textField.style.preferredSize = CGSize(width: width, height: 49.5)
         /// Form input setup
