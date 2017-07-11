@@ -22,10 +22,10 @@ open class FormInputContentNode: ContentNode {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
-        layout.minimumLineSpacing = 4
-        layout.minimumInteritemSpacing = 4
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
         
-        layout.sectionInset = UIEdgeInsets(top: 6, left: 16, bottom: 6, right: 16)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         
         /// Collection node
         let collectionNode = ASCollectionNode(frame: .zero, collectionViewLayout: layout)
@@ -37,7 +37,7 @@ open class FormInputContentNode: ContentNode {
     }()
     
     /// Inset for the node
-    open var insets = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10) {
+    open var insets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10) {
         didSet {
             setNeedsLayout()
         }
@@ -96,13 +96,13 @@ open class FormInputContentNode: ContentNode {
     // MARK: - Collection layout
     open override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
-        let carouselMessageSize = ASAbsoluteLayoutSpec()
+        let formInputSize = ASAbsoluteLayoutSpec()
         
-        carouselMessageSize.style.preferredSize = CGSize(width: constrainedSize.max.width, height: CGFloat(formInputs.datasource.count * 50))
-        carouselMessageSize.sizing = .sizeToFit
-        carouselMessageSize.children = [collectionViewNode]
+        formInputSize.style.preferredSize = CGSize(width: constrainedSize.max.width, height: CGFloat(formInputs.datasource.count * 50))
+        formInputSize.sizing = .sizeToFit
+        formInputSize.children = [collectionViewNode]
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30), child: carouselMessageSize)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30), child: formInputSize)
     }
 }
 
@@ -112,9 +112,10 @@ extension FormInputContentNode: ASCollectionDataSource {
     public func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
         
         let formData = formInputs.datasource[indexPath.row] as! FormTextInput
-        let formInput = TextFormInputNode(with: formData)
+        let formInput = TextFormInputNode(with: formData, shouldShowSeparator: indexPath.row != formInputs.datasource.count - 1)
         
         if indexPath.row == formInputs.datasource.count {
+            
             formInput.textField.returnKeyType = .done
         }
         
