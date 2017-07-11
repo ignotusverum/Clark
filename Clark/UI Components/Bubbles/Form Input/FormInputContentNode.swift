@@ -92,7 +92,7 @@ open class FormInputContentNode: ContentNode {
         
         let carouselMessageSize = ASAbsoluteLayoutSpec()
         
-        carouselMessageSize.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 160)
+        carouselMessageSize.style.preferredSize = CGSize(width: constrainedSize.max.width, height: CGFloat(30 + formInputs.datasource.count * 50))
         carouselMessageSize.sizing = .sizeToFit
         carouselMessageSize.children = [collectionViewNode]
         
@@ -121,6 +121,12 @@ extension FormInputContentNode: ASCollectionDataSource {
     
     public func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
         return formInputs.datasource.count
+    }
+    
+    public func collectionView(_ collectionView: ASCollectionView, constrainedSizeForNodeAt indexPath: IndexPath) -> ASSizeRange {
+        let width = UIScreen.main.bounds.width - 20
+
+        return ASSizeRange(min: CGSize(width: width, height: 0), max: CGSize(width: width, height: 50))
     }
 }
 

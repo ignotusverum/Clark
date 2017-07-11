@@ -24,10 +24,20 @@ class TextFormInputNode: ASCellNode {
         
         super.init()
         
-        /// Form input setup
+        backgroundColor = UIColor.magenta
+        textField.style.preferredSize = CGSize(width: 300, height: 40)
         
+        /// Form input setup
         /// Placeholder
         textField.attributedPlaceholderText = NSAttributedString(string: formInput.displayName, attributes: [NSFontAttributeName: UIFont.AvenirNextRegular(size: 17), NSForegroundColorAttributeName: UIColor.trinidad])
+        
+        /// Rounding
+        textField.cornerRadius = 8
+        textField.clipsToBounds = true
+        
+        /// Border color
+        textField.borderWidth = 1
+        textField.borderColor = UIColor.trinidad.cgColor
         
         /// Text color
         textField.tintColor = UIColor.trinidad
@@ -44,12 +54,14 @@ class TextFormInputNode: ASCellNode {
     
     open override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
-        let textInputSize = ASAbsoluteLayoutSpec()
+        let textInputSize = ASStackLayoutSpec()
         
-        textInputSize.sizing = .sizeToFit
-        textInputSize.children = [textField]
-        
-        return ASInsetLayoutSpec(insets: .zero, child: textInputSize)
+        textInputSize.child = textField
+        textInputSize.alignItems = .baselineLast
+        textInputSize.style.flexShrink = 1.0
+        textInputSize.style.flexGrow = 1.0
+
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20), child: textInputSize)
     }
 }
 

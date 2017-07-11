@@ -109,11 +109,13 @@ class MessageParser {
                 // Author check
                 messageNode.isIncomingMessage = message.isReceiver
                 
+                let previous = index == 0 ? message : responseMessages[index-1]
+                
                 /// New group
                 /// Create new group if there's no group
                 /// If new message incoming type is not equal to last message incoming type
                 /// If Message type is carousel
-                if result.last == nil || result.last?.isIncomingMessage == !message.isReceiver || message.type == .carousel {
+                if result.last == nil || result.last?.isIncomingMessage == !message.isReceiver || (message.type == .carousel || message.type == .formInput) || (previous.type == .carousel || previous.type == .formInput) {
                     
                     let newMessageGroup = createMessageGroup(message: message, padding: padding, controller: controller)
                     
