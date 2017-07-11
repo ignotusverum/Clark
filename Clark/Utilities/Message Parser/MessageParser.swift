@@ -201,6 +201,9 @@ class MessageParser {
         case .text:
             
             newMessageGroup.cellPadding = padding
+        case .formInput:
+            
+            newMessageGroup.cellPadding = UIEdgeInsets(top: 15, left: -30, bottom: 15, right: -30)
         default:
             
             newMessageGroup.cellPadding = UIEdgeInsets(top: 0, left: -30, bottom: 0, right: -30)
