@@ -68,7 +68,7 @@ enum AttributeType: String {
     case emoji = "emoji"
     case carousel = "carousel"
     case errorText = "text_error"
-    case formInput = "form_input"
+    case formInput = "form_inputs"
     
     case undefined
 }
@@ -98,6 +98,11 @@ open class Message: _Message, ImportableUniqueObject {
     /// Attributes converted to JSON
     var attributesJSON: JSON {
         return JSON(attributes)
+    }
+    
+    // MARK: - Input forms
+    var formInputs: FormInputs? {
+        return FormInputs(source: responseAttributesJSON)
     }
     
     // MARK: - Carousel
@@ -255,10 +260,11 @@ open class Message: _Message, ImportableUniqueObject {
         /// Show Typing
         showTypingString = attributesJSON[MessageJSON.showTypingString].string
         
-        /// Type
-        typeString = attributesJSON[MessageJSON.typeString].string
-        
         /// Response attributes
         responseAttributes_ = attributesJSON[MessageJSON.responseAttributes].dictionaryObject
+        
+        /// Update type, if there's form inputs
+        let tempTypeString = attributesJSON[MessageJSON.typeString].string
+        typeString = formInputs == nil ? tempTypeString : FormInputsJSON.inputs
     }
 }

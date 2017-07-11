@@ -33,17 +33,17 @@ extension Message {
         
         if let previousMessage = previousMessage {
             
-            let difference = message.sent.minutesFrom(previousMessage.sent)
+            let difference = message.sent!.minutesFrom(previousMessage.sent!)
             
             // Difference should be > 15 min
             if difference > 15 {
                 
-                messageTimestamp.messageSentAttributedText = Date.convTimestamp(message.sent)
+                messageTimestamp.messageSentAttributedText = Date.convTimestamp(message.sent!)
             }
         }
         else {
             
-            messageTimestamp.messageSentAttributedText = Date.convTimestamp(message.sent)
+            messageTimestamp.messageSentAttributedText = Date.convTimestamp(message.sent!)
         }
         
         return messageTimestamp

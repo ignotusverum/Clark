@@ -217,6 +217,8 @@
 		F5C7B73A1F101C7B005EFC3F /* QuickActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */; };
 		F5CADA7E1F142EFD00BD1228 /* TextFormInputNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CADA7D1F142EFD00BD1228 /* TextFormInputNode.swift */; };
 		F5CADA7F1F142EFD00BD1228 /* TextFormInputNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CADA7D1F142EFD00BD1228 /* TextFormInputNode.swift */; };
+		F5CADA811F1512FA00BD1228 /* FormInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CADA801F1512FA00BD1228 /* FormInputs.swift */; };
+		F5CADA821F1512FA00BD1228 /* FormInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CADA801F1512FA00BD1228 /* FormInputs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -331,6 +333,7 @@
 		F5C7B72F1F100434005EFC3F /* ChatViewController+Twilio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatViewController+Twilio.swift"; sourceTree = "<group>"; };
 		F5C7B7381F101C79005EFC3F /* QuickActionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionCollectionViewCell.swift; sourceTree = "<group>"; };
 		F5CADA7D1F142EFD00BD1228 /* TextFormInputNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFormInputNode.swift; sourceTree = "<group>"; };
+		F5CADA801F1512FA00BD1228 /* FormInputs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormInputs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -873,6 +876,7 @@
 			children = (
 				F57939C01F14253200875BA3 /* Text input */,
 				F57939BD1F141F5400875BA3 /* FormInputProtocol.swift */,
+				F5CADA801F1512FA00BD1228 /* FormInputs.swift */,
 			);
 			name = "Message Input";
 			path = "Message input";
@@ -1282,6 +1286,7 @@
 				F5059AE11F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AFA1F0D6594009DFF0B /* JSON.swift in Sources */,
 				F5059AF21F0D6594009DFF0B /* Button.swift in Sources */,
+				F5CADA821F1512FA00BD1228 /* FormInputs.swift in Sources */,
 				F5059B7F1F0D7510009DFF0B /* RouteHandler.swift in Sources */,
 				F516D28B1F113B5C0045903F /* TextContentNode.swift in Sources */,
 				F5059B3E1F0D6A63009DFF0B /* Config.swift in Sources */,
@@ -1367,6 +1372,7 @@
 				F5059AE01F0D6544009DFF0B /* _Session.swift in Sources */,
 				F5059AF91F0D6594009DFF0B /* JSON.swift in Sources */,
 				F5059AF11F0D6594009DFF0B /* Button.swift in Sources */,
+				F5CADA811F1512FA00BD1228 /* FormInputs.swift in Sources */,
 				F5059B7E1F0D7510009DFF0B /* RouteHandler.swift in Sources */,
 				F516D28A1F113B5C0045903F /* TextContentNode.swift in Sources */,
 				F5059B3D1F0D6A63009DFF0B /* Config.swift in Sources */,

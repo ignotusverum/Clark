@@ -57,6 +57,12 @@ class MessageParser {
             let carouselContentNode = CarouselContentNode(carouselItems: message.carousel, currentViewController: controller)
             
             return carouselContentNode
+        case .formInput:
+            
+            /// Generate form input node
+            let formInputNode = FormInputContentNode(formInputs: message.formInputs!, currentViewController: controller)
+            
+            return formInputNode
         default:
             
             return nil

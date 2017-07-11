@@ -44,13 +44,12 @@ class TextFormInputNode: ASCellNode {
     
     open override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
-        let carouselMessageSize = ASAbsoluteLayoutSpec()
+        let textInputSize = ASAbsoluteLayoutSpec()
         
-        carouselMessageSize.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 45)
-        carouselMessageSize.sizing = .sizeToFit
-        carouselMessageSize.children = [textField]
+        textInputSize.sizing = .sizeToFit
+        textInputSize.children = [textField]
         
-        return ASInsetLayoutSpec(insets: .zero, child: carouselMessageSize)
+        return ASInsetLayoutSpec(insets: .zero, child: textInputSize)
     }
 }
 

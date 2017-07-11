@@ -13,13 +13,7 @@ import AsyncDisplayKit
 open class FormInputContentNode: ContentNode {
     
     /// Carousel Items
-    var formInputs: [FormInputProtocol] {
-        didSet {
-            
-            /// Reload
-            collectionViewNode.reloadData()
-        }
-    }
+    var formInputs: FormInputs
     
     /// Collection View node
     lazy var collectionViewNode: ASCollectionNode = {
@@ -39,6 +33,8 @@ open class FormInputContentNode: ContentNode {
         /// Node setup
         collectionNode.view.showsHorizontalScrollIndicator = false
         
+        collectionNode.backgroundColor = UIColor.green
+        
         return collectionNode
     }()
     
@@ -54,7 +50,7 @@ open class FormInputContentNode: ContentNode {
     /// - Parameters:
     ///   - formInputs: carouselItem model
     ///   - bubbleConfiguration: bubble setup
-    init(formInputs: [FormInputProtocol], bubbleConfiguration: BubbleConfigurationProtocol? = nil) {
+    init(formInputs: FormInputs, bubbleConfiguration: BubbleConfigurationProtocol? = nil) {
         
         self.formInputs = formInputs
         
@@ -68,7 +64,7 @@ open class FormInputContentNode: ContentNode {
     ///   - formInputs: carouselItem model
     ///   - currentViewController: controller for presentation
     ///   - bubbleConfiguration: bubble setup
-    init(formInputs: [FormInputProtocol], currentViewController: UIViewController, bubbleConfiguration: BubbleConfigurationProtocol? = nil)
+    init(formInputs: FormInputs, currentViewController: UIViewController, bubbleConfiguration: BubbleConfigurationProtocol? = nil)
     {
         self.formInputs = formInputs
         super.init(bubbleConfiguration: bubbleConfiguration)
@@ -109,10 +105,10 @@ extension FormInputContentNode: ASCollectionDataSource {
     
     public func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
         
-        let formData = formInputs[indexPath.row] as! FormTextInput
+        let formData = formInputs.datasource[indexPath.row] as! FormTextInput
         let formInput = TextFormInputNode(with: formData)
         
-        if indexPath.row == formInputs.count {
+        if indexPath.row == formInputs.datasource.count {
             formInput.textField.returnKeyType = .done
         }
         
@@ -124,7 +120,7 @@ extension FormInputContentNode: ASCollectionDataSource {
     }
     
     public func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        return formInputs.count
+        return formInputs.datasource.count
     }
 }
 

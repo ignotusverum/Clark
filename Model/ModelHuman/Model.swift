@@ -21,8 +21,6 @@ public struct ModelJSON {
 @objc(Model)
 open class Model: _Model, ImportableUniqueObject {
 
-    var json: JSON?
-    
     // MARK: - Importable Source Protocol
     public typealias ImportSource = JSON
     

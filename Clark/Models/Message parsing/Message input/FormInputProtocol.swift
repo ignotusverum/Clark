@@ -17,16 +17,6 @@ struct FormInputJSON {
     static let value = "value"
 }
 
-
-/// Form states
-enum FormState: String {
-    
-    case submitted = "submitted"
-    case hasErrors = "has_errors"
-    case unsubmitted = "unsubmitted"
-    case invalidated = "invalidated"
-}
-
 /// Input types
 enum FormInputType: String {
     
@@ -35,15 +25,6 @@ enum FormInputType: String {
     case slider = "slider"
     case switchButton = "radio_switch"
     case checkmarkButton = "radio_button"
-}
-
-/// Form Types
-enum FormType: String {
-    
-    case login = "login"
-    case signup = "signup"
-    case simple = "simple"
-    case custom = "custom"
 }
 
 protocol FormInputProtocol {
