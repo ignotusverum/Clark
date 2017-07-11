@@ -24,10 +24,9 @@ class TextFormInputNode: ASCellNode {
         
         super.init()
         
-        backgroundColor = UIColor.red
+        separatorInset = .zero
         
         textField.style.preferredSize = CGSize(width: self.calculatedSize.width, height: 40)
-        
         
         textField.backgroundColor = UIColor.yellow
         /// Form input setup

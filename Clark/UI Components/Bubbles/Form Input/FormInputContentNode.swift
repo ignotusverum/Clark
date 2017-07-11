@@ -22,10 +22,10 @@ open class FormInputContentNode: ContentNode {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 16
+        layout.minimumLineSpacing = 4
+        layout.minimumInteritemSpacing = 4
         
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        layout.sectionInset = UIEdgeInsets(top: 6, left: 16, bottom: 6, right: 16)
         
         /// Collection node
         let collectionNode = ASCollectionNode(frame: .zero, collectionViewLayout: layout)
@@ -98,7 +98,7 @@ open class FormInputContentNode: ContentNode {
         
         let carouselMessageSize = ASAbsoluteLayoutSpec()
         
-        carouselMessageSize.style.preferredSize = CGSize(width: constrainedSize.max.width, height: CGFloat(30 + formInputs.datasource.count * 50))
+        carouselMessageSize.style.preferredSize = CGSize(width: constrainedSize.max.width, height: CGFloat(formInputs.datasource.count * 50))
         carouselMessageSize.sizing = .sizeToFit
         carouselMessageSize.children = [collectionViewNode]
         
