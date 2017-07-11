@@ -114,11 +114,6 @@ extension FormInputContentNode: ASCollectionDataSource {
         let formData = formInputs.datasource[indexPath.row] as! FormTextInput
         let formInput = TextFormInputNode(with: formData, shouldShowSeparator: indexPath.row != formInputs.datasource.count - 1)
         
-        if indexPath.row == formInputs.datasource.count {
-            
-            formInput.textField.returnKeyType = .done
-        }
-        
         return formInput
     }
     

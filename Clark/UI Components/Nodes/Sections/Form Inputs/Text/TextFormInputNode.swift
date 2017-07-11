@@ -64,11 +64,17 @@ class TextFormInputNode: ASCellNode {
         /// Add separator
         if shouldShowSeparator {
             
+            /// Add separator to all cells except last one
             separatorNode.isLayerBacked = true
             separatorNode.style.preferredSize = CGSize(width: width, height: 1)
             separatorNode.backgroundColor = UIColor.trinidad.withAlphaComponent(0.5)
             
             addSubnode(separatorNode)
+        }
+        else {
+            
+            /// Sghow done only for last cell
+            textField.returnKeyType = .done
         }
     }
     

@@ -29,6 +29,7 @@ PODS:
   - Fabric (1.6.8)
   - FBSDKCoreKit (4.24.0):
     - Bolts (~> 1.7)
+  - IQKeyboardManagerSwift (4.0.10)
   - Kanna (2.2.1)
   - KeychainAccess (3.0.2)
   - Kingfisher (3.10.3)
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - Crashlytics (= 3.8.0)
   - EZSwiftExtensions
   - Fabric (= 1.6.8)
+  - IQKeyboardManagerSwift
   - Kanna
   - KeychainAccess
   - Kingfisher
@@ -116,6 +118,7 @@ SPEC CHECKSUMS:
   EZSwiftExtensions: 172160bfb3635161c8b833d9111961ff3e6f517d
   Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
   FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
+  IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   Kanna: 182789ab065e8f9a6ccc2a74ce6283d3401c0c4a
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Kingfisher: a0ac82dc5bcf0388dd74b294cf2cc13730c63436
@@ -137,6 +140,6 @@ SPEC CHECKSUMS:
   TwilioAccessManager: 30ce2f7cf78ef5dd4cf19562fc204313bac625f6
   TwilioChatClient: fa4185745d6082631b47107bc304d83e43c2aff8
 
-PODFILE CHECKSUM: 9d1e891240664930ead86aa945a5be2069fdf379
+PODFILE CHECKSUM: bb512440e004913c7c82e295c7a375b9f00b5749
 
 COCOAPODS: 1.2.1

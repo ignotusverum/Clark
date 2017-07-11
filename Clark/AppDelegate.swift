@@ -8,6 +8,7 @@
 
 import UIKit
 import KeychainAccess
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let keychain = Keychain(service: Bundle.main.bundleIdentifier!)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+        IQKeyboardManager.sharedManager().shouldShowTextFieldPlaceholder = false
         
         /// Window setup
         AppDelegate.shared.window = UIWindow(frame: UIScreen.main.bounds)

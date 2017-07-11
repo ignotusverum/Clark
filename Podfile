@@ -59,6 +59,9 @@ def shared_pods
     #Image fetching
     pod 'Kingfisher'
     
+    #Keyboard fixes
+    pod 'IQKeyboardManagerSwift'
+    
     # Utilities
     pod 'PromiseKit'
     pod 'EZSwiftExtensions'
