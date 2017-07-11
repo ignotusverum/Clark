@@ -24,23 +24,19 @@ class TextFormInputNode: ASCellNode {
         
         super.init()
         
-        textField.style.preferredSize = CGSize(width: 300, height: 40)
+        backgroundColor = UIColor.red
         
+        textField.style.preferredSize = CGSize(width: self.calculatedSize.width, height: 40)
+        
+        
+        textField.backgroundColor = UIColor.yellow
         /// Form input setup
         /// Placeholder
         textField.attributedPlaceholderText = NSAttributedString(string: formInput.displayName, attributes: [NSFontAttributeName: UIFont.AvenirNextRegular(size: 17), NSForegroundColorAttributeName: UIColor.trinidad])
         
         textField.maximumLinesToDisplay = 1
         textField.textView.font = UIFont.AvenirNextRegular(size: 17)
-        textField.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        
-        /// Rounding
-        textField.cornerRadius = 8
-        textField.clipsToBounds = true
-        
-        /// Border color
-        textField.borderWidth = 1
-        textField.borderColor = UIColor.trinidad.cgColor
+        textField.textContainerInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         
         /// Text color
         textField.tintColor = UIColor.trinidad
@@ -64,7 +60,7 @@ class TextFormInputNode: ASCellNode {
         textInputSize.style.flexShrink = 1.0
         textInputSize.style.flexGrow = 1.0
 
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20), child: textInputSize)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: textInputSize)
     }
 }
 

@@ -80,6 +80,14 @@ open class FormInputContentNode: ContentNode {
         
         addSubnode(collectionViewNode)
         
+        /// Rounding
+        collectionViewNode.cornerRadius = 8
+        collectionViewNode.clipsToBounds = true
+        
+        /// Border color
+        collectionViewNode.borderWidth = 1
+        collectionViewNode.borderColor = UIColor.trinidad.cgColor
+        
         /// Collection node setup
         collectionViewNode.delegate = self
         collectionViewNode.dataSource = self
@@ -94,7 +102,7 @@ open class FormInputContentNode: ContentNode {
         carouselMessageSize.sizing = .sizeToFit
         carouselMessageSize.children = [collectionViewNode]
         
-        return ASInsetLayoutSpec(insets: insets, child: carouselMessageSize)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 5, left: 30, bottom: 5, right: 30), child: carouselMessageSize)
     }
 }
 
@@ -122,7 +130,7 @@ extension FormInputContentNode: ASCollectionDataSource {
     }
     
     public func collectionView(_ collectionView: ASCollectionView, constrainedSizeForNodeAt indexPath: IndexPath) -> ASSizeRange {
-        let width = UIScreen.main.bounds.width - 20
+        let width = UIScreen.main.bounds.width - 60
 
         return ASSizeRange(min: CGSize(width: width, height: 0), max: CGSize(width: width, height: 50))
     }
