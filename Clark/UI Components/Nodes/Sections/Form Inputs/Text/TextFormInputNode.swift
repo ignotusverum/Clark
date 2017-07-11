@@ -25,7 +25,7 @@ class TextFormInputNode: ASCellNode {
     override func layout() {
         super.layout()
         
-        separatorNode.frame = CGRect(x: 0, y: calculatedSize.height - 1, w: calculatedSize.width, h: 1)
+        separatorNode.frame = CGRect(x: 0, y: calculatedSize.height - 0.5, w: calculatedSize.width, h: 1)
     }
     
     init(with formInput: FormTextInput, shouldShowSeparator: Bool) {
@@ -37,17 +37,15 @@ class TextFormInputNode: ASCellNode {
         
         super.init()
         
-        separatorInset = .zero
-        
         let width = UIScreen.main.bounds.width - 60
-        textField.style.preferredSize = CGSize(width: width, height: 49)
+        textField.style.preferredSize = CGSize(width: width, height: 49.5)
         /// Form input setup
         /// Placeholder
         textField.attributedPlaceholderText = NSAttributedString(string: formInput.displayName, attributes: [NSFontAttributeName: UIFont.AvenirNextRegular(size: 17), NSForegroundColorAttributeName: UIColor.trinidad])
         
         textField.maximumLinesToDisplay = 1
         textField.textView.font = UIFont.AvenirNextRegular(size: 17)
-        textField.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        textField.textContainerInset = UIEdgeInsets(top: 15, left: 5, bottom: 15, right: 5)
         
         /// Text color
         textField.tintColor = UIColor.trinidad
