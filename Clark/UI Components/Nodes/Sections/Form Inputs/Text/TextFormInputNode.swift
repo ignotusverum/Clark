@@ -45,8 +45,9 @@ class TextFormInputNode: ASCellNode {
         /// Placeholder
         textField.attributedPlaceholderText = NSAttributedString(string: formInput.displayName, attributes: [NSFontAttributeName: UIFont.AvenirNextRegular(size: 17), NSForegroundColorAttributeName: UIColor.trinidad])
         
+        textField.typingAttributes = [NSFontAttributeName: UIFont.AvenirNextRegular(size: 17), NSForegroundColorAttributeName: UIColor.carara]
+        
         textField.maximumLinesToDisplay = 1
-        textField.textView.font = UIFont.AvenirNextRegular(size: 17)
         textField.textContainerInset = UIEdgeInsets(top: 15, left: 5, bottom: 15, right: 5)
         
         /// Text color
