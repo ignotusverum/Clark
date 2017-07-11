@@ -129,7 +129,7 @@ class MessageParser {
                     }
                     
                     /// Temp solution for carousel - adding title message
-                    if message.type == .carousel {
+                    if message.type == .carousel || message.type == .formInput {
                         
                         /// Title
                         let titleContentNode = TextContentNode(textMessageString: message.body, bubbleConfiguration: ClarkBubblesConfiguration())
@@ -140,8 +140,24 @@ class MessageParser {
                         /// Message
                         let titleMessage = MessageNode(content: titleContentNode)
                         
-                        /// Title
-                        result.last?.addMessageToGroup(titleMessage, completion: nil)
+                        if let lastGroup = result.last {
+                            
+                            /// Last group is current group type
+                            if lastGroup.isIncomingMessage {
+                                /// Title
+                                lastGroup.addMessageToGroup(titleMessage, completion: nil)
+                            }
+                            else {
+                                
+                                /// New group
+                                let newGroup = createMessageGroup(padding: padding, controller: controller)
+                                
+                                newGroup.avatarNode = Avatars.createAvatar()
+                                newGroup.addMessageToGroup(titleMessage, completion: nil)
+                                result.append(newGroup)
+                            }
+                        }
+                        
                     }
                     
                     newMessageGroup.addMessageToGroup(messageNode, completion: nil)

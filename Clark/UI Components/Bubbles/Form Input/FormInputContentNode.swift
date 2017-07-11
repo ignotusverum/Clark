@@ -33,8 +33,6 @@ open class FormInputContentNode: ContentNode {
         /// Node setup
         collectionNode.view.showsHorizontalScrollIndicator = false
         
-        collectionNode.backgroundColor = UIColor.green
-        
         return collectionNode
     }()
     

@@ -13,7 +13,7 @@ import SwiftyJSON
 struct FormTextInputJSON {
     
     static let keyboardType = "default"
-    static let displayName = "display_name"
+    static let displayName = "placeholder"
     static let autocomplete = "autocomplete"
     static let capitalizationRule = "keyboard_capitalization_rule"
 }

@@ -24,12 +24,15 @@ class TextFormInputNode: ASCellNode {
         
         super.init()
         
-        backgroundColor = UIColor.magenta
         textField.style.preferredSize = CGSize(width: 300, height: 40)
         
         /// Form input setup
         /// Placeholder
         textField.attributedPlaceholderText = NSAttributedString(string: formInput.displayName, attributes: [NSFontAttributeName: UIFont.AvenirNextRegular(size: 17), NSForegroundColorAttributeName: UIColor.trinidad])
+        
+        textField.maximumLinesToDisplay = 1
+        textField.textView.font = UIFont.AvenirNextRegular(size: 17)
+        textField.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         /// Rounding
         textField.cornerRadius = 8
