@@ -10,8 +10,13 @@ import UIKit
 import NMessenger
 import AsyncDisplayKit
 
-open class CarouselContentNode: ContentNode {
+protocol CarouselContentDelegate {
+    
+    func datasourceSelected(items: [CarouselItem])
+}
 
+open class CarouselContentNode: ContentNode {
+    
     /// Carousel Items
     var carouselItems: [CarouselItem] {
         didSet {
@@ -21,9 +26,12 @@ open class CarouselContentNode: ContentNode {
         }
     }
     
+    /// Delegate
+    var delegate: CarouselContentDelegate?
+    
     /// Collection View node
     lazy var collectionViewNode: ASCollectionNode = {
-       
+        
         /// Layout
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -35,7 +43,7 @@ open class CarouselContentNode: ContentNode {
         
         /// Collection node
         let collectionNode = ASCollectionNode(frame: .zero, collectionViewLayout: layout)
-    
+        
         /// Node setup
         collectionNode.view.showsHorizontalScrollIndicator = false
         
@@ -68,8 +76,7 @@ open class CarouselContentNode: ContentNode {
     ///   - carouselItem: carouselItem model
     ///   - currentViewController: controller for presentation
     ///   - bubbleConfiguration: bubble setup
-    init(carouselItems: [CarouselItem], currentViewController: UIViewController, bubbleConfiguration: BubbleConfigurationProtocol? = nil)
-    {
+    init(carouselItems: [CarouselItem], currentViewController: UIViewController, bubbleConfiguration: BubbleConfigurationProtocol? = nil) {
         self.carouselItems = carouselItems
         super.init(bubbleConfiguration: bubbleConfiguration)
         self.currentViewController = currentViewController
@@ -125,6 +132,7 @@ extension CarouselContentNode: ASCollectionDataSource {
 // MARK: - ASCollectionDelegate
 extension CarouselContentNode: ASCollectionDelegate {
     public func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        delegate?.datasourceSelected(items: carouselItems)
+        Analytics.trackEventWithID(.s1_6, eventParams: ["index": indexPath.row])
     }
 }

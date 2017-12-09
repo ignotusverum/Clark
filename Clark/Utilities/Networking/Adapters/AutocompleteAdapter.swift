@@ -11,7 +11,7 @@ import PromiseKit
 import SwiftyJSON
 
 class AutocompleteAdapter: SynchronizerAdapter {
-
+    
     /// Fetch autocomplete list
     ///
     /// - Returns: JSON on sucess
@@ -36,6 +36,10 @@ class AutocompleteAdapter: SynchronizerAdapter {
                     result.append(model)
                 }
             }
+            
+            /// Update config
+            let config = Config.shared
+            config.autocompleteData = result
             
             return result
         }

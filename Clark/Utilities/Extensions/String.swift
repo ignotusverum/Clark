@@ -11,8 +11,28 @@ import Foundation
 
 extension String {
     
+    func index(from: Int) -> Index {
+        return self.index(startIndex, offsetBy: from)
+    }
+    
+    func substring(from: Int) -> String {
+        let fromIndex = index(from: from)
+        return substring(from: fromIndex)
+    }
+    
+    func substring(to: Int) -> String {
+        let toIndex = index(from: to)
+        return substring(to: toIndex)
+    }
+    
+    func substring(with r: Range<Int>) -> String {
+        let startIndex = index(from: r.lowerBound)
+        let endIndex = index(from: r.upperBound)
+        return substring(with: startIndex..<endIndex)
+    }
+    
     var containsWhitespace : Bool {
-        return(self.rangeOfCharacter(from: .whitespacesAndNewlines) != nil)
+        return(rangeOfCharacter(from: .whitespacesAndNewlines) != nil)
     }
     
     var utf8Data: Data? {
@@ -37,10 +57,67 @@ extension String {
         return string
     }
     
+    func rangesOfString(s: String) -> [Range<Index>] {
+        do {
+            let re = try NSRegularExpression(pattern: NSRegularExpression.escapedPattern(for: s), options: [.caseInsensitive])
+            let range = nsRange(from: startIndex ..< endIndex)
+            let matches = re.matches(in: self, options: [], range: range)
+            return matches.flatMap({ self.range(from: $0.range) })
+        } catch {
+            return []
+        }
+    }
+    
+    func nsRange(from range: Range<String.Index>) -> NSRange {
+        let from = range.lowerBound.samePosition(in: utf16)
+        let to = range.upperBound.samePosition(in: utf16)
+        return NSRange(location: utf16.distance(from: utf16.startIndex, to: from),
+                       length: utf16.distance(from: from, to: to))
+    }
+    
+    func range(from nsRange: NSRange) -> Range<String.Index>? {
+        guard
+            let from16 = utf16.index(utf16.startIndex, offsetBy: nsRange.location, limitedBy: utf16.endIndex),
+            let to16 = utf16.index(from16, offsetBy: nsRange.length, limitedBy: utf16.endIndex),
+            let from = from16.samePosition(in: self),
+            let to = to16.samePosition(in: self)
+            else { return nil }
+        return from ..< to
+    }
+    
+    
+    func toBool() -> Bool? {
+        let trimmedString = trimmed().lowercased()
+        if trimmedString == "true" || trimmedString == "false" || trimmedString == "yes" || trimmedString == "no" {
+            return (trimmedString as NSString).boolValue
+        }
+        return nil
+    }
+    
     func contains(_ find: String) -> Bool {
         
-        return self.lowercased().range(of: find.lowercased()) != nil
+        return lowercased().range(of: find.lowercased()) != nil
     }
+    
+    func generateTitle(_ color: UIColor = UIColor.black, subtitle: String = "")-> NSAttributedString {
+        
+        let resultString = subtitle.length > 0 ? "\n" + subtitle : ""
+        
+        /// Title attributes
+        let attributedString = NSMutableAttributedString.initWithString(self.uppercasedPrefix(1), lineSpacing: 5.0, aligntment: .center)
+        attributedString.addAttribute(NSForegroundColorAttributeName, value: color, range: NSRange(location: 0, length: length))
+        
+        /// Subtitle
+        let textColor = UIColor.ColorWith(red: 113.0, green: 112.0, blue: 115.0, alpha: 1.0)
+        
+        let subtitleAttributedString = NSMutableAttributedString.initWithString(resultString.uppercased(), lineSpacing: 5.0, aligntment: .center)
+        subtitleAttributedString.addAttributes([NSFontAttributeName: UIFont.defaultFont(size: 12), NSForegroundColorAttributeName: textColor], range: NSRange(location: 0, length: resultString.utf16.count))
+        
+        attributedString.append(subtitleAttributedString)
+        
+        return attributedString
+    }
+    
     
     func heightWithConstrainedWidth(_ width: CGFloat, font: UIFont, spacing: CGFloat = 0) -> CGFloat {
         let constraintRect = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
@@ -53,8 +130,14 @@ extension String {
         return boundingBox.height
     }
     
+    func width(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSFontAttributeName: font]
+        let size = self.size(attributes: fontAttributes)
+        return size.width
+    }
+    
     func versionToInt() -> [Int] {
-        return self.components(separatedBy: ".")
+        return components(separatedBy: ".")
             .map {
                 Int.init($0) ?? 0
         }
@@ -63,11 +146,11 @@ extension String {
     func setCharSpacing(_ spacing: Float)-> NSAttributedString {
         
         let attributedString = NSMutableAttributedString(string: self)
-        attributedString.addAttribute(NSKernAttributeName, value: spacing, range: NSRange(location: 0, length: self.length))
+        attributedString.addAttribute(NSKernAttributeName, value: spacing, range: NSRange(location: 0, length: length))
         
         return attributedString
     }
-
+    
     func with(lineSpacing: CGFloat, alignment: NSTextAlignment)-> NSMutableAttributedString {
         
         return NSMutableAttributedString(string: self, lineSpacing: lineSpacing, alignment: alignment)
@@ -105,23 +188,23 @@ extension NSMutableAttributedString {
     
     func setColorForStr(_ textToFind: String, color: UIColor) {
         
-        let range = self.mutableString.range(of: textToFind, options: .caseInsensitive);
+        let range = mutableString.range(of: textToFind, options: .caseInsensitive);
         if range.location != NSNotFound {
             
-            self.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
+            addAttribute(NSForegroundColorAttributeName, value: color, range: range)
         }
     }
     
     func setColorForRange(_ rangeToFind: NSRange, color: UIColor) {
         
-        self.addAttribute(NSForegroundColorAttributeName, value: color, range: rangeToFind)
+        addAttribute(NSForegroundColorAttributeName, value: color, range: rangeToFind)
     }
     
     func setFontForStr(_ textToFind: String, font: UIFont) {
         
-        let range = self.mutableString.range(of: textToFind, options: .caseInsensitive);
+        let range = mutableString.range(of: textToFind, options: .caseInsensitive);
         if range.location != NSNotFound {
-            self.addAttribute(NSFontAttributeName, value: font, range: range);
+            addAttribute(NSFontAttributeName, value: font, range: range);
         }
     }
     

@@ -12,16 +12,44 @@ import NMessenger
 protocol ChatInputBarDelegate {
     
     /// Called when bar text changed
-    func inputBar(_ inputBar:ChatInputBar, textChanged: String)
+    func inputBar(_ inputBar: ChatInputBar, textChanged: String)
     
     /// Called when send button pressed
-    func inputBar(_ inputBar:ChatInputBar, sendText: String)
+    func inputBar(_ inputBar: ChatInputBar, sendText: String)
+    
+    /// Called when plus sign pressed
+    func inputBarAccessoryPressed(_ inputBar: ChatInputBar)
+    
+    /// Called when keyboard presented for input
+    func inputActive(_ inpuBar: ChatInputBar)
+}
+
+/// Optional
+extension ChatInputBarDelegate {
+    func inputBarAccessoryPressed(_ inputBar: ChatInputBar) {}
 }
 
 class ChatInputBar: InputBarView, UITextViewDelegate {
     
     /// Delegate
     var delegate: ChatInputBarDelegate?
+    
+    var shouldEnableLeftAction: Bool = false
+    
+    var isActionOpened: Bool = false {
+        didSet {
+            if isActionOpened {
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.actionButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi/5 + 0.2)
+                })
+                return
+            }
+            
+            UIView.animate(withDuration: 0.1, animations: {
+                self.actionButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
+            })
+        }
+    }
     
     /// InputBarView
     @IBOutlet open weak var inputBarView: UIView!
@@ -35,6 +63,12 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
     // NSLayoutConstraint input view height
     @IBOutlet open weak var textInputViewHeight: NSLayoutConstraint!
     
+    /// Left inputView
+    @IBOutlet open weak var leftActionViewWidth: NSLayoutConstraint!
+    
+    /// Action button
+    @IBOutlet weak var actionButton: UIButton!
+    
     //CGFloat to the fine the number of rows a user can type
     open var numberOfRows: CGFloat = 5
     
@@ -45,7 +79,7 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
             isUserInteractionEnabled = isEnabled
             
             /// Change UI
-            UIView.animate(withDuration: 0.2) { 
+            UIView.animate(withDuration: 0.2) {
                 self.alpha = self.isEnabled ? 1 : 0.5
             }
         }
@@ -80,7 +114,13 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
         loadFromBundle()
     }
     
-    public required init(controller: NMessengerViewController) {
+    public required init(controller: NMessengerViewController, enableLeftAction: Bool = false) {
+        super.init(controller: controller)
+        self.shouldEnableLeftAction = enableLeftAction
+        loadFromBundle()
+    }
+    
+    required init(controller: NMessengerViewController) {
         super.init(controller: controller)
         loadFromBundle()
     }
@@ -92,6 +132,10 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
         textInputView.delegate = self
         sendButton.isEnabled = false
         
+        if !shouldEnableLeftAction {
+            leftActionViewWidth.constant = 0
+        }
+        
         if (!isEnabled) {
             textInputView.text = ""
             textInputView.isEditable = false
@@ -101,6 +145,7 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
     open func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         textView.text = ""
         textView.textColor = .black
+        delegate?.inputBar(self, textChanged: "")
         
         UIView.animate(withDuration: 0.1, animations: {
             self.sendButton.isEnabled = true
@@ -125,6 +170,10 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
         self.textInputView.resignFirstResponder()
         
         return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        delegate?.inputActive(self)
     }
     
     open func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -212,7 +261,9 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
      Open camera and/or photo library to take/select a photo
      */
     @IBAction open func plusClicked(_ sender: UIButton) {
+        delegate?.inputBarAccessoryPressed(self)
         
+        isActionOpened = !isActionOpened
     }
     
     func hide(){
@@ -224,3 +275,4 @@ class ChatInputBar: InputBarView, UITextViewDelegate {
         }
     }
 }
+

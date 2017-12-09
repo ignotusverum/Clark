@@ -31,6 +31,16 @@ class ClarkHTMLNode: TextContentNode {
     func openURL() {
         if let url = message?.htmlLink  {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            
+            let params = ["link": url.absoluteString]
+            
+            /// Analytics
+            if let _ = currentViewController as? HomeViewController {
+                Analytics.trackEventWithID(.s3_1, eventParams: params)
+            }
+            else {
+                Analytics.trackEventWithID(.s1_0, eventParams: params)
+            }
         }
     }
 }

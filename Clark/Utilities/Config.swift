@@ -9,13 +9,18 @@
 import CoreStore
 import Foundation
 import SwiftyJSON
+import PromiseKit
+import TwilioChatClient
 
 let ClarkUserIDKey = "ClarkUserIDKey"
 let ClarkUserDataKey = "ClarkUserDataKey"
 let ClarkTempChannelID = "ClarkTempChannelID"
 let ClarkTwillioTokenKey = "ClarkTwillioTokenKey"
-let ClarkShowVideoOnLaunch = "ClarkShowVideoOnLaunch"
 let ClarkInitialFinishedKey = "ClarkInitialFinishedKey"
+
+/// Legacy keys
+let LegacyClarkUserIDKey = "tempUserId"
+let LegacyClarkInitialFinishedKey = "userCompletedLaunch"
 
 class Config {
     
@@ -24,6 +29,12 @@ class Config {
     
     /// Shared
     static let shared = Config()
+    
+    /// Permissions
+    var permissions: Permissions?
+    
+    /// Autocomplete data
+    var autocompleteData: [AutoCompleteModel] = []
     
     /// Initial settings
     var settings: JSON? {
@@ -34,37 +45,26 @@ class Config {
             }
             
             /// Twillio setup
-            if let twillio = settings["unauthenticated_twilio"].json {
+            if let twilio = settings["twilio"].json {
                 
-                /// Twillio token
-                Config.twillioToken = twillio["token"].string
-                
-                /// User ID
-                Config.userID = twillio["user_identity"].string
-                
-                /// Channel id
-                Config.channelID = twillio["primary_channel_id"].string
+                settingsParser(twilio)
             }
-            
-            /// Show video
-            Config.showVideo = settings["show_video"].bool
-        }
-    }
-    
-    /// Initial finished
-    static var isInitialFinished: Bool? {
-        get {
-            return UserDefaults.standard.bool(forKey: ClarkInitialFinishedKey)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: ClarkInitialFinishedKey)
         }
     }
     
     /// Current user ID
     static var userID: String? {
         get {
-            return UserDefaults.standard.object(forKey: ClarkUserIDKey) as? String
+            
+            /// Legacy check
+            guard let legacyIDKey = UserDefaults.standard.object(forKey: LegacyClarkUserIDKey) as? String else {
+                return UserDefaults.standard.object(forKey: ClarkUserIDKey) as? String
+            }
+            
+            /// Clear legacy keys
+            UserDefaults.standard.removeObject(forKey: LegacyClarkUserIDKey)
+            
+            return legacyIDKey
         }
         set {
             UserDefaults.standard.set(newValue, forKey: ClarkUserIDKey)
@@ -74,6 +74,7 @@ class Config {
     /// Channel ID Associated with user
     static var channelID: String? {
         get {
+
             return UserDefaults.standard.object(forKey: ClarkTempChannelID) as? String
         }
         set {
@@ -84,20 +85,10 @@ class Config {
     /// Twillio token
     static var twillioToken: String? {
         get {
-            return UserDefaults.standard.object(forKey: "TOKEN") as? String
+            return UserDefaults.standard.object(forKey: ClarkTwillioTokenKey) as? String
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "TOKEN")
-        }
-    }
-    
-    /// Show video Bool
-    static var showVideo: Bool? {
-        get {
-            return UserDefaults.standard.bool(forKey: ClarkShowVideoOnLaunch)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: ClarkShowVideoOnLaunch)
+            UserDefaults.standard.set(newValue, forKey: ClarkTwillioTokenKey)
         }
     }
     
@@ -144,4 +135,56 @@ class Config {
             return _currentTutor
         }
     }
+    
+    // MARK: - Utilities
+    func settingsParser(_ JSON: JSON) {
+        
+        /// Twillio token
+        Config.twillioToken = JSON["token"].string
+        
+        if let userID = JSON["user_identity"].string {
+            /// User ID
+            Config.userID = userID
+        }
+        
+        /// Channel id
+        Config.channelID = JSON["primary_channel_id"].string
+    }
+    
+    /// Updating permissions
+    func settingPermissions(_ JSON: JSON) {
+        
+        /// Safety check
+        guard let source = JSON["feature_flags"].json else {
+            return
+        }
+        
+        permissions = Permissions(source: source)
+    }
+    
+    /// Delete everything, reset channels, perform initial segue
+    ///
+    /// - Returns: New chat client
+    class func resetDataAndConnect()-> Promise<Bool> {
+        
+        /// Api man
+        let apiMan = APIManager.shared
+        apiMan.apiKey = nil
+        
+        /// Config
+        let config = Config.shared
+        config.currentTutor = nil
+        
+        /// Shared
+        Config.userID = nil
+        Config.channelID = nil
+        Config.twillioToken = nil
+        
+        /// Clear DB
+        DatabaseManager.clearDB()
+        
+        /// Create initial channel
+        return Promise(value: true)
+    }
 }
+

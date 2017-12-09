@@ -16,14 +16,12 @@ public enum TutorAttributes: String {
     case preferredContactMethod = "preferredContactMethod"
     case pushNotificationsEnabled = "pushNotificationsEnabled"
     case subjectsTaught = "subjectsTaught"
-    case twilioExpirationDate = "twilioExpirationDate"
-    case twilioPrimaryChannelID = "twilioPrimaryChannelID"
-    case twilioToken = "twilioToken"
 }
 
 public enum TutorRelationships: String {
     case sessions = "sessions"
     case students = "students"
+    case subjects = "subjects"
 }
 
 open class _Tutor: Model {
@@ -84,15 +82,6 @@ open class _Tutor: Model {
     @NSManaged open
     var subjectsTaught: String?
 
-    @NSManaged open
-    var twilioExpirationDate: Date!
-
-    @NSManaged open
-    var twilioPrimaryChannelID: String?
-
-    @NSManaged open
-    var twilioToken: String?
-
     // MARK: - Relationships
 
     @NSManaged open
@@ -107,6 +96,13 @@ open class _Tutor: Model {
 
     open func studentsSet() -> NSMutableSet {
         return self.students.mutableCopy() as! NSMutableSet
+    }
+
+    @NSManaged open
+    var subjects: NSSet
+
+    open func subjectsSet() -> NSMutableSet {
+        return self.subjects.mutableCopy() as! NSMutableSet
     }
 
 }
@@ -163,6 +159,34 @@ extension _Tutor {
         let mutable = self.students.mutableCopy() as! NSMutableSet
         mutable.remove(value)
         self.students = mutable.copy() as! NSSet
+    }
+
+}
+
+extension _Tutor {
+
+    open func addSubjects(_ objects: NSSet) {
+        let mutable = self.subjects.mutableCopy() as! NSMutableSet
+        mutable.union(objects as Set<NSObject>)
+        self.subjects = mutable.copy() as! NSSet
+    }
+
+    open func removeSubjects(_ objects: NSSet) {
+        let mutable = self.subjects.mutableCopy() as! NSMutableSet
+        mutable.minus(objects as Set<NSObject>)
+        self.subjects = mutable.copy() as! NSSet
+    }
+
+    open func addSubjectsObject(_ value: Subject) {
+        let mutable = self.subjects.mutableCopy() as! NSMutableSet
+        mutable.add(value)
+        self.subjects = mutable.copy() as! NSSet
+    }
+
+    open func removeSubjectsObject(_ value: Subject) {
+        let mutable = self.subjects.mutableCopy() as! NSMutableSet
+        mutable.remove(value)
+        self.subjects = mutable.copy() as! NSSet
     }
 
 }

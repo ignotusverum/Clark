@@ -57,16 +57,28 @@ extension NetworkingProtocol {
             manager.request(path, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
                 .validate()
                 .responseJSON { response in
-
+                    
                     switch response.result {
-        
                     case .success:
                         if let value = response.result.value {
                             let json = JSON(value)
                             fulfill(json)
                         }
-            
+                        
                     case .failure(let error):
+
+                        if let data = response.data {
+                            let responseJSON = JSON(data: data)
+                            
+                            if let messageJSON = responseJSON["errors"].array?.first {
+                                
+                                if let message = messageJSON["detail"].string, let status = messageJSON["status"].int {
+                                    
+                                    let localError = NSError(domain: hostName, code: status, userInfo: [NSLocalizedDescriptionKey : message])
+                                    reject(localError)
+                                }
+                            }
+                        }
                         
                         reject(error)
                     }
@@ -74,3 +86,4 @@ extension NetworkingProtocol {
         }
     }
 }
+

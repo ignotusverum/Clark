@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PromiseKit
 import Foundation
 
 class RouteHandler {
@@ -58,3 +59,4 @@ class RouteHandler {
         appDelegate.window?.rootViewController?.presentVC(viewController)
     }
 }
+

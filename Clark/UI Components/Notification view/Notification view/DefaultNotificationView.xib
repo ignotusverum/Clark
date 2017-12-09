@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Graphik-Medium.otf">
+            <string>Graphik-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="OI9-VP-3vy" userLabel="Card View" customClass="DefaultNotificationView" customModule="Clark" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cn6-P3-vjN" userLabel="Background view">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dF1-to-ayh">
+                            <rect key="frame" x="16" y="22" width="30" height="30"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="W1A-gL-BfT"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCn-3a-2oR">
+                            <rect key="frame" x="62" y="8" width="507" height="59"/>
+                            <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.48627450980392156" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="xCn-3a-2oR" firstAttribute="bottom" secondItem="cn6-P3-vjN" secondAttribute="bottomMargin" id="9bk-kn-44h"/>
+                        <constraint firstAttribute="trailing" secondItem="xCn-3a-2oR" secondAttribute="trailing" constant="31" id="AwP-VV-dGD"/>
+                        <constraint firstItem="dF1-to-ayh" firstAttribute="centerY" secondItem="xCn-3a-2oR" secondAttribute="centerY" id="Jol-3Z-q68"/>
+                        <constraint firstItem="xCn-3a-2oR" firstAttribute="leading" secondItem="dF1-to-ayh" secondAttribute="trailing" constant="16" id="Sne-nd-045"/>
+                        <constraint firstItem="dF1-to-ayh" firstAttribute="top" secondItem="cn6-P3-vjN" secondAttribute="top" constant="22" id="es1-Yw-Vrc"/>
+                        <constraint firstItem="xCn-3a-2oR" firstAttribute="top" secondItem="cn6-P3-vjN" secondAttribute="topMargin" id="gmh-8n-rq6"/>
+                        <constraint firstItem="dF1-to-ayh" firstAttribute="leading" secondItem="cn6-P3-vjN" secondAttribute="leading" constant="16" id="raN-zb-RzL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cn6-P3-vjN" firstAttribute="leading" secondItem="OI9-VP-3vy" secondAttribute="leading" id="8yq-Xk-dhi"/>
+                <constraint firstItem="cn6-P3-vjN" firstAttribute="top" secondItem="PpX-3v-FDa" secondAttribute="top" id="Alf-hd-RKd"/>
+                <constraint firstAttribute="trailing" secondItem="cn6-P3-vjN" secondAttribute="trailing" id="BKd-g9-sT1"/>
+                <constraint firstItem="cn6-P3-vjN" firstAttribute="bottom" secondItem="PpX-3v-FDa" secondAttribute="bottom" id="Yny-Nv-cPd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="PpX-3v-FDa"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="bounceAnimationOffset">
+                    <real key="value" value="0.0"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="statusBarOffset">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="safeAreaTopOffset">
+                    <real key="value" value="-8"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="safeAreaBottomOffset">
+                    <real key="value" value="-18"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="backgroundView" destination="cn6-P3-vjN" id="py2-KG-2Uq"/>
+                <outlet property="headerLabel" destination="xCn-3a-2oR" id="D28-bo-PJh"/>
+                <outlet property="imageView" destination="dF1-to-ayh" id="Jj4-ws-d3M"/>
+            </connections>
+            <point key="canvasLocation" x="304" y="614.5"/>
+        </view>
+    </objects>
+</document>

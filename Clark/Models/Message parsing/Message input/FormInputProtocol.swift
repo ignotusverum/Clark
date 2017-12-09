@@ -15,6 +15,7 @@ struct FormInputJSON {
     static let name = "name"
     static let type = "type"
     static let value = "value"
+    static let inputError = "input_error"
 }
 
 /// Input types
@@ -32,11 +33,23 @@ protocol FormInputProtocol {
     /// Type
     var type: FormInputType { get set }
     
+    /// Atributes
+    var attributes: [String: Any] { get }
+    
+    /// Static attributes
+    var staticAttributes: [String: Any] { get set }
+    
     /// Value
     var value: String { get set }
     
-    /// Placeholder
+    /// Display name
     var displayName: String { get set }
+    
+    /// Placeholder
+    var placeholder: String { get set }
+    
+    /// Validation
+    var formInputValidation: [FormInputValidation] { get set }
     
     /// Initialization
     init(source: JSON)

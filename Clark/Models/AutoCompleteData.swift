@@ -9,12 +9,21 @@
 import SwiftyJSON
 import Foundation
 
+/// Search protocol
+public protocol AutocompleteCategory {
+    static var autocompleteKey: String { get set }
+    static func valuesContaining(searchString: String) -> [AutocompleteCategory]
+    static func valuesContainingIn(searchString: String) -> [AutocompleteCategory]
+    
+    var body: String { get } // Text shown when displaying cell
+}
+
 // MARK: - Auto complete model
 //         These objects are used throughout the app while the DATA objects above are strictly used for storing the data in core data and fetching the very first apex value when a user is typing.
 public enum AutoCompleteType {
     case text
-    case entity(Any?)
     case values([String])
+    case entity(AutocompleteCategory.Type)
 }
 
 public struct AutoCompleteModel {
@@ -26,9 +35,10 @@ public struct AutoCompleteModel {
     
     init?(attributes: JSON) {
         guard let attiribute = attributes["attributes"].json, let body = attiribute["body"].string, let type = attiribute["autocomplete_switch_type"].string else {
-                return nil
+            return nil
         }
         self.body = body
+        
         let validEnd = attiribute["valid_end_of_command"].bool
         self.validEnd = validEnd != nil ? validEnd!:false
         self.intent = attiribute["autocomplete_intent"].string
@@ -41,8 +51,10 @@ public struct AutoCompleteModel {
         else if type == "entity_placeholder" {
             // Here we need to do autocomplete on a certain stored entity like students or sessions
             let entityString = attiribute["autocomplete_entity_type"].string
-            var entity: Any?
-            if entityString == "Student" || entityString == "students" {
+            var entity:AutocompleteCategory.Type?
+            if entityString == "Student" {
+                entity = Student.self
+            } else if entityString == "students" {
                 entity = Student.self
             } else if entityString == "sessions" {
                 entity = Session.self
@@ -72,7 +84,7 @@ public struct AutoCompleteModel {
         if let childArray = attiribute["child_switches"].arrayObject as? [[String:Any]], childArray.count > 0 {
             var childSwitches:[AutoCompleteModel] = []
             for childDictionary in childArray {
-                if let child = AutoCompleteModel(attributes: JSON(childDictionary)) {
+                if let child = AutoCompleteModel(attributes: JSON(["attributes": childDictionary])) {
                     childSwitches.append(child)
                 }
             }
@@ -80,3 +92,4 @@ public struct AutoCompleteModel {
         }
     }
 }
+

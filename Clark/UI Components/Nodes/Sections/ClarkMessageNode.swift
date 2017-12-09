@@ -29,6 +29,8 @@ open class ClarkMessageNode: MessageNode {
         self.message = message
         
         super.init(content: content)
+        
+        backgroundColor = UIColor.clear
     }
     
     /**
@@ -36,7 +38,7 @@ open class ClarkMessageNode: MessageNode {
      */
     override open func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         
-        if message.type == .text {
+        if message.type == .text, message.type == .cardAction {
             return super.layoutSpecThatFits(constrainedSize)
         }
         
@@ -80,3 +82,4 @@ open class ClarkMessageNode: MessageNode {
         return spacer
     }
 }
+

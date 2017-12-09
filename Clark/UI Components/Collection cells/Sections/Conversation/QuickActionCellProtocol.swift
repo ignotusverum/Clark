@@ -25,8 +25,9 @@ extension QuickActionCellProtocol {
         label.numberOfLines = 1
         label.textAlignment = .center
         label.textColor = UIColor.white
-        label.font = UIFont.AvenirNextRegular(size: 17)
+        label.font = UIFont.defaultFont(size: 17)
         
         return label
     }
 }
+

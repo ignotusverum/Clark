@@ -7,24 +7,90 @@
 //
 
 import NMessenger
+import PromiseKit
 import TwilioChatClient
+
+extension TCHMessage {
+    
+    /// Promise wrapped set attributes
+    ///
+    /// - Parameter attributes: attributes
+    /// - Returns: TCH result
+    func updateAttributes(_ attributes: [String: Any])-> Promise<TCHResult> {
+        
+        /// Promise wrapper
+        return Promise { fulfil, reject in
+            
+            /// Set attributes call
+            self.setAttributes(attributes, completion: { result in
+                
+                /// Safety check
+                guard result.isSuccessful() else {
+                    reject(GeneralError)
+                    return
+                }
+                
+                fulfil(result)
+            })
+        }
+    }
+}
+
+extension TCHMessageOptions {
+    
+    /// Promise wrapped set attributes
+    ///
+    /// - Parameter attributes: attributes
+    /// - Returns: TCH result
+    func updateAttributes(_ attributes: [String: Any])-> Promise<TCHResult> {
+        
+        /// Promise wrapper
+        return Promise { fulfil, reject in
+            
+            /// Set attributes call
+            self.withAttributes(attributes, completion: { result in
+                
+                /// Safety check
+                guard result.isSuccessful() else {
+                    reject(GeneralError)
+                    return
+                }
+                
+                fulfil(result)
+            })
+        }
+    }
+}
 
 extension Message {
     
     /// Check if author is current tutor
     var isReceiver: Bool {
-
-        let currentUser = Config.userID
+        
+        let config = Config.shared
+        let currentUser = config.currentTutor?.id
         
         // Safety check
         guard let currentUserID = currentUser else {
-            return false
+            
+            guard let tempUserID = Config.userID else {
+                return false
+            }
+            
+            /// Temp user check - pre login
+            return tempUserID != author
         }
         
         // ID Check
         return currentUserID != author
     }
     
+    /// Create timestamp for messages
+    ///
+    /// - Parameters:
+    ///   - message: first message to check
+    ///   - previousMessage: previous message to check
+    /// - Returns: reutrn message sent indicator
     class func createTimestamp(_ message: Message, previousMessage: Message?)-> MessageSentIndicator {
         
         // Check for timestamp & add new cell
@@ -49,3 +115,4 @@ extension Message {
         return messageTimestamp
     }
 }
+

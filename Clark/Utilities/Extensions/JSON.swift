@@ -7,12 +7,13 @@
 //
 
 import SwiftyJSON
+import PhoneNumberKit
 
 extension JSON {
     
     public var nsString: NSString? {
         
-        switch self.type {
+        switch type {
         case .string: return NSString(string: object as! String)
         default: return nil
         }
@@ -20,7 +21,7 @@ extension JSON {
     
     public var price: NSNumber? {
         
-        switch self.type {
+        switch type {
         case .number:
             
             let floatObject = Float(object as! Int)
@@ -34,15 +35,38 @@ extension JSON {
     
     public var json: JSON? {
         
-        switch self.type {
+        switch type {
         case .dictionary: return JSON(object)
         default: return nil
         }
     }
     
-    public var date: Date? {
+    public var phone: String? {
         
         switch self.type {
+        case .string:
+            
+            do {
+                
+                let phoneKit = PhoneNumberKit()
+                
+                let numberPhone = try phoneKit.parse(object as! String, withRegion: "US")
+                
+                let formatedPhone = phoneKit.format(numberPhone, toType: .national)
+                
+                return formatedPhone
+            }
+            catch {
+                return nil
+            }
+        default:
+            return nil
+        }
+    }
+    
+    public var date: Date? {
+        
+        switch type {
         case .string:
             return JSONFormatter.jsonDateFormatter.date(from: object as! String)
         default:
@@ -52,7 +76,7 @@ extension JSON {
     
     public var dateTime: Date? {
         
-        switch self.type {
+        switch type {
         case .string:
             return JSONFormatter.jsonDateTimeFormatter.date(from: object as! String)
         default:
@@ -62,7 +86,7 @@ extension JSON {
     
     public var boolNumber: NSNumber? {
         
-        switch self.type {
+        switch type {
         case .bool: return NSNumber(value: object as! Bool)
         default:
             return nil

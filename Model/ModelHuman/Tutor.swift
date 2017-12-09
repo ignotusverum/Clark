@@ -12,9 +12,9 @@ import PromiseKit
 
 /// Struct that represent Tutor JSON keys
 public struct TutorJSON {
-
-    static let firstName = "firstName"
-    static let lastName = "lastName"
+    
+    static let firstName = "first_name"
+    static let lastName = "last_name"
     
     static let phone = "phone"
     
@@ -24,21 +24,21 @@ public struct TutorJSON {
     
     static let bio = "bio"
     
-    static let subjectsTaught = "subjectsTaught"
+    static let subjectsTaught = "subjects"
     
-    static let twilioToken = "twilioToken"
-    static let twilioExpirationDate = "twilioExpirationDate"
-    static let twilioPrimaryChannelID = "twilioPrimaryChannelID"
+    static let twilioToken = "twilio_token"
+    static let twilioExpirationDate = "twilio_expiration_date"
+    static let twilioPrimaryChannelID = "twilio_primary_channel_id"
     
-    static let preferredContactMethod = "preferredContactMethod"
-    static let pushNotificationsEnabled = "pushNotificationsEnabled"
-	static let defaultHourlyRateInCents = "defaultHourlyRateInCents"
-	static let defaultSessionLengthInMinutes = "defaultSessionLengthInMinutes"
+    static let preferredContactMethod = "preferred_contact_method"
+    static let pushNotificationsEnabled = "mobile_push_notifications_on"
+    static let defaultHourlyRateInCents = "default_hourly_rate_in_cents"
+    static let defaultSessionLengthInMinutes = "default_session_length_in_minutes"
 }
 
 @objc(Tutor)
 open class Tutor: _Tutor {
-
+    
     /// Full name
     var fullName: String {
         
@@ -65,6 +65,11 @@ open class Tutor: _Tutor {
         return firstName[0].toString
     }
     
+    /// Subjects array
+    var subjectsArray: [Subject] {
+        return subjects.allObjects as? [Subject] ?? []
+    }
+    
     // Last name initials getter
     var lastNameInitial: String {
         
@@ -82,11 +87,11 @@ open class Tutor: _Tutor {
         return firstNameInitial + lastNameInitial
     }
     
-	/// Model update logic
+    /// Model update logic
     override func updateModel(with source: JSON, transaction: BaseDataTransaction) throws {
-
+        
         try super.updateModel(with: source, transaction: transaction)
-
+        
         /// Safety check for attributes
         guard let attributesJSON = source[ModelJSON.attributes].json else {
             return
@@ -102,7 +107,7 @@ open class Tutor: _Tutor {
         email = attributesJSON[TutorJSON.email].string
         
         /// Phone
-        phone = attributesJSON[TutorJSON.phone].string
+        phone = attributesJSON[TutorJSON.phone].phone
         
         /// Image URL
         imageURL = attributesJSON[TutorJSON.imageURL].string
@@ -114,20 +119,15 @@ open class Tutor: _Tutor {
         subjectsTaught = attributesJSON[TutorJSON.subjectsTaught].string
         
         /// Default hourly rate
-        defaultHourlyRateInCents = attributesJSON[TutorJSON.defaultHourlyRateInCents].number
+        defaultHourlyRateInCents = attributesJSON[TutorJSON.defaultHourlyRateInCents].number ?? 0
         
         /// Default session lenght
-        defaultSessionLengthInMinutes = attributesJSON[TutorJSON.defaultSessionLengthInMinutes].number
+        defaultSessionLengthInMinutes = attributesJSON[TutorJSON.defaultSessionLengthInMinutes].number ?? 0
         
         /// Contant method
         preferredContactMethod = attributesJSON[TutorJSON.preferredContactMethod].string
         
         /// Push
-        pushNotificationsEnabled = attributesJSON[TutorJSON.pushNotificationsEnabled].number
-        
-        /// Twillio
-        twilioToken = attributesJSON[TutorJSON.twilioToken].string
-        twilioExpirationDate = attributesJSON[TutorJSON.twilioExpirationDate].dateTime
-        twilioPrimaryChannelID = attributesJSON[TutorJSON.twilioPrimaryChannelID].string
+        pushNotificationsEnabled = attributesJSON[TutorJSON.pushNotificationsEnabled].number        
     }
 }

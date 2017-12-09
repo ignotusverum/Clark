@@ -73,6 +73,11 @@ class ConfigAdapter: SynchronizerAdapter {
             guard let data = response["data"].json else {
                 return ("", "")
             }
+            
+            // Forse update
+            if let meta = response["meta"].dictionaryObject {
+                VersionManager.saveAndCheckMinVersion(meta: meta)
+            }
 
             let config = Config.shared
             config.settings = data

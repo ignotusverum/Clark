@@ -6,34 +6,67 @@ source 'https://github.com/twilio/cocoapod-specs'
 
 def shared_pods
     
-    swift_version = '3.1'
-    
     use_frameworks!
     
     # who cares about warnings
     inhibit_all_warnings!
     
     # Analytics
-    pod 'Fabric', '1.6.8'
-    pod 'Analytics', '3.5.5'
-    pod 'Crashlytics', '3.8.0'
-    # Segment
+    pod 'Fabric'
+    pod 'Analytics'
+    pod 'Crashlytics'
+    
     pod 'Segment-Branch'
     pod 'Segment-Mixpanel'
     pod 'Segment-Facebook-App-Events'
     
+    pod 'AppsFlyerFramework'
+    pod 'segment-appsflyer-ios/StaticLibWorkaround'
+    
+    # Transition Animation
+    pod 'Hero', '1.0.0-alpha.4'
+    pod 'Popover', '1.1.0'
+    pod 'Presentr', '1.2.3'
+    
+    # Alerts
+    pod 'SwiftMessages'
+    
+    # phone formatting
+    pod 'PhoneNumberKit', '~> 1.3'
+    
+    # Defaults
+    pod 'Locksmith'
+    
+    # Photo viewer
+    pod 'SKPhotoBrowser', '4.1.1'
+    
+    # Parallax
+    pod 'ParallaxHeader', '1.0.6'
+    
+    # Empty view
+    pod 'DZNEmptyDataSet'
+    
     # Chat
-    pod 'TwilioChatClient'
     pod 'TwilioAccessManager'
+    pod 'TwilioChatClient', '2.0.1'
     
     # Payments
     pod 'Stripe'
-    
+     
     # Chat
-    pod 'NMessenger'
+    pod 'NMessenger', :git => 'https://github.com/hiclark/NMessenger.git', :branch => 'bugfix/keyboard-whitespace-tabbar'
     
     # Core Data
     pod 'CoreStore'
+    
+    # Text view + placeholer 
+    pod 'UITextView+Placeholder', '~> 1.2'
+    
+    # Keyboard scrolling
+    pod 'IQKeyboardManagerSwift'
+    
+    # Calendar
+    pod 'FSCalendar'
     
     # Networking
     pod 'Alamofire'
@@ -51,16 +84,13 @@ def shared_pods
     
     # Parsers
     pod 'Kanna'
-    pod 'SwiftyJSON'
+    pod 'SwiftyJSON', '3.1.4'
     
     # Layout
-    pod 'SnapKit'
+    pod 'SnapKit', '3.2.0'
     
     #Image fetching
-    pod 'Kingfisher'
-    
-    #Keyboard fixes
-    pod 'IQKeyboardManagerSwift'
+    pod 'Kingfisher', '3.13.1'
     
     # Utilities
     pod 'PromiseKit'
@@ -73,8 +103,26 @@ target 'Clark' do
     shared_pods
 end
 
+target 'ClarkUITest' do
+    # Pods for Clark
+    shared_pods
+end
+
+target 'ClarkUnitTest' do
+    # Pods for Clark
+    shared_pods
+end
+
 target 'Dev' do
     # Pods for Clark
     shared_pods
 end
 
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = "YES"
+            config.build_settings['SWIFT_VERSION'] = '3.2'
+        end
+    end
+end

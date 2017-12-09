@@ -13,7 +13,8 @@ import SwiftyJSON
 struct FormTextInputJSON {
     
     static let keyboardType = "default"
-    static let displayName = "placeholder"
+    static let placeholder = "placeholder"
+    static let displayName = "display_name"
     static let autocomplete = "autocomplete"
     static let capitalizationRule = "keyboard_capitalization_rule"
 }
@@ -31,10 +32,14 @@ enum InputCapitalizationType: String {
     
     case none = "none"
     case allWorlds = "all_words"
+    case firstWord = "first_word_only"
     case allCharacters = "all_letters"
 }
 
 class FormTextInput: FormInputProtocol {
+    
+    /// Validation
+    var formInputValidation: [FormInputValidation]
     
     /// Type
     var type: FormInputType = .text
@@ -43,6 +48,9 @@ class FormTextInput: FormInputProtocol {
     var value: String
     
     /// Placeholder
+    var placeholder: String
+    
+    /// Display name
     var displayName: String
     
     /// Autocomplete
@@ -54,8 +62,25 @@ class FormTextInput: FormInputProtocol {
     /// Capitalization type
     var capitalizationType: UITextAutocapitalizationType = .none
     
+    /// Static attributes
+    var staticAttributes: [String: Any] = [:]
+    
+    var attributes: [String: Any] {
+        
+        /// Static data + updates
+        var result = staticAttributes
+        
+        /// Value
+        result[FormInputJSON.value] = value
+        
+        return result
+    }
+    
     // MARK: - Initialization
     required init(source: JSON) {
+        
+        /// Static data
+        staticAttributes = source.dictionaryObject ?? [:]
         
         /// Value
         self.value = source[FormInputJSON.value].string ?? ""
@@ -63,8 +88,18 @@ class FormTextInput: FormInputProtocol {
         /// Display name
         self.displayName = source[FormTextInputJSON.displayName].string ?? ""
         
+        /// Placeholder
+        self.placeholder = source[FormTextInputJSON.placeholder].string ?? ""
+        
         /// Autocomplete
         self.isAutocompleteEnabled = source[FormTextInputJSON.autocomplete].bool ?? false
+        
+        /// Validation
+        /// Temp validation array
+        let validationErrorsArray = source[FormInputJSON.inputError].array ?? []
+        
+        /// Map & create validation rules
+        self.formInputValidation = validationErrorsArray.flatMap { FormInputValidation(source: $0) }
         
         /// Keyboard type
         let keyboardTypeString = source[FormTextInputJSON.keyboardType].string ?? ""
@@ -72,13 +107,13 @@ class FormTextInput: FormInputProtocol {
             switch tempKeyboardType {
             case .email:
                 
-                self.keyboardType = .emailAddress
+                keyboardType = .emailAddress
             case .phonePad:
                 
-                self.keyboardType = .phonePad
+                keyboardType = .phonePad
             case .numberPad:
                 
-                self.keyboardType = .numberPad
+                keyboardType = .numberPad
             }
         }
         
@@ -88,13 +123,15 @@ class FormTextInput: FormInputProtocol {
             switch tempCapitalizationType {
             case .none:
                 
-                self.capitalizationType = .none
+                capitalizationType = .none
             case .allWorlds:
                 
-                self.capitalizationType = .words
+                capitalizationType = .words
             case .allCharacters:
                 
-                self.capitalizationType = .allCharacters
+                capitalizationType = .allCharacters
+            default:
+                capitalizationType = .sentences
             }
         }
     }

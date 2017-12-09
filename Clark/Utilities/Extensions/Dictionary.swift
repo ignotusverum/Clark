@@ -11,7 +11,8 @@ import Foundation
 extension Dictionary {
     mutating func combine(_ other: Dictionary) {
         for (key,value) in other {
-            self.updateValue(value, forKey:key)
+            updateValue(value, forKey:key)
         }
     }
 }
+

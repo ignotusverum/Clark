@@ -23,6 +23,29 @@ public protocol AutocompleteCategory {
 
 
 // MARK: Form Enums
+
+enum FormType:String {
+    case signup = "signup"
+    case login = "login"
+    case simple = "simple"
+    case custom = "custom"
+}
+
+enum FormState:String {
+    case submitted = "submitted"
+    case unsubmitted = "unsubmitted"
+    case hasErrors = "has_errors"
+    case invalidated = "invalidated"
+}
+
+enum FormInputType:String {
+    case text = "text"
+    case secret = "secret"
+    case switchButton = "radio_switch"
+    case checkmarkButton = "radio_button"
+    case slider = "slider"
+}
+
 enum ValidationType:String {
     case patternMatch = "pattern_match"
     case requiredLength = "required_length"
@@ -339,6 +362,17 @@ class FormInput: InputData {
             self.error = InputError(attributes: errorDictionary)
         }
 
+        // Set keyboard type
+        if let keyboardTypeString = attributes["keyboard_type"] as? String {
+            if keyboardTypeString == "number_pad" {
+                keyboardType = .numberPad
+            } else if keyboardTypeString == "phone_pad" {
+                keyboardType = .phonePad
+            } else if keyboardTypeString == "email" {
+                keyboardType = .emailAddress
+            }
+        }
+        
         // Set capitalization type
         if let capitalizationTypeString = attributes["keyboard_capitalization_rule"] as? String {
             if capitalizationTypeString == "all_letters" {

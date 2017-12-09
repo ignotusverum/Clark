@@ -9,18 +9,37 @@
 import Foundation
 import EZSwiftExtensions
 
+enum FontStyle: String {
+    case black = "Black"
+    case blackItalic
+    
+    case bold
+    case boldItalic
+    
+    case light
+    case lightItalic
+    
+    case extraLight
+    case extraLightItalic
+    
+    case medium
+    case mediumItalic
+    
+    case regular
+    case regularItalic
+    
+    case semiBold
+    case semiBoldItalic
+    
+    case thin
+    case thinItalic
+}
+
 extension UIFont {
     
-    static func SFProText(_ size: CGFloat = 14)-> UIFont {
-        return UIFont(name: "SFProText-Regular", size: fontScalingSize(size))!
-    }
-    
-    static func SFProTextBold(_ size: CGFloat = 14)-> UIFont {
-        return UIFont(name: "SFProText-Bold", size: fontScalingSize(size))!
-    }
-    
-    static func SFProTextSemiBold(_ size: CGFloat = 14)-> UIFont {
-        return UIFont(name: "SFProText-SemiBold", size: fontScalingSize(size))!
+    /// Default font setup
+    static func defaultFont(style: FontStyle = .regular, size: CGFloat = 14)-> UIFont {
+        return UIFont(name: "Graphik-\(style.rawValue.capitalizedFirst())", size: fontScalingSize(size))!
     }
     
     // MARK: - Scaling logic
@@ -36,3 +55,4 @@ extension UIFont {
         }
     }
 }
+

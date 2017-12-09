@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="17A360a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LearningPlan" representedClassName="LearningPlan" parentEntity="Model" syncable="YES">
+        <attribute name="engagementLength" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="engagementLengthUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="expectations" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="expectedOutsideWorkInHours" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="expectedOutsideWorkPerInterval" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="expectedOutsideWorkType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectives" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pastProgress" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dimentions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgressDimention" inverseName="learningPlan" inverseEntity="ProgressDimention" syncable="YES"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="learningPlans" inverseEntity="Student" syncable="YES"/>
+        <relationship name="subjects" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subject" inverseName="learningPlan" inverseEntity="Subject" syncable="YES"/>
+    </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="attributes_" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="author" attributeType="String" syncable="YES"/>
@@ -22,37 +35,85 @@
     <entity name="Model" representedClassName="Model" isAbstract="YES" syncable="YES">
         <attribute name="id" attributeType="String" defaultValueString="1" syncable="YES"/>
     </entity>
+    <entity name="ProgressDimention" representedClassName="ProgressDimention" parentEntity="Model" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dimentionDescription" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="learningPlan" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LearningPlan" inverseName="dimentions" inverseEntity="LearningPlan" syncable="YES"/>
+        <relationship name="sessionReportImprovement" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SessionReport" inverseName="improvementDimentions" inverseEntity="SessionReport" syncable="YES"/>
+        <relationship name="sessionReportRecursion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SessionReport" inverseName="recursionDimentions" inverseEntity="SessionReport" syncable="YES"/>
+        <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subject" inverseName="dimentions" inverseEntity="Subject" syncable="YES"/>
+    </entity>
+    <entity name="Proxy" representedClassName="Proxy" parentEntity="Model" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="proxy" inverseEntity="Student" syncable="YES"/>
+    </entity>
     <entity name="Session" representedClassName="Session" parentEntity="Model" syncable="YES">
         <attribute name="durationInMinutes" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="endTime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="feedbackReportBody" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="feedbackBody" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="feedbackNegative" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="feedbackPositive" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="feedbackRating" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="feeInCents" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRemindersOn" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="startTime" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="orderingDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="statusString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studentDetailsOrdering" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="closestStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" syncable="YES"/>
+        <relationship name="sessionReport" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SessionReport" inverseName="session" inverseEntity="SessionReport" syncable="YES"/>
         <relationship name="student" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Student" inverseName="sessions" inverseEntity="Student" syncable="YES"/>
         <relationship name="tutor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tutor" inverseName="sessions" inverseEntity="Tutor" syncable="YES"/>
     </entity>
+    <entity name="SessionReport" representedClassName="SessionReport" parentEntity="Model" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="negativeNotes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="positiveNotes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="improvementDimentions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgressDimention" inverseName="sessionReportImprovement" inverseEntity="ProgressDimention" syncable="YES"/>
+        <relationship name="recursionDimentions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgressDimention" inverseName="sessionReportRecursion" inverseEntity="ProgressDimention" syncable="YES"/>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="sessionReport" inverseEntity="Session" syncable="YES"/>
+    </entity>
     <entity name="Student" representedClassName="Student" parentEntity="Model" syncable="YES">
-        <attribute name="age" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="cancellationPercentageCharged" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="cancellationWindowInHours" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="defaultHourlyRateInCents" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="defaultSessionLengthInMinutes" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="age" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cancelationTypeString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cancellationPercentageCharged" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cancellationWindowInHours" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="defaultHourlyRateInCents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="defaultSessionLengthInMinutes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nextUpcomingSessionDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="closestSession" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session" syncable="YES"/>
+        <relationship name="learningPlans" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LearningPlan" inverseName="student" inverseEntity="LearningPlan" syncable="YES"/>
+        <relationship name="proxy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Proxy" inverseName="student" inverseEntity="Proxy" syncable="YES"/>
         <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="student" inverseEntity="Session" syncable="YES"/>
+        <relationship name="subjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" inverseName="student" inverseEntity="Subject" syncable="YES"/>
         <relationship name="tutor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tutor" inverseName="students" inverseEntity="Tutor" syncable="YES"/>
+    </entity>
+    <entity name="Subject" representedClassName="Subject" parentEntity="Model" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeString" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dimentions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgressDimention" inverseName="subject" inverseEntity="ProgressDimention" syncable="YES"/>
+        <relationship name="learningPlan" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LearningPlan" inverseName="subjects" inverseEntity="LearningPlan" syncable="YES"/>
+        <relationship name="student" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="subjects" inverseEntity="Student" syncable="YES"/>
+        <relationship name="tutor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tutor" inverseName="subjects" inverseEntity="Tutor" syncable="YES"/>
     </entity>
     <entity name="Tutor" representedClassName="Tutor" parentEntity="Model" syncable="YES">
         <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="defaultHourlyRateInCents" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="defaultSessionLengthInMinutes" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="defaultHourlyRateInCents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="defaultSessionLengthInMinutes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -61,17 +122,20 @@
         <attribute name="preferredContactMethod" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pushNotificationsEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="subjectsTaught" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="twilioExpirationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="twilioPrimaryChannelID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="twilioToken" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="tutor" inverseEntity="Session" syncable="YES"/>
         <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="tutor" inverseEntity="Student" syncable="YES"/>
+        <relationship name="subjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" inverseName="tutor" inverseEntity="Subject" syncable="YES"/>
     </entity>
     <elements>
+        <element name="LearningPlan" positionX="-297" positionY="-90" width="128" height="210"/>
         <element name="Message" positionX="-306" positionY="-126" width="128" height="300"/>
         <element name="Model" positionX="-306" positionY="-99" width="128" height="60"/>
-        <element name="Session" positionX="-11" positionY="-159" width="128" height="180"/>
-        <element name="Student" positionX="-182" positionY="-252" width="128" height="255"/>
-        <element name="Tutor" positionX="-513" positionY="-252" width="128" height="285"/>
+        <element name="ProgressDimention" positionX="-306" positionY="-99" width="128" height="150"/>
+        <element name="Proxy" positionX="-306" positionY="-99" width="128" height="120"/>
+        <element name="Session" positionX="-11" positionY="-159" width="128" height="300"/>
+        <element name="SessionReport" positionX="-297" positionY="-90" width="128" height="150"/>
+        <element name="Student" positionX="-182" positionY="-252" width="128" height="345"/>
+        <element name="Subject" positionX="-306" positionY="-99" width="128" height="150"/>
+        <element name="Tutor" positionX="-513" positionY="-252" width="128" height="255"/>
     </elements>
 </model>

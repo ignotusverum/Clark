@@ -12,7 +12,7 @@ import PromiseKit
 
 class DatabaseManager {
     
-    // Default token Stack
+    // Default clark Stack
     static let defaultStack: DataStack = {
         
         let bundleID = Bundle.main.bundleIdentifier!
@@ -156,6 +156,17 @@ class DatabaseManager {
             }
             
             fulfill(object)
+        }
+    }
+    
+    class func fetchAsyncExisting<T: NSManagedObject, S: Sequence>(_ objects: S)-> Promise<[T]> where S.Iterator.Element == T {
+        return Promise { fulfill, reject in
+            
+            defaultStack.perform(
+                asynchronous: { transaction in
+                    fulfill(transaction.fetchExisting(objects))
+            },
+                completion: { _ in })
         }
     }
 }

@@ -27,7 +27,7 @@ protocol ChatActionContainerViewDelegate {
 }
 
 class ChatActionContainerView: UIView, QuickActionViewProtocol {
-
+    
     /// Message
     var message: Message! {
         didSet {
@@ -106,8 +106,8 @@ class ChatActionContainerView: UIView, QuickActionViewProtocol {
 extension ChatActionContainerView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath)-> CGSize {
         
-        let action = message.quickReplies[indexPath.row]
-        let body = NSAttributedString(string: action.body, attributes: [NSFontAttributeName: UIFont.AvenirNextRegular(size: 17)])
+        let bodyString = type == .action ? message.quickActions[indexPath.row].body : type == .reply ? message.quickReplies[indexPath.row].body : ""
+        let body = NSAttributedString(string: bodyString, attributes: [NSFontAttributeName: UIFont.defaultFont(size: 17)])
         
         return CGSize(width: body.widthWithConstrainedHeight(35) + 24, height: 35)
     }
@@ -148,7 +148,7 @@ extension ChatActionContainerView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)-> UICollectionViewCell {
         
         if type == .reply {
-        
+            
             /// Cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(QuickReplyCollectionViewCell.self)", for: indexPath) as! QuickReplyCollectionViewCell
             
@@ -169,3 +169,4 @@ extension ChatActionContainerView: UICollectionViewDataSource {
         return cell
     }
 }
+

@@ -15,6 +15,11 @@ class LaunchChannelManager {
     // Returns true if the channel is new, false if not
     class func createNewChannelOrUpdate()-> Promise<(token: String, identity: String)> {
         
+        /// Authenticated user
+        if let token = Config.twillioToken, let identity = Config.userID {
+            return Promise(value: (token: token, identity: identity))
+        }
+        
         /// Check if needed to update
         if let userId = Config
             .userID, let channelId = Config.channelID {
@@ -26,3 +31,4 @@ class LaunchChannelManager {
         return ConfigAdapter.config()
     }
 }
+

@@ -6,12 +6,14 @@ import CoreData
 
 public enum StudentAttributes: String {
     case age = "age"
+    case cancelationTypeString = "cancelationTypeString"
     case cancellationPercentageCharged = "cancellationPercentageCharged"
     case cancellationWindowInHours = "cancellationWindowInHours"
     case defaultHourlyRateInCents = "defaultHourlyRateInCents"
     case defaultSessionLengthInMinutes = "defaultSessionLengthInMinutes"
     case email = "email"
     case firstName = "firstName"
+    case fullName = "fullName"
     case gender = "gender"
     case lastName = "lastName"
     case nextUpcomingSessionDate = "nextUpcomingSessionDate"
@@ -20,7 +22,11 @@ public enum StudentAttributes: String {
 }
 
 public enum StudentRelationships: String {
+    case closestSession = "closestSession"
+    case learningPlans = "learningPlans"
+    case proxy = "proxy"
     case sessions = "sessions"
+    case subjects = "subjects"
     case tutor = "tutor"
 }
 
@@ -52,6 +58,9 @@ open class _Student: Model {
     @NSManaged public
     var age: NSNumber?
 
+    @NSManaged open
+    var cancelationTypeString: String?
+
     @NSManaged public
     var cancellationPercentageCharged: NSNumber?
 
@@ -71,6 +80,9 @@ open class _Student: Model {
     var firstName: String?
 
     @NSManaged open
+    var fullName: String?
+
+    @NSManaged open
     var gender: String?
 
     @NSManaged open
@@ -88,6 +100,19 @@ open class _Student: Model {
     // MARK: - Relationships
 
     @NSManaged open
+    var closestSession: Session?
+
+    @NSManaged open
+    var learningPlans: NSSet
+
+    open func learningPlansSet() -> NSMutableSet {
+        return self.learningPlans.mutableCopy() as! NSMutableSet
+    }
+
+    @NSManaged open
+    var proxy: Proxy?
+
+    @NSManaged open
     var sessions: NSSet
 
     open func sessionsSet() -> NSMutableSet {
@@ -95,7 +120,42 @@ open class _Student: Model {
     }
 
     @NSManaged open
+    var subjects: NSSet
+
+    open func subjectsSet() -> NSMutableSet {
+        return self.subjects.mutableCopy() as! NSMutableSet
+    }
+
+    @NSManaged open
     var tutor: Tutor?
+
+}
+
+extension _Student {
+
+    open func addLearningPlans(_ objects: NSSet) {
+        let mutable = self.learningPlans.mutableCopy() as! NSMutableSet
+        mutable.union(objects as Set<NSObject>)
+        self.learningPlans = mutable.copy() as! NSSet
+    }
+
+    open func removeLearningPlans(_ objects: NSSet) {
+        let mutable = self.learningPlans.mutableCopy() as! NSMutableSet
+        mutable.minus(objects as Set<NSObject>)
+        self.learningPlans = mutable.copy() as! NSSet
+    }
+
+    open func addLearningPlansObject(_ value: LearningPlan) {
+        let mutable = self.learningPlans.mutableCopy() as! NSMutableSet
+        mutable.add(value)
+        self.learningPlans = mutable.copy() as! NSSet
+    }
+
+    open func removeLearningPlansObject(_ value: LearningPlan) {
+        let mutable = self.learningPlans.mutableCopy() as! NSMutableSet
+        mutable.remove(value)
+        self.learningPlans = mutable.copy() as! NSSet
+    }
 
 }
 
@@ -123,6 +183,34 @@ extension _Student {
         let mutable = self.sessions.mutableCopy() as! NSMutableSet
         mutable.remove(value)
         self.sessions = mutable.copy() as! NSSet
+    }
+
+}
+
+extension _Student {
+
+    open func addSubjects(_ objects: NSSet) {
+        let mutable = self.subjects.mutableCopy() as! NSMutableSet
+        mutable.union(objects as Set<NSObject>)
+        self.subjects = mutable.copy() as! NSSet
+    }
+
+    open func removeSubjects(_ objects: NSSet) {
+        let mutable = self.subjects.mutableCopy() as! NSMutableSet
+        mutable.minus(objects as Set<NSObject>)
+        self.subjects = mutable.copy() as! NSSet
+    }
+
+    open func addSubjectsObject(_ value: Subject) {
+        let mutable = self.subjects.mutableCopy() as! NSMutableSet
+        mutable.add(value)
+        self.subjects = mutable.copy() as! NSSet
+    }
+
+    open func removeSubjectsObject(_ value: Subject) {
+        let mutable = self.subjects.mutableCopy() as! NSMutableSet
+        mutable.remove(value)
+        self.subjects = mutable.copy() as! NSSet
     }
 
 }

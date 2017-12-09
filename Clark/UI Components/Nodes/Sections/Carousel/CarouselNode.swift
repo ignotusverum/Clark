@@ -73,3 +73,4 @@ class CarouselNode: ASCellNode {
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0), child: stackLayout)
     }
 }
+

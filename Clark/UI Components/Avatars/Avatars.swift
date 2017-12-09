@@ -20,7 +20,7 @@ class Avatars {
     class func createAvatar()-> ASImageNode {
         
         let avatar = ASImageNode()
-        avatar.image = #imageLiteral(resourceName: "empty")
+        avatar.image = #imageLiteral(resourceName: "clark_avatar")
         avatar.backgroundColor = UIColor.trinidad
         avatar.style.preferredSize = CGSize(width: 36, height: 36)
         avatar.layer.cornerRadius = 18
@@ -29,7 +29,7 @@ class Avatars {
         let isOpen = config.currentDay?.isCurrentlyOpen ?? false
         
         let isOpenCircle = ASImageNode()
-        isOpenCircle.backgroundColor = isOpen ? UIColor.green : UIColor.red
+        isOpenCircle.backgroundColor = isOpen ? UIColor.activeStateColor : UIColor.inActiveStateColor
         isOpenCircle.style.preferredSize = CGSize(width: 14, height: 14)
         isOpenCircle.layer.cornerRadius = 7
         
@@ -55,3 +55,5 @@ class Avatars {
         return avatar
     }
 }
+
+

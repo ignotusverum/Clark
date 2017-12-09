@@ -1,6 +1,7 @@
 PODS:
-  - Alamofire (4.5.0)
-  - Analytics (3.5.5)
+  - Alamofire (4.5.1)
+  - Analytics (3.6.8)
+  - AppsFlyerFramework (4.8.1)
   - AsyncDisplayKit (2.2):
     - AsyncDisplayKit/PINRemoteImage (= 2.2)
   - AsyncDisplayKit/Core (2.2)
@@ -8,35 +9,43 @@ PODS:
     - AsyncDisplayKit/Core
     - PINRemoteImage/iOS (= 3.0.0-beta.8)
     - PINRemoteImage/PINCache
-  - AWSCore (2.5.8)
-  - AWSS3 (2.5.8):
-    - AWSCore (= 2.5.8)
+  - AWSCore (2.6.7)
+  - AWSS3 (2.6.7):
+    - AWSCore (= 2.6.7)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - Branch (0.15.3):
-    - Branch/Core (= 0.15.3)
-    - Branch/without-IDFA (= 0.15.3)
-  - Branch/Core (0.15.3)
-  - Branch/without-IDFA (0.15.3)
-  - CoreStore (4.0.5)
-  - Crashlytics (3.8.0):
-    - Fabric (~> 1.6.3)
-  - EZSwiftExtensions (1.10)
-  - Fabric (1.6.8)
-  - FBSDKCoreKit (4.24.0):
+  - Branch (0.21.13):
+    - Branch/Core (= 0.21.13)
+  - Branch/Core (0.21.13)
+  - CoreStore (4.2.4)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
+  - DZNEmptyDataSet (1.8.1)
+  - EZSwiftExtensions (1.11)
+  - Fabric (1.7.2)
+  - FBSDKCoreKit (4.28.0):
     - Bolts (~> 1.7)
-  - IQKeyboardManagerSwift (4.0.10)
+  - FSCalendar (2.7.9)
+  - Hero (1.0.0-alpha.4)
+  - IQKeyboardManagerSwift (5.0.6)
   - Kanna (2.2.1)
-  - KeychainAccess (3.0.2)
-  - Kingfisher (3.10.3)
-  - Locksmith (3.0.0)
-  - Mixpanel (3.1.8)
+  - KeychainAccess (3.1.0)
+  - Kingfisher (3.13.1)
+  - Locksmith (4.0.0)
+  - Mixpanel (3.2.3)
   - NMessenger (1.0.80):
     - AsyncDisplayKit (= 2.2)
+  - ParallaxHeader (1.0.6)
+  - PhoneNumberKit (1.4.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 1.4.0)
+    - PhoneNumberKit/UIKit (= 1.4.0)
+  - PhoneNumberKit/PhoneNumberKitCore (1.4.0)
+  - PhoneNumberKit/UIKit (1.4.0):
+    - PhoneNumberKit/PhoneNumberKitCore
   - PINCache (3.0.1-beta.4):
     - PINCache/Arc-exception-safe (= 3.0.1-beta.4)
     - PINCache/Core (= 3.0.1-beta.4)
@@ -51,19 +60,25 @@ PODS:
   - PINRemoteImage/PINCache (3.0.0-beta.8):
     - PINCache (= 3.0.1-beta.4)
     - PINRemoteImage/Core
-  - PromiseKit (4.2.2):
-    - PromiseKit/Foundation (= 4.2.2)
-    - PromiseKit/QuartzCore (= 4.2.2)
-    - PromiseKit/UIKit (= 4.2.2)
-  - PromiseKit/CorePromise (4.2.2)
-  - PromiseKit/Foundation (4.2.2):
+  - Popover (1.1.0)
+  - Presentr (1.2.3)
+  - PromiseKit (4.5.0):
+    - PromiseKit/Foundation (= 4.5.0)
+    - PromiseKit/QuartzCore (= 4.5.0)
+    - PromiseKit/UIKit (= 4.5.0)
+  - PromiseKit/CorePromise (4.5.0)
+  - PromiseKit/Foundation (4.5.0):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.2.2):
+  - PromiseKit/QuartzCore (4.5.0):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.2.2):
+  - PromiseKit/UIKit (4.5.0):
     - PromiseKit/CorePromise
   - ReachabilitySwift (3)
-  - Segment-Branch (0.1.2):
+  - segment-appsflyer-ios/StaticLibWorkaround (1.2.5):
+    - Analytics (~> 3.5)
+    - AppsFlyerFramework (~> 4)
+    - AppsFlyerTvOsLib (~> 4)
+  - Segment-Branch (0.1.7):
     - Analytics
     - Branch
   - Segment-Facebook-App-Events (1.0.3):
@@ -72,74 +87,111 @@ PODS:
   - Segment-Mixpanel (1.2.0):
     - Analytics (~> 3.0)
     - Mixpanel (~> 3.0)
+  - SKPhotoBrowser (4.1.1)
   - SnapKit (3.2.0)
-  - Stripe (11.0.0)
-  - SVProgressHUD (2.1.2)
+  - Stripe (11.5.0)
+  - SVProgressHUD (2.2.2)
+  - SwiftMessages (4.1.0)
   - SwiftyJSON (3.1.4)
-  - TwilioAccessManager (0.1.3)
-  - TwilioChatClient (1.0.4)
+  - TwilioAccessManager (1.0.0)
+  - TwilioChatClient (2.0.1)
+  - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
   - Alamofire
-  - Analytics (= 3.5.5)
+  - Analytics
+  - AppsFlyerFramework
   - AWSS3
   - CoreStore
-  - Crashlytics (= 3.8.0)
+  - Crashlytics
+  - DZNEmptyDataSet
   - EZSwiftExtensions
-  - Fabric (= 1.6.8)
+  - Fabric
+  - FSCalendar
+  - Hero (= 1.0.0-alpha.4)
   - IQKeyboardManagerSwift
   - Kanna
   - KeychainAccess
-  - Kingfisher
+  - Kingfisher (= 3.13.1)
   - Locksmith
-  - NMessenger
+  - NMessenger (from `https://github.com/hiclark/NMessenger.git`, branch `bugfix/keyboard-whitespace-tabbar`)
+  - ParallaxHeader (= 1.0.6)
+  - PhoneNumberKit (~> 1.3)
+  - Popover (= 1.1.0)
+  - Presentr (= 1.2.3)
   - PromiseKit
   - ReachabilitySwift (~> 3)
+  - segment-appsflyer-ios/StaticLibWorkaround
   - Segment-Branch
   - Segment-Facebook-App-Events
   - Segment-Mixpanel
-  - SnapKit
+  - SKPhotoBrowser (= 4.1.1)
+  - SnapKit (= 3.2.0)
   - Stripe
   - SVProgressHUD
-  - SwiftyJSON
+  - SwiftMessages
+  - SwiftyJSON (= 3.1.4)
   - TwilioAccessManager
-  - TwilioChatClient
+  - TwilioChatClient (= 2.0.1)
+  - UITextView+Placeholder (~> 1.2)
+
+EXTERNAL SOURCES:
+  NMessenger:
+    :branch: bugfix/keyboard-whitespace-tabbar
+    :git: https://github.com/hiclark/NMessenger.git
+
+CHECKOUT OPTIONS:
+  NMessenger:
+    :commit: 3524e2f534acc0c7718adaae03ee223288094c22
+    :git: https://github.com/hiclark/NMessenger.git
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  Analytics: af1da699765b652112483847ea73ad7c6adbd0e9
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Analytics: 6f00cff963ca3b9a4ffdfe3b6dc5564405431f60
+  AppsFlyerFramework: 4f6fe2b018e1c2ca4f390652f3548a8ee799a610
   AsyncDisplayKit: 1585f6cd0531ae9b30476f5912f577b73ebcb0e4
-  AWSCore: cf101c44d2cc5da32abc27d5529cddc63c010415
-  AWSS3: addf558f9cf2368e7fb520440867fea5596db0fb
+  AWSCore: a5ff5fb202342b922eb9036af9ecc3bc28a032eb
+  AWSS3: cd4aec32f51fc202431e36596d2f535f821788e1
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  Branch: d3620efcb86e8eeedfaf520e4f68a2ed4c6c9eb3
-  CoreStore: 07e6cc86894eb80df9ce6fd0e54122df1ccaf531
-  Crashlytics: 8601d9c74a4c4d28f3e7f408bf4c0e490c70e8b4
-  EZSwiftExtensions: 172160bfb3635161c8b833d9111961ff3e6f517d
-  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
-  FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
-  IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
+  Branch: e4a73742c7d77fae7e40c6b3184ddcb0103d71cd
+  CoreStore: 1b8a116d9e3f3e0e0be588b57bc4a7dbb5adf3d5
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  EZSwiftExtensions: 84000042202d9fd574f626cda3064143f27fa767
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
+  FBSDKCoreKit: ca961e279113f691fd83dc634c0bbad9d4e3f370
+  FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
+  Hero: 6ab58fdfb16c75ce9c6bfad48ef6abb54780b263
+  IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
   Kanna: 182789ab065e8f9a6ccc2a74ce6283d3401c0c4a
-  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
-  Kingfisher: a0ac82dc5bcf0388dd74b294cf2cc13730c63436
-  Locksmith: 310b4cc5031af5728bf4db5d4de547a5100c6a3b
-  Mixpanel: 1e04a58533472e5675ea0a476af02ee8751aaa08
-  NMessenger: ca6a89073ca40d3868cf45505f6f8318853afd40
+  KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
+  Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
+  Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
+  Mixpanel: 7bd8e176f088936bf6e283ade0d1f512f8e723bc
+  NMessenger: fd2dc65c76b685f76d20ee70fa3567c4e445a36a
+  ParallaxHeader: 18ef35dfee4e565e2ef8b8d21c16d856ab1f424a
+  PhoneNumberKit: a739c359d05701e2e9745654f53e7c64379c2516
   PINCache: a89c8f609232afac77128557bd12c861844423d7
   PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
   PINRemoteImage: c4f9f16932840c597f32e69dd288e10e111a1929
-  PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
+  Popover: 8b4330c16d9e72f1ea8a2f6783d83b8692ae8776
+  Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
+  PromiseKit: 9c1d9f6d7b65e3951a90bea7f407c56972be5d8e
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
-  Segment-Branch: b8def25f902c0c5201d717ae0dfa2a61849c8f19
+  segment-appsflyer-ios: a0698fea8be17a10193a3d54faf4246fa84c40ce
+  Segment-Branch: e0c81397d2b11e42cdad70a0c2004d111798be06
   Segment-Facebook-App-Events: 32f02652747a5e899f5f5fce4cb1d80bad5d5a72
   Segment-Mixpanel: a4c523dbaebecdcfed6a65ecd9c0ea8b430cd8d2
+  SKPhotoBrowser: aa02de50f56d80fac23f543e40847af6b360e4b3
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  Stripe: 9861af8b1fc99421fdcc849f8c71dceaa9fd6ef9
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  Stripe: 10761682d20dc491c52287393c800db056c9748d
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  SwiftMessages: 1bacc783c8f10bdfdc57c14860cae8a1f1fa6591
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  TwilioAccessManager: 30ce2f7cf78ef5dd4cf19562fc204313bac625f6
-  TwilioChatClient: fa4185745d6082631b47107bc304d83e43c2aff8
+  TwilioAccessManager: fc7fd8b86de78a795976fc3c7d37dfa0e821c461
+  TwilioChatClient: 35eec4d29dadd2791f474872dddf87daaf0cd2b6
+  UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: bb512440e004913c7c82e295c7a375b9f00b5749
+PODFILE CHECKSUM: 1ed19de30d4e893d37e96e5ff058393cca28c36d
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

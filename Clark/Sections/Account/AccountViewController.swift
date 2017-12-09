@@ -6,12 +6,32 @@
 //  Copyright © 2017 Clark. All rights reserved.
 //
 
-import UIKit
+import Hero
+import MessageUI
+import PromiseKit
+import SVProgressHUD
+import SafariServices
+import ParallaxHeader
+import EZSwiftExtensions
+
+enum AccountCellType: String {
+    case settings = "Settings"
+    case contact = "Contact Us"
+    case terms = "Terms & Privacy"
+}
 
 class AccountViewController: UIViewController {
-
+    
     /// Tutor model
     var tutor: Tutor
+    
+    /// Collection datasource
+    var datasource: [AccountCellType] = [.settings, .terms, .contact]
+    
+    /// Status bar style
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     /// Collection View
     var collectionView: UICollectionView = {
@@ -26,12 +46,22 @@ class AccountViewController: UIViewController {
         /// Collection view
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
+        collectionView.alwaysBounceVertical = true
         collectionView.backgroundColor = UIColor.white
         
-        /// Register cells
-        collectionView.register(AccountHeaderCollectionViewCell.self, forCellWithReuseIdentifier: "\(AccountHeaderCollectionViewCell.self)")
+        /// Cell registration
+        collectionView.register(SignOutCollectionViewCell.self, forCellWithReuseIdentifier: "\(SignOutCollectionViewCell.self)")
+        collectionView.register(SimpleTextCollectionViewCell.self, forCellWithReuseIdentifier: "\(SimpleTextCollectionViewCell.self)")
+        collectionView.register(VersionCollectionViewCell.self, forCellWithReuseIdentifier: "\(VersionCollectionViewCell.self)")
         
         return collectionView
+    }()
+    
+    /// Collection view header view
+    lazy var headerView: AccountView = {
+        
+        let view = AccountView(tutor: self.tutor)
+        return view
     }()
     
     // MARK: - Initialization
@@ -45,14 +75,27 @@ class AccountViewController: UIViewController {
     }
     
     // MARK: - Controller lifecycle
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        /// Analytics
+        Analytics.screen(screenId: .s6)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        /// Update
+        headerView.tutor = tutor
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         /// Initial UI setup
         initialSetup()
         
-        /// Back button
-        setBackButton(image: #imageLiteral(resourceName: "back"))
+        automaticallyAdjustsScrollViewInsets = false
     }
     
     // MARK: - Initial setup
@@ -67,25 +110,118 @@ class AccountViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        /// Collection header setup
+        collectionView.parallaxHeader.view = headerView
+        collectionView.parallaxHeader.height = 320
+        collectionView.parallaxHeader.minimumHeight = 80
+        collectionView.parallaxHeader.mode = .centerFill
+        
         /// Background color
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.trinidad
         
         /// Collection View layout
         collectionView.snp.updateConstraints { maker in
-            maker.top.equalTo(self.view)
+            maker.top.equalTo(self.view).offset(-22)
             maker.bottom.equalTo(self.view)
             maker.left.equalTo(self.view)
             maker.right.equalTo(self.view)
         }
+        
+        /// Update
+        headerView.layoutSubviews()
+        
+        /// Handle tap gesture
+        headerView.addTapGesture { tap in
+            
+            /// Push next view
+            guard let controller = AccountRouteHandler.editTransition(tutor: self.tutor) else {
+                return
+            }
+            
+            /// Transition
+            self.presentVC(controller)
+        }
+    }
+    
+    // MARK: - Utilities
+    fileprivate func composeSupportMessage() {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            AlertHelper.showAlert(title: "Error Composing Mail Message.", controller: self)
+        }
+    }
+    
+    private func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        mailComposerVC.setToRecipients(["clark@hiclark.com"])
+        mailComposerVC.setSubject("Clark App Support")
+        mailComposerVC.setMessageBody("", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    fileprivate func presentWebVC(link: String) {
+        
+        /// Safety check
+        guard let link = URL(string: link) else {
+            return
+        }
+        
+        /// Present web view
+        let controller = SFSafariViewController(url: link)
+        presentVC(controller)
     }
 }
 
 // MARK: - CollectionView Delegate
 extension AccountViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        print(indexPath)
+        if indexPath.section == 0 {
+            let cellType = datasource[indexPath.row]
+            
+            /// Analytics
+            Analytics.trackEventWithID(.s6_1, eventParams: ["type": cellType.rawValue])
+            
+            switch cellType {
+            case .settings:
+                
+                /// Settings transition
+                guard let settingNavigation = AccountRouteHandler.settingTransition() else {
+                    return
+                }
+                
+                presentVC(settingNavigation)
+                
+            case .terms:
+                presentWebVC(link: "https://www.hiclark.com/terms")
+                
+                /// Analytics
+                Analytics.screen(screenId: .s11)
+                
+            case .contact:
+                composeSupportMessage()
+                /// Analytics
+                Analytics.screen(screenId: .s12)
+            }
+        }
+        else if indexPath.section == 1 {
+            
+            /// Sign out
+            SVProgressHUD.show()
+            
+            /// Reset data and connect to new
+            Config.resetDataAndConnect().then { _-> Promise<[UIViewController]> in
+                SVProgressHUD.dismiss()
+                /// Analytics
+                Analytics.trackEventWithID(.s6_2)
+                return OnboardingRouteHandler.initialTransition()
+                }.catch { error in
+                    SVProgressHUD.dismiss()
+            }
+        }
     }
 }
 
@@ -96,7 +232,7 @@ extension AccountViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return section == 0 ? .zero : UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
+        return section == 0 || section == 2 ? .zero : UIEdgeInsets(top: 25, left: 0, bottom: 0, right: 0)
     }
 }
 
@@ -104,20 +240,45 @@ extension AccountViewController: UICollectionViewDelegateFlowLayout {
 extension AccountViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)-> Int {
-        
-        return 1
+        return section == 0 ? datasource.count : 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)-> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(AccountHeaderCollectionViewCell.self)", for: indexPath) as! AccountHeaderCollectionViewCell
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(SimpleTextCollectionViewCell.self)", for: indexPath) as! SimpleTextCollectionViewCell
+            
+            let data = datasource[indexPath.row]
+            cell.text = data.rawValue
+            
+            /// Hide last divider
+            cell.dividerView.isHidden = indexPath.row == datasource.count - 1
+            
+            return cell
+        }
+        else if indexPath.section == 1 {
+            
+            /// Sign out button
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(SignOutCollectionViewCell.self)", for: indexPath) as! SignOutCollectionViewCell
+            
+            return cell
+        }
         
-        cell.tutor = tutor
+        /// Version cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(VersionCollectionViewCell.self)", for: indexPath)
         
         return cell
     }
 }
+
+// MARK: - Delgate methods
+extension AccountViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+

@@ -17,12 +17,12 @@ enum TutorAdapterErrors: Error {
     
     case login
     case signUp
-
+    
     case update
 }
 
 class TutorAdapter: SynchronizerAdapter {
-
+    
     /// Login call
     ///
     /// - Parameters:
@@ -33,21 +33,29 @@ class TutorAdapter: SynchronizerAdapter {
     class func login(_ email: String, password: String, channelID: String)-> Promise<Tutor?> {
         
         /// Params for request
-        let params = ["auth_email": email, "password" : password, "pre_login_channel_sid" : channelID]
+        let params = ["auth_email": email.lowercased(), "password" : password, "pre_login_channel_sid" : channelID]
         
         /// Networking request
         let apiMan = APIManager.shared
-        return apiMan.request(.post, path: "login", parameters: ["service_provider_user" : params]).then {
+        return apiMan.request(.post, path: "login", parameters: ["service_provider_user": params]).then {
             response-> Promise<Tutor?> in
+            
+            /// Clear old messages
+            DatabaseManager.clearDB()
             
             guard let tutorDictionary = response["data"].json, let metaDictionary = response["meta"].json else {
                 throw TutorAdapterErrors.login
             }
             
-            /// CHECK FOR META HERE
+            /// Config settings
+            let config = Config.shared
+            config.settings = metaDictionary
+            
+            /// Update auth token
+            apiMan.apiKey = metaDictionary[APIManagerJSON.authToken].string
             
             /// Safe to db
-            return DatabaseManager.insertASync(Into<Tutor>(), source: tutorDictionary)
+            return DatabaseManager.insertSync(Into<Tutor>(), source: tutorDictionary)
             }.then { response-> Promise<Tutor?> in
                 /// Fetch db object
                 return DatabaseManager.fetchExisting(response)
@@ -61,30 +69,64 @@ class TutorAdapter: SynchronizerAdapter {
     ///   - password: Pass
     ///   - channel: Channel associated with user
     /// - Returns: JSON on success
-    class func register(_ email: String, password: String, channelID: String, moc: NSManagedObjectContext)-> Promise<Tutor?> {
+    class func register(_ email: String, password: String, channelID: String)-> Promise<JSON> {
         
         /// Params for request
         let params = ["auth_email": email, "password" : password, "pre_login_channel_sid" : channelID]
         
         /// Networking
         let apiMan = APIManager.shared
-        return apiMan.request(.post, path: "register", parameters: ["sign_up": params]).then { response-> Promise<Tutor?> in
+        return apiMan.request(.post, path: "register", parameters: ["sign_up": params]).then { response-> JSON in
             
-            guard let tutorDictionary = response["data"].json, let metaDictionary = response["meta"].json else {
+            /// Clear old messages
+            DatabaseManager.clearDB()
+            
+            guard let _ = response["data"].json, let metaDictionary = response["meta"].json else {
                 throw TutorAdapterErrors.signUp
             }
             
-            return DatabaseManager.insertASync(Into<Tutor>(), source: tutorDictionary)
+            /// Config settings
+            let config = Config.shared
+            config.settings = metaDictionary
+            
+            /// Update auth token
+            apiMan.apiKey = metaDictionary[APIManagerJSON.authToken].string
+            
+            return response
+        }
+    }
+    
+    /// Onboarding setup
+    class func onboarding(key: String)-> Promise<Tutor?> {
+        
+        /// Params
+        let params: [String: Any] = ["data": [], "web_public_token": key, "mobile_secret_token": OnboardingKey]
+        
+        /// Networking
+        let apiMan = APIManager.shared
+        return apiMan.request(.post, path: "me", parameters: params).then { response-> Promise<Tutor?> in
+            
+            guard let tutorDictionary = response["data"].json, let metaJSON = response["meta"].json else {
+                throw TutorAdapterErrors.me
+            }
+            
+            /// Config settings
+            let config = Config.shared
+            config.settings = metaJSON
+            
+            /// Update auth token
+            apiMan.apiKey = metaJSON[APIManagerJSON.authToken].string
+
+            return DatabaseManager.insertSync(Into<Tutor>(), source: tutorDictionary)
             }.then { response-> Promise<Tutor?> in
-                /// Fetch db object
-                return DatabaseManager.fetchExisting(response)
+                return me()
         }
     }
     
     /// Fetching current tutor object
     ///
-    /// - Returns: JSON on success
-    class func fetchMe()-> Promise<Tutor?> {
+    /// - Returns: Tutor object on success
+    class func me()-> Promise<Tutor?> {
         /// Networking
         let apiMan = APIManager.shared
         return apiMan.request(.get, path: "me").then { response-> Promise<Tutor?> in
@@ -93,7 +135,22 @@ class TutorAdapter: SynchronizerAdapter {
                 throw TutorAdapterErrors.me
             }
             
-            return DatabaseManager.insertASync(Into<Tutor>(), source: tutorDictionary)
+            /// Config settings
+            let config = Config.shared
+            config.settings = metaJSON
+            
+            /// Forse update
+            if let meta = response["meta"].dictionaryObject {
+                VersionManager.saveAndCheckMinVersion(meta: meta)
+                
+                /// Update permissions
+                config.settingPermissions(metaJSON)
+            }
+            
+            /// Update auth token
+            apiMan.apiKey = metaJSON[APIManagerJSON.authToken].string
+            
+            return DatabaseManager.insertSync(Into<Tutor>(), source: tutorDictionary)
             }.then { response-> Promise<Tutor?> in
                 /// Fetch db object
                 return DatabaseManager.fetchExisting(response)
@@ -103,7 +160,6 @@ class TutorAdapter: SynchronizerAdapter {
     /// Update current tutor with params
     ///
     /// - Parameter dict: Params dict
-    /// - Returns: JSON on success
     class func update(_ dict: [String: Any]?)-> Promise<Tutor?> {
         
         /// Safety check
@@ -111,7 +167,6 @@ class TutorAdapter: SynchronizerAdapter {
             return Promise(value: nil)
         }
         
-        //let parameters : Parameters = ["attributes" : attributes]
         let dataPams : [String : Any] = ["data":["attributes" : dict]]
         
         /// Networking
@@ -121,28 +176,18 @@ class TutorAdapter: SynchronizerAdapter {
             guard let tutorDictionary = response["data"].json, let metaDictionary = response["meta"].json else {
                 throw TutorAdapterErrors.update
             }
-         
-            /// Update meta
             
-            return DatabaseManager.insertASync(Into<Tutor>(), source: tutorDictionary)
+            /// Config settings
+            let config = Config.shared
+            config.settings = metaDictionary
+            
+            /// Update auth token
+            apiMan.apiKey = metaDictionary[APIManagerJSON.authToken].string
+            
+            return DatabaseManager.insertSync(Into<Tutor>(), source: tutorDictionary)
             }.then { response-> Promise<Tutor?> in
                 /// Fetch db object
                 return DatabaseManager.fetchExisting(response)
         }
-    }
-    
-    /// Add student script
-    ///
-    /// - Parameter tutorID: Tutor ID
-    /// - Returns: JSON on success
-    class func addStudent(tutorID: String)-> Promise<JSON> {
-        
-        /// Attributes
-        let attributes = ["tutor_id": tutorID]
-        let params : [String : Any] = ["data": ["attributes" : attributes]]
-        
-        /// Networking
-        let kickoffMan = KickoffManager.shared
-        return kickoffMan.request(.post, path: "add-students", parameters: params)
     }
 }

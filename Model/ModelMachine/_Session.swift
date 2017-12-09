@@ -8,13 +8,21 @@ public enum SessionAttributes: String {
     case durationInMinutes = "durationInMinutes"
     case endTime = "endTime"
     case feeInCents = "feeInCents"
-    case feedbackReportBody = "feedbackReportBody"
+    case feedbackBody = "feedbackBody"
+    case feedbackNegative = "feedbackNegative"
+    case feedbackPositive = "feedbackPositive"
+    case feedbackRating = "feedbackRating"
+    case isRemindersOn = "isRemindersOn"
     case location = "location"
+    case orderingDate = "orderingDate"
     case startTime = "startTime"
     case statusString = "statusString"
+    case studentDetailsOrdering = "studentDetailsOrdering"
 }
 
 public enum SessionRelationships: String {
+    case closestStudent = "closestStudent"
+    case sessionReport = "sessionReport"
     case student = "student"
     case tutor = "tutor"
 }
@@ -48,24 +56,48 @@ open class _Session: Model {
     var durationInMinutes: NSNumber?
 
     @NSManaged open
-    var endTime: Date!
+    var endTime: Date?
 
     @NSManaged public
     var feeInCents: NSNumber?
 
     @NSManaged open
-    var feedbackReportBody: String?
+    var feedbackBody: String?
+
+    @NSManaged open
+    var feedbackNegative: String?
+
+    @NSManaged open
+    var feedbackPositive: String?
+
+    @NSManaged open
+    var feedbackRating: String?
+
+    @NSManaged public
+    var isRemindersOn: NSNumber?
 
     @NSManaged open
     var location: String?
 
     @NSManaged open
-    var startTime: Date!
+    var orderingDate: Date?
+
+    @NSManaged open
+    var startTime: Date?
 
     @NSManaged open
     var statusString: String?
 
+    @NSManaged public
+    var studentDetailsOrdering: NSNumber?
+
     // MARK: - Relationships
+
+    @NSManaged open
+    var closestStudent: Student?
+
+    @NSManaged open
+    var sessionReport: SessionReport?
 
     @NSManaged open
     var student: Student?

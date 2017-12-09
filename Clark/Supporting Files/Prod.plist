@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.5.2</string>
+	<string>2.2.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -30,11 +30,11 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>22</string>
+	<string>579</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>62bbf5ea1116d51aa9eb0416cbe86223acf2a4c4</string>
+		<string>1804ab8163eeea5dcf9df21a7fa0ed5016377939</string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -42,6 +42,12 @@
 				<dict/>
 				<key>KitName</key>
 				<string>Crashytics</string>
+			</dict>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
 			</dict>
 		</array>
 	</dict>
@@ -58,16 +64,21 @@
 	<string>Your photo library will only be accessed when setting your profile picture</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SF-Pro-Text-Bold.otf</string>
-		<string>SF-Pro-Text-BoldItalic.otf</string>
-		<string>SF-Pro-Text-Heavy.otf</string>
-		<string>SF-Pro-Text-HeavyItalic.otf</string>
-		<string>SF-Pro-Text-Light.otf</string>
-		<string>SF-Pro-Text-LightItalic.otf</string>
-		<string>SF-Pro-Text-Medium.otf</string>
-		<string>SF-Pro-Text-MediumItalic.otf</string>
-		<string>SF-Pro-Text-Regular.otf</string>
-		<string>SF-Pro-Text-Semibold.otf</string>
+		<string>Graphik-Black.otf</string>
+		<string>Graphik-BlackItalic.otf</string>
+		<string>Graphik-Bold.otf</string>
+		<string>Graphik-BoldItalic.otf</string>
+		<string>Graphik-Extralight.otf</string>
+		<string>Graphik-ExtralightItalic.otf</string>
+		<string>Graphik-Light.otf</string>
+		<string>Graphik-LightItalic.otf</string>
+		<string>Graphik-Medium.otf</string>
+		<string>Graphik-Regular.otf</string>
+		<string>Graphik-RegularItalic.otf</string>
+		<string>Graphik-Semibold.otf</string>
+		<string>Graphik-SemiboldItalic.otf</string>
+		<string>Graphik-Thin.otf</string>
+		<string>Graphik-ThinItalic.otf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

@@ -6,227 +6,234 @@
 //  Copyright © 2017 Clark. All rights reserved.
 //
 
-import UIKit
+import WebKit
 import SnapKit
+import SwiftyJSON
 import PromiseKit
-import AVFoundation
 import SVProgressHUD
 import TwilioChatClient
+import EZSwiftExtensions
 
+/// Communication with webview
+///
+/// - token: Authentication token key
+/// - resetPassword: Reset passwork key
+enum JSCalls: String {
+    case token = "token"
+    case loginToken = "login_token"
+    case profileToken = "profile_token"
+    case resetPassword = "reset_password_completed"
+}
+
+/// Onboarding flow view controller
 class InitialViewController: UIViewController {
 
-    /// Video path
-    private var videoPath: String?
+    /// Status bar setup
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
-    /// Logo image view
-    lazy var logoImageView: UIImageView = {
-       
-        let imageView = UIImageView(frame: .zero)
-        imageView.image = #imageLiteral(resourceName: "Clark")
-        imageView.contentMode = .center
+    /// WebView container
+    lazy var webView: WKWebView = {
+        let webView = WKWebView(frame: CGRect.zero, configuration: {
+            let config = WKWebViewConfiguration()
+            
+            config.allowsInlineMediaPlayback = true
+            config.userContentController = {
+                let userContentController = WKUserContentController()
+                
+                /// Message handlers
+                userContentController.add(self, name: JSCalls.token.rawValue)
+                userContentController.add(self, name: JSCalls.loginToken.rawValue)
+                userContentController.add(self, name: JSCalls.profileToken.rawValue)
+                userContentController.add(self, name: JSCalls.resetPassword.rawValue)
+                
+                return userContentController
+            }()
+            
+            return config
+        }())
         
-        return imageView
+        webView.uiDelegate = self
+        webView.navigationDelegate = self
+        webView.scrollView.delegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return webView
     }()
     
-    /// Title label
-    lazy var titleLabel: UILabel = {
-       
-        let label = UILabel(frame: .zero)
+    // MARK: - Initialization
+    /// Controller initialization
+    init() {
+        super.init(nibName: nil, bundle: nil)
         
-        /// UI Setup
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.textColor = UIColor.carara
-        label.font = UIFont.SFProTextSemiBold(15)
+        /// Clear
+        clearCache()
         
-        label.text = "Take your tutoring business\nto new heights"
+        /// Load onboarding url
+        let onboardinkLink = MacroEnviroment == "Prod" ? "https://onboarding.hiclark.com/" : "https://onboarding-qa.hiclark.com/"
         
-        return label
-    }()
+        if let url = URL(string: onboardinkLink) {
+            webView.load(URLRequest(url: url))
+        }
+    }
     
-    /// Play video button
-    lazy var videoButton: UIButton = {
-        
-        let button = UIButton(type: .custom)
-        button.adjustsImageWhenDisabled = true
-        
-        /// UI Setup
-        button.setTitle("Meet Clark", for: .normal)
-        button.setBackgroundColor(UIColor.clear, forState: .normal)
-        button.titleLabel?.font = UIFont.SFProTextSemiBold(15)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 24)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 123, bottom: 0, right: 0)
-        
-        return button
-    }()
-    
-    /// Onboarding button
-    lazy var onboardingButton: UIButton = {
-       
-        let button = UIButton(frame: .zero)
-        button.adjustsImageWhenDisabled = true
-        
-        /// UI Setup
-        button.setTitle("Get Started", for: .normal)
-        button.setTitleColor(UIColor.trinidad, for: .normal)
-        button.setBackgroundColor(UIColor.white, forState: .normal)
-        button.setBackgroundColor(UIColor.carara, forState: .highlighted)
-        button.titleLabel?.font = UIFont.SFProTextSemiBold(17)
-        
-        return button
-    }()
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Controller lifecycle
+    /// View did appear setup
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        /// Analytics
+        Analytics.screen(screenId: .s0)
+        
+        // Setup banner code
+        BannerManager.manager.viewController = self
+        BannerManager.manager.errorMessageHiddenForCategory = { category in
+            print(category)
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onExitFullScreen), name: NSNotification.Name.UIWindowDidBecomeHidden, object: nil)
+    }
+    
+    /// View did load setup
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /// Webview background
+        webView.backgroundColor = UIColor.black
         
         /// Setup UI
         initialSetup()
     }
-    
-    func downloadVideo() {
-        
-        /// Button setup
-        videoButton.isEnabled = false
-        videoButton.loadingIndicator(show: true)
-        
-        let s3Man = S3Manager.shared
-        s3Man.download(key: "Hi_Clark_rf32.mp4").then { response-> Void in
-            
-            self.videoButton.loadingIndicator(show: false)
-            self.videoPath = response
-            self.videoButton.isEnabled = true
-            self.videoButton.setImage(#imageLiteral(resourceName: "button-arrow"), for: .normal)
-            
-            }.catch { error in
-                print(error)
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        /// Onboarding Layer
-        onboardingButton.clipsToBounds = true
-        onboardingButton.layer.cornerRadius = 8
-        
-        // Video Button
-        videoButton.layer.borderWidth = 2.0
-        videoButton.layer.borderColor = UIColor.carara.cgColor
-        videoButton.layer.cornerRadius = videoButton.bounds.height / 2.0
-        
-        /// Download
-        downloadVideo()
-    }
-    
+
     // MARK: - UI Setup
+    /// Custom UI setup
     func initialSetup() {
         
-        /// Background color
-        view.backgroundColor = UIColor.trinidad
+        /// Web view
+        view.addSubview(webView)
         
-        /// Logo image
-        view.addSubview(logoImageView)
-        
-        /// Title label
-        view.addSubview(titleLabel)
-        
-        /// Video button
-        view.addSubview(videoButton)
-        videoButton.addTarget(self, action: #selector(onPlayVideo(_:)), for: .touchUpInside)
-        
-        /// Onboarding button
-        view.addSubview(onboardingButton)
-        onboardingButton.addTarget(self, action: #selector(onOnboarding(_:)), for: .touchUpInside)
-        
-        /// Logo image layout
-        logoImageView.snp.updateConstraints { maker in
-            maker.height.equalTo(140)
-            maker.width.equalTo(110)
-            maker.top.equalTo(70)
-            maker.centerX.equalTo(self.videoButton)
-        }
-        
-        /// Title label layout
-        titleLabel.snp.updateConstraints { maker in
-            maker.centerY.equalTo(self.view).offset(-15)
-            maker.centerX.equalTo(self.view)
-            maker.width.equalTo(300)
-            maker.height.equalTo(60)
-        }
-        
-        /// Video button layout
-        videoButton.snp.updateConstraints { maker in
-            maker.top.equalTo(titleLabel).offset(titleLabel.frame.height + 90)
-            maker.width.equalTo(145)
-            maker.height.equalTo(35)
-            maker.centerX.equalTo(self.view)
-        }
-        
-        /// Onboarding button layout
-        onboardingButton.snp.updateConstraints { maker in
-            maker.bottom.equalTo(-40)
-            maker.left.equalTo(40)
-            maker.right.equalTo(-40)
-            maker.height.equalTo(44)
-        }
+        /// Update constraints
+        updateViewConstraints()
     }
     
-    // MARK: - Video Player
-    func playVideo () {
+    /// Constraints setup
+    override func updateViewConstraints() {
         
-        /// Safety check to see if vides is saved
-        guard let videoPath = videoPath else {
-            AlertHelper.showAlert(title: "Whoops, please wait untill we get our video in place.", controller: self)
-            return
+        /// Place search setup
+        webView.snp.makeConstraints { maker in
+            maker.top.equalTo(view)
+            maker.bottom.equalTo(view)
+            maker.left.equalTo(view)
+            maker.right.equalTo(view)
         }
         
-        /// Play video
-        let movieUrl = URL(fileURLWithPath: videoPath)
-        let player = AVPlayer(url: movieUrl)
-        let playerController = VideoViewController()
-        playerController.player = player
-        
-        // Set to allow audio to play through speakers
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
-        }
-        catch {
-            print("Can't default to speaker ")
-        }
-        
-        // Present the video
-        present(playerController, animated: true) {
-            player.play()
-        }
+        super.updateViewConstraints()
     }
     
     // MARK: - Actions
-    func onPlayVideo(_ sender: UIButton) {
-        /// Play Video
-        playVideo()
-    }
-    
-    func onOnboarding(_ sender: UIButton) {
-        /// Chat transition
-        SVProgressHUD.show()
+    /// Called when full screen closes
+    func onExitFullScreen() {
         
-        /// Create initial channel
-        ConversationManager.conversationStart().then { _-> Void in
+        if webView.title == "Put your tutoring business on auto-pilot with Clark from Clark on Vimeo" {
+            webView.goBack()
+        }
+    }
+}
+
+// MARK: - WKScriptMessageHandler
+extension InitialViewController: WKScriptMessageHandler {
+    /// User content handler
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        
+        switch message.name {
+        case JSCalls.resetPassword.rawValue:
+            webView.goBack()
+            webView.goBack()
+            
+        case JSCalls.token.rawValue, JSCalls.loginToken.rawValue, JSCalls.profileToken.rawValue:
+
+            guard let token = JSON(message.body)[JSCalls.token.rawValue].string, let _ = JSON(message.body)["version"].null else {
+                return
+            }
+            
+            /// Analytics
+            Analytics.trackEventWithID(.s0_1)
+            
+            /// Chat transition
+            SVProgressHUD.show()
+            
+            /// Auth call
+            TutorAdapter.onboarding(key: token).then { response-> Promise<[UIViewController]> in
+                    
+                /// Safety check
+                if let response = response {
+                    let config = Config.shared
+                    config.currentTutor = response
+                }
                 
+                /// Hide onboarding check
+                let shouldShowOnboarding = message.name == JSCalls.token.rawValue
+
                 /// Transition
                 SVProgressHUD.dismiss()
-                ChatRouteHandler.initialTransition()
-                
-                /// Set flag for onboarding
-                Config.isInitialFinished = true
-            }.catch { error in
-                print(error)
-                SVProgressHUD.dismiss()
+                return MainRouteHandler.initialTransition(showOnboardingFinished: shouldShowOnboarding)
+                }.catch { error-> Void in
+                    SVProgressHUD.dismiss()
+                    /// Show error
+                    BannerManager.manager.showBannerForErrorText(error.localizedDescription, category: .all)
+            }
+        default: break
         }
+    }
+    
+    /// Clear up webView cache
+    func clearCache() {
+        if #available(iOS 9.0, *) {
+            let websiteDataTypes = NSSet(array: [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache])
+            let date = NSDate(timeIntervalSince1970: 0)
+            WKWebsiteDataStore.default().removeData(ofTypes: websiteDataTypes as! Set<String>, modifiedSince: date as Date, completionHandler:{ })
+        } else {
+            var libraryPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, false).first!
+            libraryPath += "/Cookies"
+            
+            do {
+                try FileManager.default.removeItem(atPath: libraryPath)
+            } catch {
+                print("error")
+            }
+            URLCache.shared.removeAllCachedResponses()
+        }
+    }
+}
+
+// MARK: - Webview delegate
+extension InitialViewController: WKUIDelegate {
+    
+    /// Webview configuration setup
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if navigationAction.targetFrame == nil {
+            webView.load(navigationAction.request)
+        }
+        return nil
+    }
+}
+
+extension InitialViewController: WKNavigationDelegate, UIScrollViewDelegate {
+    /// Web view handler
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        let alertController = UIAlertController(title: NSLocalizedString("Could not load page", comment: ""), message: NSLocalizedString("Looks like the server isn't running.", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Bummer", comment: ""), style: .default, handler: nil))
+        navigationController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    /// Navigation setup
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+
+        decisionHandler(.allow)
     }
 }

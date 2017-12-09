@@ -20,7 +20,7 @@ public struct ModelJSON {
 
 @objc(Model)
 open class Model: _Model, ImportableUniqueObject {
-
+    
     // MARK: - Importable Source Protocol
     public typealias ImportSource = JSON
     
@@ -81,3 +81,4 @@ open class Model: _Model, ImportableUniqueObject {
         id = source[ModelJSON.id].string
     }
 }
+

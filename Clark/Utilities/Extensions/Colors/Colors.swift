@@ -15,9 +15,22 @@ extension UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
     
+    // MARK: - Clark bear status
+    open class var activeStateColor: UIColor {
+        return ColorWith(red: 105, green: 214, blue: 91, alpha: 1)
+    }
+    
+    open class var inActiveStateColor: UIColor {
+        return ColorWith(red: 234, green: 80, blue: 10, alpha: 1)
+    }
+    
     // MARK: - Orange colors
     open class var trinidad: UIColor {
-        return ColorWith(red: 234, green: 73, blue: 0, alpha: 1)
+        return ColorWith(red: 254, green: 82, blue: 1, alpha: 1)
+    }
+    
+    open class var lightTrinidad: UIColor {
+        return ColorWith(red: 255, green: 124, blue: 57, alpha: 1)
     }
     
     open class var trinidadSectionSeparator: UIColor {
@@ -65,5 +78,40 @@ extension UIColor {
     
     open class var messageIncomingColor: UIColor {
         return ColorWith(red: 68, green: 68, blue: 68, alpha: 1)
+    }
+    
+    // MARK: - Status colors
+    open class var payedStatusColor: UIColor {
+        return ColorWith(red: 203, green: 196, blue: 100, alpha: 1)
+    }
+    
+    open class var pendingStatusColor: UIColor {
+        return ColorWith(red: 166, green: 185, blue: 6, alpha: 1)
+    }
+    
+    open class var defaultGrayColor: UIColor {
+        return ColorWith(red: 142, green: 142, blue: 147, alpha: 1)
+    }
+    
+    open class var notificationColor: UIColor {
+        return ColorWith(red: 255, green: 124, blue: 57, alpha: 1)
+    }
+    
+    // MARK: - Feedback status
+    open class var positiveColor: UIColor {
+        return ColorWith(red: 33, green: 150, blue: 83, alpha: 1)
+    }
+    
+    open class var negativeColor: UIColor {
+        return ColorWith(red: 199, green: 57, blue: 52, alpha: 1)
+    }
+    
+    // MARK: - Status color
+    open class var pastColor: UIColor {
+        return ColorWith(red: 173, green: 173, blue: 173, alpha: 1)
+    }
+    
+    open class var futureColor: UIColor {
+        return ColorWith(red: 234, green: 73, blue: 0, alpha: 1)
     }
 }

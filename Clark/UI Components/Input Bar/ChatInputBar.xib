@@ -4,14 +4,15 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatInputBar" customModule="Clark" customModuleProvider="target">
             <connections>
+                <outlet property="actionButton" destination="rf1-KI-KHr" id="Bns-JS-zHX"/>
                 <outlet property="inputBarView" destination="d96-pl-06S" id="GjU-pr-Mrv"/>
+                <outlet property="leftActionViewWidth" destination="G7o-jg-ph0" id="FDO-ig-5VI"/>
                 <outlet property="sendButton" destination="xtg-hS-I6T" id="dwU-nx-AIX"/>
                 <outlet property="textInputAreaView" destination="mVH-ea-DJF" id="m0q-g5-C5z"/>
                 <outlet property="textInputAreaViewHeight" destination="Riw-St-80g" id="Vc3-xP-5Ol"/>
@@ -81,7 +82,7 @@
                             </constraints>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
                         </textView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

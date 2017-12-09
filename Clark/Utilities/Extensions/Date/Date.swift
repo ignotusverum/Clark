@@ -56,11 +56,43 @@ extension Date {
         var resultTimestamp = day
         resultTimestamp = "\(resultTimestamp) \(monthDay) at \(timeString)"
         
-        let attributedString = NSAttributedString(string: "\n\n\(resultTimestamp)\n\n", attributes: [NSFontAttributeName: UIFont.SFProText(10), NSForegroundColorAttributeName: UIColor.ColorWith(red: 170, green: 170, blue: 170, alpha: 1)])
+        let attributedString = NSAttributedString(string: "\n\n\(resultTimestamp)\n\n", attributes: [NSFontAttributeName: UIFont.defaultFont(size: 10), NSForegroundColorAttributeName: UIColor.ColorWith(red: 170, green: 170, blue: 170, alpha: 1)])
         
         return attributedString
     }
     
+    static func localDateString(_ date: Date?, format: String = "E, d MMM HH:mm a")-> String? {
+        
+        /// Local time
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        
+        dateFormatter.dateFormat = format
+        
+        guard let date = date else {
+            return nil
+        }
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    static func combineDateAndTime(date: Date, time: Date)-> Date {
+        
+        let calendar = NSCalendar.current
+        
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+        
+        var components = DateComponents()
+        components.year = dateComponents.year
+        components.month = dateComponents.month
+        components.day = dateComponents.day
+        components.hour = timeComponents.hour
+        components.minute = timeComponents.minute
+        components.second = timeComponents.second
+        
+        return calendar.date(from: components)!
+    }
     
     /// Check if current phone format is 12 or 24
     ///

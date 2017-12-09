@@ -12,13 +12,13 @@ extension UIButton {
     func loadingIndicator(show: Bool) {
         if show {
             let indicator = UIActivityIndicatorView()
-            let buttonHeight = self.bounds.size.height
-            let buttonWidth = self.bounds.size.width
+            let buttonHeight = bounds.size.height
+            let buttonWidth = bounds.size.width
             indicator.center = CGPoint(x: buttonWidth-20, y: buttonHeight/2)
-            self.addSubview(indicator)
+            addSubview(indicator)
             indicator.startAnimating()
         } else {
-            for view in self.subviews {
+            for view in subviews {
                 if let indicator = view as? UIActivityIndicatorView {
                     indicator.stopAnimating()
                     indicator.removeFromSuperview()

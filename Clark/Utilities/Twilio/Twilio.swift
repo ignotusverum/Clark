@@ -27,7 +27,7 @@ extension TCHChannel {
         return Promise { fulfill, reject in
             self.getMessagesCount(completion: { (result, number) in
                 
-                guard let result = result, result.isSuccessful() else {
+                guard result.isSuccessful() else {
                     fulfill(0)
                     return
                 }
@@ -52,12 +52,32 @@ extension TCHMessages {
             
             self.getAfter(UInt(index), withCount: UInt(count), completion: { (result, messages) in
     
-                guard let messages = messages, let result = result, result.isSuccessful() else {
+                guard let messages = messages, result.isSuccessful() else {
                     fulfill([])
                     return
                 }
     
-                fulfill(messages)
+                fulfill(messages.flatMap { $0 })
+            })
+        }
+    }
+    
+    /** Fetches the most recent `count` messages.  This will return locally cached messages if they are all available or may require a load from the server.
+     
+     @param count The number of most recent messages to return.
+     @param completion Completion block that will specify the result of the operation as well as the requested messages if successful.  If no completion block is specified, no operation will be executed.
+     */
+    open func getLastWithCount(_ count: Int)-> Promise<([TCHMessage])> {
+        return Promise { fulfill, reject in
+            
+            self.getLastWithCount(UInt(count), completion: { (result, messages) in
+                
+                guard let messages = messages, result.isSuccessful() else {
+                    fulfill([])
+                    return
+                }
+                
+                fulfill(messages.flatMap { $0 })
             })
         }
     }

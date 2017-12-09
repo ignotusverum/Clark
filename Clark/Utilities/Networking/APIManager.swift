@@ -7,9 +7,14 @@
 //
 
 import Stripe
+import Locksmith
 import Alamofire
 import PromiseKit
 import SwiftyJSON
+
+struct APIManagerJSON {
+    static let authToken = "auth_token"
+}
 
 public class APIManager: NetworkingProtocol {
     
@@ -25,14 +30,18 @@ public class APIManager: NetworkingProtocol {
     /// Api key
     var apiKey: String? {
         get {
-
+            
             let keychain = AppDelegate.shared.keychain
-            let accessTokenOld = keychain[NetworkingManagerAccessTokenKey]
-
+            var accessTokenOld = keychain[NetworkingManagerAccessTokenKey]
+            
+            if let token = Locksmith.loadDataForUserAccount(userAccount: "UserToken")?["token"] as? String {
+                accessTokenOld = token
+            }
+            
             return accessTokenOld
         }
         set {
-
+            
             let keychain = AppDelegate.shared.keychain
             keychain[NetworkingManagerAccessTokenKey] = newValue
         }
@@ -40,14 +49,15 @@ public class APIManager: NetworkingProtocol {
     
     /// Default manager setup
     var manager = Alamofire.SessionManager.default
-  
+    
     static let contentTypeString = "application/vnd.api+json"
-  
+    
     /// Header configuration
     func configureHeader() {
         
         /// Safety check
-        guard let accessToken = apiKey, accessToken.length > 1, let deviceID  = UIDevice.idForVendor() else {
+        guard let accessToken = apiKey, accessToken.length > 1, let deviceID = UIDevice.idForVendor() else {
+            headers = [:]
             return
         }
         
@@ -61,3 +71,4 @@ public class APIManager: NetworkingProtocol {
         return URL(string: "https://\(hostName)/v\(hostVersion)/\(path)")!
     }
 }
+

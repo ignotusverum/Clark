@@ -28,18 +28,18 @@ public enum QuickReplyLayout:String {
 
 /// Struct that represent Message JSON keys
 public struct MessageJSON {
-
-	static let attributes = "attributes"
     
-    static let formID = "formId"
+    static let attributes = "attributes"
+    
+    static let formID = "form_id"
     
     static let body = "body"
-	static let author = "author"
+    static let author = "author"
     static let channel = "channel"
-    static let imageURL = "imageURL"
+    static let imageURL = "image_url"
     
     static let blocking = "blocking"
-	static let clientInputPlaceholderBody = "clientInputPlaceholderBody"
+    static let clientInputPlaceholderBody = "clientInputPlaceholderBody"
     static let clientInputDecorationString = "clientInputDecorationString"
     
     static let sent = "sent"
@@ -48,8 +48,8 @@ public struct MessageJSON {
     
     static let twilioMessageIndex = "twilioMessageIndex"
     
-	static let lastSizeString = "lastSizeString"
-	static let showTypingString = "showTypingString"
+    static let lastSizeString = "lastSizeString"
+    static let showTypingString = "showTypingString"
     
     static let carousel = "carousel_items"
     static let quickActions = "quick_actions"
@@ -57,38 +57,59 @@ public struct MessageJSON {
     
     static let htmlBody = "html_body"
     static let responseAttributes = "response_attributes"
+    static let stripeMetadata = "stripe_metadata"
+    
+    static let destination = "app_destination"
 }
 
 /// Message type
 enum AttributeType: String {
     case text = "text"
     case html = "html"
+    case card = "card"
     case image = "image"
     case timer = "timer"
     case emoji = "emoji"
     case carousel = "carousel"
     case errorText = "text_error"
     case formInput = "form_inputs"
+    case cardAction = "card_action"
     
     case undefined
 }
 
 @objc(Message)
 open class Message: _Message, ImportableUniqueObject {
-
+    
     /// Message type
     var type: AttributeType {
         /// Returns undefined if new type
         return AttributeType(rawValue: typeString ?? "") ?? .undefined
     }
     
+    /// Image URL
+    var image: URL? {
+        return URL(string: imageURL ?? "")
+    }
+    
     /// Attributes
     var attributes: [String: Any] {
-        return attributes_ as? [String: Any] ?? [:]
+        set {
+            attributes_ = newValue
+        }
+        get {
+            return attributes_ as? [String: Any] ?? [:]
+        }
     }
     
     var responseAttributes: [String: Any] {
-        return responseAttributes_ as? [String: Any] ?? [:]
+        
+        set {
+            responseAttributes_ = newValue
+        }
+        get {
+            return responseAttributes_ as? [String: Any] ?? [:]
+        }
     }
     
     var responseAttributesJSON: JSON {
@@ -102,7 +123,38 @@ open class Message: _Message, ImportableUniqueObject {
     
     // MARK: - Input forms
     var formInputs: FormInputs? {
+        return FormInputs(source: attributesJSON)
+    }
+    
+    /// Should create ground
+    var isShouldCreateGroup: Bool {
+        return type == .carousel || type == .formInput || type == .image || type == .card
+    }
+    
+    /// Should show message body
+    var shouldShowMessageBody: Bool {
+        return body.lowercased() != "form" && body.lowercased() != "preview image" && body.lowercased() != "student added card" && body.lowercased() != "session added card" && body.lowercased() != "learning plan added card"
+    }
+    
+    /// Form inputs to create
+    var formInputToCreate: FormInputs? {
         return FormInputs(source: responseAttributesJSON)
+    }
+    
+    // MARK: - Card message
+    var cardCompleted: CardsCompleted? {
+        return CardsCompleted(source: attributesJSON)
+    }
+    
+    // MARK: - Stripe info
+    var stripeInfo: StripeInfo? {
+        
+        /// Safety check
+        guard let stripeSource = attributesJSON[MessageJSON.stripeMetadata].json else {
+            return nil
+        }
+        
+        return StripeInfo(source: stripeSource)
     }
     
     // MARK: - Carousel
@@ -124,7 +176,7 @@ open class Message: _Message, ImportableUniqueObject {
         guard let quickActionsArray = attributesJSON[MessageJSON.quickActions].array else {
             return []
         }
-     
+        
         /// Map & create actions
         return quickActionsArray.flatMap { QuickAction(attributes: $0) }
     }
@@ -222,7 +274,7 @@ open class Message: _Message, ImportableUniqueObject {
         
         // ID
         id = source.message.sid
-
+        
         /// Attribtes
         attributes_ = source.message.attributes()
         
@@ -242,7 +294,9 @@ open class Message: _Message, ImportableUniqueObject {
         let attributesJSON = JSON(attributes)
         
         /// Blocking
-        blocking = attributesJSON[MessageJSON.blocking].number ?? NSNumber(value: false)
+        let blockingNumber = attributesJSON[MessageJSON.blocking].number
+        let blockingBool = attributesJSON[MessageJSON.blocking].string?.toBool() ?? false
+        blocking = blockingNumber != nil ? blockingNumber! : NSNumber(value: blockingBool)
         
         /// Client decorations
         clientInputPlaceholderBody = attributesJSON[MessageJSON.clientInputPlaceholderBody].string
@@ -266,5 +320,12 @@ open class Message: _Message, ImportableUniqueObject {
         /// Update type, if there's form inputs
         let tempTypeString = attributesJSON[MessageJSON.typeString].string
         typeString = formInputs == nil ? tempTypeString : FormInputsJSON.inputs
+        
+        /// Check if type is card action
+        if let quickAction = attributesJSON[MessageJSON.quickActions].array, let first = quickAction.first, let _ = first[MessageJSON.destination].string {
+            typeString = AttributeType.cardAction.rawValue
+        }
     }
 }
+
+ 
